@@ -82,6 +82,15 @@ html[data-theme="light"]{
   --icon-health-bg:#FFF9E5;
   --icon-growth-bg:#E8FFFA;
   --icon-activity-bg:#EEEDFF;
+  --blog-tag-bg:#EEEDFF;
+  --blog-tag-text:#3C38FF;
+  --blog-icon-sleep:#6366F1;
+  --blog-icon-feed:#F6571D;
+  --blog-icon-nutrition:#16A34A;
+  --blog-icon-health:#FFBE02;
+  --milestone-line:#EBEBEB;
+  --milestone-dot:#3C38FF;
+  --dev-icon-bg:var(--surface);
 }
 
 /* ===== THEME: DARK ===== */
@@ -126,6 +135,15 @@ html[data-theme="dark"]{
   --icon-health-bg:rgba(255,190,2,.12);
   --icon-growth-bg:rgba(34,227,202,.12);
   --icon-activity-bg:rgba(61,56,255,.12);
+  --blog-tag-bg:rgba(60,56,255,.15);
+  --blog-tag-text:#818CF8;
+  --blog-icon-sleep:#818CF8;
+  --blog-icon-feed:#F6571D;
+  --blog-icon-nutrition:#22CE50;
+  --blog-icon-health:#FFBE02;
+  --milestone-line:#333333;
+  --milestone-dot:#818CF8;
+  --dev-icon-bg:var(--surface);
 }
 
 body{background:var(--bg);color:var(--text)}
@@ -173,6 +191,8 @@ html[data-theme="dark"] .theme-icon-sun{display:block}
 .mob-menu.open .mob-menu-links a:nth-child(3){transition-delay:.15s}
 .mob-menu.open .mob-menu-links a:nth-child(4){transition-delay:.2s}
 .mob-menu.open .mob-menu-links a:nth-child(5){transition-delay:.25s}
+.mob-menu.open .mob-menu-links a:nth-child(6){transition-delay:.3s}
+.mob-menu.open .mob-menu-links a:nth-child(7){transition-delay:.35s}
 .mob-menu-links a:hover{color:var(--primary)}
 .mob-menu-cta{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:10px}
 .mob-menu-cta .store-btn{width:100%;justify-content:center}
@@ -310,6 +330,9 @@ html[data-theme="dark"] .theme-icon-sun{display:block}
   .ped-inner{grid-template-columns:1fr;gap:32px}
   .ped-visual{order:-1}
   .footer-inner{flex-direction:column;text-align:center}
+  .blog-grid{grid-template-columns:1fr}
+  .dev-features{grid-template-columns:1fr}
+  .norms-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .features-grid{grid-template-columns:1fr}
@@ -317,6 +340,63 @@ html[data-theme="dark"] .theme-icon-sun{display:block}
   .store-btn{padding:10px 18px;font-size:.84rem}
   .mob-menu-links a{font-size:1.25rem}
 }
+
+/* ===== PAGES (hash routing) ===== */
+.page{display:none}
+.page.active{display:block}
+
+/* ===== BLOG ===== */
+.blog-header{padding:96px 24px 48px;text-align:center;background:var(--bg);transition:background .3s}
+.blog-header h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:12px}
+.blog-header p{font-size:.92rem;color:var(--text-secondary);max-width:480px;margin:0 auto;line-height:1.6}
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding:0 24px 64px;max-width:1080px;margin:0 auto}
+.blog-card{border-radius:12px;border:1px solid var(--border);overflow:hidden;background:var(--bg-card);transition:all .25s}
+.blog-card:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:var(--card-shadow)}
+.blog-card-icon{height:140px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.blog-card-icon svg{width:48px;height:48px;opacity:.75}
+.blog-card-body{padding:20px}
+.blog-card-tag{display:inline-block;padding:3px 10px;background:var(--blog-tag-bg);color:var(--blog-tag-text);font-size:.7rem;font-weight:600;border-radius:4px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.blog-card-body h3{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3}
+.blog-card-body p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
+.blog-card-meta{display:flex;align-items:center;gap:6px;margin-top:14px;font-size:.75rem;color:var(--text-tertiary)}
+.blog-card-meta svg{width:13px;height:13px;flex-shrink:0;opacity:.5}
+.blog-coming{text-align:center;padding:48px 24px;color:var(--text-secondary);font-size:.88rem}
+
+/* ===== DEVELOPMENT ===== */
+.dev-hero{padding:96px 24px 48px;background:var(--bg);transition:background .3s}
+.dev-hero-inner{max-width:1080px;margin:0 auto;text-align:center}
+.dev-hero-inner h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:12px}
+.dev-hero-inner h1 em{font-style:normal;color:var(--primary)}
+.dev-hero-inner p{font-size:.92rem;color:var(--text-secondary);max-width:540px;margin:0 auto;line-height:1.6}
+.dev-features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 24px 48px;max-width:1080px;margin:0 auto}
+.dev-feature{padding:22px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border);transition:all .2s}
+.dev-feature:hover{border-color:var(--border-hover)}
+.dev-feature-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;background:var(--dev-icon-bg)}
+.dev-feature-icon svg{width:22px;height:22px}
+.dev-feature h3{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.dev-feature p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
+
+/* Milestones */
+.milestones-section{padding:48px 24px 64px;max-width:1080px;margin:0 auto}
+.milestones-section .section-header{margin-bottom:32px}
+.milestone-timeline{position:relative;padding-left:28px}
+.milestone-timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--milestone-line);border-radius:1px}
+.milestone-item{position:relative;padding-bottom:28px}
+.milestone-item:last-child{padding-bottom:0}
+.milestone-dot{position:absolute;left:-24px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--milestone-dot);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--milestone-dot)}
+.milestone-age{font-size:.75rem;font-weight:600;color:var(--primary);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+.milestone-item h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:4px}
+.milestone-item p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
+
+/* Age norms */
+.norms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+.norm-card{padding:20px;background:var(--bg-alt);border-radius:12px;border:1px solid var(--border);transition:all .2s}
+.norm-card:hover{border-color:var(--border-hover)}
+.norm-card h4{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.norm-card h4 svg{width:18px;height:18px;flex-shrink:0}
+.norm-card ul{list-style:none;padding:0}
+.norm-card li{font-size:.8rem;color:var(--text-secondary);padding:3px 0;padding-left:16px;position:relative;line-height:1.5}
+.norm-card li::before{content:'·';position:absolute;left:4px;color:var(--primary);font-weight:700;font-size:1.2rem;line-height:1}
 
 /* ===== I18N ===== */
 [data-i="en"]{display:none}
@@ -345,16 +425,18 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 <!-- ===== NAV ===== -->
 <nav class="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="#top">
+    <a class="nav-logo" href="#" onclick="navigateTo('home');return false">
       <svg viewBox="0 0 24 24" fill="none"><path d="M9.587 5.368c.604-1.769 3.048-1.822 3.764-.161l.061.162.816 2.385c.187.547.489 1.047.886 1.468.396.42.879.75 1.414.969l.22.082 2.385.815c1.768.604 1.822 3.048.161 3.764l-.161.061-2.385.816a4.17 4.17 0 0 0-1.468.886 4.17 4.17 0 0 0-.969 1.414l-.082.22-.815 2.385c-.604 1.769-3.048 1.822-3.764.161l-.063-.161-.815-2.385a4.17 4.17 0 0 0-.886-1.468 4.17 4.17 0 0 0-1.414-.969l-.22-.082-2.385-.815c-1.769-.604-1.823-3.048-.161-3.764l.161-.062 2.385-.815a4.17 4.17 0 0 0 1.468-.886c.42-.397.75-.879.969-1.414l.082-.22.815-2.385Z" fill="#3D38FF"/><path d="M18.862 2.456c.201-.59 1.016-.607 1.255-.053l.02.053.272.795a1.5 1.5 0 0 0 .872.918l.073.027.795.272c.59.201.607 1.016.053 1.255l-.053.02-.795.272a1.5 1.5 0 0 0-.918.872l-.027.073-.272.795c-.201.59-1.016.607-1.255.054l-.02-.054-.272-.795a1.5 1.5 0 0 0-.872-.918l-.073-.027-.795-.272c-.59-.201-.607-1.016-.054-1.255l.054-.02.795-.272a1.5 1.5 0 0 0 .918-.872l.027-.073.272-.795Z" fill="#3D38FF"/></svg>
       Lummo
     </a>
 
     <div class="nav-links">
-      <a href="#features"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
-      <a href="#ai"><span data-i="ru">AI</span><span data-i="en">AI</span></a>
-      <a href="#principles"><span data-i="ru">Принципы</span><span data-i="en">Principles</span></a>
-      <a href="#pediatrician"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
+      <a href="#features" onclick="navigateTo('home','#features');return false"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
+      <a href="#ai" onclick="navigateTo('home','#ai');return false"><span data-i="ru">AI</span><span data-i="en">AI</span></a>
+      <a href="#principles" onclick="navigateTo('home','#principles');return false"><span data-i="ru">Принципы</span><span data-i="en">Principles</span></a>
+      <a href="#pediatrician" onclick="navigateTo('home','#pediatrician');return false"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
+      <a href="#blog" onclick="navigateTo('blog');return false"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+      <a href="#development" onclick="navigateTo('development');return false"><span data-i="ru">Развитие</span><span data-i="en">Development</span></a>
     </div>
 
     <div class="nav-right">
@@ -375,11 +457,13 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 <!-- ===== MOBILE MENU ===== -->
 <div class="mob-menu" id="mobMenu">
   <div class="mob-menu-links">
-    <a href="#features" onclick="closeMenu()"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
-    <a href="#ai" onclick="closeMenu()"><span data-i="ru">AI</span><span data-i="en">AI</span></a>
-    <a href="#principles" onclick="closeMenu()"><span data-i="ru">Принципы</span><span data-i="en">Principles</span></a>
-    <a href="#pediatrician" onclick="closeMenu()"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
-    <a href="#download" onclick="closeMenu()"><span data-i="ru">Скачать</span><span data-i="en">Download</span></a>
+    <a href="#features" onclick="navigateTo('home','#features');closeMenu();return false"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
+    <a href="#ai" onclick="navigateTo('home','#ai');closeMenu();return false"><span data-i="ru">AI</span><span data-i="en">AI</span></a>
+    <a href="#principles" onclick="navigateTo('home','#principles');closeMenu();return false"><span data-i="ru">Принципы</span><span data-i="en">Principles</span></a>
+    <a href="#pediatrician" onclick="navigateTo('home','#pediatrician');closeMenu();return false"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
+    <a href="#blog" onclick="navigateTo('blog');closeMenu();return false"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+    <a href="#development" onclick="navigateTo('development');closeMenu();return false"><span data-i="ru">Развитие</span><span data-i="en">Development</span></a>
+    <a href="#download" onclick="navigateTo('home','#download');closeMenu();return false"><span data-i="ru">Скачать</span><span data-i="en">Download</span></a>
   </div>
   <div class="mob-menu-cta">
     <a href="#" class="store-btn store-btn-apple">
@@ -392,6 +476,9 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
     </a>
   </div>
 </div>
+
+<!-- ===== PAGE: HOME ===== -->
+<div class="page active" id="page-home">
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
@@ -767,6 +854,377 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
   </div>
 </section>
 
+</div><!-- /page-home -->
+
+
+<!-- ==================== BLOG PAGE ==================== -->
+<div class="page" id="page-blog">
+  <div class="blog-header">
+    <h1><span data-i="ru">Блог</span><span data-i="en">Blog</span></h1>
+    <p><span data-i="ru">Полезные статьи о здоровье и развитии ребёнка. Конкретика, таблицы, без воды.</span><span data-i="en">Helpful articles about your child's health and development. Specifics, tables, no fluff.</span></p>
+  </div>
+
+  <!-- RU Blog -->
+  <div class="blog-grid i-grid" data-i="ru">
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M17.487 10.405a8.34 8.34 0 0 1-1.427 4.011 8.34 8.34 0 0 1-3.38 2.589 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032 8.34 8.34 0 0 1-2.032-3.741 8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 9.593.834c.337-.018.514.384.335.67a6.67 6.67 0 0 0-.728 3.216 6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="var(--blog-icon-sleep)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Сон</span>
+        <h3>Сколько должен спать ребёнок по возрастам</h3>
+        <p>Нормы сна от 0 до 3 лет. Таблица по месяцам: дневной сон, ночной, общий. Когда отклонение — повод обратиться к врачу.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          20 января 2025 · 7 мин
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Кормление</span>
+        <h3>Как понять, что ребёнок наелся</h3>
+        <p>Пять сигналов насыщения у грудничков и детей на ИВ. Сколько молока достаточно по возрасту. Таблица объёмов.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          12 января 2025 · 5 мин
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="var(--blog-icon-nutrition)"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Питание</span>
+        <h3>Когда вводить прикорм: по месяцам</h3>
+        <p>Рекомендации ВОЗ, признаки готовности, первые продукты. Схема введения с 4 до 12 месяцев. Что делать с аллергенами.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          28 декабря 2024 · 6 мин
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Здоровье</span>
+        <h3>Температура у ребёнка: когда сбивать, когда ждать</h3>
+        <p>Норма для каждого возраста. Три метода измерения и их погрешность. Алгоритм действий при 37.5, 38.5 и 39+.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          15 декабря 2024 · 8 мин
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EN Blog -->
+  <div class="blog-grid i-grid" data-i="en">
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M17.487 10.405a8.34 8.34 0 0 1-1.427 4.011 8.34 8.34 0 0 1-3.38 2.589 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032 8.34 8.34 0 0 1-2.032-3.741 8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 9.593.834c.337-.018.514.384.335.67a6.67 6.67 0 0 0-.728 3.216 6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="var(--blog-icon-sleep)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Sleep</span>
+        <h3>How much sleep does a child need by age</h3>
+        <p>Sleep norms from 0 to 3 years. Month-by-month table: daytime, nighttime, total. When deviation warrants a doctor visit.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Jan 20, 2025 · 7 min
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Feeding</span>
+        <h3>How to tell if your baby is full</h3>
+        <p>Five satiety signals in breastfed and formula-fed babies. How much milk is enough by age. Volume table.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Jan 12, 2025 · 5 min
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="var(--blog-icon-nutrition)"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Nutrition</span>
+        <h3>When to start solids: month by month</h3>
+        <p>WHO recommendations, readiness signs, first foods. Introduction plan from 4 to 12 months. How to handle allergens.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Dec 28, 2024 · 6 min
+        </div>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">Health</span>
+        <h3>Child's temperature: when to act, when to wait</h3>
+        <p>Normal range by age. Three measurement methods and their accuracy. Action plan for 37.5, 38.5, and 39+ °C.</p>
+        <div class="blog-card-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Dec 15, 2024 · 8 min
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-coming">
+    <span data-i="ru">Больше статей — скоро.</span>
+    <span data-i="en">More articles coming soon.</span>
+  </div>
+</div><!-- /page-blog -->
+
+
+<!-- ==================== DEVELOPMENT PAGE ==================== -->
+<div class="page" id="page-development">
+  <div class="dev-hero">
+    <div class="dev-hero-inner">
+      <h1><span data-i="ru">Трекинг <em>развития</em></span><span data-i="en">Track <em>Development</em></span></h1>
+      <p><span data-i="ru">Что ребёнок умеет в каждом возрасте. Milestones, возрастные нормы и трекинг навыков — в одном месте.</span><span data-i="en">What your child can do at each age. Milestones, age norms and skill tracking — all in one place.</span></p>
+    </div>
+  </div>
+
+  <!-- RU dev features -->
+  <div class="dev-features i-grid" data-i="ru" style="padding-top:32px">
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 0L9.5 5.5L15 7L9.5 8.5L8 14L6.5 8.5L1 7L6.5 5.5L8 0Z" fill="var(--primary)"/><path d="M13 1L13.5 3L15.5 3.5L13.5 4L13 6L12.5 4L10.5 3.5L12.5 3L13 1Z" fill="var(--primary)"/></svg>
+      </div>
+      <h3>Когнитивное развитие</h3>
+      <p>Фокус внимания, распознавание лиц, реакция на звуки, первые слова и понимание речи.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Моторные навыки</h3>
+      <p>Крупная и мелкая моторика: переворачивание, ползание, первые шаги, хватание, рисование.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M8.333 13.333c.417.25 1 .417 1.667.417s1.25-.167 1.667-.417" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 10h.008M7.5 10h.008" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.15 5.678A8.33 8.33 0 0 1 17.333 8.5c.282.136.52.35.686.615a1.5 1.5 0 0 1 0 1.77 1.5 1.5 0 0 1-.686.615 8.33 8.33 0 0 1-2.618 4.26A8.33 8.33 0 0 1 10 17.428a8.33 8.33 0 0 1-4.715-1.668A8.33 8.33 0 0 1 2.667 11.5a1.5 1.5 0 0 1-.686-.615 1.5 1.5 0 0 1 0-1.77c.166-.265.404-.479.686-.615a8.33 8.33 0 0 1 3.483-4.305A8.33 8.33 0 0 1 10 2.5c1.667 0 2.917.917 2.917 2.083S12.167 6.667 11.25 6.667C10.583 6.667 10 6.333 10 5.833" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Речь и общение</h3>
+      <p>Гуление, лепет, первые слова, фразы. Трекинг словарного запаса по возрасту.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Социально-эмоциональное</h3>
+      <p>Улыбка, привязанность, игра со сверстниками, эмпатия. Эмоциональный интеллект с первых месяцев.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15.75 19.13c-.83 0-1.5-.84-1.5-1.88s.67-1.87 1.5-1.87 1.5.84 1.5 1.87-.67 1.88-1.5 1.88ZM12 11.25c-1.24 0-2.25-.84-2.25-1.87s1.01-1.88 2.25-1.88 2.25.84 2.25 1.88-1.01 1.87-2.25 1.87ZM8.25 19.13c-.83 0-1.5-.84-1.5-1.88s.67-1.87 1.5-1.87 1.5.84 1.5 1.87-.67 1.88-1.5 1.88Z" fill="var(--primary)" opacity=".3"/><path d="M18.75 12c-.32 0-.63.07-.91.2a6.67 6.67 0 0 0-1.91-1.53c.57-.8.91-1.77.91-2.82v-.06a2.42 2.42 0 0 0 1.6-2.37c0-1.33-1.09-2.42-2.42-2.42-.69 0-1.33.29-1.75.75A7 7 0 0 0 12 3c-.91 0-1.81.26-2.58.75-.42-.46-1.06-.75-1.75-.75-1.33 0-2.42 1.09-2.42 2.42 0 1.16.82 2.13 1.9 2.37v.06c0 1.05.34 2.02.91 2.82-.71.4-1.36.92-1.9 1.53A2.67 2.67 0 0 0 5.25 12a2.75 2.75 0 0 0 0 5.5h.06c-.04.24-.06.5-.06.75 0 2.07 1.34 3.75 3 3.75 1.01 0 1.9-.63 2.45-1.59.42.06.85.09 1.3.09s.88-.03 1.3-.09c.55.96 1.44 1.59 2.45 1.59 1.66 0 3-1.68 3-3.75 0-.25-.02-.51-.06-.75h.06a2.75 2.75 0 0 0 0-5.5Z" stroke="var(--primary)" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      <h3>Milestone tracker</h3>
+      <p>Чек-лист навыков по возрасту. Отмечайте достижения, получайте рекомендации при отклонениях.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M17.75 12.75a2.83 2.83 0 0 1 0 3L15.58 17.75a2.83 2.83 0 0 1-3 0L2.25 7.25a2.83 2.83 0 0 1 0-3L4.42 2.25a2.83 2.83 0 0 1 3 0L17.75 12.75Z" stroke="var(--primary)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.083 10.417l1.667-1.667M9.583 7.917l1.667-1.667M7.083 5.417l1.667-1.667M14.583 12.917l1.667-1.667" stroke="var(--primary)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Отчёты для врача</h3>
+      <p>Сводка развития для педиатра или невролога. PDF-экспорт с графиками и перцентилями.</p>
+    </div>
+  </div>
+
+  <!-- EN dev features -->
+  <div class="dev-features i-grid" data-i="en" style="padding-top:32px">
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M8 0L9.5 5.5L15 7L9.5 8.5L8 14L6.5 8.5L1 7L6.5 5.5L8 0Z" fill="var(--primary)"/><path d="M13 1L13.5 3L15.5 3.5L13.5 4L13 6L12.5 4L10.5 3.5L12.5 3L13 1Z" fill="var(--primary)"/></svg>
+      </div>
+      <h3>Cognitive development</h3>
+      <p>Attention focus, face recognition, sound response, first words and speech comprehension.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Motor skills</h3>
+      <p>Gross and fine motor: rolling, crawling, first steps, grasping objects, drawing.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M8.333 13.333c.417.25 1 .417 1.667.417s1.25-.167 1.667-.417" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 10h.008M7.5 10h.008" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.15 5.678A8.33 8.33 0 0 1 17.333 8.5c.282.136.52.35.686.615a1.5 1.5 0 0 1 0 1.77 1.5 1.5 0 0 1-.686.615 8.33 8.33 0 0 1-2.618 4.26A8.33 8.33 0 0 1 10 17.428a8.33 8.33 0 0 1-4.715-1.668A8.33 8.33 0 0 1 2.667 11.5a1.5 1.5 0 0 1-.686-.615 1.5 1.5 0 0 1 0-1.77c.166-.265.404-.479.686-.615a8.33 8.33 0 0 1 3.483-4.305A8.33 8.33 0 0 1 10 2.5c1.667 0 2.917.917 2.917 2.083S12.167 6.667 11.25 6.667C10.583 6.667 10 6.333 10 5.833" stroke="var(--primary)" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Speech &amp; communication</h3>
+      <p>Cooing, babbling, first words, phrases. Vocabulary tracking and communication skills by age.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Social-emotional</h3>
+      <p>Smiling, attachment, peer play, empathy. Emotional intelligence from the first months.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M15.75 19.13c-.83 0-1.5-.84-1.5-1.88s.67-1.87 1.5-1.87 1.5.84 1.5 1.87-.67 1.88-1.5 1.88ZM12 11.25c-1.24 0-2.25-.84-2.25-1.87s1.01-1.88 2.25-1.88 2.25.84 2.25 1.88-1.01 1.87-2.25 1.87ZM8.25 19.13c-.83 0-1.5-.84-1.5-1.88s.67-1.87 1.5-1.87 1.5.84 1.5 1.87-.67 1.88-1.5 1.88Z" fill="var(--primary)" opacity=".3"/><path d="M18.75 12c-.32 0-.63.07-.91.2a6.67 6.67 0 0 0-1.91-1.53c.57-.8.91-1.77.91-2.82v-.06a2.42 2.42 0 0 0 1.6-2.37c0-1.33-1.09-2.42-2.42-2.42-.69 0-1.33.29-1.75.75A7 7 0 0 0 12 3c-.91 0-1.81.26-2.58.75-.42-.46-1.06-.75-1.75-.75-1.33 0-2.42 1.09-2.42 2.42 0 1.16.82 2.13 1.9 2.37v.06c0 1.05.34 2.02.91 2.82-.71.4-1.36.92-1.9 1.53A2.67 2.67 0 0 0 5.25 12a2.75 2.75 0 0 0 0 5.5h.06c-.04.24-.06.5-.06.75 0 2.07 1.34 3.75 3 3.75 1.01 0 1.9-.63 2.45-1.59.42.06.85.09 1.3.09s.88-.03 1.3-.09c.55.96 1.44 1.59 2.45 1.59 1.66 0 3-1.68 3-3.75 0-.25-.02-.51-.06-.75h.06a2.75 2.75 0 0 0 0-5.5Z" stroke="var(--primary)" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      <h3>Milestone tracker</h3>
+      <p>Checklist of key skills by age. Mark achievements, get recommendations for deviations.</p>
+    </div>
+    <div class="dev-feature">
+      <div class="dev-feature-icon">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M17.75 12.75a2.83 2.83 0 0 1 0 3L15.58 17.75a2.83 2.83 0 0 1-3 0L2.25 7.25a2.83 2.83 0 0 1 0-3L4.42 2.25a2.83 2.83 0 0 1 3 0L17.75 12.75Z" stroke="var(--primary)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.083 10.417l1.667-1.667M9.583 7.917l1.667-1.667M7.083 5.417l1.667-1.667M14.583 12.917l1.667-1.667" stroke="var(--primary)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Doctor reports</h3>
+      <p>Development summary for pediatrician or neurologist visits. PDF export with charts and percentiles.</p>
+    </div>
+  </div>
+
+  <!-- Milestones Timeline -->
+  <div class="milestones-section">
+    <div class="section-header">
+      <h2><span data-i="ru">Ключевые milestones по возрасту</span><span data-i="en">Key Milestones by Age</span></h2>
+      <p><span data-i="ru">Основные этапы развития — что ребёнок умеет и когда</span><span data-i="en">Main development stages — what your child can do and when</span></p>
+    </div>
+
+    <!-- RU milestones -->
+    <div class="milestone-timeline i-block" data-i="ru">
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">0–3 месяца</div><h4>Первые реакции</h4><p>Фиксация взгляда, социальная улыбка, реакция на звуки, удержание головы, гуление.</p></div>
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">3–6 месяцев</div><h4>Активное исследование</h4><p>Переворачивание, хватание игрушек, смех вслух, узнавание родителей, начало лепета.</p></div>
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">6–12 месяцев</div><h4>Самостоятельность</h4><p>Сидение без поддержки, ползание, «мама/папа», пинцетный захват, вставание у опоры, первые шаги.</p></div>
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">12–24 месяца</div><h4>Маленький исследователь</h4><p>Уверенная ходьба, 10–50+ слов, фразы из 2 слов, бег, подъём по лестнице, ролевые игры, самостоятельный приём пищи.</p></div>
+    </div>
+    <!-- EN milestones -->
+    <div class="milestone-timeline i-block" data-i="en">
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">0–3 months</div><h4>First reactions</h4><p>Eye tracking, social smile, sound response, head control, cooing.</p></div>
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">3–6 months</div><h4>Active exploration</h4><p>Rolling over, grasping toys, laughing out loud, recognizing parents, beginning to babble.</p></div>
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">6–12 months</div><h4>Growing independence</h4><p>Sitting without support, crawling, «mama/dada», pincer grasp, pulling to stand, first steps.</p></div>
+      <div class="milestone-item"><div class="milestone-dot"></div><div class="milestone-age">12–24 months</div><h4>Little explorer</h4><p>Confident walking, 10–50+ words, 2-word phrases, running, climbing stairs, pretend play, self-feeding.</p></div>
+    </div>
+
+    <!-- Age norms -->
+    <div class="section-header" style="margin-top:48px">
+      <h2><span data-i="ru">Возрастные нормы</span><span data-i="en">Age Norms</span></h2>
+    </div>
+
+    <!-- RU norms -->
+    <div class="norms-grid i-grid" data-i="ru">
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M8.333 13.333c.417.25 1 .417 1.667.417s1.25-.167 1.667-.417" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><circle cx="12.5" cy="10" r=".5" fill="var(--primary)"/><circle cx="7.5" cy="10" r=".5" fill="var(--primary)"/><path d="M16.15 5.678A8.33 8.33 0 0 1 17.333 8.5c.282.136.52.35.686.615a1.5 1.5 0 0 1 0 1.77 1.5 1.5 0 0 1-.686.615 8.33 8.33 0 0 1-2.618 4.26A8.33 8.33 0 0 1 10 17.428a8.33 8.33 0 0 1-7.333-5.928 1.5 1.5 0 0 1-.686-.615 1.5 1.5 0 0 1 0-1.77c.166-.265.404-.479.686-.615a8.33 8.33 0 0 1 3.483-4.305A8.33 8.33 0 0 1 10 2.5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          0–6 месяцев
+        </h4>
+        <ul>
+          <li>Рост: +2–3 см/месяц</li>
+          <li>Вес: +150–200 г/неделю</li>
+          <li>Сон: 14–17 часов/сутки</li>
+          <li>Кормление: 8–12 раз/день</li>
+        </ul>
+      </div>
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          6–12 месяцев
+        </h4>
+        <ul>
+          <li>Рост: +1–1.5 см/месяц</li>
+          <li>Вес: +80–100 г/неделю</li>
+          <li>Сон: 12–15 часов/сутки</li>
+          <li>Кормление: 5–6 раз + прикорм</li>
+        </ul>
+      </div>
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="var(--primary)" stroke-width="1.5"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="var(--primary)" stroke-width="1.5"/></svg>
+          12–24 месяца
+        </h4>
+        <ul>
+          <li>Рост: +1 см/месяц</li>
+          <li>Вес: +50–70 г/неделю</li>
+          <li>Сон: 11–14 часов/сутки</li>
+          <li>Словарный запас: 10–50+ слов</li>
+        </ul>
+      </div>
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="var(--primary)" stroke-width="1.5"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="var(--primary)" stroke-width="1.5"/></svg>
+          2–3 года
+        </h4>
+        <ul>
+          <li>Рост: +8–10 см/год</li>
+          <li>Вес: +2–3 кг/год</li>
+          <li>Сон: 10–13 часов/сутки</li>
+          <li>Словарный запас: 200–1000 слов</li>
+        </ul>
+      </div>
+    </div>
+    <!-- EN norms -->
+    <div class="norms-grid i-grid" data-i="en">
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M8.333 13.333c.417.25 1 .417 1.667.417s1.25-.167 1.667-.417" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><circle cx="12.5" cy="10" r=".5" fill="var(--primary)"/><circle cx="7.5" cy="10" r=".5" fill="var(--primary)"/><path d="M16.15 5.678A8.33 8.33 0 0 1 17.333 8.5c.282.136.52.35.686.615a1.5 1.5 0 0 1 0 1.77 1.5 1.5 0 0 1-.686.615 8.33 8.33 0 0 1-2.618 4.26A8.33 8.33 0 0 1 10 17.428a8.33 8.33 0 0 1-7.333-5.928 1.5 1.5 0 0 1-.686-.615 1.5 1.5 0 0 1 0-1.77c.166-.265.404-.479.686-.615a8.33 8.33 0 0 1 3.483-4.305A8.33 8.33 0 0 1 10 2.5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          0–6 months
+        </h4>
+        <ul>
+          <li>Height: +2–3 cm/month</li>
+          <li>Weight: +150–200 g/week</li>
+          <li>Sleep: 14–17 hours/day</li>
+          <li>Feeding: 8–12 times/day</li>
+        </ul>
+      </div>
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          6–12 months
+        </h4>
+        <ul>
+          <li>Height: +1–1.5 cm/month</li>
+          <li>Weight: +80–100 g/week</li>
+          <li>Sleep: 12–15 hours/day</li>
+          <li>Feeding: 5–6 times + solids</li>
+        </ul>
+      </div>
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="var(--primary)" stroke-width="1.5"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="var(--primary)" stroke-width="1.5"/></svg>
+          12–24 months
+        </h4>
+        <ul>
+          <li>Height: +1 cm/month</li>
+          <li>Weight: +50–70 g/week</li>
+          <li>Sleep: 11–14 hours/day</li>
+          <li>Vocabulary: 10–50+ words</li>
+        </ul>
+      </div>
+      <div class="norm-card">
+        <h4>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="var(--primary)" stroke-width="1.5"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="var(--primary)" stroke-width="1.5"/></svg>
+          2–3 years
+        </h4>
+        <ul>
+          <li>Height: +8–10 cm/year</li>
+          <li>Weight: +2–3 kg/year</li>
+          <li>Sleep: 10–13 hours/day</li>
+          <li>Vocabulary: 200–1000 words</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-development -->
+
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
@@ -834,20 +1292,82 @@ function closeMenu(){
   document.body.style.overflow = '';
 }
 
-/* ===== SMOOTH SCROLL ===== */
+/* ===== HASH ROUTING ===== */
+function navigateTo(page, scrollHash){
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
+  // Show target page
+  var target = document.getElementById('page-' + page);
+  if(target) target.classList.add('active');
+
+  // Scroll
+  if(scrollHash && page === 'home'){
+    setTimeout(function(){
+      var el = document.querySelector(scrollHash);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 50);
+  } else {
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  // Update URL
+  if(page === 'home'){
+    history.pushState(null, null, scrollHash || window.location.pathname);
+  } else {
+    history.pushState(null, null, '#' + page);
+  }
+}
+
+function handleRoute(){
+  var h = location.hash.replace('#','');
+  if(h === 'blog'){ navigateTo('blog'); return }
+  if(h === 'development'){ navigateTo('development'); return }
+
+  // Default: home page
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
+  var home = document.getElementById('page-home');
+  if(home) home.classList.add('active');
+
+  // If hash points to a section on the home page, scroll to it
+  if(h && document.querySelector('#'+h)){
+    setTimeout(function(){
+      var el = document.querySelector('#'+h);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 100);
+  }
+}
+
+/* ===== SMOOTH SCROLL (home page sections) ===== */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  // Skip links that have explicit onclick for routing
+  if(a.getAttribute('onclick') && a.getAttribute('onclick').indexOf('navigateTo') > -1) return;
+
   a.addEventListener('click', function(e){
     var id = this.getAttribute('href');
     if(id && id.length > 1){
+      // If we're not on home page, go home first then scroll
+      var homePage = document.getElementById('page-home');
+      if(!homePage.classList.contains('active')){
+        e.preventDefault();
+        navigateTo('home', id);
+        return;
+      }
       var el = document.querySelector(id);
       if(el){
         e.preventDefault();
-        el.scrollIntoView({behavior:'smooth',block:'start'});
+        el.scrollIntoView({behavior:'smooth', block:'start'});
         history.replaceState(null, null, id);
       }
     }
   });
 });
+
+/* ===== INIT ===== */
+(function(){
+  handleRoute();
+  window.addEventListener('hashchange', handleRoute);
+  window.addEventListener('resize', function(){ if(window.innerWidth > 768) closeMenu() });
+})();
 </script>
 </body>
 </html>
