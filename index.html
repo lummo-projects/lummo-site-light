@@ -2031,10 +2031,22 @@ function handleRoute(){
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
   // Skip links that have explicit onclick for routing
   if(a.getAttribute('onclick') && a.getAttribute('onclick').indexOf('navigateTo') > -1) return;
+  // Skip article TOC links — handled separately
+  if(a.closest('.article-toc')) return;
 
   a.addEventListener('click', function(e){
     var id = this.getAttribute('href');
     if(id && id.length > 1){
+      // Check if target element exists in the currently active page
+      var activePage = document.querySelector('.page.active');
+      if(activePage){
+        var targetInActivePage = activePage.querySelector(id);
+        if(targetInActivePage){
+          e.preventDefault();
+          targetInActivePage.scrollIntoView({behavior:'smooth', block:'start'});
+          return;
+        }
+      }
       // If we're not on home page, go home first then scroll
       var homePage = document.getElementById('page-home');
       if(!homePage.classList.contains('active')){
