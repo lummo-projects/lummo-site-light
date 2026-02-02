@@ -361,6 +361,53 @@ html[data-theme="dark"] .theme-icon-sun{display:block}
 .blog-card-meta{display:flex;align-items:center;gap:6px;margin-top:14px;font-size:.75rem;color:var(--text-tertiary)}
 .blog-card-meta svg{width:13px;height:13px;flex-shrink:0;opacity:.5}
 .blog-coming{text-align:center;padding:48px 24px;color:var(--text-secondary);font-size:.88rem}
+/* ===== BLOG TAG FILTERS ===== */
+.blog-tags{display:flex;gap:8px;justify-content:center;padding:0 24px 32px;max-width:1080px;margin:0 auto;flex-wrap:wrap}
+.blog-tag-btn{padding:7px 18px;border-radius:20px;font-size:.82rem;font-weight:600;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text-secondary);transition:all .2s;cursor:pointer}
+.blog-tag-btn:hover{border-color:var(--border-hover);color:var(--text)}
+.blog-tag-btn.active{background:var(--primary);color:#FFF;border-color:var(--primary)}
+.blog-empty{text-align:center;padding:48px 24px;color:var(--text-tertiary);font-size:.88rem;display:none}
+
+/* ===== BLOG ARTICLE PAGE ===== */
+.article-page{padding:96px 24px 64px}
+.article-inner{max-width:700px;margin:0 auto}
+.article-back{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:500;color:var(--text-secondary);margin-bottom:32px;transition:color .15s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
+.article-back:hover{color:var(--primary)}
+.article-back svg{width:16px;height:16px}
+.article-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.article-meta .blog-card-tag{margin-bottom:0}
+.article-date{font-size:.8rem;color:var(--text-tertiary)}
+.article-inner>h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--text);margin-bottom:28px}
+.article-toc{background:var(--bg-alt);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:36px}
+.article-toc-title{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.article-toc ol{list-style:none;counter-reset:toc;padding:0;margin:0}
+.article-toc li{counter-increment:toc;padding:4px 0}
+.article-toc li a{font-size:.85rem;color:var(--text-secondary);transition:color .15s;display:flex;gap:8px}
+.article-toc li a::before{content:counter(toc) '.';color:var(--primary);font-weight:600;min-width:16px}
+.article-toc li a:hover{color:var(--primary)}
+.article-body h2{font-size:1.3rem;font-weight:700;color:var(--text);margin:36px 0 14px;line-height:1.25;letter-spacing:-.01em}
+.article-body h2:first-child{margin-top:0}
+.article-body h3{font-size:1.05rem;font-weight:700;color:var(--text);margin:24px 0 10px;line-height:1.3}
+.article-body p{font-size:.92rem;color:var(--text-secondary);line-height:1.75;margin-bottom:16px}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body ul,.article-body ol{padding-left:20px;margin-bottom:16px}
+.article-body li{font-size:.88rem;color:var(--text-secondary);line-height:1.65;margin-bottom:6px}
+.article-body .note{background:var(--bg-alt);border-left:3px solid var(--primary);padding:14px 18px;border-radius:0 8px 8px 0;margin:20px 0;font-size:.86rem;color:var(--text-secondary);line-height:1.6}
+.article-body .warning{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:20px 0;font-size:.86rem;color:var(--text);line-height:1.6}
+.article-body table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:.85rem}
+.article-body th{text-align:left;padding:10px 12px;background:var(--bg-alt);border:1px solid var(--border);color:var(--text);font-weight:600;font-size:.8rem}
+.article-body td{padding:10px 12px;border:1px solid var(--border);color:var(--text-secondary);font-size:.83rem}
+.article-body tr:hover td{background:var(--bg-alt)}
+@media(max-width:768px){
+  .article-body table{font-size:.78rem}
+  .article-body th,.article-body td{padding:8px 8px}
+  .blog-tags{gap:6px}
+  .blog-tag-btn{padding:6px 14px;font-size:.78rem}
+}
+@media(max-width:480px){
+  .article-body table{display:block;overflow-x:auto}
+}
+
 
 /* ===== DEVELOPMENT ===== */
 .dev-hero{padding:96px 24px 48px;background:var(--bg);transition:background .3s}
@@ -864,132 +911,713 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
     <p><span data-i="ru">Полезные статьи о здоровье и развитии ребёнка. Конкретика, таблицы, без воды.</span><span data-i="en">Helpful articles about your child's health and development. Specifics, tables, no fluff.</span></p>
   </div>
 
+  <!-- Tag filters RU -->
+  <div class="blog-tags i-flex" data-i="ru">
+    <button class="blog-tag-btn active" data-filter="all" onclick="filterBlog(this)">Все</button>
+    <button class="blog-tag-btn" data-filter="sleep" onclick="filterBlog(this)">Сон</button>
+    <button class="blog-tag-btn" data-filter="feeding" onclick="filterBlog(this)">Кормление</button>
+    <button class="blog-tag-btn" data-filter="health" onclick="filterBlog(this)">Здоровье</button>
+    <button class="blog-tag-btn" data-filter="development" onclick="filterBlog(this)">Развитие</button>
+  </div>
+  <!-- Tag filters EN -->
+  <div class="blog-tags i-flex" data-i="en">
+    <button class="blog-tag-btn active" data-filter="all" onclick="filterBlog(this)">All</button>
+    <button class="blog-tag-btn" data-filter="sleep" onclick="filterBlog(this)">Sleep</button>
+    <button class="blog-tag-btn" data-filter="feeding" onclick="filterBlog(this)">Feeding</button>
+    <button class="blog-tag-btn" data-filter="health" onclick="filterBlog(this)">Health</button>
+    <button class="blog-tag-btn" data-filter="development" onclick="filterBlog(this)">Development</button>
+  </div>
+
+  <!-- Blog empty state -->
+  <div class="blog-empty" id="blogEmpty">
+    <span data-i="ru">Статьи в этой категории скоро появятся.</span>
+    <span data-i="en">Articles in this category coming soon.</span>
+  </div>
+
   <!-- RU Blog -->
   <div class="blog-grid i-grid" data-i="ru">
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M17.487 10.405a8.34 8.34 0 0 1-1.427 4.011 8.34 8.34 0 0 1-3.38 2.589 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032 8.34 8.34 0 0 1-2.032-3.741 8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 9.593.834c.337-.018.514.384.335.67a6.67 6.67 0 0 0-.728 3.216 6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="var(--blog-icon-sleep)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+    <div class="blog-card" data-tag="sleep" onclick="navigateTo('blog/sleep')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M17.487 10.405a8.34 8.34 0 0 1-1.427 4.011 8.34 8.34 0 0 1-3.38 2.589 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032 8.34 8.34 0 0 1-2.032-3.741 8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 9.593.834c.337-.018.514.384.335.67a6.67 6.67 0 0 0-.728 3.216 6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="var(--blog-icon-sleep)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Сон</span>
         <h3>Сколько должен спать ребёнок по возрастам</h3>
         <p>Нормы сна от 0 до 3 лет. Таблица по месяцам: дневной сон, ночной, общий. Когда отклонение — повод обратиться к врачу.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          20 января 2025 · 7 мин
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>20 января 2025 · 7 мин</div>
       </div>
     </div>
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+    <div class="blog-card" data-tag="feeding" onclick="navigateTo('blog/feeding')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Кормление</span>
         <h3>Как понять, что ребёнок наелся</h3>
         <p>Пять сигналов насыщения у грудничков и детей на ИВ. Сколько молока достаточно по возрасту. Таблица объёмов.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          12 января 2025 · 5 мин
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>12 января 2025 · 5 мин</div>
       </div>
     </div>
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="var(--blog-icon-nutrition)"/></svg>
-      </div>
+    <div class="blog-card" data-tag="feeding" onclick="navigateTo('blog/solids')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="var(--blog-icon-nutrition)"/></svg></div>
       <div class="blog-card-body">
-        <span class="blog-card-tag">Питание</span>
+        <span class="blog-card-tag">Прикорм</span>
         <h3>Когда вводить прикорм: по месяцам</h3>
         <p>Рекомендации ВОЗ, признаки готовности, первые продукты. Схема введения с 4 до 12 месяцев. Что делать с аллергенами.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          28 декабря 2024 · 6 мин
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>28 декабря 2024 · 6 мин</div>
       </div>
     </div>
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+    <div class="blog-card" data-tag="health" onclick="navigateTo('blog/temperature')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Здоровье</span>
         <h3>Температура у ребёнка: когда сбивать, когда ждать</h3>
         <p>Норма для каждого возраста. Три метода измерения и их погрешность. Алгоритм действий при 37.5, 38.5 и 39+.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          15 декабря 2024 · 8 мин
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>15 декабря 2024 · 8 мин</div>
       </div>
     </div>
   </div>
 
   <!-- EN Blog -->
   <div class="blog-grid i-grid" data-i="en">
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M17.487 10.405a8.34 8.34 0 0 1-1.427 4.011 8.34 8.34 0 0 1-3.38 2.589 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032 8.34 8.34 0 0 1-2.032-3.741 8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 9.593.834c.337-.018.514.384.335.67a6.67 6.67 0 0 0-.728 3.216 6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="var(--blog-icon-sleep)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+    <div class="blog-card" data-tag="sleep" onclick="navigateTo('blog/sleep')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M17.487 10.405a8.34 8.34 0 0 1-1.427 4.011 8.34 8.34 0 0 1-3.38 2.589 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032 8.34 8.34 0 0 1-2.032-3.741 8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 9.593.834c.337-.018.514.384.335.67a6.67 6.67 0 0 0-.728 3.216 6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="var(--blog-icon-sleep)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Sleep</span>
         <h3>How much sleep does a child need by age</h3>
         <p>Sleep norms from 0 to 3 years. Month-by-month table: daytime, nighttime, total. When deviation warrants a doctor visit.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Jan 20, 2025 · 7 min
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jan 20, 2025 · 7 min</div>
       </div>
     </div>
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+    <div class="blog-card" data-tag="feeding" onclick="navigateTo('blog/feeding')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="var(--blog-icon-feed)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Feeding</span>
         <h3>How to tell if your baby is full</h3>
         <p>Five satiety signals in breastfed and formula-fed babies. How much milk is enough by age. Volume table.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Jan 12, 2025 · 5 min
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jan 12, 2025 · 5 min</div>
       </div>
     </div>
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="var(--blog-icon-nutrition)"/></svg>
-      </div>
+    <div class="blog-card" data-tag="feeding" onclick="navigateTo('blog/solids')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="var(--blog-icon-nutrition)"/></svg></div>
       <div class="blog-card-body">
-        <span class="blog-card-tag">Nutrition</span>
+        <span class="blog-card-tag">Solids</span>
         <h3>When to start solids: month by month</h3>
         <p>WHO recommendations, readiness signs, first foods. Introduction plan from 4 to 12 months. How to handle allergens.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Dec 28, 2024 · 6 min
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Dec 28, 2024 · 6 min</div>
       </div>
     </div>
-    <div class="blog-card">
-      <div class="blog-card-icon">
-        <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+    <div class="blog-card" data-tag="health" onclick="navigateTo('blog/temperature')" style="cursor:pointer">
+      <div class="blog-card-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="var(--blog-icon-health)" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="blog-card-body">
         <span class="blog-card-tag">Health</span>
         <h3>Child's temperature: when to act, when to wait</h3>
         <p>Normal range by age. Three measurement methods and their accuracy. Action plan for 37.5, 38.5, and 39+ °C.</p>
-        <div class="blog-card-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Dec 15, 2024 · 8 min
-        </div>
+        <div class="blog-card-meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Dec 15, 2024 · 8 min</div>
       </div>
     </div>
   </div>
 
-  <div class="blog-coming">
+  <div class="blog-coming" id="blogComing">
     <span data-i="ru">Больше статей — скоро.</span>
     <span data-i="en">More articles coming soon.</span>
   </div>
 </div><!-- /page-blog -->
 
+<!-- Article: sleep -->
+<div class="page" id="page-blog-sleep">
+  <div class="article-page">
+    <div class="article-inner">
+      <button class="article-back" onclick="navigateTo('blog');return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+      </button>
+
+      <div class="article-meta">
+        <span class="blog-card-tag"><span data-i="ru">Сон</span><span data-i="en">Sleep</span></span>
+        <span class="article-date"><span data-i="ru">20 января 2025 · 7 мин</span><span data-i="en">Jan 20, 2025 · 7 min</span></span>
+      </div>
+
+      <h1><span data-i="ru">Сколько должен спать ребёнок по возрастам</span><span data-i="en">How much sleep does a child need by age</span></h1>
+
+      <div class="article-toc i-block" data-i="ru">
+        <div class="article-toc-title">Содержание</div>
+        <ol>
+        <li><a href="#art-sleep-1">Нормы сна по возрасту</a></li>
+        <li><a href="#art-sleep-2">Дневной сон: количество и длительность</a></li>
+        <li><a href="#art-sleep-3">Ночной сон: чего ожидать</a></li>
+        <li><a href="#art-sleep-4">Регрессии сна</a></li>
+        <li><a href="#art-sleep-5">Как наладить режим</a></li>
+        </ol>
+      </div>
+      <div class="article-toc i-block" data-i="en">
+        <div class="article-toc-title">Contents</div>
+        <ol>
+        <li><a href="#art-sleep-1">Sleep norms by age</a></li>
+        <li><a href="#art-sleep-2">Daytime sleep: how much and when</a></li>
+        <li><a href="#art-sleep-3">Night sleep: what to expect</a></li>
+        <li><a href="#art-sleep-4">Sleep regressions</a></li>
+        <li><a href="#art-sleep-5">How to establish a routine</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body i-block" data-i="ru">
+
+        <h2 id="art-sleep-1">Нормы сна по возрасту</h2>
+        <p>Новорождённый спит 16–17 часов в сутки. К году — 12–15 часов. К трём годам — 10–13. Вот таблица норм по данным Американской академии педиатрии (AAP):</p>
+        <table>
+          <tr><th>Возраст</th><th>Общий сон</th><th>Дневной</th><th>Ночной</th></tr>
+          <tr><td>0–1 мес</td><td>16–17 ч</td><td>8–9 ч</td><td>8 ч</td></tr>
+          <tr><td>1–3 мес</td><td>14–17 ч</td><td>5–7 ч</td><td>8–10 ч</td></tr>
+          <tr><td>4–6 мес</td><td>12–15 ч</td><td>3–4 ч</td><td>10–11 ч</td></tr>
+          <tr><td>6–12 мес</td><td>12–15 ч</td><td>2–3 ч</td><td>10–12 ч</td></tr>
+          <tr><td>1–2 года</td><td>11–14 ч</td><td>1.5–3 ч</td><td>10–11 ч</td></tr>
+          <tr><td>2–3 года</td><td>10–13 ч</td><td>1–2 ч</td><td>10–11 ч</td></tr>
+        </table>
+        <div class="note">Отклонение в 1–1.5 часа от нормы — вариант нормы. Если ребёнок спит на 2+ часа меньше и капризничает — обсудите с педиатром.</div>
+
+        <h2 id="art-sleep-2">Дневной сон: количество и длительность</h2>
+        <p>До 3 месяцев ребёнок спит 4–5 раз днём. Каждый сон — 30–120 минут. Режима нет — это нормально.</p>
+        <p>В 4–6 месяцев формируется режим: 2–3 дневных сна. Утренний — через 1.5–2 часа после пробуждения. Обеденный — самый длинный, 1–2 часа.</p>
+        <p>С 6 до 12 месяцев — 2 дневных сна. Переход на один сон обычно происходит в 12–18 месяцев.</p>
+        <p>После 2 лет некоторые дети отказываются от дневного сна. Если ребёнок спокоен вечером и засыпает без проблем — это нормально.</p>
+
+        <h2 id="art-sleep-3">Ночной сон: чего ожидать</h2>
+        <p>Новорождённые просыпаются каждые 2–3 часа для кормления. Желудок маленький — молоко переваривается за 1.5–2 часа.</p>
+        <p>К 3 месяцам появляется один длинный отрезок ночного сна — 4–6 часов. К 6 месяцам — 6–8 часов без пробуждений.</p>
+        <p>«Просыпание» ночью 1–2 раза до года — норма. К году большинство детей спят 10–12 часов ночью с 0–1 пробуждением.</p>
+
+        <h2 id="art-sleep-4">Регрессии сна</h2>
+        <p>Регрессия — временное ухудшение сна у ребёнка, который раньше спал хорошо. Основные периоды:</p>
+        <ul>
+          <li><strong>4 месяца</strong> — самая заметная. Меняется структура сна, появляются циклы как у взрослых. Длится 2–6 недель.</li>
+          <li><strong>8–10 месяцев</strong> — связана с ползанием и сепарационной тревогой. 1–3 недели.</li>
+          <li><strong>12 месяцев</strong> — первые шаги, перевозбуждение. 1–2 недели.</li>
+          <li><strong>18 месяцев</strong> — формирование воли, «не хочу спать». 1–3 недели.</li>
+          <li><strong>2 года</strong> — кошмары, страхи, переход в кроватку без бортиков. 1–4 недели.</li>
+        </ul>
+        <div class="note">Регрессия проходит сама. Главное — не менять привычки резко: не начинайте укачивать, если ребёнок раньше засыпал сам.</div>
+
+        <h2 id="art-sleep-5">Как наладить режим</h2>
+        <p>Пять правил, которые работают:</p>
+        <ol>
+          <li><strong>Фиксированное время пробуждения.</strong> Будите в одно время ±15 минут. Это задаёт ритм дня.</li>
+          <li><strong>Окна бодрствования.</strong> Следите за временем между снами. Новорождённый выдерживает 45–60 минут, в 6 месяцев — 2–2.5 часа, в год — 3–4 часа.</li>
+          <li><strong>Ритуал перед сном.</strong> 15–20 минут: ванна → пижама → книжка → колыбельная. Одинаковый каждый вечер.</li>
+          <li><strong>Темнота и тишина.</strong> Мелатонин вырабатывается в темноте. Шторы блэкаут и белый шум помогают.</li>
+          <li><strong>Записывайте.</strong> Два дня — случайность. Две недели записей — паттерн. Lummo покажет, когда ребёнок спит лучше всего.</li>
+        </ol>
+
+      </div>
+      <div class="article-body i-block" data-i="en">
+
+        <h2 id="art-sleep-1">Sleep norms by age</h2>
+        <p>A newborn sleeps 16–17 hours a day. By age one — 12–15 hours. By three — 10–13. Here are the norms based on American Academy of Pediatrics (AAP) data:</p>
+        <table>
+          <tr><th>Age</th><th>Total sleep</th><th>Daytime</th><th>Nighttime</th></tr>
+          <tr><td>0–1 mo</td><td>16–17 h</td><td>8–9 h</td><td>8 h</td></tr>
+          <tr><td>1–3 mo</td><td>14–17 h</td><td>5–7 h</td><td>8–10 h</td></tr>
+          <tr><td>4–6 mo</td><td>12–15 h</td><td>3–4 h</td><td>10–11 h</td></tr>
+          <tr><td>6–12 mo</td><td>12–15 h</td><td>2–3 h</td><td>10–12 h</td></tr>
+          <tr><td>1–2 yr</td><td>11–14 h</td><td>1.5–3 h</td><td>10–11 h</td></tr>
+          <tr><td>2–3 yr</td><td>10–13 h</td><td>1–2 h</td><td>10–11 h</td></tr>
+        </table>
+        <div class="note">A deviation of 1–1.5 hours is a normal variation. If your child sleeps 2+ hours less and is fussy — discuss with your pediatrician.</div>
+
+        <h2 id="art-sleep-2">Daytime sleep: how much and when</h2>
+        <p>Before 3 months, a baby naps 4–5 times a day. Each nap lasts 30–120 minutes. There's no schedule — that's normal.</p>
+        <p>At 4–6 months a schedule forms: 2–3 naps per day. Morning nap — 1.5–2 hours after waking. Midday nap is the longest, 1–2 hours.</p>
+        <p>From 6 to 12 months — 2 naps. Transition to one nap usually happens at 12–18 months.</p>
+        <p>After age 2, some children drop the nap entirely. If the child is calm in the evening and falls asleep easily — that's fine.</p>
+
+        <h2 id="art-sleep-3">Night sleep: what to expect</h2>
+        <p>Newborns wake every 2–3 hours for feeding. Their stomach is small — milk digests in 1.5–2 hours.</p>
+        <p>By 3 months, one long nighttime stretch appears — 4–6 hours. By 6 months — 6–8 hours without waking.</p>
+        <p>Waking 1–2 times at night before age one is normal. By one year, most children sleep 10–12 hours at night with 0–1 waking.</p>
+
+        <h2 id="art-sleep-4">Sleep regressions</h2>
+        <p>A regression is a temporary sleep disruption in a child who previously slept well. Key periods:</p>
+        <ul>
+          <li><strong>4 months</strong> — the most noticeable. Sleep architecture changes to adult-like cycles. Lasts 2–6 weeks.</li>
+          <li><strong>8–10 months</strong> — linked to crawling and separation anxiety. 1–3 weeks.</li>
+          <li><strong>12 months</strong> — first steps, overstimulation. 1–2 weeks.</li>
+          <li><strong>18 months</strong> — will development, "I don't want to sleep." 1–3 weeks.</li>
+          <li><strong>2 years</strong> — nightmares, fears, transition to a toddler bed. 1–4 weeks.</li>
+        </ul>
+        <div class="note">Regressions pass on their own. The key is not to change habits abruptly — don't start rocking if the child was self-settling before.</div>
+
+        <h2 id="art-sleep-5">How to establish a routine</h2>
+        <p>Five rules that work:</p>
+        <ol>
+          <li><strong>Fixed wake time.</strong> Wake at the same time ±15 minutes. This sets the rhythm for the whole day.</li>
+          <li><strong>Wake windows.</strong> Watch the time between naps. Newborn handles 45–60 minutes, at 6 months — 2–2.5 hours, at one year — 3–4 hours.</li>
+          <li><strong>Bedtime ritual.</strong> 15–20 minutes: bath → pajamas → book → lullaby. Same every evening.</li>
+          <li><strong>Darkness and quiet.</strong> Melatonin is produced in darkness. Blackout curtains and white noise help.</li>
+          <li><strong>Record it.</strong> Two days is coincidence. Two weeks of records is a pattern. Lummo will show when your baby sleeps best.</li>
+        </ol>
+
+      </div>
+
+      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+        <button class="article-back" onclick="navigateTo('blog');return false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Article: feeding -->
+<div class="page" id="page-blog-feeding">
+  <div class="article-page">
+    <div class="article-inner">
+      <button class="article-back" onclick="navigateTo('blog');return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+      </button>
+
+      <div class="article-meta">
+        <span class="blog-card-tag"><span data-i="ru">Кормление</span><span data-i="en">Feeding</span></span>
+        <span class="article-date"><span data-i="ru">12 января 2025 · 5 мин</span><span data-i="en">Jan 12, 2025 · 5 min</span></span>
+      </div>
+
+      <h1><span data-i="ru">Как понять, что ребёнок наелся</span><span data-i="en">How to tell if your baby is full</span></h1>
+
+      <div class="article-toc i-block" data-i="ru">
+        <div class="article-toc-title">Содержание</div>
+        <ol>
+        <li><a href="#art-feeding-1">Пять признаков насыщения</a></li>
+        <li><a href="#art-feeding-2">Объёмы кормления по возрасту</a></li>
+        <li><a href="#art-feeding-3">ГВ vs ИВ: разница в режиме</a></li>
+        <li><a href="#art-feeding-4">Когда кормлений слишком мало</a></li>
+        <li><a href="#art-feeding-5">Что записывать</a></li>
+        </ol>
+      </div>
+      <div class="article-toc i-block" data-i="en">
+        <div class="article-toc-title">Contents</div>
+        <ol>
+        <li><a href="#art-feeding-1">Five signs of satiety</a></li>
+        <li><a href="#art-feeding-2">Feeding volumes by age</a></li>
+        <li><a href="#art-feeding-3">Breastfeeding vs formula: schedule differences</a></li>
+        <li><a href="#art-feeding-4">When feedings are too few</a></li>
+        <li><a href="#art-feeding-5">What to record</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body i-block" data-i="ru">
+
+        <h2 id="art-feeding-1">Пять признаков насыщения</h2>
+        <p>Ребёнок не может сказать «я наелся». Но тело показывает это чётко:</p>
+        <ol>
+          <li><strong>Отпускает грудь или бутылочку сам.</strong> Не тянется обратно — значит, достаточно.</li>
+          <li><strong>Расслабляет кулачки.</strong> Голодный ребёнок сжимает руки, сытый — разжимает.</li>
+          <li><strong>Засыпает у груди.</strong> Если при этом сосал активно 10–15 минут — наелся. Если заснул через 2 минуты — скорее устал.</li>
+          <li><strong>Отворачивает голову.</strong> Надёжный сигнал: не надо настаивать.</li>
+          <li><strong>6–8 мокрых подгузников в день.</strong> Главный объективный показатель: достаточно мочи — значит, достаточно молока.</li>
+        </ol>
+        <div class="warning">Если мокрых подгузников меньше 4 в сутки — обратитесь к педиатру. Это может говорить о недостатке питания.</div>
+
+        <h2 id="art-feeding-2">Объёмы кормления по возрасту</h2>
+        <p>Для детей на искусственном вскармливании есть чёткие ориентиры. Для грудного вскармливания объём контролируется ребёнком — ориентируйтесь на частоту и подгузники.</p>
+        <table>
+          <tr><th>Возраст</th><th>Разовый объём (ИВ)</th><th>Кормлений в день</th><th>Суточный объём</th></tr>
+          <tr><td>0–2 нед</td><td>30–60 мл</td><td>8–12</td><td>300–500 мл</td></tr>
+          <tr><td>2–4 нед</td><td>60–90 мл</td><td>7–10</td><td>500–700 мл</td></tr>
+          <tr><td>1–2 мес</td><td>90–120 мл</td><td>6–8</td><td>600–800 мл</td></tr>
+          <tr><td>2–4 мес</td><td>120–150 мл</td><td>6–7</td><td>700–900 мл</td></tr>
+          <tr><td>4–6 мес</td><td>150–180 мл</td><td>5–6</td><td>800–1000 мл</td></tr>
+          <tr><td>6–12 мес</td><td>180–240 мл</td><td>4–5 + прикорм</td><td>600–800 мл + еда</td></tr>
+        </table>
+
+        <h2 id="art-feeding-3">ГВ vs ИВ: разница в режиме</h2>
+        <p><strong>Грудное вскармливание.</strong> По требованию, не по часам. Новорождённый может просить грудь каждые 1–1.5 часа — это нормально и стимулирует выработку молока. К 3–4 месяцам интервалы увеличиваются до 2–3 часов.</p>
+        <p><strong>Искусственное вскармливание.</strong> Интервал 2.5–3.5 часа. Смесь переваривается медленнее грудного молока, поэтому ребёнок дольше остаётся сытым. Перекармливание проявляется частым срыгиванием и вздутием.</p>
+        <p><strong>Смешанное вскармливание.</strong> Сначала грудь (10–15 минут на каждой стороне), затем докорм смесью, если ребёнок не наелся. Объём докорма определяется по поведению ребёнка, а не по формуле.</p>
+
+        <h2 id="art-feeding-4">Когда кормлений слишком мало</h2>
+        <p>Красные флаги — повод обратиться к врачу:</p>
+        <ul>
+          <li>Менее 4 мокрых подгузников в сутки (после 4 дня жизни)</li>
+          <li>Потеря более 10% веса от рождения к 5-му дню</li>
+          <li>Не вернулся к весу при рождении к 14 дню</li>
+          <li>Ребёнок вялый, не просыпается на кормление</li>
+          <li>Моча тёмная, концентрированная</li>
+        </ul>
+
+        <h2 id="art-feeding-5">Что записывать</h2>
+        <p>Для каждого кормления фиксируйте три вещи:</p>
+        <ol>
+          <li><strong>Время начала.</strong> Через неделю записей вы увидите естественный ритм ребёнка.</li>
+          <li><strong>Тип и объём.</strong> Грудь (какая сторона, сколько минут) или бутылочка (сколько мл).</li>
+          <li><strong>Поведение после.</strong> Заснул, активен, срыгивал. Помогает отличить переедание от нормы.</li>
+        </ol>
+        <div class="note">Lummo записывает кормление за два нажатия: выбрали тип → указали объём. Через неделю приложение покажет ваш средний режим.</div>
+
+      </div>
+      <div class="article-body i-block" data-i="en">
+
+        <h2 id="art-feeding-1">Five signs of satiety</h2>
+        <p>A baby can't say "I'm full." But the body shows it clearly:</p>
+        <ol>
+          <li><strong>Releases the breast or bottle on their own.</strong> Doesn't reach back — that means enough.</li>
+          <li><strong>Relaxes fists.</strong> A hungry baby clenches hands; a full one opens them.</li>
+          <li><strong>Falls asleep at the breast.</strong> If they were actively sucking for 10–15 minutes — they're full. If they fell asleep after 2 minutes — likely just tired.</li>
+          <li><strong>Turns head away.</strong> A reliable signal: don't insist.</li>
+          <li><strong>6–8 wet diapers per day.</strong> The key objective metric: enough urine means enough milk.</li>
+        </ol>
+        <div class="warning">If there are fewer than 4 wet diapers in 24 hours — contact your pediatrician. This may indicate insufficient nutrition.</div>
+
+        <h2 id="art-feeding-2">Feeding volumes by age</h2>
+        <p>For formula-fed babies, there are clear guidelines. For breastfeeding, volume is controlled by the baby — track frequency and diapers instead.</p>
+        <table>
+          <tr><th>Age</th><th>Per feeding (formula)</th><th>Feedings/day</th><th>Daily total</th></tr>
+          <tr><td>0–2 wk</td><td>30–60 ml</td><td>8–12</td><td>300–500 ml</td></tr>
+          <tr><td>2–4 wk</td><td>60–90 ml</td><td>7–10</td><td>500–700 ml</td></tr>
+          <tr><td>1–2 mo</td><td>90–120 ml</td><td>6–8</td><td>600–800 ml</td></tr>
+          <tr><td>2–4 mo</td><td>120–150 ml</td><td>6–7</td><td>700–900 ml</td></tr>
+          <tr><td>4–6 mo</td><td>150–180 ml</td><td>5–6</td><td>800–1000 ml</td></tr>
+          <tr><td>6–12 mo</td><td>180–240 ml</td><td>4–5 + solids</td><td>600–800 ml + food</td></tr>
+        </table>
+
+        <h2 id="art-feeding-3">Breastfeeding vs formula: schedule differences</h2>
+        <p><strong>Breastfeeding.</strong> On demand, not by the clock. A newborn may ask for the breast every 1–1.5 hours — this is normal and stimulates milk production. By 3–4 months, intervals increase to 2–3 hours.</p>
+        <p><strong>Formula feeding.</strong> Interval of 2.5–3.5 hours. Formula digests slower than breast milk, so the baby stays full longer. Overfeeding shows as frequent spitting up and bloating.</p>
+        <p><strong>Mixed feeding.</strong> Breast first (10–15 minutes each side), then supplement with formula if the baby is still hungry. Supplement volume is determined by the baby's behavior, not a formula.</p>
+
+        <h2 id="art-feeding-4">When feedings are too few</h2>
+        <p>Red flags — see a doctor:</p>
+        <ul>
+          <li>Fewer than 4 wet diapers in 24 hours (after day 4 of life)</li>
+          <li>Loss of more than 10% of birth weight by day 5</li>
+          <li>Hasn't returned to birth weight by day 14</li>
+          <li>Baby is lethargic, doesn't wake for feedings</li>
+          <li>Urine is dark and concentrated</li>
+        </ul>
+
+        <h2 id="art-feeding-5">What to record</h2>
+        <p>For each feeding, record three things:</p>
+        <ol>
+          <li><strong>Start time.</strong> After a week of records, you'll see your baby's natural rhythm.</li>
+          <li><strong>Type and volume.</strong> Breast (which side, how many minutes) or bottle (how many ml).</li>
+          <li><strong>Behavior after.</strong> Fell asleep, active, spit up. Helps distinguish overfeeding from normal.</li>
+        </ol>
+        <div class="note">Lummo records a feeding in two taps: choose type → enter volume. After a week, the app shows your average schedule.</div>
+
+      </div>
+
+      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+        <button class="article-back" onclick="navigateTo('blog');return false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Article: solids -->
+<div class="page" id="page-blog-solids">
+  <div class="article-page">
+    <div class="article-inner">
+      <button class="article-back" onclick="navigateTo('blog');return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+      </button>
+
+      <div class="article-meta">
+        <span class="blog-card-tag"><span data-i="ru">Прикорм</span><span data-i="en">Solids</span></span>
+        <span class="article-date"><span data-i="ru">28 декабря 2024 · 6 мин</span><span data-i="en">Dec 28, 2024 · 6 min</span></span>
+      </div>
+
+      <h1><span data-i="ru">Когда вводить прикорм: по месяцам</span><span data-i="en">When to start solids: month by month</span></h1>
+
+      <div class="article-toc i-block" data-i="ru">
+        <div class="article-toc-title">Содержание</div>
+        <ol>
+        <li><a href="#art-solids-1">Когда начинать: рекомендации ВОЗ</a></li>
+        <li><a href="#art-solids-2">Признаки готовности</a></li>
+        <li><a href="#art-solids-3">Схема введения по месяцам</a></li>
+        <li><a href="#art-solids-4">Аллергены: как вводить безопасно</a></li>
+        <li><a href="#art-solids-5">Частые ошибки</a></li>
+        </ol>
+      </div>
+      <div class="article-toc i-block" data-i="en">
+        <div class="article-toc-title">Contents</div>
+        <ol>
+        <li><a href="#art-solids-1">When to start: WHO recommendations</a></li>
+        <li><a href="#art-solids-2">Signs of readiness</a></li>
+        <li><a href="#art-solids-3">Introduction plan by month</a></li>
+        <li><a href="#art-solids-4">Allergens: how to introduce safely</a></li>
+        <li><a href="#art-solids-5">Common mistakes</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body i-block" data-i="ru">
+
+        <h2 id="art-solids-1">Когда начинать: рекомендации ВОЗ</h2>
+        <p>ВОЗ рекомендует исключительно грудное вскармливание до 6 месяцев. Прикорм — с 6 месяцев. Не раньше 4 и не позже 6 — это «окно толерантности», когда иммунная система лучше всего принимает новую пищу.</p>
+        <p>Возраст — необходимое, но не достаточное условие. Ребёнок должен быть <strong>физиологически готов</strong>.</p>
+
+        <h2 id="art-solids-2">Признаки готовности</h2>
+        <p>Все четыре признака должны присутствовать одновременно:</p>
+        <ol>
+          <li><strong>Сидит с поддержкой.</strong> Держит голову уверенно, не заваливается.</li>
+          <li><strong>Исчез рефлекс выталкивания.</strong> Не выталкивает языком еду, попавшую в рот.</li>
+          <li><strong>Проявляет интерес к еде.</strong> Тянется к вашей тарелке, открывает рот, следит за ложкой.</li>
+          <li><strong>Удвоил вес от рождения.</strong> Обычно это происходит к 4–5 месяцам.</li>
+        </ol>
+        <div class="warning">«Мало молока», «не наедается грудью», «просыпается ночью» — это НЕ признаки готовности к прикорму.</div>
+
+        <h2 id="art-solids-3">Схема введения по месяцам</h2>
+        <table>
+          <tr><th>Возраст</th><th>Продукты</th><th>Текстура</th><th>Частота</th></tr>
+          <tr><td>6 мес</td><td>Кабачок, брокколи, цветная капуста, каши безмолочные (рис, гречка)</td><td>Пюре — однородное, жидкое</td><td>1 раз/день, 1–3 ч. л.</td></tr>
+          <tr><td>7 мес</td><td>+ мясо (индейка, кролик), тыква, морковь, яблоко, груша</td><td>Пюре — более густое</td><td>2 раза/день, до 100 г</td></tr>
+          <tr><td>8 мес</td><td>+ желток, кисломолочка (кефир, творог), картофель</td><td>Мелкоизмельчённое, мягкие кусочки</td><td>2–3 раза/день</td></tr>
+          <tr><td>9–10 мес</td><td>+ рыба (треска, хек), макароны, хлеб</td><td>Кусочки, finger food</td><td>3 раза/день + перекус</td></tr>
+          <tr><td>11–12 мес</td><td>+ цельное молоко (в блюда), ягоды, бобовые</td><td>Общий стол (адаптированный)</td><td>3 раза + 1–2 перекуса</td></tr>
+        </table>
+        <div class="note">Каждый новый продукт вводите один за раз. Подождите 3–5 дней перед следующим — чтобы отследить аллергическую реакцию.</div>
+
+        <h2 id="art-solids-4">Аллергены: как вводить безопасно</h2>
+        <p>Современные рекомендации — вводить основные аллергены <strong>рано</strong>, в 6–12 месяцев. Откладывание не снижает, а повышает риск аллергии.</p>
+        <p>Топ-8 аллергенов для раннего введения:</p>
+        <ul>
+          <li><strong>Яйцо</strong> — начните с варёного желтка в 7–8 месяцев, белок — с 9 месяцев</li>
+          <li><strong>Арахис</strong> — разведённая арахисовая паста (не цельные орехи!) с 6–7 месяцев</li>
+          <li><strong>Коровье молоко</strong> — в кашах и блюдах с 8 месяцев (не как напиток до года)</li>
+          <li><strong>Пшеница</strong> — каши и хлеб с 7 месяцев</li>
+          <li><strong>Рыба</strong> — белая, нежирная (хек, треска) с 9 месяцев</li>
+          <li><strong>Соя</strong> — тофу, соевый соус в блюдах с 8 месяцев</li>
+          <li><strong>Кунжут</strong> — тахини (разведённая) с 6–7 месяцев</li>
+          <li><strong>Древесные орехи</strong> — ореховые пасты (не цельные!) с 7–8 месяцев</li>
+        </ul>
+        <p>Правило: первый раз — утром, маленькая порция (¼ чайной ложки). Наблюдайте 2–4 часа. Если реакции нет — увеличивайте порцию.</p>
+
+        <h2 id="art-solids-5">Частые ошибки</h2>
+        <ul>
+          <li><strong>Начинать с фруктов.</strong> Ребёнок привыкнет к сладкому и будет отказываться от овощей. Первые 2–3 недели — только овощи.</li>
+          <li><strong>Добавлять соль и сахар.</strong> До года — не нужно. Почки ребёнка не готовы к избытку натрия.</li>
+          <li><strong>Заставлять есть.</strong> Ребёнок отвернулся — уберите. Насилие формирует негативное отношение к еде.</li>
+          <li><strong>Откладывать аллергены.</strong> Чем позже введёте арахис, яйцо, рыбу — тем выше риск аллергии.</li>
+          <li><strong>Заменять кормления прикормом.</strong> До 8–9 месяцев молоко остаётся основным питанием. Прикорм — дополнение.</li>
+        </ul>
+
+      </div>
+      <div class="article-body i-block" data-i="en">
+
+        <h2 id="art-solids-1">When to start: WHO recommendations</h2>
+        <p>WHO recommends exclusive breastfeeding until 6 months. Complementary feeding starts at 6 months. Not before 4 and not after 6 — this is the "tolerance window" when the immune system best accepts new foods.</p>
+        <p>Age is a necessary but not sufficient condition. The child must be <strong>physiologically ready</strong>.</p>
+
+        <h2 id="art-solids-2">Signs of readiness</h2>
+        <p>All four signs must be present simultaneously:</p>
+        <ol>
+          <li><strong>Sits with support.</strong> Holds head confidently, doesn't slump.</li>
+          <li><strong>Tongue-thrust reflex is gone.</strong> Doesn't push food out of mouth with tongue.</li>
+          <li><strong>Shows interest in food.</strong> Reaches for your plate, opens mouth, follows the spoon.</li>
+          <li><strong>Doubled birth weight.</strong> Usually happens by 4–5 months.</li>
+        </ol>
+        <div class="warning">"Not enough milk," "doesn't get full from breast," "wakes at night" — these are NOT signs of readiness for solids.</div>
+
+        <h2 id="art-solids-3">Introduction plan by month</h2>
+        <table>
+          <tr><th>Age</th><th>Foods</th><th>Texture</th><th>Frequency</th></tr>
+          <tr><td>6 mo</td><td>Zucchini, broccoli, cauliflower, dairy-free cereals (rice, buckwheat)</td><td>Smooth, thin purée</td><td>1x/day, 1–3 tsp</td></tr>
+          <tr><td>7 mo</td><td>+ meat (turkey, rabbit), pumpkin, carrot, apple, pear</td><td>Thicker purée</td><td>2x/day, up to 100 g</td></tr>
+          <tr><td>8 mo</td><td>+ egg yolk, dairy (kefir, cottage cheese), potato</td><td>Mashed, soft pieces</td><td>2–3x/day</td></tr>
+          <tr><td>9–10 mo</td><td>+ fish (cod, hake), pasta, bread</td><td>Pieces, finger food</td><td>3x/day + snack</td></tr>
+          <tr><td>11–12 mo</td><td>+ whole milk (in dishes), berries, legumes</td><td>Family table (adapted)</td><td>3x + 1–2 snacks</td></tr>
+        </table>
+        <div class="note">Introduce each new food one at a time. Wait 3–5 days before the next — to track any allergic reaction.</div>
+
+        <h2 id="art-solids-4">Allergens: how to introduce safely</h2>
+        <p>Current recommendations — introduce major allergens <strong>early</strong>, at 6–12 months. Delaying doesn't reduce allergy risk — it increases it.</p>
+        <p>Top 8 allergens for early introduction:</p>
+        <ul>
+          <li><strong>Egg</strong> — start with cooked yolk at 7–8 months, whites from 9 months</li>
+          <li><strong>Peanut</strong> — diluted peanut butter (not whole nuts!) from 6–7 months</li>
+          <li><strong>Cow's milk</strong> — in cereals and dishes from 8 months (not as a drink until 1 year)</li>
+          <li><strong>Wheat</strong> — cereals and bread from 7 months</li>
+          <li><strong>Fish</strong> — white, lean (cod, hake) from 9 months</li>
+          <li><strong>Soy</strong> — tofu, soy sauce in dishes from 8 months</li>
+          <li><strong>Sesame</strong> — tahini (diluted) from 6–7 months</li>
+          <li><strong>Tree nuts</strong> — nut butters (not whole!) from 7–8 months</li>
+        </ul>
+        <p>Rule: first time — in the morning, small portion (¼ teaspoon). Watch for 2–4 hours. If no reaction — increase the portion.</p>
+
+        <h2 id="art-solids-5">Common mistakes</h2>
+        <ul>
+          <li><strong>Starting with fruits.</strong> Baby gets used to sweetness and refuses vegetables. First 2–3 weeks — vegetables only.</li>
+          <li><strong>Adding salt and sugar.</strong> Before one year — unnecessary. Baby's kidneys aren't ready for excess sodium.</li>
+          <li><strong>Forcing food.</strong> Baby turned away — stop. Forcing creates a negative relationship with food.</li>
+          <li><strong>Delaying allergens.</strong> The later you introduce peanut, egg, fish — the higher the allergy risk.</li>
+          <li><strong>Replacing milk feeds with solids.</strong> Until 8–9 months, milk remains the main nutrition. Solids are supplementary.</li>
+        </ul>
+
+      </div>
+
+      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+        <button class="article-back" onclick="navigateTo('blog');return false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Article: temperature -->
+<div class="page" id="page-blog-temperature">
+  <div class="article-page">
+    <div class="article-inner">
+      <button class="article-back" onclick="navigateTo('blog');return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+      </button>
+
+      <div class="article-meta">
+        <span class="blog-card-tag"><span data-i="ru">Здоровье</span><span data-i="en">Health</span></span>
+        <span class="article-date"><span data-i="ru">15 декабря 2024 · 8 мин</span><span data-i="en">Dec 15, 2024 · 8 min</span></span>
+      </div>
+
+      <h1><span data-i="ru">Температура у ребёнка: когда сбивать, когда ждать</span><span data-i="en">Child's temperature: when to act, when to wait</span></h1>
+
+      <div class="article-toc i-block" data-i="ru">
+        <div class="article-toc-title">Содержание</div>
+        <ol>
+        <li><a href="#art-temperature-1">Нормы для каждого возраста</a></li>
+        <li><a href="#art-temperature-2">Как измерять: три метода</a></li>
+        <li><a href="#art-temperature-3">Когда сбивать температуру</a></li>
+        <li><a href="#art-temperature-4">Алгоритм действий</a></li>
+        <li><a href="#art-temperature-5">Когда вызывать врача</a></li>
+        </ol>
+      </div>
+      <div class="article-toc i-block" data-i="en">
+        <div class="article-toc-title">Contents</div>
+        <ol>
+        <li><a href="#art-temperature-1">Normal ranges by age</a></li>
+        <li><a href="#art-temperature-2">How to measure: three methods</a></li>
+        <li><a href="#art-temperature-3">When to reduce temperature</a></li>
+        <li><a href="#art-temperature-4">Action plan</a></li>
+        <li><a href="#art-temperature-5">When to call a doctor</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body i-block" data-i="ru">
+
+        <h2 id="art-temperature-1">Нормы для каждого возраста</h2>
+        <p>Нормальная температура у ребёнка — не ровно 36.6. Она зависит от возраста, времени суток и метода измерения:</p>
+        <table>
+          <tr><th>Возраст</th><th>Норма (подмышечная)</th><th>Субфебрильная</th><th>Высокая</th></tr>
+          <tr><td>0–3 мес</td><td>36.3–37.5 °C</td><td>37.5–38.0 °C</td><td>&gt; 38.0 °C</td></tr>
+          <tr><td>3–12 мес</td><td>36.0–37.4 °C</td><td>37.5–38.0 °C</td><td>&gt; 38.0 °C</td></tr>
+          <tr><td>1–3 года</td><td>35.9–37.3 °C</td><td>37.4–38.0 °C</td><td>&gt; 38.0 °C</td></tr>
+        </table>
+        <p>Вечером температура на 0.3–0.5 °C выше, чем утром. После плача, кормления или активной игры — тоже выше. Измеряйте в спокойном состоянии.</p>
+
+        <h2 id="art-temperature-2">Как измерять: три метода</h2>
+        <p>Точность зависит от метода:</p>
+        <ul>
+          <li><strong>Ректально</strong> — самый точный. Показывает «истинную» температуру тела. Норма — до 38.0 °C. Рекомендуется для детей до 3 месяцев.</li>
+          <li><strong>Подмышечно (аксиллярно)</strong> — самый привычный. Занижает на 0.3–0.6 °C по сравнению с ректальным. Норма — до 37.5 °C. Время измерения — 5 минут.</li>
+          <li><strong>Инфракрасный (ушной/лобный)</strong> — быстро (1–3 секунды), но погрешность ±0.2–0.4 °C. Удобен для скрининга, при высоких значениях перепроверяйте подмышечным.</li>
+        </ul>
+        <div class="note">Один и тот же градусник, одно и то же место, одно и то же время суток. Только так данные сопоставимы.</div>
+
+        <h2 id="art-temperature-3">Когда сбивать температуру</h2>
+        <p>Температура — не болезнь, а реакция иммунитета. Сбивать её «просто потому что высокая» — не нужно. Ориентируйтесь на самочувствие ребёнка:</p>
+        <ul>
+          <li><strong>До 38.5 °C</strong> — не сбивать, если ребёнок активен, пьёт, играет. Организм борется с инфекцией.</li>
+          <li><strong>38.5–39.0 °C</strong> — сбивать, если ребёнок вялый, отказывается пить, плачет, плохо спит.</li>
+          <li><strong>Выше 39.0 °C</strong> — сбивать всегда.</li>
+        </ul>
+        <div class="warning"><strong>Исключение:</strong> детям до 3 месяцев сбивают любую температуру выше 38.0 °C и немедленно обращаются к врачу.</div>
+
+        <h2 id="art-temperature-4">Алгоритм действий</h2>
+        <p>Пошаговая инструкция при повышенной температуре:</p>
+        <ol>
+          <li><strong>Измерьте точно.</strong> Подмышечным градусником, 5 минут, в спокойном состоянии. Запишите результат в Lummo.</li>
+          <li><strong>Оцените состояние.</strong> Ребёнок активен и пьёт — наблюдайте. Вялый и отказывается от питья — действуйте.</li>
+          <li><strong>Дайте жаропонижающее.</strong> Ибупрофен (с 3 месяцев) или парацетамол (с рождения). Дозировка строго по весу, не по возрасту.</li>
+          <li><strong>Обильное питьё.</strong> Грудь, вода, компот. Высокая температура = потеря жидкости.</li>
+          <li><strong>Проветрите комнату.</strong> Оптимально 20–22 °C. Не укутывайте ребёнка — теплоотдача через кожу важна.</li>
+          <li><strong>Повторно измерьте через 30–40 минут.</strong> Температура должна начать снижаться. Если нет — вызывайте врача.</li>
+        </ol>
+
+        <h2 id="art-temperature-5">Когда вызывать врача</h2>
+        <p>Вызывайте скорую или педиатра немедленно, если:</p>
+        <ul>
+          <li>Ребёнку <strong>до 3 месяцев</strong> и температура выше 38.0 °C</li>
+          <li>Температура <strong>выше 39.5 °C</strong> и не снижается после жаропонижающего</li>
+          <li>Температура держится <strong>более 3 дней</strong></li>
+          <li>Появились <strong>судороги</strong> (фебрильные)</li>
+          <li>Есть <strong>сыпь</strong>, которая не бледнеет при надавливании</li>
+          <li>Ребёнок <strong>не мочится более 6 часов</strong></li>
+          <li>Ребёнок <strong>не реагирует</strong>, безутешно плачет, отказывается от любого питья</li>
+        </ul>
+        <div class="note">Записывайте каждое измерение с точным временем. На приёме у педиатра это позволит увидеть динамику: растёт температура, держится или снижается.</div>
+
+      </div>
+      <div class="article-body i-block" data-i="en">
+
+        <h2 id="art-temperature-1">Normal ranges by age</h2>
+        <p>Normal temperature in a child is not exactly 36.6 °C. It depends on age, time of day, and measurement method:</p>
+        <table>
+          <tr><th>Age</th><th>Normal (axillary)</th><th>Low-grade</th><th>High</th></tr>
+          <tr><td>0–3 mo</td><td>36.3–37.5 °C</td><td>37.5–38.0 °C</td><td>&gt; 38.0 °C</td></tr>
+          <tr><td>3–12 mo</td><td>36.0–37.4 °C</td><td>37.5–38.0 °C</td><td>&gt; 38.0 °C</td></tr>
+          <tr><td>1–3 yr</td><td>35.9–37.3 °C</td><td>37.4–38.0 °C</td><td>&gt; 38.0 °C</td></tr>
+        </table>
+        <p>Evening temperature is 0.3–0.5 °C higher than morning. After crying, feeding, or active play — also higher. Measure when the child is calm.</p>
+
+        <h2 id="art-temperature-2">How to measure: three methods</h2>
+        <p>Accuracy depends on the method:</p>
+        <ul>
+          <li><strong>Rectal</strong> — most accurate. Shows "true" body temperature. Normal — up to 38.0 °C. Recommended for children under 3 months.</li>
+          <li><strong>Axillary (armpit)</strong> — most common. Reads 0.3–0.6 °C lower than rectal. Normal — up to 37.5 °C. Measurement time — 5 minutes.</li>
+          <li><strong>Infrared (ear/forehead)</strong> — fast (1–3 seconds), but margin of error ±0.2–0.4 °C. Good for screening; at high readings, verify with axillary.</li>
+        </ul>
+        <div class="note">Same thermometer, same spot, same time of day. That's the only way data is comparable.</div>
+
+        <h2 id="art-temperature-3">When to reduce temperature</h2>
+        <p>Temperature is not the illness — it's an immune response. Reducing it "just because it's high" isn't necessary. Focus on how the child feels:</p>
+        <ul>
+          <li><strong>Below 38.5 °C</strong> — don't reduce if the child is active, drinking, playing. The body is fighting infection.</li>
+          <li><strong>38.5–39.0 °C</strong> — reduce if the child is lethargic, refuses drinks, cries, sleeps poorly.</li>
+          <li><strong>Above 39.0 °C</strong> — always reduce.</li>
+        </ul>
+        <div class="warning"><strong>Exception:</strong> for babies under 3 months, reduce any temperature above 38.0 °C and contact a doctor immediately.</div>
+
+        <h2 id="art-temperature-4">Action plan</h2>
+        <p>Step-by-step guide for elevated temperature:</p>
+        <ol>
+          <li><strong>Measure accurately.</strong> Axillary thermometer, 5 minutes, child at rest. Record the result in Lummo.</li>
+          <li><strong>Assess the child's state.</strong> Active and drinking — observe. Lethargic and refusing fluids — act.</li>
+          <li><strong>Give antipyretics.</strong> Ibuprofen (from 3 months) or paracetamol (from birth). Dose strictly by weight, not age.</li>
+          <li><strong>Plenty of fluids.</strong> Breast milk, water, compote. High temperature = fluid loss.</li>
+          <li><strong>Ventilate the room.</strong> Optimal 20–22 °C. Don't overdress the child — heat dissipation through skin is important.</li>
+          <li><strong>Re-measure after 30–40 minutes.</strong> Temperature should start dropping. If not — call a doctor.</li>
+        </ol>
+
+        <h2 id="art-temperature-5">When to call a doctor</h2>
+        <p>Call emergency or your pediatrician immediately if:</p>
+        <ul>
+          <li>Child is <strong>under 3 months</strong> and temperature is above 38.0 °C</li>
+          <li>Temperature is <strong>above 39.5 °C</strong> and doesn't decrease after antipyretics</li>
+          <li>Temperature persists <strong>for more than 3 days</strong></li>
+          <li><strong>Seizures</strong> (febrile) have occurred</li>
+          <li>There's a <strong>rash</strong> that doesn't blanch when pressed</li>
+          <li>Child <strong>hasn't urinated for 6+ hours</strong></li>
+          <li>Child is <strong>unresponsive</strong>, crying inconsolably, refusing all fluids</li>
+        </ul>
+        <div class="note">Record each measurement with exact time. At the doctor's visit, this shows the trend: rising, holding steady, or falling.</div>
+
+      </div>
+
+      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+        <button class="article-back" onclick="navigateTo('blog');return false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== DEVELOPMENT PAGE ==================== -->
 <div class="page" id="page-development">
@@ -1292,10 +1920,48 @@ function closeMenu(){
   document.body.style.overflow = '';
 }
 
+/* ===== BLOG TAG FILTERING ===== */
+function filterBlog(btn){
+  var filter = btn.getAttribute('data-filter');
+  // Update active state on ALL tag buttons (both RU and EN)
+  document.querySelectorAll('.blog-tag-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-filter') === filter);
+  });
+  // Filter cards
+  var cards = document.querySelectorAll('.blog-card');
+  var anyVisible = false;
+  cards.forEach(function(card){
+    var tag = card.getAttribute('data-tag');
+    var show = (filter === 'all' || tag === filter);
+    card.style.display = show ? '' : 'none';
+    if(show) anyVisible = true;
+  });
+  // Empty state
+  var emptyEl = document.getElementById('blogEmpty');
+  var comingEl = document.getElementById('blogComing');
+  if(emptyEl) emptyEl.style.display = anyVisible ? 'none' : 'block';
+  if(comingEl) comingEl.style.display = anyVisible ? 'block' : 'none';
+}
+
 /* ===== HASH ROUTING ===== */
 function navigateTo(page, scrollHash){
   // Hide all pages
   document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
+
+  // Handle blog article routes (e.g. 'blog/sleep')
+  if(page.indexOf('blog/') === 0){
+    var slug = page.split('/')[1];
+    var articlePage = document.getElementById('page-blog-' + slug);
+    if(articlePage){
+      articlePage.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+      history.pushState(null, null, '#' + page);
+      return;
+    }
+    // Fallback to blog list
+    page = 'blog';
+  }
+
   // Show target page
   var target = document.getElementById('page-' + page);
   if(target) target.classList.add('active');
@@ -1320,8 +1986,32 @@ function navigateTo(page, scrollHash){
 
 function handleRoute(){
   var h = location.hash.replace('#','');
-  if(h === 'blog'){ navigateTo('blog'); return }
-  if(h === 'development'){ navigateTo('development'); return }
+
+  // Blog article routes
+  if(h.indexOf('blog/') === 0){
+    var slug = h.split('/')[1];
+    var articlePage = document.getElementById('page-blog-' + slug);
+    if(articlePage){
+      document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
+      articlePage.classList.add('active');
+      return;
+    }
+    // Fallback to blog list
+    h = 'blog';
+  }
+
+  if(h === 'blog'){ 
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
+    var blogPage = document.getElementById('page-blog');
+    if(blogPage) blogPage.classList.add('active');
+    return;
+  }
+  if(h === 'development'){
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
+    var devPage = document.getElementById('page-development');
+    if(devPage) devPage.classList.add('active');
+    return;
+  }
 
   // Default: home page
   document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active') });
@@ -1360,6 +2050,19 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
       }
     }
   });
+});
+
+/* ===== ARTICLE TOC SMOOTH SCROLL ===== */
+document.addEventListener('click', function(e){
+  var link = e.target.closest('.article-toc a');
+  if(link){
+    e.preventDefault();
+    var id = link.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el){
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
 });
 
 /* ===== INIT ===== */
