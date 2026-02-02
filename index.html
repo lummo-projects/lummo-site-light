@@ -1112,7 +1112,7 @@ html[data-theme="dark"] .story-doc-deco{background:linear-gradient(180deg,rgba(6
     <div class="problems-immersive i-grid" data-i="ru">
 
       <!-- Card 1: Night -->
-      <div class="story-card story-card--night" data-story="night">
+      <div class="story-card story-card--night soul-reveal" data-story="night">
         <div class="story-grain"></div>
         <div class="story-stars">
           <div class="story-star" style="width:2px;height:2px;top:12%;left:15%;--dur:3.2s;--delay:0s"></div>
@@ -1147,7 +1147,7 @@ html[data-theme="dark"] .story-doc-deco{background:linear-gradient(180deg,rgba(6
       </div>
 
       <!-- Card 2: Chat -->
-      <div class="story-card story-card--chat" data-story="chat">
+      <div class="story-card story-card--chat soul-reveal" data-story="chat">
         <div class="story-chat-deco"></div>
         <span class="story-label">Муж спрашивает</span>
         <div class="story-bubbles">
@@ -1167,7 +1167,7 @@ html[data-theme="dark"] .story-doc-deco{background:linear-gradient(180deg,rgba(6
       </div>
 
       <!-- Card 3: Doctor -->
-      <div class="story-card story-card--doctor" data-story="doctor">
+      <div class="story-card story-card--doctor soul-reveal" data-story="doctor">
         <div class="story-doc-deco"></div>
         <span class="story-label">На приёме у педиатра</span>
         <div class="story-form">
@@ -1197,7 +1197,7 @@ html[data-theme="dark"] .story-doc-deco{background:linear-gradient(180deg,rgba(6
     <div class="problems-immersive i-grid" data-i="en">
 
       <!-- Card 1: Night -->
-      <div class="story-card story-card--night" data-story="night">
+      <div class="story-card story-card--night soul-reveal" data-story="night">
         <div class="story-grain"></div>
         <div class="story-stars">
           <div class="story-star" style="width:2px;height:2px;top:12%;left:15%;--dur:3.2s;--delay:0s"></div>
@@ -1232,7 +1232,7 @@ html[data-theme="dark"] .story-doc-deco{background:linear-gradient(180deg,rgba(6
       </div>
 
       <!-- Card 2: Chat -->
-      <div class="story-card story-card--chat" data-story="chat">
+      <div class="story-card story-card--chat soul-reveal" data-story="chat">
         <div class="story-chat-deco"></div>
         <span class="story-label">Partner asks</span>
         <div class="story-bubbles">
@@ -1252,7 +1252,7 @@ html[data-theme="dark"] .story-doc-deco{background:linear-gradient(180deg,rgba(6
       </div>
 
       <!-- Card 3: Doctor -->
-      <div class="story-card story-card--doctor" data-story="doctor">
+      <div class="story-card story-card--doctor soul-reveal" data-story="doctor">
         <div class="story-doc-deco"></div>
         <span class="story-label">At the pediatrician</span>
         <div class="story-form">
@@ -3602,10 +3602,7 @@ document.addEventListener('click', function(e){
     }
   });
 
-  // Also add soul-reveal to story cards for the initial fade-in
-  document.querySelectorAll('.story-card').forEach(function(card){
-    if(!card.classList.contains('soul-reveal')) card.classList.add('soul-reveal');
-  });
+  // soul-reveal is added directly in HTML so the main revealObs picks them up
 })();
 
 /* ===== PED PROGRESS BAR ANIMATION ===== */
