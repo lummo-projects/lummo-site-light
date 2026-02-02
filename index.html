@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lummo — Free Baby Tracker with AI | Sleep, Feeding, Health</title>
-<meta name="description" content="Free baby tracker app with AI-powered insights. Track sleep, feeding, diapers, health, and growth. Works offline. No subscription. 35+ screens, 30+ activity types.">
-<meta property="og:title" content="Lummo — Free Baby Tracker with AI">
-<meta property="og:description" content="Track sleep, feeding, health, and growth. AI analytics, offline mode, no subscription. Data stays on your device.">
+<title>Lummo — Бесплатный трекер для малыша с AI</title>
+<meta name="description" content="Трекер для ребёнка с AI-аналитикой. Сон, кормление, подгузники, здоровье, рост. Офлайн. Без подписки. Данные на устройстве.">
+<meta property="og:title" content="Lummo — Бесплатный трекер для малыша с AI">
+<meta property="og:description" content="Сон, кормление, здоровье, рост. AI-аналитика, офлайн, без подписки.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lummo-projects.github.io/lummo-site-light/">
-<meta name="theme-color" content="#FFF9F5">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta property="og:image" content="https://lummo-projects.github.io/lummo-site-light/og-image.png">
@@ -18,1244 +17,584 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lummo-projects.github.io/lummo-site-light/og-image.png">
-<script>document.documentElement.classList.remove('no-js')</script>
-
-<!-- Fonts: Articulat CF (local) + Nunito (Google) -->
-<style>
-@font-face { font-family: 'Articulat CF'; src: url('fonts/ArticulatCF-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Articulat CF'; src: url('fonts/ArticulatCF-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Articulat CF'; src: url('fonts/ArticulatCF-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Articulat CF'; src: url('fonts/ArticulatCF-DemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: 'Articulat CF'; src: url('fonts/ArticulatCF-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ==========================================================================
-   RESET & CUSTOM PROPERTIES
-   ========================================================================== */
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-DemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('fonts/ArticulatCF-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root {
-  --bg: #FFF9F5;
-  --bg-warm: #FFF5EE;
-  --bg-card: #FFFFFF;
-  --bg-mint: #F0FAF6;
-  --bg-peach: #FFF0E8;
-  --bg-lavender: #F3EFFE;
-  --bg-sky: #EDF6FF;
-  --bg-rose: #FFF0F3;
 
-  --coral: #FF6B6B;
-  --peach: #FF8E6B;
-  --mint: #4ECDC4;
-  --lavender: #7C6FE0;
-  --sky: #5BA4F5;
-  --rose: #F472B6;
-  --gold: #F6A623;
-  --green: #34C77B;
-
-  --text: #2D2B3D;
-  --text-mid: #5C5A6E;
-  --text-muted: #9896A8;
-  --text-dim: #C5C3D0;
-
-  --heading: 'Nunito', 'Articulat CF', system-ui, sans-serif;
-  --sans: 'Articulat CF', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  --ease: cubic-bezier(.25,.46,.45,.94);
-  --shadow-sm: 0 2px 8px rgba(45,43,61,.06);
-  --shadow-md: 0 8px 30px rgba(45,43,61,.08);
-  --shadow-lg: 0 20px 60px rgba(45,43,61,.1);
-  --shadow-card: 0 4px 20px rgba(45,43,61,.06);
-  --radius: 20px;
-  --radius-sm: 14px;
-}
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; }
-img { display: block; max-width: 100%; }
-
-/* Animate on scroll — hidden by default */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.no-js .reveal { opacity: 1; transform: none; }
-
-/* ==========================================================================
-   DECORATIVE SVG BLOBS (background)
-   ========================================================================== */
-.blob {
-  position: absolute; pointer-events: none; z-index: 0;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: .4;
+:root{
+  --primary:#3C38FF;
+  --accent:#F4433D;
+  --black:#0A0A0A;
+  --gray-900:#1A1A1A;
+  --gray-700:#3D3D3D;
+  --gray-500:#6B6B6B;
+  --gray-300:#B0B0B0;
+  --gray-100:#F2F2F2;
+  --gray-50:#F8F8F8;
+  --white:#FFFFFF;
+  --font:'Articulat CF',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 }
 
-/* ==========================================================================
-   NAVIGATION — glassmorphism light
-   ========================================================================== */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 14px 32px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(255,249,245,.85);
-  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(45,43,61,.06);
-  transform: translateY(-100%);
-  transition: transform .5s var(--ease), box-shadow .3s;
-  pointer-events: none;
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;font-size:16px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-100);transition:transform .3s ease}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:var(--black)}
+.nav-logo span{color:var(--primary)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-sw{display:flex;gap:2px}
+.lang-btn{font-size:.8rem;font-weight:400;color:var(--gray-300);padding:4px 8px;border-radius:4px;transition:all .15s}
+.lang-btn.active{color:var(--black);font-weight:600}
+.lang-btn:hover{color:var(--gray-700)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:var(--primary);color:var(--white);font-size:.85rem;font-weight:600;border-radius:8px;transition:background .15s}
+.nav-cta:hover{background:#312EE0}
+
+/* ===== HERO ===== */
+.hero{padding:96px 24px 64px;background:var(--white)}
+.hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero-content{max-width:520px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--gray-50);border:1px solid var(--gray-100);border-radius:6px;font-size:.8rem;font-weight:500;color:var(--gray-500);margin-bottom:24px}
+.hero-badge svg{width:14px;height:14px;fill:var(--primary)}
+.hero h1{font-size:clamp(2.4rem,5vw,3.5rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;color:var(--black);margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--primary)}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.15rem);font-weight:400;color:var(--gray-500);line-height:1.6;margin-bottom:32px;max-width:440px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.store-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-size:.9rem;font-weight:600;transition:all .15s}
+.store-btn-apple{background:var(--black);color:var(--white)}
+.store-btn-apple:hover{background:var(--gray-900)}
+.store-btn-google{background:var(--white);color:var(--black);border:1.5px solid var(--gray-100)}
+.store-btn-google:hover{border-color:var(--gray-300)}
+.store-btn svg{width:20px;height:20px}
+.hero-phone{display:flex;justify-content:center;align-items:center}
+.hero-phone-frame{width:280px;height:560px;border-radius:32px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.04);border:1px solid var(--gray-100);position:relative;background:var(--white)}
+.hero-phone-frame img,.hero-phone-frame svg{width:100%;height:100%;object-fit:cover}
+
+/* ===== STATS BAR ===== */
+.stats{padding:32px 24px;background:var(--gray-50);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100)}
+.stats-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-num{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;color:var(--black)}
+.stat-num span{color:var(--primary)}
+.stat-label{font-size:.8rem;font-weight:400;color:var(--gray-500);margin-top:2px}
+
+/* ===== SECTION SHARED ===== */
+.section{padding:64px 24px}
+.section-inner{max-width:1120px;margin:0 auto}
+.section-header{margin-bottom:40px}
+.section-header h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--black)}
+.section-header p{font-size:.95rem;color:var(--gray-500);margin-top:8px;max-width:480px;line-height:1.6}
+.section-header--center{text-align:center}
+.section-header--center p{margin-left:auto;margin-right:auto}
+.section-divider{height:1px;background:var(--gray-100);margin:0 24px}
+
+/* ===== FEATURES GRID ===== */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature-card{padding:24px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-100);transition:border-color .15s}
+.feature-card:hover{border-color:var(--gray-300)}
+.feature-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.2rem}
+.feature-icon--sleep{background:#E8EDFF;color:var(--primary)}
+.feature-icon--feed{background:#F3E8FF;color:#7C3AED}
+.feature-icon--diaper{background:#E8FFF0;color:#16A34A}
+.feature-icon--health{background:#FFF0E8;color:#EA580C}
+.feature-icon--growth{background:#E8F8FF;color:#0284C7}
+.feature-icon--activity{background:#FFF8E8;color:#CA8A04}
+.feature-card h3{font-size:.95rem;font-weight:600;color:var(--black);margin-bottom:6px}
+.feature-card p{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+
+/* ===== VALUES (free/offline/private) ===== */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.value-card{padding:28px 24px;border-radius:12px;border:1px solid var(--gray-100);position:relative;overflow:hidden}
+.value-card--free{background:linear-gradient(135deg,#F0F0FF 0%,var(--white) 100%)}
+.value-card--offline{background:linear-gradient(135deg,#F0FFF4 0%,var(--white) 100%)}
+.value-card--private{background:linear-gradient(135deg,#FFF5F5 0%,var(--white) 100%)}
+.value-icon{font-size:1.5rem;margin-bottom:12px;display:block}
+.value-card h3{font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:6px}
+.value-card p{font-size:.85rem;color:var(--gray-500);line-height:1.55}
+
+/* ===== AI SECTION ===== */
+.ai-section{background:var(--black);color:var(--white);padding:64px 24px}
+.ai-section .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ai-content h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}
+.ai-content h2 em{font-style:normal;color:#818CF8}
+.ai-content>p{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px;max-width:440px}
+.ai-features{display:flex;flex-direction:column;gap:14px}
+.ai-feat{display:flex;gap:12px;align-items:flex-start}
+.ai-feat-dot{width:8px;height:8px;border-radius:50%;background:#818CF8;flex-shrink:0;margin-top:6px}
+.ai-feat-text{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.5}
+.ai-phone{display:flex;justify-content:center;align-items:center}
+.ai-phone-frame{width:240px;height:480px;border-radius:28px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);background:#1a1a2e}
+.ai-phone-frame img,.ai-phone-frame svg{width:100%;height:100%;object-fit:cover}
+
+/* ===== FOR WHO ===== */
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.who-card{padding:24px;background:var(--white);border:1px solid var(--gray-100);border-radius:12px;display:flex;gap:14px;align-items:flex-start}
+.who-emoji{font-size:1.5rem;flex-shrink:0}
+.who-card h3{font-size:.95rem;font-weight:600;color:var(--black);margin-bottom:4px}
+.who-card p{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+
+/* ===== CTA ===== */
+.cta-section{padding:64px 24px;text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
+.cta-section h2 em{font-style:normal;color:var(--primary)}
+.cta-section>p{font-size:.95rem;color:var(--gray-500);margin-bottom:28px}
+.cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ===== FOOTER ===== */
+.footer{padding:32px 24px;border-top:1px solid var(--gray-100);background:var(--gray-50)}
+.footer-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:.8rem;color:var(--gray-500)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.8rem;color:var(--gray-500);transition:color .15s}
+.footer-links a:hover{color:var(--black)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-content{max-width:100%}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .hero-phone-frame{width:220px;height:440px;border-radius:26px}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:16px}
+  .features-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .values-grid{grid-template-columns:1fr;gap:12px}
+  .ai-section .section-inner{grid-template-columns:1fr;text-align:center}
+  .ai-content>p{margin-left:auto;margin-right:auto}
+  .ai-features{align-items:center}
+  .ai-feat{text-align:left}
+  .ai-phone{order:-1}
+  .ai-phone-frame{width:200px;height:400px;border-radius:24px}
+  .who-grid{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+  .nav-cta span{display:none}
 }
-nav.vis {
-  transform: translateY(0); pointer-events: auto;
-  box-shadow: 0 2px 20px rgba(45,43,61,.06);
-}
-.nav-logo {
-  font-family: var(--heading); font-weight: 800; font-size: 1.3rem;
-  background: linear-gradient(135deg, var(--coral), var(--peach));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a {
-  color: var(--text-muted); font-size: .85rem; font-weight: 500;
-  transition: color .3s;
-}
-.nav-links a:hover { color: var(--text); }
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.nav-cta {
-  padding: 9px 22px;
-  background: linear-gradient(135deg, var(--coral), var(--peach));
-  color: #fff; border-radius: 24px; font-size: .85rem; font-weight: 600;
-  border: none; transition: all .3s ease;
-  box-shadow: 0 4px 15px rgba(255,107,107,.25);
-}
-.nav-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255,107,107,.35);
+@media(max-width:480px){
+  .features-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2rem}
+  .store-btn{padding:10px 18px;font-size:.85rem}
 }
 
-/* ==========================================================================
-   LANGUAGE SWITCHER
-   ========================================================================== */
-.lang-switch { display: flex; align-items: center; gap: 2px; }
-.lang-btn {
-  background: none; border: none;
-  color: var(--text-dim); font-size: .8rem; font-weight: 400;
-  padding: 4px 7px; transition: color .3s, font-weight .15s;
-  font-family: inherit;
+/* ===== BURGER ===== */
+.burger{display:none;padding:8px;margin-right:-8px}
+.burger span{display:block;width:22px;height:2px;background:var(--black);border-radius:1px;transition:all .3s}
+.burger span+span{margin-top:5px}
+@media(max-width:768px){
+  .burger{display:block}
+  .nav-links-desktop{display:none}
 }
-.lang-btn.active { color: var(--text); font-weight: 700; }
-.lang-btn:hover { color: var(--text-mid); }
-.lang-divider { color: var(--text-dim); font-size: .8rem; user-select: none; }
+.nav-links-desktop{display:flex;align-items:center;gap:24px}
+.nav-links-desktop a{font-size:.85rem;color:var(--gray-500);font-weight:500;transition:color .15s}
+.nav-links-desktop a:hover{color:var(--black)}
 
-/* ==========================================================================
-   BURGER BUTTON
-   ========================================================================== */
-.burger-btn {
-  display: none;
-  background: none; border: none; padding: 10px 4px;
-  z-index: 120; position: relative;
-  -webkit-tap-highlight-color: transparent;
-}
-.burger-line {
-  display: block; width: 24px; height: 2.5px;
-  background: var(--text); border-radius: 2px;
-  transition: transform .35s cubic-bezier(.4,.01,.165,.99), opacity .25s ease;
-}
-.burger-line + .burger-line { margin-top: 5px; }
-.burger-btn.active .burger-line:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-.burger-btn.active .burger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.burger-btn.active .burger-line:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+/* ===== I18N ===== */
+[data-lang-en]{display:none}
+html[lang="en"] [data-lang-ru]{display:none}
+html[lang="en"] [data-lang-en]{display:initial}
+html[lang="en"] .hero-badge [data-lang-ru],
+html[lang="en"] .stat-label [data-lang-ru],
+html[lang="en"] .section-header [data-lang-ru]{display:none}
+html[lang="en"] .hero-badge [data-lang-en],
+html[lang="en"] .stat-label [data-lang-en],
+html[lang="en"] .section-header [data-lang-en]{display:initial}
 
-/* ==========================================================================
-   MOBILE MENU OVERLAY
-   ========================================================================== */
-.mobile-menu {
-  position: fixed; inset: 0; z-index: 110;
-  background: rgba(255,249,245,.97);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  opacity: 0; visibility: hidden;
-  transition: opacity .4s ease, visibility .4s ease;
-  pointer-events: none;
-}
-.mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
-.mobile-menu-inner { text-align: center; padding: 0 24px; }
-.mobile-menu-links { list-style: none; padding: 0; margin: 0 0 36px; }
-.mobile-menu-links li {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .35s ease, transform .35s ease;
-}
-.mobile-menu.open .mobile-menu-links li { opacity: 1; transform: translateY(0); }
-.mobile-menu.open .mobile-menu-links li:nth-child(1) { transition-delay: .08s; }
-.mobile-menu.open .mobile-menu-links li:nth-child(2) { transition-delay: .16s; }
-.mobile-menu.open .mobile-menu-links li:nth-child(3) { transition-delay: .24s; }
-.mobile-menu-links li { transition-delay: 0s; }
+/* Block-level i18n for paragraphs and larger elements */
+.i18n-block[data-lang-en]{display:none}
+.i18n-block[data-lang-ru]{display:block}
+html[lang="en"] .i18n-block[data-lang-ru]{display:none}
+html[lang="en"] .i18n-block[data-lang-en]{display:block}
 
-.mobile-menu-links a {
-  display: block;
-  font-family: var(--heading); font-size: clamp(1.6rem,5vw,2.2rem);
-  font-weight: 700; color: var(--text);
-  padding: 18px 0;
-  -webkit-tap-highlight-color: transparent;
-  transition: color .2s;
-}
-.mobile-menu-links a:active { color: var(--coral); }
+/* Flex i18n for flex items */
+.i18n-flex[data-lang-en]{display:none}
+.i18n-flex[data-lang-ru]{display:flex}
+html[lang="en"] .i18n-flex[data-lang-ru]{display:none}
+html[lang="en"] .i18n-flex[data-lang-en]{display:flex}
 
-.mobile-lang-switch {
-  display: flex; align-items: center; justify-content: center;
-  gap: 4px; margin-bottom: 32px;
-  opacity: 0; transform: translateY(16px);
-  transition: opacity .35s ease .28s, transform .35s ease .28s;
-}
-.mobile-menu.open .mobile-lang-switch { opacity: 1; transform: translateY(0); }
-.mobile-lang-switch .lang-btn { font-size: .95rem; padding: 6px 12px; color: var(--text-muted); }
-.mobile-lang-switch .lang-btn.active { color: var(--text); font-weight: 700; }
-.mobile-lang-switch .lang-divider { font-size: .95rem; color: var(--text-dim); }
+/* Grid i18n */
+.i18n-grid[data-lang-en]{display:none}
+.i18n-grid[data-lang-ru]{display:grid}
+html[lang="en"] .i18n-grid[data-lang-ru]{display:none}
+html[lang="en"] .i18n-grid[data-lang-en]{display:grid}
 
-.mobile-menu-cta {
-  display: inline-block;
-  padding: 15px 40px;
-  background: linear-gradient(135deg, var(--coral), var(--peach));
-  color: #fff; border-radius: 28px; font-size: 1rem; font-weight: 600;
-  font-family: var(--sans);
-  opacity: 0; transform: translateY(16px);
-  transition: opacity .35s ease .34s, transform .35s ease .34s, background .3s;
-  -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 4px 20px rgba(255,107,107,.25);
-}
-.mobile-menu.open .mobile-menu-cta { opacity: 1; transform: translateY(0); }
-body.menu-open { overflow: hidden; }
-
-/* ==========================================================================
-   SECTIONS — shared
-   ========================================================================== */
-.sc {
-  position: relative;
-  padding: 100px 24px;
-  z-index: 1;
-  overflow: hidden;
-}
-.sc-inner { max-width: 1100px; width: 100%; margin: 0 auto; position: relative; z-index: 2; }
-.sc-center { text-align: center; max-width: 700px; margin: 0 auto; }
-
-/* ==========================================================================
-   TYPOGRAPHY
-   ========================================================================== */
-.heading {
-  font-family: var(--heading);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--text);
-}
-.body-text {
-  font-size: clamp(.95rem, 1.5vw, 1.08rem);
-  font-weight: 400;
-  color: var(--text-mid);
-  line-height: 1.8;
-}
-.label-tag {
-  display: inline-block;
-  font-size: .75rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: 5px 14px; border-radius: 20px;
-  margin-bottom: 16px;
-}
-
-/* ==========================================================================
-   HERO — bright, minimal, centered with illustration
-   ========================================================================== */
-#hero {
-  min-height: 100vh; min-height: 100dvh;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(180deg, #FFF9F5 0%, #FFF0E8 50%, #FFF9F5 100%);
-  padding-top: 40px; padding-bottom: 0;
-  overflow: hidden;
-}
-
-/* Decorative clouds / shapes */
-.hero-deco {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
-}
-.hero-circle {
-  position: absolute; border-radius: 50%;
-}
-.hero-circle-1 {
-  width: 500px; height: 500px;
-  top: -15%; right: -10%;
-  background: radial-gradient(circle, rgba(255,107,107,.1) 0%, transparent 70%);
-}
-.hero-circle-2 {
-  width: 400px; height: 400px;
-  bottom: -10%; left: -8%;
-  background: radial-gradient(circle, rgba(78,205,196,.1) 0%, transparent 70%);
-}
-.hero-circle-3 {
-  width: 300px; height: 300px;
-  top: 20%; left: 15%;
-  background: radial-gradient(circle, rgba(124,111,224,.06) 0%, transparent 70%);
-}
-
-/* Floating shapes */
-.hero-shape {
-  position: absolute; border-radius: 50%; z-index: 0;
-  animation: float-gentle 8s ease-in-out infinite;
-}
-.hero-shape-1 {
-  width: 60px; height: 60px; top: 18%; right: 12%;
-  background: rgba(255,107,107,.12); animation-delay: -2s;
-}
-.hero-shape-2 {
-  width: 40px; height: 40px; top: 35%; left: 8%;
-  background: rgba(78,205,196,.12); animation-delay: -4s;
-}
-.hero-shape-3 {
-  width: 28px; height: 28px; bottom: 30%; right: 20%;
-  background: rgba(124,111,224,.12); animation-delay: -1s;
-}
-.hero-shape-4 {
-  width: 18px; height: 18px; top: 50%; left: 22%;
-  background: rgba(246,166,35,.15); border-radius: 4px;
-  transform: rotate(45deg); animation-delay: -5s;
-}
-@keyframes float-gentle {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(3deg); }
-}
-
-.hero-body {
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; z-index: 3; position: relative;
-  padding-top: 6vh;
-}
-
-/* Sun illustration */
-.hero-sun {
-  width: 120px; height: 120px; position: relative;
-  margin-bottom: 32px;
-}
-.sun-core {
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #FFD66B, #FFB347);
-  box-shadow: 0 0 50px rgba(255,179,71,.3), 0 0 100px rgba(255,179,71,.15);
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  animation: sun-pulse 4s ease-in-out infinite;
-}
-.sun-ray {
-  position: absolute; top: 50%; left: 50%;
-  width: 120px; height: 120px;
-  border-radius: 50%;
-  border: 2px dashed rgba(255,179,71,.2);
-  transform: translate(-50%, -50%);
-  animation: sun-spin 30s linear infinite;
-}
-@keyframes sun-pulse {
-  0%, 100% { box-shadow: 0 0 50px rgba(255,179,71,.3), 0 0 100px rgba(255,179,71,.15); }
-  50% { box-shadow: 0 0 60px rgba(255,179,71,.4), 0 0 120px rgba(255,179,71,.2); }
-}
-@keyframes sun-spin { from { transform: translate(-50%, -50%) rotate(0); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-
-.hero-title {
-  font-family: var(--heading);
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
-  font-weight: 800; line-height: 1.15;
-  color: var(--text);
-}
-.hero-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, var(--coral), var(--peach));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  margin-top: 16px;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 400; color: var(--text-muted);
-}
-.hero-pills {
-  display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; justify-content: center;
-}
-.pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 7px 16px; border-radius: 24px;
-  background: white;
-  border: 1px solid rgba(45,43,61,.08);
-  font-size: .82rem; font-weight: 500; color: var(--text-mid);
-  box-shadow: var(--shadow-sm);
-}
-.pill svg { width: 14px; height: 14px; opacity: .6; }
-
-.hero-phone-area {
-  margin-top: 48px; z-index: 3; position: relative;
-}
-
-.scroll-hint {
-  position: absolute; bottom: 28px; left: 50%;
-  transform: translateX(-50%); z-index: 4;
-  animation: bob 3s ease-in-out infinite;
-  background: none; border: none; padding: 10px;
-}
-.scroll-hint svg { width: 22px; height: 22px; stroke: var(--text-dim); stroke-width: 2; fill: none; }
-@keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
-
-/* ==========================================================================
-   PHONE MOCKUP — light, minimal, floating
-   ========================================================================== */
-.phone-mockup {
-  width: 260px; height: 520px;
-  border-radius: 40px;
-  border: 6px solid #2D2B3D;
-  background: #1a1a2e;
-  position: relative; overflow: hidden; flex-shrink: 0;
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(45,43,61,.05);
-}
-.phone-notch {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 100px; height: 28px; background: #2D2B3D;
-  border-radius: 0 0 16px 16px; z-index: 5;
-}
-.phone-notch::after {
-  content: ''; position: absolute; top: 9px; left: 50%; transform: translateX(-50%);
-  width: 42px; height: 5px; background: rgba(255,255,255,.12); border-radius: 3px;
-}
-.phone-screen-img {
-  width: 100%; height: 100%; object-fit: cover;
-  border-radius: 34px; display: block;
-}
-
-/* ==========================================================================
-   PROBLEM — stat card style
-   ========================================================================== */
-#problem {
-  background: var(--bg);
-  padding: 120px 24px;
-}
-.problem-card {
-  max-width: 680px; margin: 0 auto;
-  background: white;
-  border-radius: 28px;
-  padding: 60px 48px;
-  text-align: center;
-  box-shadow: var(--shadow-lg);
-  position: relative; overflow: hidden;
-}
-.problem-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--coral), var(--peach), var(--mint));
-}
-.prob-num {
-  font-family: var(--heading);
-  font-size: clamp(5rem, 14vw, 9rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--coral), var(--peach));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: .95;
-}
-.prob-sub {
-  font-family: var(--heading);
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  font-weight: 600; color: var(--text-mid);
-  margin-top: 4px;
-}
-.prob-desc {
-  margin-top: 24px;
-  font-size: clamp(.95rem, 1.6vw, 1.08rem);
-  font-weight: 400; color: var(--text-muted); line-height: 1.8;
-}
-.prob-desc strong { color: var(--text); font-weight: 600; }
-.prob-punch {
-  margin-top: 32px;
-  font-family: var(--heading);
-  font-size: clamp(1.2rem, 2.8vw, 1.7rem);
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--coral), var(--peach));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ==========================================================================
-   FEATURE SECTIONS — Z-pattern (alternating image/text)
-   ========================================================================== */
-.feature-section {
-  padding: 80px 24px;
-}
-.feature-section:nth-child(odd) { background: var(--bg); }
-.feature-section:nth-child(even) { background: var(--bg-warm); }
-
-.z-row {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: center;
-}
-.z-row.reverse .z-visual { order: -1; }
-.z-visual { display: flex; justify-content: center; align-items: center; position: relative; }
-.z-visual::before {
-  content: ''; position: absolute;
-  width: 280px; height: 280px; border-radius: 50%;
-  z-index: 0; filter: blur(60px); opacity: .5;
-}
-.z-visual .phone-mockup { position: relative; z-index: 1; }
-
-/* Color accents per section */
-#sleep .z-visual::before { background: rgba(124,111,224,.15); }
-#feeding .z-visual::before { background: rgba(244,114,182,.15); }
-#health .z-visual::before { background: rgba(246,166,35,.12); }
-#ai .z-visual::before { background: rgba(78,205,196,.15); }
-
-.z-text .label-tag { }
-.z-text .heading { margin-top: 8px; }
-.z-text .body-text { margin-top: 18px; }
-.z-text .body-text + .body-text { margin-top: 12px; }
-
-/* Section accent labels */
-.label-sleep { background: rgba(124,111,224,.1); color: var(--lavender); }
-.label-feeding { background: rgba(244,114,182,.1); color: var(--rose); }
-.label-health { background: rgba(246,166,35,.1); color: var(--gold); }
-.label-ai { background: rgba(78,205,196,.1); color: var(--mint); }
-
-/* ==========================================================================
-   FEATURES GRID — card grid (not horizontal slider)
-   ========================================================================== */
-#features {
-  background: var(--bg-warm);
-  padding: 100px 24px;
-}
-.f-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 48px;
-}
-.f-card {
-  background: white;
-  border-radius: var(--radius);
-  padding: 28px 22px;
-  text-align: center;
-  transition: transform .3s var(--ease), box-shadow .3s;
-  border: 1px solid rgba(45,43,61,.04);
-  box-shadow: var(--shadow-card);
-}
-.f-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-.f-card-ico {
-  width: 52px; height: 52px; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 14px;
-}
-.f-card-ico svg { width: 22px; height: 22px; }
-.f-card h4 { font-family: var(--heading); font-size: .92rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
-.f-card p { font-size: .8rem; color: var(--text-muted); line-height: 1.55; font-weight: 400; }
-
-/* Card icon backgrounds */
-.fc-1 .f-card-ico { background: rgba(52,199,123,.1); } .fc-1 .f-card-ico svg { fill: var(--green); }
-.fc-2 .f-card-ico { background: rgba(255,142,107,.1); } .fc-2 .f-card-ico svg { fill: var(--peach); }
-.fc-3 .f-card-ico { background: rgba(244,114,182,.1); } .fc-3 .f-card-ico svg { fill: var(--rose); }
-.fc-4 .f-card-ico { background: rgba(124,111,224,.1); } .fc-4 .f-card-ico svg { fill: var(--lavender); }
-.fc-5 .f-card-ico { background: rgba(246,166,35,.1); } .fc-5 .f-card-ico svg { fill: var(--gold); }
-.fc-6 .f-card-ico { background: rgba(91,164,245,.1); } .fc-6 .f-card-ico svg { fill: var(--sky); }
-.fc-7 .f-card-ico { background: rgba(78,205,196,.1); } .fc-7 .f-card-ico svg { fill: var(--mint); }
-.fc-8 .f-card-ico { background: rgba(255,107,107,.1); } .fc-8 .f-card-ico svg { fill: var(--coral); }
-
-/* ==========================================================================
-   FREE + OFFLINE — three vertical cards
-   ========================================================================== */
-#free {
-  background: var(--bg);
-  padding: 100px 24px;
-}
-.free-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; margin-top: 52px;
-}
-.free-card {
-  text-align: center; padding: 44px 28px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(45,43,61,.05);
-  box-shadow: var(--shadow-card);
-  transition: transform .3s var(--ease), box-shadow .3s;
-}
-.free-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-.free-ico {
-  width: 64px; height: 64px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 20px;
-}
-.free-ico svg { width: 28px; height: 28px; }
-.free-card h3 {
-  font-family: var(--heading); font-size: 1.4rem; font-weight: 700;
-  color: var(--text); margin-bottom: 10px;
-}
-.free-card p { font-size: .92rem; color: var(--text-muted); line-height: 1.7; }
-
-.fi-1 { background: var(--bg-mint); }
-.fi-2 { background: var(--bg-sky); }
-.fi-3 { background: var(--bg-peach); }
-.fi-1 .free-ico { background: rgba(52,199,123,.12); } .fi-1 .free-ico svg { fill: var(--green); }
-.fi-2 .free-ico { background: rgba(91,164,245,.12); } .fi-2 .free-ico svg { fill: var(--sky); }
-.fi-3 .free-ico { background: rgba(246,166,35,.12); } .fi-3 .free-ico svg { fill: var(--gold); }
-
-/* ==========================================================================
-   DOWNLOAD
-   ========================================================================== */
-#download {
-  background: linear-gradient(180deg, var(--bg-warm), var(--bg));
-  padding: 100px 24px;
-}
-.dl-row {
-  max-width: 1000px; margin: 0 auto;
-  display: flex; align-items: center; gap: 70px;
-}
-.dl-text h2 {
-  font-family: var(--heading);
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 800; margin-bottom: 16px;
-}
-.dl-text p { font-weight: 400; color: var(--text-muted); margin-bottom: 28px; line-height: 1.8; font-size: 1rem; }
-.store-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.store-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 14px 24px;
-  border: 1px solid rgba(45,43,61,.1);
-  border-radius: var(--radius-sm);
-  background: white;
-  transition: all .3s ease;
-  box-shadow: var(--shadow-sm);
-}
-.store-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(45,43,61,.15);
-}
-.store-btn svg { width: 22px; height: 22px; fill: var(--text); flex-shrink: 0; }
-.s-info { display: flex; flex-direction: column; }
-.s-info .soon { font-size: .6rem; color: var(--text-dim); letter-spacing: .04em; text-transform: uppercase; font-weight: 600; }
-.s-info .name { font-size: .95rem; font-weight: 600; color: var(--text); }
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-footer {
-  padding: 44px 24px; text-align: center;
-  background: var(--bg);
-  border-top: 1px solid rgba(45,43,61,.06);
-  position: relative; z-index: 1;
-}
-.ft-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
-.ft-links a { color: var(--text-dim); font-size: .8rem; transition: color .3s; }
-.ft-links a:hover { color: var(--text-mid); }
-.ft-copy { font-size: .7rem; color: var(--text-dim); }
-
-/* ==========================================================================
-   RESPONSIVE
-   ========================================================================== */
-@media(max-width:1024px) {
-  .z-row { grid-template-columns: 1fr; gap: 48px; text-align: center; }
-  .z-row.reverse .z-visual { order: -1; }
-  .z-visual { order: -1; }
-  .dl-row { flex-direction: column; text-align: center; }
-  .store-btns { justify-content: center; }
-  .f-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media(max-width:768px) {
-  nav { padding: 11px 18px; }
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  .burger-btn { display: block; }
-  .nav-lang-desktop { display: none; }
-  .sc { padding: 60px 18px; }
-  .feature-section { padding: 60px 18px; }
-  .phone-mockup { width: 220px; height: 440px; border-radius: 34px; border-width: 5px; }
-  .phone-notch { width: 85px; height: 24px; border-radius: 0 0 13px 13px; }
-  .phone-screen-img { border-radius: 29px; }
-  .hero-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-  .hero-phone-area { margin-top: 28px; }
-  .f-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .free-grid { grid-template-columns: 1fr; gap: 16px; }
-  .free-card { padding: 32px 24px; }
-  .problem-card { padding: 40px 28px; }
-  .dl-row { gap: 36px; }
-  #features, #free, #download { padding: 70px 18px; }
-}
-@media(max-width:480px) {
-  .f-grid { grid-template-columns: 1fr; }
-  .f-card { padding: 22px 18px; }
-  .hero-pills { gap: 6px; }
-  .pill { padding: 5px 12px; font-size: .75rem; }
-  .hero-sun { width: 90px; height: 90px; }
-  .sun-core { width: 60px; height: 60px; }
-  .sun-ray { width: 90px; height: 90px; }
-}
-
-/* ==========================================================================
-   MOBILE PERFORMANCE
-   ========================================================================== */
-@media(max-width:768px) {
-  .hero-shape { animation: none; }
-  .sun-core { animation: none; box-shadow: 0 0 40px rgba(255,179,71,.2); }
-  .sun-ray { animation: none; }
-  .scroll-hint { animation: none; }
-  .f-card:hover, .free-card:hover, .store-btn:hover { transform: none; box-shadow: var(--shadow-card); }
-}
+/* Inline-flex for badges etc */
+.i18n-iflex[data-lang-en]{display:none}
+.i18n-iflex[data-lang-ru]{display:inline-flex}
+html[lang="en"] .i18n-iflex[data-lang-ru]{display:none}
+html[lang="en"] .i18n-iflex[data-lang-en]{display:inline-flex}
 </style>
 </head>
 <body>
 
-<!-- ======== NAV ======== -->
-<nav>
-  <a href="#hero" class="nav-logo">Lummo</a>
-  <ul class="nav-links">
-    <li><a href="#sleep" data-i18n="nav.features">Features</a></li>
-    <li><a href="#free" data-i18n="nav.whyFree">Why Free</a></li>
-    <li><a href="#download" data-i18n="nav.download">Download</a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="lang-switch nav-lang-desktop">
-      <button class="lang-btn" data-lang="ru">RU</button>
-      <span class="lang-divider">|</span>
-      <button class="lang-btn active" data-lang="en">EN</button>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Lummo</a>
+    <div class="nav-links-desktop">
+      <a href="#features"><span data-lang-ru>Функции</span><span data-lang-en>Features</span></a>
+      <a href="#ai"><span data-lang-ru>AI</span><span data-lang-en>AI</span></a>
+      <a href="#values"><span data-lang-ru>Почему мы</span><span data-lang-en>Why us</span></a>
     </div>
-    <a href="#download" class="nav-cta" data-i18n="nav.cta">Get the App</a>
-    <button class="burger-btn" id="burgerBtn" aria-label="Menu" aria-expanded="false">
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-      <span class="burger-line"></span>
-    </button>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#download" class="nav-cta">
+        <span data-lang-ru>Скачать</span><span data-lang-en>Download</span>
+      </a>
+    </div>
   </div>
 </nav>
 
-<!-- ======== MOBILE MENU ======== -->
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-inner">
-    <ul class="mobile-menu-links">
-      <li><a href="#sleep" data-i18n="nav.features">Features</a></li>
-      <li><a href="#free" data-i18n="nav.whyFree">Why Free</a></li>
-      <li><a href="#download" data-i18n="nav.download">Download</a></li>
-    </ul>
-    <div class="mobile-lang-switch">
-      <button class="lang-btn" data-lang="ru">RU</button>
-      <span class="lang-divider">|</span>
-      <button class="lang-btn active" data-lang="en">EN</button>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-content">
+
+      <div class="hero-badge i18n-iflex" data-lang-ru>
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Бесплатно · Без подписки
+      </div>
+      <div class="hero-badge i18n-iflex" data-lang-en>
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Free · No subscription
+      </div>
+
+      <h1>
+        <span data-lang-ru>Всё о малыше<br>в <em>одном</em> приложении</span>
+        <span data-lang-en>Everything about<br>your baby in <em>one</em> app</span>
+      </h1>
+      <p class="hero-sub">
+        <span data-lang-ru>Трекер сна, кормлений, здоровья и роста с AI-аналитикой. Работает офлайн. Данные только на вашем устройстве.</span>
+        <span data-lang-en>Sleep, feeding, health & growth tracker with AI analytics. Works offline. Data stays on your device.</span>
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="store-btn store-btn-apple">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="#" class="store-btn store-btn-google">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+          Google Play
+        </a>
+      </div>
     </div>
-    <a href="#download" class="mobile-menu-cta" data-i18n="nav.ctaFull">Get the App</a>
+    <div class="hero-phone">
+      <div class="hero-phone-frame">
+        <img src="screenshots/hero.svg" alt="Lummo app screenshot" loading="eager">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">35<span>+</span></div>
+      <div class="stat-label"><span data-lang-ru>экранов</span><span data-lang-en>screens</span></div>
+    </div>
+    <div>
+      <div class="stat-num">30<span>+</span></div>
+      <div class="stat-label"><span data-lang-ru>типов активностей</span><span data-lang-en>activity types</span></div>
+    </div>
+    <div>
+      <div class="stat-num">103<span>K</span></div>
+      <div class="stat-label"><span data-lang-ru>строк кода</span><span data-lang-en>lines of code</span></div>
+    </div>
+    <div>
+      <div class="stat-num">0<span>₽</span></div>
+      <div class="stat-label"><span data-lang-ru>навсегда</span><span data-lang-en>forever</span></div>
+    </div>
   </div>
 </div>
 
-<!-- ================================================================
-     HERO
-     ================================================================ -->
-<section id="hero" class="sc">
-  <div class="hero-deco">
-    <div class="hero-circle hero-circle-1"></div>
-    <div class="hero-circle hero-circle-2"></div>
-    <div class="hero-circle hero-circle-3"></div>
-    <div class="hero-shape hero-shape-1"></div>
-    <div class="hero-shape hero-shape-2"></div>
-    <div class="hero-shape hero-shape-3"></div>
-    <div class="hero-shape hero-shape-4"></div>
-  </div>
-
-  <div class="hero-body">
-    <div class="hero-sun reveal">
-      <div class="sun-core"></div>
-      <div class="sun-ray"></div>
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2><span data-lang-ru>Что умеет Lummo</span><span data-lang-en>What Lummo can do</span></h2>
+      <p><span data-lang-ru>Всё необходимое для трекинга здоровья и развития ребёнка — в одном месте</span><span data-lang-en>Everything you need to track your child's health and development — in one place</span></p>
     </div>
 
-    <h1 class="hero-title reveal" data-i18n="hero.title">Your child's first years.<br><em>Every moment tracked.</em></h1>
-    <p class="hero-sub reveal" data-i18n="hero.sub">Free baby tracker with AI insights. Works offline.</p>
-
-    <div class="hero-pills reveal">
-      <span class="pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-        <span data-i18n="hero.pill1">35+ screens</span>
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
-        <span data-i18n="hero.pill2">Works offline</span>
-      </span>
-      <span class="pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <span data-i18n="hero.pill3">Free forever</span>
-      </span>
-    </div>
-
-    <div class="hero-phone-area reveal">
-      <div class="phone-mockup">
-        <div class="phone-notch"></div>
-        <img src="screenshots/hero.svg" alt="Lummo app overview" class="phone-screen-img">
+    <!-- RU features -->
+    <div class="features-grid i18n-grid" data-lang-ru>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--sleep">☽</div>
+        <h3>Сон</h3>
+        <p>Таймер, журнал, статистика длительности и паттернов. Дневной и ночной сон.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--feed">🍼</div>
+        <h3>Кормление</h3>
+        <p>Грудь, бутылочка, прикорм. Объём, длительность, расписание и напоминания.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--diaper">🧷</div>
+        <h3>Подгузники</h3>
+        <p>Быстрая фиксация смены. Статистика по типам и частоте за любой период.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--health">🌡</div>
+        <h3>Здоровье</h3>
+        <p>Температура, лекарства, симптомы, визиты к врачу. Всё в одной карточке.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--growth">📏</div>
+        <h3>Рост и вес</h3>
+        <p>Графики развития, перцентили ВОЗ. Отслеживание динамики с рождения.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--activity">⚡</div>
+        <h3>Активности</h3>
+        <p>Прогулки, купание, tummy time и 20+ других типов. Гибкая настройка.</p>
       </div>
     </div>
-  </div>
 
-  <button class="scroll-hint" aria-label="Scroll down" onclick="document.getElementById('problem').scrollIntoView({behavior:'smooth'})">
-    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-  </button>
-</section>
-
-<!-- ================================================================
-     THE PROBLEM
-     ================================================================ -->
-<section id="problem" class="sc">
-  <div class="problem-card reveal">
-    <p class="prob-num">8–12</p>
-    <p class="prob-sub" data-i18n="prob.sub">events every day</p>
-    <p class="prob-desc" data-i18n="prob.desc">Feedings, naps, diapers, medications, temperature, weight.<br><strong>Most parents forget half of them by evening.</strong></p>
-    <p class="prob-punch" data-i18n="prob.punch">Lummo remembers everything.</p>
-  </div>
-</section>
-
-<!-- ================================================================
-     SLEEP
-     ================================================================ -->
-<section id="sleep" class="feature-section">
-  <div class="z-row">
-    <div class="z-text">
-      <span class="label-tag label-sleep reveal" data-i18n="sleep.label">Sleep tracking</span>
-      <h2 class="heading reveal" data-i18n="sleep.heading">One tap to start.<br>AI predicts the next nap.</h2>
-      <p class="body-text reveal" data-i18n="sleep.body1">Start the timer with one touch. Lummo analyzes your child's sleep patterns and predicts when the next sleep window opens. Smart notifications before the window closes.</p>
-      <p class="body-text reveal" data-i18n="sleep.body2">Total sleep, nap count, night wakings, sleep quality — in numbers, not guessing. Trends over days, weeks, months.</p>
-    </div>
-    <div class="z-visual">
-      <div class="phone-mockup reveal">
-        <div class="phone-notch"></div>
-        <img src="screenshots/sleep.svg" alt="Lummo sleep tracking" class="phone-screen-img">
+    <!-- EN features -->
+    <div class="features-grid i18n-grid" data-lang-en>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--sleep">☽</div>
+        <h3>Sleep</h3>
+        <p>Timer, journal, duration & pattern stats. Day and night sleep tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--feed">🍼</div>
+        <h3>Feeding</h3>
+        <p>Breast, bottle, solids. Volume, duration, schedule and reminders.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--diaper">🧷</div>
+        <h3>Diapers</h3>
+        <p>Quick change logging. Stats by type and frequency for any period.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--health">🌡</div>
+        <h3>Health</h3>
+        <p>Temperature, medications, symptoms, doctor visits. All in one card.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--growth">📏</div>
+        <h3>Growth</h3>
+        <p>Growth charts, WHO percentiles. Track dynamics from birth.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon feature-icon--activity">⚡</div>
+        <h3>Activities</h3>
+        <p>Walks, bathing, tummy time & 20+ more types. Fully customizable.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     FEEDING
-     ================================================================ -->
-<section id="feeding" class="feature-section">
-  <div class="z-row reverse">
-    <div class="z-text">
-      <span class="label-tag label-feeding reveal" data-i18n="feed.label">Feeding</span>
-      <h2 class="heading reveal" data-i18n="feed.heading">Breast, bottle, solids —<br>timed to the second.</h2>
-      <p class="body-text reveal" data-i18n="feed.body1">Which breast was last? How long since the last feeding? How much expressed milk is left?</p>
-      <p class="body-text reveal" data-i18n="feed.body2">Lummo tracks it all. Timer for breastfeeding with left/right memory. Volume tracking for bottles. Solids log with categories. You just glance at your phone.</p>
+<div class="section-divider"></div>
+
+<!-- VALUES -->
+<section class="section" id="values">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2><span data-lang-ru>Бесплатно · Офлайн · Приватно</span><span data-lang-en>Free · Offline · Private</span></h2>
     </div>
-    <div class="z-visual">
-      <div class="phone-mockup reveal">
-        <div class="phone-notch"></div>
-        <img src="screenshots/feeding.svg" alt="Lummo feeding timer" class="phone-screen-img">
+
+    <!-- RU values -->
+    <div class="values-grid i18n-grid" data-lang-ru>
+      <div class="value-card value-card--free">
+        <span class="value-icon">💎</span>
+        <h3>Полностью бесплатно</h3>
+        <p>Никаких подписок, встроенных покупок или скрытых платежей. Все функции доступны сразу.</p>
+      </div>
+      <div class="value-card value-card--offline">
+        <span class="value-icon">📡</span>
+        <h3>Работает офлайн</h3>
+        <p>Не нужен интернет для записи данных. Полный функционал без подключения к сети.</p>
+      </div>
+      <div class="value-card value-card--private">
+        <span class="value-icon">🔒</span>
+        <h3>Данные — ваши</h3>
+        <p>Всё хранится на устройстве. Никакой телеметрии, никаких серверов. Экспорт для педиатра.</p>
+      </div>
+    </div>
+
+    <!-- EN values -->
+    <div class="values-grid i18n-grid" data-lang-en>
+      <div class="value-card value-card--free">
+        <span class="value-icon">💎</span>
+        <h3>Completely free</h3>
+        <p>No subscriptions, in-app purchases, or hidden fees. All features available from day one.</p>
+      </div>
+      <div class="value-card value-card--offline">
+        <span class="value-icon">📡</span>
+        <h3>Works offline</h3>
+        <p>No internet needed for data logging. Full functionality without a connection.</p>
+      </div>
+      <div class="value-card value-card--private">
+        <span class="value-icon">🔒</span>
+        <h3>Your data stays yours</h3>
+        <p>Everything is stored on-device. No telemetry, no servers. Export for your pediatrician.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     HEALTH & GROWTH
-     ================================================================ -->
-<section id="health" class="feature-section">
-  <div class="z-row">
-    <div class="z-text">
-      <span class="label-tag label-health reveal" data-i18n="health.label">Health & Growth</span>
-      <h2 class="heading reveal" data-i18n="health.heading">Charts your pediatrician<br>will love.</h2>
-      <p class="body-text reveal" data-i18n="health.body1">Temperature, medications, weight, height — everything in clean charts with percentile curves. Export a PDF report before your next visit.</p>
-      <p class="body-text reveal" data-i18n="health.body2">Track vaccinations, allergies, teeth eruptions. Every detail in one place, always accessible, even without internet.</p>
+<div class="section-divider"></div>
+
+<!-- AI SECTION -->
+<section class="ai-section" id="ai">
+  <div class="section-inner">
+    <div class="ai-content">
+      <h2>
+        <span data-lang-ru>AI-советник —<br>ваш <em>цифровой педиатр</em></span>
+        <span data-lang-en>AI Advisor —<br>your <em>digital pediatrician</em></span>
+      </h2>
+      <p class="i18n-block" data-lang-ru>Искусственный интеллект анализирует данные и помогает понять паттерны поведения ребёнка.</p>
+      <p class="i18n-block" data-lang-en>AI analyzes your data and helps understand your child's behavioral patterns.</p>
+
+      <div class="ai-features i18n-flex" data-lang-ru>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Анализ паттернов сна и кормления</div></div>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Персональные рекомендации на основе данных</div></div>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Ответы на вопросы о развитии ребёнка</div></div>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Подготовка сводки для визита к педиатру</div></div>
+      </div>
+      <div class="ai-features i18n-flex" data-lang-en>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Sleep & feeding pattern analysis</div></div>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Personalized data-driven recommendations</div></div>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Answers to child development questions</div></div>
+        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Summary reports for pediatrician visits</div></div>
+      </div>
     </div>
-    <div class="z-visual">
-      <div class="phone-mockup reveal">
-        <div class="phone-notch"></div>
-        <img src="screenshots/health.svg" alt="Lummo health charts" class="phone-screen-img">
+    <div class="ai-phone">
+      <div class="ai-phone-frame">
+        <img src="screenshots/ai.svg" alt="AI Advisor" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     AI ADVISOR
-     ================================================================ -->
-<section id="ai" class="feature-section">
-  <div class="z-row reverse">
-    <div class="z-text">
-      <span class="label-tag label-ai reveal" data-i18n="ai.label">AI Advisor</span>
-      <h2 class="heading reveal" data-i18n="ai.heading">Ask anything.<br>Get answers from <em style="font-style:normal;color:var(--mint)">your</em> child's data.</h2>
-      <p class="body-text reveal" data-i18n="ai.body1">"When should we introduce solids?" "Is this temperature normal?" "Why is she waking up at night?"</p>
-      <p class="body-text reveal" data-i18n="ai.body2">Lummo's AI analyzes your child's real data — not generic articles from Google. Personalized answers, right when you need them.</p>
+<!-- FOR WHO -->
+<section class="section" id="who">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2><span data-lang-ru>Для кого</span><span data-lang-en>Who it's for</span></h2>
     </div>
-    <div class="z-visual">
-      <div class="phone-mockup reveal">
-        <div class="phone-notch"></div>
-        <img src="screenshots/ai.svg" alt="Lummo AI advisor" class="phone-screen-img">
+
+    <div class="who-grid i18n-grid" data-lang-ru>
+      <div class="who-card">
+        <div class="who-emoji">👶</div>
+        <div>
+          <h3>Молодым родителям</h3>
+          <p>Первый ребёнок? Lummo поможет не растеряться: напомнит о кормлении, покажет статистику сна, подскажет через AI.</p>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-emoji">👨‍👩‍👧‍👦</div>
+        <div>
+          <h3>Многодетным семьям</h3>
+          <p>Несколько профилей детей в одном приложении. Переключение в два тапа. Никакой путаницы.</p>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-emoji">👩‍⚕️</div>
+        <div>
+          <h3>На приём к врачу</h3>
+          <p>Экспорт данных для педиатра: сон, питание, температура, вес. Вся история под рукой.</p>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-emoji">🤝</div>
+        <div>
+          <h3>Няням и бабушкам</h3>
+          <p>Простой интерфейс, понятный без инструкций. Записать кормление или сон — два нажатия.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="who-grid i18n-grid" data-lang-en>
+      <div class="who-card">
+        <div class="who-emoji">👶</div>
+        <div>
+          <h3>New parents</h3>
+          <p>First child? Lummo helps you stay on track: feeding reminders, sleep stats, and AI-powered advice.</p>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-emoji">👨‍👩‍👧‍👦</div>
+        <div>
+          <h3>Large families</h3>
+          <p>Multiple child profiles in one app. Switch in two taps. No confusion.</p>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-emoji">👩‍⚕️</div>
+        <div>
+          <h3>Doctor visits</h3>
+          <p>Export data for your pediatrician: sleep, nutrition, temperature, weight. Full history at your fingertips.</p>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-emoji">🤝</div>
+        <div>
+          <h3>Nannies & grandparents</h3>
+          <p>Simple interface, no instructions needed. Log a feeding or nap — just two taps.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     EVERYTHING ELSE — Grid
-     ================================================================ -->
-<section id="features" class="sc">
-  <div class="sc-inner">
-    <div class="sc-center">
-      <span class="label-tag reveal" style="background:rgba(45,43,61,.05);color:var(--text-muted);" data-i18n="feat.label">And so much more</span>
-      <h2 class="heading reveal" style="margin-top:12px" data-i18n="feat.heading">35+ screens. 30+ activity types.<br>Everything in one app.</h2>
-    </div>
-    <div class="f-grid">
-      <div class="f-card fc-1 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M17.66 8L12 2.35 6.34 8A8.02 8.02 0 0 0 4 13.64c0 2 .78 4.11 2.34 5.67a7.99 7.99 0 0 0 11.32 0c1.56-1.56 2.34-3.67 2.34-5.67S19.22 9.56 17.66 8zM6 14c.01-2 .62-3.27 1.76-4.4L12 5.27l4.24 4.38C17.38 10.77 17.99 12 18 14H6z"/></svg></div><h4 data-i18n="feat.c1.t">Diapers</h4><p data-i18n="feat.c1.d">Wet, dirty, mixed — one tap</p></div>
-      <div class="f-card fc-2 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg></div><h4 data-i18n="feat.c2.t">Activities</h4><p data-i18n="feat.c2.d">30+ types: walks, baths, tummy time</p></div>
-      <div class="f-card fc-3 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg></div><h4 data-i18n="feat.c3.t">Milestones</h4><p data-i18n="feat.c3.d">First smile, first step — capture them all</p></div>
-      <div class="f-card fc-4 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6V22h12v-5.99h-.01L18 16l-4-4 4-3.99-.01-.01H18V2H6zm10 14.5V20H8v-3.5l4-4 4 4zM8 7.5V4h8v3.5l-4 4-4-4z"/></svg></div><h4 data-i18n="feat.c4.t">Pumping</h4><p data-i18n="feat.c4.d">Sessions, volume, storage tracking</p></div>
-      <div class="f-card fc-5 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div><h4 data-i18n="feat.c5.t">PDF Reports</h4><p data-i18n="feat.c5.d">For your pediatrician visits</p></div>
-      <div class="f-card fc-6 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><h4 data-i18n="feat.c6.t">Family Sync</h4><p data-i18n="feat.c6.d">Both parents see everything</p></div>
-      <div class="f-card fc-7 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z"/></svg></div><h4 data-i18n="feat.c7.t">Widgets</h4><p data-i18n="feat.c7.d">iOS & Android home screen</p></div>
-      <div class="f-card fc-8 reveal"><div class="f-card-ico"><svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></div><h4 data-i18n="feat.c8.t">Reminders</h4><p data-i18n="feat.c8.d">Never miss a medication dose</p></div>
-    </div>
+<div class="section-divider"></div>
+
+<!-- CTA -->
+<section class="cta-section" id="download">
+  <h2>
+    <span data-lang-ru>Попробуйте <em>Lummo</em> сегодня</span>
+    <span data-lang-en>Try <em>Lummo</em> today</span>
+  </h2>
+  <p>
+    <span data-lang-ru>Бесплатно. Без регистрации. Без подписки.</span>
+    <span data-lang-en>Free. No sign-up. No subscription.</span>
+  </p>
+  <div class="cta-buttons">
+    <a href="#" class="store-btn store-btn-apple">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store
+    </a>
+    <a href="#" class="store-btn store-btn-google">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+      Google Play
+    </a>
   </div>
 </section>
 
-<!-- ================================================================
-     FREE + OFFLINE
-     ================================================================ -->
-<section id="free" class="sc">
-  <div class="sc-inner">
-    <div class="sc-center">
-      <h2 class="heading reveal" data-i18n="free.heading">No subscription. No internet required.<br>Your data, your device.</h2>
-    </div>
-    <div class="free-grid">
-      <div class="free-card fi-1 reveal">
-        <div class="free-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
-        <h3 data-i18n="free.c1.t">Free</h3>
-        <p data-i18n="free.c1.d">Core features cost nothing. Not a trial — free forever. No paywall for what matters.</p>
-      </div>
-      <div class="free-card fi-2 reveal">
-        <div class="free-ico"><svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg></div>
-        <h3 data-i18n="free.c2.t">Offline</h3>
-        <p data-i18n="free.c2.d">Works without WiFi or mobile data. Log feedings on a plane, track sleep in the countryside. Always ready.</p>
-      </div>
-      <div class="free-card fi-3 reveal">
-        <div class="free-ico"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1s3.1 1.39 3.1 3.1v2z"/></svg></div>
-        <h3 data-i18n="free.c3.t">Private</h3>
-        <p data-i18n="free.c3.d">Your child's data stays on your device. No mandatory accounts. No data collection. No selling your information.</p>
-      </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-copy">© 2025 Lummo</div>
+    <div class="footer-links">
+      <a href="#"><span data-lang-ru>Политика конфиденциальности</span><span data-lang-en>Privacy Policy</span></a>
+      <a href="#"><span data-lang-ru>Условия использования</span><span data-lang-en>Terms of Service</span></a>
+      <a href="mailto:support@lummo.app"><span data-lang-ru>Контакт</span><span data-lang-en>Contact</span></a>
     </div>
   </div>
-</section>
-
-<!-- ================================================================
-     DOWNLOAD
-     ================================================================ -->
-<section id="download" class="sc">
-  <div class="dl-row">
-    <div class="phone-mockup reveal">
-      <div class="phone-notch"></div>
-      <img src="screenshots/download.svg" alt="Lummo app" class="phone-screen-img">
-    </div>
-    <div class="dl-text">
-      <h2 class="reveal" data-i18n="dl.heading">Download Lummo.<br>It's free.</h2>
-      <p class="reveal" data-i18n="dl.desc">Your quiet companion for the first years. Track everything, remember everything. No subscription, no internet required.</p>
-      <div class="store-btns reveal">
-        <a class="store-btn" href="#" aria-label="App Store">
-          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          <div class="s-info"><span class="soon" data-i18n="dl.soon">Coming soon</span><span class="name">App Store</span></div>
-        </a>
-        <a class="store-btn" href="#" aria-label="Google Play">
-          <svg viewBox="0 0 24 24"><path d="M3.61 1.81L13.79 12 3.61 22.19c-.38-.17-.61-.52-.61-.93V2.74c0-.41.23-.76.61-.93zm10.89 10.9l2.3 2.3-10.94 6.33 8.64-8.63zm3.2-3.2l2.3 2.3-2.3 2.3-2.73-2.3 2.73-2.3zM5.86 2.66L16.8 8.99l-2.3 2.3-8.64-8.63z"/></svg>
-          <div class="s-info"><span class="soon" data-i18n="dl.soon">Coming soon</span><span class="name">Google Play</span></div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======== FOOTER ======== -->
-<footer>
-  <div class="ft-links">
-    <a href="privacy.html" data-i18n="ft.privacy">Privacy Policy</a>
-    <a href="terms.html" data-i18n="ft.terms">Terms of Service</a>
-    <a href="mailto:support@lummo.app" data-i18n="ft.contact">Contact</a>
-  </div>
-  <p class="ft-copy">&copy; 2025 Lummo. <span data-i18n="ft.rights">All rights reserved.</span></p>
 </footer>
 
 <script>
-/* ==========================================================================
-   i18n — TRANSLATIONS
-   ========================================================================== */
-var i18n = {
-  ru: {
-    'nav.features': 'Возможности',
-    'nav.whyFree': 'Почему бесплатно',
-    'nav.download': 'Скачать',
-    'nav.cta': 'Скачать',
-    'nav.ctaFull': 'Скачать приложение',
-    'hero.title': 'Первые годы малыша.<br><em>Каждый момент — на счету.</em>',
-    'hero.sub': 'Бесплатный трекер для малышей с ИИ. Работает без интернета.',
-    'hero.pill1': '35+ экранов',
-    'hero.pill2': 'Без интернета',
-    'hero.pill3': 'Бесплатно навсегда',
-    'prob.sub': 'событий каждый день',
-    'prob.desc': 'Кормления, сон, подгузники, лекарства, температура, вес.<br><strong>Большинство родителей к вечеру забывают половину.</strong>',
-    'prob.punch': 'Lummo помнит всё.',
-    'sleep.label': 'Трекер сна',
-    'sleep.heading': 'Одно касание — таймер пошёл.<br>ИИ предскажет следующий сон.',
-    'sleep.body1': 'Запустите таймер одним нажатием. Lummo анализирует паттерны сна вашего ребёнка и предсказывает, когда откроется следующее «окно сна». Умные уведомления до того, как окно закроется.',
-    'sleep.body2': 'Общий сон, количество дневных снов, ночные пробуждения, качество сна — в цифрах, а не на глаз. Тренды за дни, недели, месяцы.',
-    'feed.label': 'Кормление',
-    'feed.heading': 'Грудь, бутылочка, прикорм —<br>с точностью до секунды.',
-    'feed.body1': 'Какая грудь была последней? Сколько прошло с прошлого кормления? Сколько сцеженного молока осталось?',
-    'feed.body2': 'Lummo следит за всем. Таймер кормления с памятью лево/право. Учёт объёма для бутылочек. Журнал прикорма по категориям. Вы просто смотрите на экран.',
-    'health.label': 'Здоровье и рост',
-    'health.heading': 'Графики, которые<br>оценит ваш педиатр.',
-    'health.body1': 'Температура, лекарства, вес, рост — всё на понятных графиках с перцентильными кривыми. Экспортируйте PDF-отчёт перед визитом к врачу.',
-    'health.body2': 'Прививки, аллергии, прорезывание зубов. Каждая деталь — в одном месте, всегда под рукой, даже без интернета.',
-    'ai.label': 'ИИ-помощник',
-    'ai.heading': 'Спросите что угодно.<br>Ответы — на основе данных <em style="font-style:normal;color:var(--mint)">вашего</em> ребёнка.',
-    'ai.body1': '«Когда вводить прикорм?» «Эта температура — нормально?» «Почему она просыпается ночью?»',
-    'ai.body2': 'ИИ Lummo анализирует реальные данные вашего ребёнка — не общие статьи из интернета. Персональные ответы именно тогда, когда они нужны.',
-    'feat.label': 'И это ещё не всё',
-    'feat.heading': '35+ экранов. 30+ типов активностей.<br>Всё в одном приложении.',
-    'feat.c1.t': 'Подгузники', 'feat.c1.d': 'Мокрый, грязный, смешанный — одно касание',
-    'feat.c2.t': 'Активности', 'feat.c2.d': '30+ видов: прогулки, купание, время на животике',
-    'feat.c3.t': 'Достижения', 'feat.c3.d': 'Первая улыбка, первый шаг — сохраните каждое',
-    'feat.c4.t': 'Сцеживание', 'feat.c4.d': 'Сеансы, объём, учёт запасов',
-    'feat.c5.t': 'PDF-отчёты', 'feat.c5.d': 'Для визитов к педиатру',
-    'feat.c6.t': 'Семейный доступ', 'feat.c6.d': 'Оба родителя видят всё',
-    'feat.c7.t': 'Виджеты', 'feat.c7.d': 'На главный экран iOS и Android',
-    'feat.c8.t': 'Напоминания', 'feat.c8.d': 'Не пропустите приём лекарства',
-    'free.heading': 'Без подписки. Без интернета.<br>Ваши данные — на вашем устройстве.',
-    'free.c1.t': 'Бесплатно', 'free.c1.d': 'Основные функции не стоят ничего. Не пробный период — бесплатно навсегда. Никаких платных стен для главного.',
-    'free.c2.t': 'Офлайн', 'free.c2.d': 'Работает без WiFi и мобильных данных. Логируйте кормления в самолёте, отслеживайте сон за городом. Всегда наготове.',
-    'free.c3.t': 'Приватность', 'free.c3.d': 'Данные вашего ребёнка остаются на вашем устройстве. Никаких обязательных аккаунтов. Никакого сбора данных. Никакой продажи информации.',
-    'dl.heading': 'Скачайте Lummo.<br>Это бесплатно.',
-    'dl.desc': 'Ваш тихий помощник в первые годы. Отслеживайте всё, помните всё. Без подписки, без интернета.',
-    'dl.soon': 'Скоро',
-    'ft.privacy': 'Политика конфиденциальности',
-    'ft.terms': 'Условия использования',
-    'ft.contact': 'Связаться',
-    'ft.rights': 'Все права защищены.',
-    '_title': 'Lummo — Бесплатный трекер для малышей с ИИ | Сон, кормление, здоровье',
-    '_desc': 'Бесплатное приложение для отслеживания развития ребёнка с ИИ. Сон, кормление, подгузники, здоровье и рост. Работает офлайн. Без подписки. 35+ экранов, 30+ типов активностей.'
-  },
-  en: {
-    'nav.features': 'Features',
-    'nav.whyFree': 'Why Free',
-    'nav.download': 'Download',
-    'nav.cta': 'Get the App',
-    'nav.ctaFull': 'Get the App',
-    'hero.title': 'Your child\'s first years.<br><em>Every moment tracked.</em>',
-    'hero.sub': 'Free baby tracker with AI insights. Works offline.',
-    'hero.pill1': '35+ screens',
-    'hero.pill2': 'Works offline',
-    'hero.pill3': 'Free forever',
-    'prob.sub': 'events every day',
-    'prob.desc': 'Feedings, naps, diapers, medications, temperature, weight.<br><strong>Most parents forget half of them by evening.</strong>',
-    'prob.punch': 'Lummo remembers everything.',
-    'sleep.label': 'Sleep tracking',
-    'sleep.heading': 'One tap to start.<br>AI predicts the next nap.',
-    'sleep.body1': 'Start the timer with one touch. Lummo analyzes your child\'s sleep patterns and predicts when the next sleep window opens. Smart notifications before the window closes.',
-    'sleep.body2': 'Total sleep, nap count, night wakings, sleep quality — in numbers, not guessing. Trends over days, weeks, months.',
-    'feed.label': 'Feeding',
-    'feed.heading': 'Breast, bottle, solids —<br>timed to the second.',
-    'feed.body1': 'Which breast was last? How long since the last feeding? How much expressed milk is left?',
-    'feed.body2': 'Lummo tracks it all. Timer for breastfeeding with left/right memory. Volume tracking for bottles. Solids log with categories. You just glance at your phone.',
-    'health.label': 'Health & Growth',
-    'health.heading': 'Charts your pediatrician<br>will love.',
-    'health.body1': 'Temperature, medications, weight, height — everything in clean charts with percentile curves. Export a PDF report before your next visit.',
-    'health.body2': 'Track vaccinations, allergies, teeth eruptions. Every detail in one place, always accessible, even without internet.',
-    'ai.label': 'AI Advisor',
-    'ai.heading': 'Ask anything.<br>Get answers from <em style="font-style:normal;color:var(--mint)">your</em> child\'s data.',
-    'ai.body1': '"When should we introduce solids?" "Is this temperature normal?" "Why is she waking up at night?"',
-    'ai.body2': 'Lummo\'s AI analyzes your child\'s real data — not generic articles from Google. Personalized answers, right when you need them.',
-    'feat.label': 'And so much more',
-    'feat.heading': '35+ screens. 30+ activity types.<br>Everything in one app.',
-    'feat.c1.t': 'Diapers', 'feat.c1.d': 'Wet, dirty, mixed — one tap',
-    'feat.c2.t': 'Activities', 'feat.c2.d': '30+ types: walks, baths, tummy time',
-    'feat.c3.t': 'Milestones', 'feat.c3.d': 'First smile, first step — capture them all',
-    'feat.c4.t': 'Pumping', 'feat.c4.d': 'Sessions, volume, storage tracking',
-    'feat.c5.t': 'PDF Reports', 'feat.c5.d': 'For your pediatrician visits',
-    'feat.c6.t': 'Family Sync', 'feat.c6.d': 'Both parents see everything',
-    'feat.c7.t': 'Widgets', 'feat.c7.d': 'iOS & Android home screen',
-    'feat.c8.t': 'Reminders', 'feat.c8.d': 'Never miss a medication dose',
-    'free.heading': 'No subscription. No internet required.<br>Your data, your device.',
-    'free.c1.t': 'Free', 'free.c1.d': 'Core features cost nothing. Not a trial — free forever. No paywall for what matters.',
-    'free.c2.t': 'Offline', 'free.c2.d': 'Works without WiFi or mobile data. Log feedings on a plane, track sleep in the countryside. Always ready.',
-    'free.c3.t': 'Private', 'free.c3.d': 'Your child\'s data stays on your device. No mandatory accounts. No data collection. No selling your information.',
-    'dl.heading': 'Download Lummo.<br>It\'s free.',
-    'dl.desc': 'Your quiet companion for the first years. Track everything, remember everything. No subscription, no internet required.',
-    'dl.soon': 'Coming soon',
-    'ft.privacy': 'Privacy Policy',
-    'ft.terms': 'Terms of Service',
-    'ft.contact': 'Contact',
-    'ft.rights': 'All rights reserved.',
-    '_title': 'Lummo — Free Baby Tracker with AI | Sleep, Feeding, Health',
-    '_desc': 'Free baby tracker app with AI-powered insights. Track sleep, feeding, diapers, health, and growth. Works offline. No subscription. 35+ screens, 30+ activity types.'
-  }
-};
-
-/* ==========================================================================
-   LANGUAGE SWITCHER
-   ========================================================================== */
-(function(){
-  var currentLang = localStorage.getItem('lummo-lang') || 'en';
-
-  function setLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('lummo-lang', lang);
-    document.documentElement.lang = lang;
-    var els = document.querySelectorAll('[data-i18n]');
-    var dict = i18n[lang];
-    for (var i = 0; i < els.length; i++) {
-      var key = els[i].getAttribute('data-i18n');
-      if (dict[key] !== undefined) els[i].innerHTML = dict[key];
-    }
-    if (dict['_title']) document.title = dict['_title'];
-    var metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc && dict['_desc']) metaDesc.setAttribute('content', dict['_desc']);
-    var btns = document.querySelectorAll('.lang-btn');
-    for (var j = 0; j < btns.length; j++) {
-      btns[j].classList.toggle('active', btns[j].getAttribute('data-lang') === lang);
-    }
-  }
-
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest('.lang-btn');
-    if (btn) {
-      var lang = btn.getAttribute('data-lang');
-      if (lang) setLang(lang);
-    }
+function setLang(lang){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('active',b.textContent.trim()===lang.toUpperCase());
   });
-
-  // Apply saved language on load
-  setLang(currentLang);
-  window.setLummoLang = setLang;
-})();
-
-/* ==========================================================================
-   MOBILE BURGER MENU
-   ========================================================================== */
+  try{localStorage.setItem('lummo-lang',lang)}catch(e){}
+}
 (function(){
-  var burger = document.getElementById('burgerBtn');
-  var menu = document.getElementById('mobileMenu');
-  if (!burger || !menu) return;
-  var isOpen = false;
-
-  function openMenu() {
-    isOpen = true;
-    burger.classList.add('active');
-    burger.setAttribute('aria-expanded', 'true');
-    menu.classList.add('open');
-    document.body.classList.add('menu-open');
-  }
-  function closeMenu() {
-    isOpen = false;
-    burger.classList.remove('active');
-    burger.setAttribute('aria-expanded', 'false');
-    menu.classList.remove('open');
-    document.body.classList.remove('menu-open');
-  }
-
-  burger.addEventListener('click', function(e) {
-    e.stopPropagation();
-    if (isOpen) closeMenu(); else openMenu();
-  });
-  var links = menu.querySelectorAll('a');
-  for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener('click', function() { closeMenu(); });
-  }
-  menu.addEventListener('click', function(e) {
-    if (e.target === menu) closeMenu();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && isOpen) closeMenu();
-  });
-  var touchStartY = 0;
-  menu.addEventListener('touchstart', function(e) { touchStartY = e.touches[0].clientY; }, { passive: true });
-  menu.addEventListener('touchend', function(e) {
-    if (e.changedTouches[0].clientY - touchStartY > 80) closeMenu();
-  }, { passive: true });
-})();
-
-/* ==========================================================================
-   SCROLL REVEAL (IntersectionObserver — no GSAP)
-   ========================================================================== */
-(function(){
-  var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    // Fallback: show all
-    for (var i = 0; i < els.length; i++) els[i].classList.add('visible');
-    return;
-  }
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-  els.forEach(function(el) { observer.observe(el); });
-})();
-
-/* ==========================================================================
-   NAV VISIBILITY (show after scrolling past hero)
-   ========================================================================== */
-(function(){
-  var navEl = document.querySelector('nav');
-  var hero = document.getElementById('hero');
-  if (!navEl || !hero) return;
-
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) {
-          navEl.classList.add('vis');
-        } else if (entry.intersectionRatio > 0.3) {
-          navEl.classList.remove('vis');
-        }
-      });
-    }, { threshold: [0, 0.3] });
-    obs.observe(hero);
-  } else {
-    // Fallback
-    navEl.classList.add('vis');
-  }
-})();
-
-/* ==========================================================================
-   STAGGERED REVEAL for grid cards
-   ========================================================================== */
-(function(){
-  function staggerReveal(selector) {
-    var cards = document.querySelectorAll(selector);
-    if (!cards.length || !('IntersectionObserver' in window)) return;
-    var parent = cards[0].parentElement;
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var items = parent.querySelectorAll('.reveal');
-          items.forEach(function(item, i) {
-            setTimeout(function() { item.classList.add('visible'); }, i * 80);
-          });
-          obs.unobserve(parent);
-        }
-      });
-    }, { threshold: 0.1 });
-    obs.observe(parent);
-  }
-  staggerReveal('.f-card');
-  staggerReveal('.free-card');
+  try{var s=localStorage.getItem('lummo-lang');if(s)setLang(s)}catch(e){}
 })();
 </script>
 </body>
