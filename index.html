@@ -994,12 +994,12 @@ html[data-theme="dark"] .tl-immersive{background:linear-gradient(180deg,#2A1E18 
 .tl-line-wrap{position:absolute;left:38px;top:40px;bottom:40px;width:4px;z-index:1;border-radius:2px;overflow:hidden}
 .tl-line-bg{position:absolute;inset:0;border-radius:2px;opacity:.15;background:rgba(255,255,255,.5)}
 html[data-theme="light"] .tl-line-bg{background:rgba(0,0,0,.06)}
-.tl-line-fill{position:absolute;top:0;left:0;right:0;height:0%;border-radius:2px}
+.tl-line-fill{position:absolute;top:0;left:0;right:0;height:0%;border-radius:2px;-webkit-mask-image:repeating-linear-gradient(180deg,#000 0px,#000 12px,transparent 12px,transparent 20px);mask-image:repeating-linear-gradient(180deg,#000 0px,#000 12px,transparent 12px,transparent 20px)}
 html[data-theme="light"] .tl-line-fill{background:linear-gradient(180deg,#F6571D 0%,#FF8A5C 12%,#6366F1 28%,#3B82F6 42%,#FFBE02 56%,#F6571D 70%,#A855F7 84%,#6366F1 100%)}
 html[data-theme="dark"] .tl-line-fill{background:linear-gradient(180deg,#FF8A5C 0%,#FF8A5C 12%,#818CF8 28%,#60A5FA 42%,#FFBE02 56%,#FF8A5C 70%,#A78BFA 84%,#818CF8 100%)}
 
 /* Timeline dot */
-.tl-dot{position:absolute;left:-42px;top:6px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;z-index:3;box-shadow:0 2px 12px rgba(0,0,0,.15);opacity:0;transform:scale(.5);transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1)}
+.tl-dot{position:absolute;left:-48px;top:6px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;z-index:3;box-shadow:0 2px 12px rgba(0,0,0,.15);opacity:0;transform:scale(.5);transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1)}
 .tl-card.tl-visible .tl-dot{opacity:1;transform:scale(1)}
 @keyframes tlDotPulse{0%,100%{box-shadow:0 2px 12px rgba(0,0,0,.15)}50%{box-shadow:0 2px 12px rgba(0,0,0,.15),0 0 0 8px rgba(255,255,255,.12)}}
 .tl-card.tl-visible .tl-dot{animation:tlDotPulse 2.5s ease-in-out infinite 1s}
@@ -1162,7 +1162,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 @media(max-width:768px){
   .tl-immersive-inner{padding:32px 18px 32px 54px}
   .tl-line-wrap{left:26px}
-  .tl-dot{left:-36px;width:26px;height:26px;font-size:.7rem}
+  .tl-dot{left:-39px;width:26px;height:26px;font-size:.7rem}
   .tl-card{padding:16px 16px}
   .tl-zzz-wrap{display:none}
   .tl-chart-svg{display:none}
@@ -1685,7 +1685,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
       <div class="tl-immersive-inner">
 
         <div class="tl-card tl-card--dawn" data-tl="dawn">
-          <div class="tl-dot tl-dot--dawn">🌅</div>
+          <div class="tl-dot tl-dot--dawn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C13.94 2 15.84 2.56 17.46 3.62C19.09 4.68 20.37 6.19 21.15 7.97C21.94 9.74 22.18 11.71 21.87 13.62C21.55 15.54 20.69 17.32 19.38 18.75" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 8.88C2.18 9.84 2.01 10.86 2 11.88" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.83 16C3.39 17.29 4.22 18.45 5.26 19.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.64 5.23C4.91 4.93 5.21 4.64 5.53 4.38" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.64 21.42C11.14 22.31 13.88 22.17 16.27 21.04" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">06:30</div>
           <div class="tl-title">Утро</div>
           <div class="tl-desc">Малыш проснулся. Одно нажатие — записала пробуждение. Lummo посчитал: 7.5 часов сна.</div>
@@ -1698,7 +1698,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--feed" data-tl="feed">
-          <div class="tl-dot tl-dot--feed">🍼</div>
+          <div class="tl-dot tl-dot--feed"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2.5 1.67V7.5C2.5 8.42 3.25 9.17 4.17 9.17H7.5C7.94 9.17 8.37 8.99 8.68 8.68C8.99 8.37 9.17 7.94 9.17 7.5V1.67" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83 1.67V18.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.67C16.39 1.67 15.33 2.11 14.55 2.89C13.77 3.67 13.33 4.73 13.33 5.83V10.83C13.33 11.75 14.08 12.5 15 12.5H17.5ZM17.5 12.5V18.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">07:00</div>
           <div class="tl-title">Первое кормление</div>
           <div class="tl-desc">Грудь, левая сторона, 15 минут. Два нажатия. Готово.</div>
@@ -1709,7 +1709,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--health" data-tl="health">
-          <div class="tl-dot tl-dot--health">🌡</div>
+          <div class="tl-dot tl-dot--health"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M11.67 3.33V12.12C12.3 12.48 12.8 13.05 13.08 13.73C13.36 14.41 13.41 15.16 13.22 15.87C13.03 16.57 12.61 17.2 12.03 17.65C11.45 18.09 10.73 18.34 10 18.34C9.27 18.34 8.55 18.09 7.97 17.65C7.39 17.2 6.97 16.57 6.78 15.87C6.59 15.16 6.64 14.41 6.92 13.73C7.2 13.05 7.7 12.48 8.33 12.12V3.33C8.33 2.89 8.51 2.47 8.82 2.15C9.13 1.84 9.56 1.67 10 1.67C10.44 1.67 10.87 1.84 11.18 2.15C11.49 2.47 11.67 2.89 11.67 3.33Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">09:00</div>
           <div class="tl-title">Температура после прививки</div>
           <div class="tl-desc">Записала. Lummo покажет динамику за день.</div>
@@ -1723,7 +1723,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--sleep" data-tl="sleep">
-          <div class="tl-dot tl-dot--sleep">😴</div>
+          <div class="tl-dot tl-dot--sleep"><svg width="18" height="18" viewBox="0 0 17 17" fill="none"><path d="M15.82 8.73C15.74 10.17 15.25 11.57 14.4 12.74C13.54 13.91 12.37 14.81 11.02 15.33C9.66 15.85 8.19 15.96 6.77 15.66C5.35 15.36 4.05 14.65 3.03 13.63C2.01 12.6 1.3 11.3 1 9.89C0.7 8.47 0.81 7 1.33 5.64C1.85 4.29 2.75 3.11 3.92 2.26C5.09 1.41 6.48 0.91 7.93 0.83C8.27 0.82 8.44 1.22 8.26 1.5C7.66 2.46 7.41 3.6 7.54 4.72C7.66 5.84 8.17 6.89 8.97 7.69C9.77 8.49 10.81 8.99 11.94 9.12C13.06 9.25 14.19 8.99 15.15 8.39C15.44 8.21 15.84 8.39 15.82 8.73Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">12:00</div>
           <div class="tl-title">Дневной сон</div>
           <div class="tl-desc">Таймер → 40 минут. Короткий. AI заметит паттерн через неделю.</div>
@@ -1735,7 +1735,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--afternoon" data-tl="ped">
-          <div class="tl-dot tl-dot--ped">👶</div>
+          <div class="tl-dot tl-dot--ped"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M8.33 13.33C8.75 13.58 9.33 13.75 10 13.75C10.67 13.75 11.25 13.58 11.67 13.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 10H12.51" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.15 5.68C16.73 6.53 17.14 7.49 17.33 8.5C17.62 8.64 17.85 8.85 18.02 9.11C18.19 9.38 18.27 9.69 18.27 10C18.27 10.31 18.19 10.62 18.02 10.89C17.85 11.15 17.62 11.36 17.33 11.5C16.97 13.18 16.05 14.68 14.71 15.76C13.38 16.84 11.72 17.43 10 17.43C8.28 17.43 6.62 16.84 5.29 15.76C3.95 14.68 3.03 13.18 2.67 11.5C2.38 11.36 2.15 11.15 1.98 10.89C1.81 10.62 1.73 10.31 1.73 10C1.73 9.69 1.81 9.38 1.98 9.11C2.15 8.85 2.38 8.64 2.67 8.5C3.01 6.81 3.93 5.29 5.27 4.2C6.6 3.1 8.27 2.5 10 2.5C11.67 2.5 12.92 3.42 12.92 4.58C12.92 5.75 12.17 6.67 11.25 6.67C10.58 6.67 10 6.33 10 5.83" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10H7.51" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">15:00</div>
           <div class="tl-title">Визит к педиатру</div>
           <div class="tl-desc">Открыла PDF-экспорт за месяц.</div>
@@ -1750,7 +1750,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--sunset" data-tl="activity">
-          <div class="tl-dot tl-dot--activity">🛁</div>
+          <div class="tl-dot tl-dot--activity"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M1.67 1.67L8.33 8.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.33 1.67L11.67 8.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11.67C14.6 11.67 18.33 9.8 18.33 7.5C18.33 5.2 14.6 3.33 10 3.33C5.4 3.33 1.67 5.2 1.67 7.5C1.67 9.8 5.4 11.67 10 11.67Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83 11.17V17.75" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11.67V18.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.17 11.17V17.75" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.67 7.5V14.17C1.67 15.27 2.54 16.33 4.11 17.11C5.67 17.89 7.79 18.33 10 18.33C12.21 18.33 14.33 17.89 15.89 17.11C17.46 16.33 18.33 15.27 18.33 14.17V7.5" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">18:00</div>
           <div class="tl-title">Вечерний ритуал</div>
           <div class="tl-desc">Записала активности. Видно что гуляли мало — завтра выйдем подольше.</div>
@@ -1767,7 +1767,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         <div class="tl-card tl-card--night" data-tl="night">
           <div class="tl-night-stars"></div>
           <div class="tl-night-moon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#C4B5FD" opacity=".7"/></svg></div>
-          <div class="tl-dot tl-dot--night">🌙</div>
+          <div class="tl-dot tl-dot--night"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.49 10.4C17.41 11.85 16.91 13.24 16.06 14.42C15.21 15.59 14.03 16.49 12.68 17C11.33 17.52 9.85 17.64 8.44 17.34C7.02 17.03 5.72 16.33 4.7 15.3C3.67 14.28 2.96 12.98 2.66 11.56C2.36 10.15 2.48 8.67 2.99 7.32C3.51 5.97 4.41 4.79 5.58 3.94C6.75 3.09 8.15 2.59 9.59 2.51C9.93 2.49 10.11 2.89 9.93 3.18C9.33 4.14 9.07 5.27 9.2 6.4C9.33 7.52 9.83 8.57 10.63 9.37C11.43 10.17 12.48 10.67 13.6 10.8C14.73 10.93 15.86 10.67 16.82 10.07C17.1 9.89 17.51 10.07 17.49 10.4Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">21:00</div>
           <div class="tl-title">Отбой</div>
           <div class="tl-desc">Малыш уснул. Спокойной ночи. 💤</div>
@@ -1788,7 +1788,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
       <div class="tl-immersive-inner">
 
         <div class="tl-card tl-card--dawn" data-tl="dawn">
-          <div class="tl-dot tl-dot--dawn">🌅</div>
+          <div class="tl-dot tl-dot--dawn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C13.94 2 15.84 2.56 17.46 3.62C19.09 4.68 20.37 6.19 21.15 7.97C21.94 9.74 22.18 11.71 21.87 13.62C21.55 15.54 20.69 17.32 19.38 18.75" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 8.88C2.18 9.84 2.01 10.86 2 11.88" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.83 16C3.39 17.29 4.22 18.45 5.26 19.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.64 5.23C4.91 4.93 5.21 4.64 5.53 4.38" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.64 21.42C11.14 22.31 13.88 22.17 16.27 21.04" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">06:30</div>
           <div class="tl-title">Morning</div>
           <div class="tl-desc">Baby woke up. One tap — logged the wake-up. Lummo calculated: 7.5 hours of sleep.</div>
@@ -1801,7 +1801,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--feed" data-tl="feed">
-          <div class="tl-dot tl-dot--feed">🍼</div>
+          <div class="tl-dot tl-dot--feed"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2.5 1.67V7.5C2.5 8.42 3.25 9.17 4.17 9.17H7.5C7.94 9.17 8.37 8.99 8.68 8.68C8.99 8.37 9.17 7.94 9.17 7.5V1.67" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83 1.67V18.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.67C16.39 1.67 15.33 2.11 14.55 2.89C13.77 3.67 13.33 4.73 13.33 5.83V10.83C13.33 11.75 14.08 12.5 15 12.5H17.5ZM17.5 12.5V18.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">07:00</div>
           <div class="tl-title">First feeding</div>
           <div class="tl-desc">Breast, left side, 15 minutes. Two taps. Done.</div>
@@ -1812,7 +1812,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--health" data-tl="health">
-          <div class="tl-dot tl-dot--health">🌡</div>
+          <div class="tl-dot tl-dot--health"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M11.67 3.33V12.12C12.3 12.48 12.8 13.05 13.08 13.73C13.36 14.41 13.41 15.16 13.22 15.87C13.03 16.57 12.61 17.2 12.03 17.65C11.45 18.09 10.73 18.34 10 18.34C9.27 18.34 8.55 18.09 7.97 17.65C7.39 17.2 6.97 16.57 6.78 15.87C6.59 15.16 6.64 14.41 6.92 13.73C7.2 13.05 7.7 12.48 8.33 12.12V3.33C8.33 2.89 8.51 2.47 8.82 2.15C9.13 1.84 9.56 1.67 10 1.67C10.44 1.67 10.87 1.84 11.18 2.15C11.49 2.47 11.67 2.89 11.67 3.33Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">09:00</div>
           <div class="tl-title">Post-vaccination temperature</div>
           <div class="tl-desc">Logged it. Lummo will show the trend throughout the day.</div>
@@ -1826,7 +1826,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--sleep" data-tl="sleep">
-          <div class="tl-dot tl-dot--sleep">😴</div>
+          <div class="tl-dot tl-dot--sleep"><svg width="18" height="18" viewBox="0 0 17 17" fill="none"><path d="M15.82 8.73C15.74 10.17 15.25 11.57 14.4 12.74C13.54 13.91 12.37 14.81 11.02 15.33C9.66 15.85 8.19 15.96 6.77 15.66C5.35 15.36 4.05 14.65 3.03 13.63C2.01 12.6 1.3 11.3 1 9.89C0.7 8.47 0.81 7 1.33 5.64C1.85 4.29 2.75 3.11 3.92 2.26C5.09 1.41 6.48 0.91 7.93 0.83C8.27 0.82 8.44 1.22 8.26 1.5C7.66 2.46 7.41 3.6 7.54 4.72C7.66 5.84 8.17 6.89 8.97 7.69C9.77 8.49 10.81 8.99 11.94 9.12C13.06 9.25 14.19 8.99 15.15 8.39C15.44 8.21 15.84 8.39 15.82 8.73Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">12:00</div>
           <div class="tl-title">Nap time</div>
           <div class="tl-desc">Timer → 40 minutes. Short one. AI will spot the pattern in a week.</div>
@@ -1838,7 +1838,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--afternoon" data-tl="ped">
-          <div class="tl-dot tl-dot--ped">👶</div>
+          <div class="tl-dot tl-dot--ped"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M8.33 13.33C8.75 13.58 9.33 13.75 10 13.75C10.67 13.75 11.25 13.58 11.67 13.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 10H12.51" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.15 5.68C16.73 6.53 17.14 7.49 17.33 8.5C17.62 8.64 17.85 8.85 18.02 9.11C18.19 9.38 18.27 9.69 18.27 10C18.27 10.31 18.19 10.62 18.02 10.89C17.85 11.15 17.62 11.36 17.33 11.5C16.97 13.18 16.05 14.68 14.71 15.76C13.38 16.84 11.72 17.43 10 17.43C8.28 17.43 6.62 16.84 5.29 15.76C3.95 14.68 3.03 13.18 2.67 11.5C2.38 11.36 2.15 11.15 1.98 10.89C1.81 10.62 1.73 10.31 1.73 10C1.73 9.69 1.81 9.38 1.98 9.11C2.15 8.85 2.38 8.64 2.67 8.5C3.01 6.81 3.93 5.29 5.27 4.2C6.6 3.1 8.27 2.5 10 2.5C11.67 2.5 12.92 3.42 12.92 4.58C12.92 5.75 12.17 6.67 11.25 6.67C10.58 6.67 10 6.33 10 5.83" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10H7.51" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">15:00</div>
           <div class="tl-title">Pediatrician visit</div>
           <div class="tl-desc">Opened the monthly PDF export.</div>
@@ -1853,7 +1853,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
 
         <div class="tl-card tl-card--sunset" data-tl="activity">
-          <div class="tl-dot tl-dot--activity">🛁</div>
+          <div class="tl-dot tl-dot--activity"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M1.67 1.67L8.33 8.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.33 1.67L11.67 8.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11.67C14.6 11.67 18.33 9.8 18.33 7.5C18.33 5.2 14.6 3.33 10 3.33C5.4 3.33 1.67 5.2 1.67 7.5C1.67 9.8 5.4 11.67 10 11.67Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.83 11.17V17.75" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11.67V18.33" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.17 11.17V17.75" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.67 7.5V14.17C1.67 15.27 2.54 16.33 4.11 17.11C5.67 17.89 7.79 18.33 10 18.33C12.21 18.33 14.33 17.89 15.89 17.11C17.46 16.33 18.33 15.27 18.33 14.17V7.5" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">18:00</div>
           <div class="tl-title">Evening routine</div>
           <div class="tl-desc">Logged activities. Can see we didn't walk enough — tomorrow we'll go longer.</div>
@@ -1870,7 +1870,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         <div class="tl-card tl-card--night" data-tl="night">
           <div class="tl-night-stars"></div>
           <div class="tl-night-moon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#C4B5FD" opacity=".7"/></svg></div>
-          <div class="tl-dot tl-dot--night">🌙</div>
+          <div class="tl-dot tl-dot--night"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.49 10.4C17.41 11.85 16.91 13.24 16.06 14.42C15.21 15.59 14.03 16.49 12.68 17C11.33 17.52 9.85 17.64 8.44 17.34C7.02 17.03 5.72 16.33 4.7 15.3C3.67 14.28 2.96 12.98 2.66 11.56C2.36 10.15 2.48 8.67 2.99 7.32C3.51 5.97 4.41 4.79 5.58 3.94C6.75 3.09 8.15 2.59 9.59 2.51C9.93 2.49 10.11 2.89 9.93 3.18C9.33 4.14 9.07 5.27 9.2 6.4C9.33 7.52 9.83 8.57 10.63 9.37C11.43 10.17 12.48 10.67 13.6 10.8C14.73 10.93 15.86 10.67 16.82 10.07C17.1 9.89 17.51 10.07 17.49 10.4Z" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <div class="tl-time">21:00</div>
           <div class="tl-title">Bedtime</div>
           <div class="tl-desc">Baby fell asleep. Good night. 💤</div>
