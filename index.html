@@ -373,6 +373,14 @@ html[data-theme="dark"] .theme-icon-sun{display:block}
 .article-inner{max-width:700px;margin:0 auto}
 .article-back{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:500;color:var(--text-secondary);margin-bottom:32px;transition:color .15s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
 .article-back:hover{color:var(--primary)}
+.article-related{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.article-related-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary);margin-bottom:16px}
+.article-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.article-related-grid{grid-template-columns:1fr}}
+.article-related-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:border-color .2s,box-shadow .2s;text-decoration:none;color:var(--text)}
+.article-related-card:hover{border-color:var(--primary);box-shadow:0 2px 8px rgba(60,56,255,.08)}
+.article-related-card .related-tag{font-size:.7rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px}
+.article-related-card .related-title{font-size:.95rem;font-weight:600;line-height:1.3}
 .article-back svg{width:16px;height:16px}
 .article-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
 .article-meta .blog-card-tag{margin-bottom:0}
@@ -1154,7 +1162,21 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 
       </div>
 
-      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+      <div class="article-related">
+        <div class="article-related-title"><span data-i="ru">Читайте также</span><span data-i="en">Related articles</span></div>
+        <div class="article-related-grid">
+          <a class="article-related-card" onclick="navigateTo('blog-feeding');return false" href="#blog/feeding">
+            <div class="related-tag"><span data-i="ru">Кормление</span><span data-i="en">Feeding</span></div>
+            <div class="related-title"><span data-i="ru">Как понять, что ребёнок наелся</span><span data-i="en">How to tell if your baby is full</span></div>
+          </a>
+          <a class="article-related-card" onclick="navigateTo('blog-temperature');return false" href="#blog/temperature">
+            <div class="related-tag"><span data-i="ru">Здоровье</span><span data-i="en">Health</span></div>
+            <div class="related-title"><span data-i="ru">Температура у ребёнка: когда сбивать, когда ждать</span><span data-i="en">Baby's temperature: when to act, when to wait</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
         <button class="article-back" onclick="navigateTo('blog');return false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
@@ -1301,7 +1323,21 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 
       </div>
 
-      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+      <div class="article-related">
+        <div class="article-related-title"><span data-i="ru">Читайте также</span><span data-i="en">Related articles</span></div>
+        <div class="article-related-grid">
+          <a class="article-related-card" onclick="navigateTo('blog-sleep');return false" href="#blog/sleep">
+            <div class="related-tag"><span data-i="ru">Сон</span><span data-i="en">Sleep</span></div>
+            <div class="related-title"><span data-i="ru">Сколько должен спать ребёнок по возрастам</span><span data-i="en">How much should a child sleep by age</span></div>
+          </a>
+          <a class="article-related-card" onclick="navigateTo('blog-solids');return false" href="#blog/solids">
+            <div class="related-tag"><span data-i="ru">Питание</span><span data-i="en">Nutrition</span></div>
+            <div class="related-title"><span data-i="ru">Когда вводить прикорм: по месяцам</span><span data-i="en">When to start solids: month by month</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
         <button class="article-back" onclick="navigateTo('blog');return false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
@@ -1452,7 +1488,21 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 
       </div>
 
-      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+      <div class="article-related">
+        <div class="article-related-title"><span data-i="ru">Читайте также</span><span data-i="en">Related articles</span></div>
+        <div class="article-related-grid">
+          <a class="article-related-card" onclick="navigateTo('blog-feeding');return false" href="#blog/feeding">
+            <div class="related-tag"><span data-i="ru">Кормление</span><span data-i="en">Feeding</span></div>
+            <div class="related-title"><span data-i="ru">Как понять, что ребёнок наелся</span><span data-i="en">How to tell if your baby is full</span></div>
+          </a>
+          <a class="article-related-card" onclick="navigateTo('blog-temperature');return false" href="#blog/temperature">
+            <div class="related-tag"><span data-i="ru">Здоровье</span><span data-i="en">Health</span></div>
+            <div class="related-title"><span data-i="ru">Температура у ребёнка: когда сбивать, когда ждать</span><span data-i="en">Baby's temperature: when to act, when to wait</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
         <button class="article-back" onclick="navigateTo('blog');return false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
@@ -1609,7 +1659,21 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 
       </div>
 
-      <div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border)">
+      <div class="article-related">
+        <div class="article-related-title"><span data-i="ru">Читайте также</span><span data-i="en">Related articles</span></div>
+        <div class="article-related-grid">
+          <a class="article-related-card" onclick="navigateTo('blog-sleep');return false" href="#blog/sleep">
+            <div class="related-tag"><span data-i="ru">Сон</span><span data-i="en">Sleep</span></div>
+            <div class="related-title"><span data-i="ru">Сколько должен спать ребёнок по возрастам</span><span data-i="en">How much should a child sleep by age</span></div>
+          </a>
+          <a class="article-related-card" onclick="navigateTo('blog-solids');return false" href="#blog/solids">
+            <div class="related-tag"><span data-i="ru">Питание</span><span data-i="en">Nutrition</span></div>
+            <div class="related-title"><span data-i="ru">Когда вводить прикорм: по месяцам</span><span data-i="en">When to start solids: month by month</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
         <button class="article-back" onclick="navigateTo('blog');return false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
