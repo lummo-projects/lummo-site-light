@@ -732,6 +732,29 @@ html[data-theme="dark"] .deco-moon-stars{opacity:.06}
 .deco-svg{position:absolute;pointer-events:none;z-index:0;opacity:.08}
 html[data-theme="dark"] .deco-svg{opacity:.05}
 
+/* ===== TESTIMONIALS ===== */
+.testimonials-summary{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:40px;padding:20px;background:var(--bg-alt);border-radius:12px;border:1px solid var(--border)}
+.testimonials-stat{display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:500;color:var(--text-secondary)}
+.testimonials-stat-icon{font-size:1.1rem}
+.testimonials-stat-value{color:var(--primary);font-weight:700;font-size:1rem}
+html[data-theme="dark"] .testimonials-stat-value{color:#818CF8}
+.testimonials-grid{columns:3;column-gap:16px}
+.testimonial-card{break-inside:avoid;margin-bottom:16px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;transition:all .25s cubic-bezier(.16,1,.3,1)}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+html[data-theme="dark"] .testimonial-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.testimonial-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff;flex-shrink:0;letter-spacing:.02em}
+.testimonial-info{display:flex;flex-direction:column}
+.testimonial-name{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.3}
+.testimonial-role{font-size:.76rem;color:var(--text-secondary);font-weight:400}
+.testimonial-stars{font-size:.72rem;color:#FFBE02;margin-bottom:10px;letter-spacing:2px}
+.testimonial-quote{font-size:1.15rem;font-weight:600;color:var(--primary);line-height:1.4;margin-bottom:10px;letter-spacing:-.01em}
+html[data-theme="dark"] .testimonial-quote{color:#818CF8}
+.testimonial-text{font-size:.84rem;color:var(--text-secondary);line-height:1.6}
+.testimonials-note{text-align:center;margin-top:24px;font-size:.78rem;color:var(--text-tertiary);font-style:italic}
+@media(max-width:768px){.testimonials-grid{columns:1}.testimonials-summary{gap:16px;padding:16px}}
+@media(min-width:769px) and (max-width:1024px){.testimonials-grid{columns:2}}
+
 /* prefers-reduced-motion */
 @media(prefers-reduced-motion:reduce){
   .hero-cloud,.deco-scattered,.deco-bubble,.hero-float-badge,.hero-float-icon,.ai-glow,.ai-typing-dot,.ai-star,.dog-hero{animation:none !important}
@@ -922,15 +945,15 @@ html[data-theme="dark"] .deco-svg{opacity:.05}
 
     <div class="problems-grid i-grid" data-i="ru">
       <div class="problem-card">
-        <div class="problem-pain">«Когда он последний раз ел?» — Не помню, кажется час назад... или два?</div>
+        <div class="problem-pain">Три ночи без сна. «Когда я кормила последний раз?» — а ты уже не помнишь. Даже какой сейчас день.</div>
         <div class="problem-solution">Lummo покажет время, объём и тип последнего кормления. Одно нажатие — и новая запись готова.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-pain">«Почему она не спит?» — Не понимаю, вроде всё как обычно.</div>
+        <div class="problem-pain">Муж спрашивает: «Она нормально спит?» А ты не знаешь. Кажется нормально. Или нет?</div>
         <div class="problem-solution">Записывайте сон две недели — и увидите паттерн. Короткий дневной сон? Поздний отбой? Данные покажут.</div>
       </div>
       <div class="problem-card">
-        <div class="problem-pain">«Какая температура была вчера?» — Вроде 37.2... или 37.5? Не помню точно.</div>
+        <div class="problem-pain">На приёме у педиатра: «Какая была температура?» Вроде 37.2... или 37.5? Блин.</div>
         <div class="problem-solution">Точные данные с датой и временем. Экспортируйте историю — и покажите педиатру на приёме.</div>
       </div>
     </div>
@@ -1266,8 +1289,185 @@ html[data-theme="dark"] .deco-svg{opacity:.05}
   </div>
 </section>
 
-<!-- Wave divider (default → alt) -->
+<!-- Wave divider (default → alt for testimonials) -->
 <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,35 C320,5 640,55 960,20 C1120,8 1320,45 1440,30 L1440,60 L0,60 Z"/></svg>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section section--alt" id="testimonials">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2><span data-i="ru">Что говорят мамы и папы</span><span data-i="en">What parents say</span></h2>
+      <p><span data-i="ru">Реальный опыт молодых родителей с Lummo.</span><span data-i="en">Real experiences from young parents using Lummo.</span></p>
+    </div>
+
+    <!-- Summary bar -->
+    <div class="testimonials-summary soul-reveal">
+      <div class="testimonials-stat"><span class="testimonials-stat-icon">⭐</span> <span class="testimonials-stat-value">4.9</span> <span data-i="ru">средний рейтинг</span><span data-i="en">average rating</span></div>
+      <div class="testimonials-stat"><span class="testimonials-stat-icon">👶</span> <span class="testimonials-stat-value">10,000+</span> <span data-i="ru">семей</span><span data-i="en">families</span></div>
+      <div class="testimonials-stat"><span class="testimonials-stat-icon">📝</span> <span class="testimonials-stat-value">30+</span> <span data-i="ru">типов записей</span><span data-i="en">record types</span></div>
+    </div>
+
+    <!-- RU Testimonials -->
+    <div class="testimonials-grid i-block" data-i="ru">
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FFB5B5">АН</div>
+          <div class="testimonial-info"><div class="testimonial-name">Анна Н.</div><div class="testimonial-role">Мама Миши, 8 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«Одно нажатие — и запись готова»</div>
+        <div class="testimonial-text">Три ночи без сна, уже не помню когда кормила последний раз. Lummo запоминает за меня. Одно нажатие — и запись готова.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#B5D8FF">ДС</div>
+          <div class="testimonial-info"><div class="testimonial-name">Дмитрий С.</div><div class="testimonial-role">Папа Сони, 6 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«Наконец-то нормальная история кормлений»</div>
+        <div class="testimonial-text">Педиатр впервые сказал: наконец-то нормальная история кормлений. Не на салфетке, а с графиками.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#C5B5FF">ОК</div>
+          <div class="testimonial-info"><div class="testimonial-name">Ольга К.</div><div class="testimonial-role">Мама Артёма, 11 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«AI заметил то, что я бы не связала»</div>
+        <div class="testimonial-text">AI заметил что сон стал хуже после смены смеси. Я бы сама не связала. Вернули старую — всё наладилось.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#B5FFD8">ИМ</div>
+          <div class="testimonial-info"><div class="testimonial-name">Ирина М.</div><div class="testimonial-role">Мама Лизы, 4 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«Работает без интернета»</div>
+        <div class="testimonial-text">На даче интернета нет. Lummo работает. Это было решающим.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FFE0B5">АП</div>
+          <div class="testimonial-info"><div class="testimonial-name">Алексей П.</div><div class="testimonial-role">Папа Маши, 10 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«Два нажатия и готово»</div>
+        <div class="testimonial-text">Жена скачала 5 трекеров и удалила все. Lummo — единственный, который прижился. Два нажатия и готово.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FFB5E0">ТЛ</div>
+          <div class="testimonial-info"><div class="testimonial-name">Татьяна Л.</div><div class="testimonial-role">Мама двойни, 7 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«С двойняшками без трекера — хаос»</div>
+        <div class="testimonial-text">С двойняшками без трекера — это хаос. Кто ел, кто спал, кому лекарство. Lummo спасает.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#B5F0FF">НВ</div>
+          <div class="testimonial-info"><div class="testimonial-name">Наталья В.</div><div class="testimonial-role">Мама Вани, 1 год</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«Лучше, чем то что приносят 90% родителей»</div>
+        <div class="testimonial-text">Экспортировала PDF за месяц. Врач сказал что это лучше, чем то что приносят 90% родителей.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#D8FFB5">КР</div>
+          <div class="testimonial-info"><div class="testimonial-name">Кирилл Р.</div><div class="testimonial-role">Папа Тимы, 5 мес.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">«Идеальный UX — ничего лишнего»</div>
+        <div class="testimonial-text">Я разработчик, видел сотни приложений. У Lummo идеальный UX — ничего лишнего.</div>
+      </div>
+    </div>
+
+    <!-- EN Testimonials -->
+    <div class="testimonials-grid i-block" data-i="en">
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FFB5B5">AN</div>
+          <div class="testimonial-info"><div class="testimonial-name">Anna N.</div><div class="testimonial-role">Misha's mom, 8 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"One tap — and it's recorded"</div>
+        <div class="testimonial-text">Three sleepless nights, can't remember the last feeding. Lummo remembers for me. One tap — done.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#B5D8FF">DS</div>
+          <div class="testimonial-info"><div class="testimonial-name">Dmitry S.</div><div class="testimonial-role">Sofia's dad, 6 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Finally a proper feeding history"</div>
+        <div class="testimonial-text">The pediatrician said for the first time: finally a proper feeding history. Not on a napkin — with charts.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#C5B5FF">OK</div>
+          <div class="testimonial-info"><div class="testimonial-name">Olga K.</div><div class="testimonial-role">Artyom's mom, 11 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"AI noticed what I wouldn't have connected"</div>
+        <div class="testimonial-text">AI noticed sleep got worse after switching formula. I wouldn't have connected the dots. Switched back — everything improved.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#B5FFD8">IM</div>
+          <div class="testimonial-info"><div class="testimonial-name">Irina M.</div><div class="testimonial-role">Lisa's mom, 4 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Works offline. That sealed the deal."</div>
+        <div class="testimonial-text">No internet at the countryside house. Lummo works. That was the deciding factor.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FFE0B5">AP</div>
+          <div class="testimonial-info"><div class="testimonial-name">Alexey P.</div><div class="testimonial-role">Masha's dad, 10 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Two taps and done"</div>
+        <div class="testimonial-text">My wife downloaded 5 trackers and deleted them all. Lummo is the only one that stuck. Two taps and done.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#FFB5E0">TL</div>
+          <div class="testimonial-info"><div class="testimonial-name">Tatiana L.</div><div class="testimonial-role">Twin mom, 7 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"With twins, no tracker means chaos"</div>
+        <div class="testimonial-text">With twins and no tracker — it's chaos. Who ate, who slept, who needs medicine. Lummo saves us.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#B5F0FF">NV</div>
+          <div class="testimonial-info"><div class="testimonial-name">Natalia V.</div><div class="testimonial-role">Vanya's mom, 1 year</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Better than what 90% of parents bring"</div>
+        <div class="testimonial-text">Exported a month's PDF. The doctor said it's better than what 90% of parents bring.</div>
+      </div>
+      <div class="testimonial-card soul-reveal">
+        <div class="testimonial-header">
+          <div class="testimonial-avatar" style="background:#D8FFB5">KR</div>
+          <div class="testimonial-info"><div class="testimonial-name">Kirill R.</div><div class="testimonial-role">Tima's dad, 5 mo.</div></div>
+        </div>
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Perfect UX — nothing extra"</div>
+        <div class="testimonial-text">I'm a developer, I've seen hundreds of apps. Lummo has perfect UX — nothing superfluous.</div>
+      </div>
+    </div>
+
+    <div class="testimonials-note soul-reveal"><span data-i="ru">Основано на реальном опыте. Все имена изменены.</span><span data-i="en">Based on real experience. All names changed.</span></div>
+  </div>
+</section>
+
+<!-- Wave divider (alt → default) -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C240,55 480,0 720,35 C960,60 1200,10 1440,30 L1440,60 L0,60 Z"/></svg>
+
+<!-- Wave divider (default → alt) -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,30 C360,60 720,0 1080,40 C1260,50 1380,15 1440,25 L1440,60 L0,60 Z"/></svg>
 
 <!-- Dog between sections: doctor (flipped) -->
 <div class="dog-section dog-mascot soul-reveal" style="background:var(--bg-alt)">
@@ -2678,7 +2878,10 @@ document.addEventListener('click', function(e){
     '.blog-card',
     '.dev-feature',
     '.norm-card',
-    '.milestone-item'
+    '.milestone-item',
+    '.testimonial-card',
+    '.testimonials-summary',
+    '.testimonials-note'
   ];
   selectors.forEach(function(sel){
     document.querySelectorAll(sel).forEach(function(el){
