@@ -583,9 +583,184 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
   .soul-blob{display:none}
   .dog-section img{width:36px;height:36px}
 }
+
+/* ===== DESIGN UPGRADE: PATTERNS & TEXTURES ===== */
+
+/* Dot grid pattern on light sections */
+.section--dots{background-image:radial-gradient(circle,var(--text) .5px,transparent .5px);background-size:24px 24px;background-position:0 0}
+.section--dots::before{content:'';position:absolute;inset:0;background:inherit;opacity:.04;pointer-events:none;z-index:0}
+html[data-theme="dark"] .section--dots::before{opacity:.03}
+
+/* Gradient mesh blobs per section */
+.section--mesh-purple{position:relative}
+.section--mesh-purple::after{content:'';position:absolute;top:10%;right:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(60,56,255,.06) 0%,transparent 70%);pointer-events:none;z-index:0}
+.section--mesh-red::after{content:'';position:absolute;bottom:10%;left:-5%;width:350px;height:350px;background:radial-gradient(circle,rgba(244,67,61,.05) 0%,transparent 70%);pointer-events:none;z-index:0}
+html[data-theme="dark"] .section--mesh-purple::after{background:radial-gradient(circle,rgba(60,56,255,.1) 0%,transparent 70%)}
+html[data-theme="dark"] .section--mesh-red::after{background:radial-gradient(circle,rgba(244,67,61,.08) 0%,transparent 70%)}
+
+/* Custom selection color */
+::selection{background:rgba(60,56,255,.18);color:inherit}
+::-moz-selection{background:rgba(60,56,255,.18);color:inherit}
+
+/* Scroll progress bar */
+.scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--primary),#818CF8,var(--accent));z-index:1000;transition:width .1s linear;pointer-events:none}
+
+/* Back to top button */
+.back-to-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(60,56,255,.3);z-index:99;opacity:0;visibility:hidden;transform:translateY(16px);transition:all .3s cubic-bezier(.16,1,.3,1);cursor:pointer;border:none}
+.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(60,56,255,.4)}
+.back-to-top svg{width:20px;height:20px}
+
+/* Animated underline on nav links */
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--primary);border-radius:1px;transition:width .25s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover::after{width:100%}
+
+/* Feature card upgrades */
+.feat-card{border-left:4px solid transparent;position:relative}
+.feat-card--sleep{border-left-color:#6366F1}
+.feat-card--feed{border-left-color:#F6571D}
+.feat-card--diaper{border-left-color:#ACBC36}
+.feat-card--health{border-left-color:#FFBE02}
+.feat-card--growth{border-left-color:#DF0086}
+.feat-card--activity{border-left-color:#3D38FF}
+.feat-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:var(--bg-alt);border:1px solid var(--border);border-radius:12px;font-size:.68rem;font-weight:600;color:var(--text-secondary);margin-top:10px;letter-spacing:.01em}
+.feat-card:hover{border-color:transparent}
+.feat-card--sleep:hover{box-shadow:0 8px 30px rgba(99,102,241,.15),0 0 0 1px rgba(99,102,241,.1)}
+.feat-card--feed:hover{box-shadow:0 8px 30px rgba(246,87,29,.12),0 0 0 1px rgba(246,87,29,.1)}
+.feat-card--diaper:hover{box-shadow:0 8px 30px rgba(172,188,54,.12),0 0 0 1px rgba(172,188,54,.1)}
+.feat-card--health:hover{box-shadow:0 8px 30px rgba(255,190,2,.12),0 0 0 1px rgba(255,190,2,.1)}
+.feat-card--growth:hover{box-shadow:0 8px 30px rgba(223,0,134,.12),0 0 0 1px rgba(223,0,134,.1)}
+.feat-card--activity:hover{box-shadow:0 8px 30px rgba(61,56,255,.12),0 0 0 1px rgba(61,56,255,.1)}
+
+/* Hero floating badges */
+.hero-phone{position:relative}
+.hero-float-badge{position:absolute;background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;padding:6px 14px;font-size:.75rem;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:10;animation:floatBadge 4s ease-in-out infinite}
+html[data-theme="dark"] .hero-float-badge{box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.hero-float-badge--rating{top:15%;right:-60px;animation-delay:0s}
+.hero-float-badge--families{bottom:25%;left:-55px;animation-delay:1.5s}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Hero trust pills */
+.hero-trust{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.trust-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:var(--bg-alt);border:1px solid var(--border);border-radius:20px;font-size:.75rem;font-weight:500;color:var(--text-secondary)}
+.trust-pill svg{width:14px;height:14px;color:#16A34A;flex-shrink:0}
+
+/* Animated gradient border on phone */
+.phone-frame-wrap{position:relative;border-radius:33px;padding:3px;background:linear-gradient(135deg,var(--primary),#818CF8,var(--accent),var(--primary));background-size:300% 300%;animation:gradBorder 6s ease infinite}
+@keyframes gradBorder{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.phone-frame-wrap .phone-frame{border:none}
+
+/* Hero floating category icons */
+.hero-float-icon{position:absolute;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:5;opacity:.12;animation:floatIcon 5s ease-in-out infinite}
+.hero-float-icon svg{width:18px;height:18px}
+.hero-float-icon--1{top:5%;left:-20px;background:var(--icon-sleep-bg);animation-delay:0s}
+.hero-float-icon--2{top:45%;right:-25px;background:var(--icon-feed-bg);animation-delay:1s}
+.hero-float-icon--3{bottom:10%;left:-15px;background:var(--icon-diaper-bg);animation-delay:2s}
+@keyframes floatIcon{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(8deg)}}
+
+/* Decorative hearts & paws */
+.deco-scattered{position:absolute;pointer-events:none;z-index:0;font-size:1rem;opacity:.08;animation:decoFloat 8s ease-in-out infinite}
+html[data-theme="dark"] .deco-scattered{opacity:.06}
+@keyframes decoFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-12px) rotate(5deg)}66%{transform:translateY(4px) rotate(-3deg)}}
+
+/* Floating bubbles */
+.deco-bubble{position:absolute;border-radius:50%;pointer-events:none;z-index:0;opacity:.06;border:2px solid var(--primary)}
+html[data-theme="dark"] .deco-bubble{opacity:.04}
+@keyframes bubbleFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.05)}}
+
+/* AI section glow */
+.ai-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.15) 0%,transparent 70%);filter:blur(40px);animation:aiGlow 4s ease-in-out infinite;pointer-events:none;z-index:0}
+.ai-glow--1{top:10%;left:5%}
+.ai-glow--2{bottom:15%;right:10%;animation-delay:2s;background:radial-gradient(circle,rgba(60,56,255,.12) 0%,transparent 70%)}
+
+/* AI typing indicator */
+.ai-typing{display:inline-flex;align-items:center;gap:4px;padding:8px 16px;background:rgba(255,255,255,.08);border-radius:12px;margin-top:16px}
+.ai-typing-dot{width:6px;height:6px;border-radius:50%;background:#818CF8;animation:typingBounce 1.4s ease-in-out infinite}
+.ai-typing-dot:nth-child(2){animation-delay:.2s}
+.ai-typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
+@keyframes aiGlow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.15)}}
+
+/* AI constellation dots */
+.ai-constellation{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.ai-constellation-dot{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(129,140,248,.3)}
+
+/* Principle card flip */
+.principle-card{perspective:800px;position:relative;min-height:200px}
+.principle-flip-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.16,1,.3,1);transform-style:preserve-3d}
+.principle-card:hover .principle-flip-inner{transform:rotateY(180deg)}
+.principle-front,.principle-back{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.principle-back{position:absolute;inset:0;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:28px 24px;border-radius:12px;font-size:.84rem;color:var(--text-secondary);line-height:1.6}
+.principle-back h4{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.principle-card--free .principle-back{background:var(--principle-free-bg)}
+.principle-card--offline .principle-back{background:var(--principle-offline-bg)}
+.principle-card--private .principle-back{background:var(--principle-private-bg)}
+
+/* Ped progress bars */
+.ped-progress{height:4px;background:var(--surface);border-radius:2px;overflow:hidden;margin-top:4px;width:100%}
+.ped-progress-fill{height:100%;border-radius:2px;transition:width 1s cubic-bezier(.16,1,.3,1);width:0}
+.ped-progress-fill--50{background:var(--primary)}
+.ped-progress-fill--55{background:#16A34A}
+.ped-progress-fill--normal{background:#16A34A}
+.ped-progress-fill--good{background:var(--primary)}
+
+/* Ped mock icons */
+.ped-mock-icon{width:18px;height:18px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;margin-right:4px;vertical-align:middle}
+.ped-mock-icon svg{width:14px;height:14px}
+
+/* Dog bark easter egg */
+.dog-bark-bubble{position:absolute;top:-40px;left:50%;transform:translateX(-50%);background:var(--bg-card);border:1.5px solid var(--border);border-radius:14px 14px 14px 4px;padding:5px 12px;font-size:.75rem;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.08);opacity:0;visibility:hidden;transition:all .3s;z-index:20}
+.dog-bark-bubble.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(-4px)}
+html[data-theme="dark"] .dog-bark-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
+
+/* Footer dog */
+.footer-dog{display:inline-flex;align-items:center;gap:6px;vertical-align:middle}
+.footer-dog img{width:24px;height:24px;border-radius:50%;object-fit:cover}
+
+/* Store button tooltip */
+.store-btn{position:relative}
+.store-tooltip{position:absolute;top:-32px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:4px 10px;border-radius:6px;font-size:.68rem;font-weight:600;white-space:nowrap;opacity:0;visibility:hidden;transition:all .2s;pointer-events:none;z-index:10}
+.store-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--text)}
+.store-btn:hover .store-tooltip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(-4px)}
+
+/* Decorative SVG elements - moon & stars */
+.deco-moon-stars{position:absolute;pointer-events:none;z-index:0;opacity:.08}
+html[data-theme="dark"] .deco-moon-stars{opacity:.06}
+
+/* Section decorative SVGs */
+.deco-svg{position:absolute;pointer-events:none;z-index:0;opacity:.08}
+html[data-theme="dark"] .deco-svg{opacity:.05}
+
+/* prefers-reduced-motion */
+@media(prefers-reduced-motion:reduce){
+  .hero-cloud,.deco-scattered,.deco-bubble,.hero-float-badge,.hero-float-icon,.ai-glow,.ai-typing-dot,.ai-star,.dog-hero{animation:none !important}
+  .phone-frame-wrap{animation:none;background:var(--primary)}
+  .principle-card:hover .principle-flip-inner{transform:none}
+  .scroll-progress{transition:none}
+  .back-to-top{transition:none}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* Mobile adjustments for new elements */
+@media(max-width:768px){
+  .hero-float-badge{display:none}
+  .hero-float-icon{display:none}
+  .trust-pill{font-size:.7rem;padding:4px 10px}
+  .hero-trust{justify-content:center}
+  .deco-scattered,.deco-bubble,.deco-svg,.deco-moon-stars{display:none}
+  .ai-glow{width:150px;height:150px}
+  .back-to-top{bottom:20px;right:20px;width:38px;height:38px}
+  .principle-card:hover .principle-flip-inner{transform:none}
+  .principle-back{display:none}
+  .ai-constellation{display:none}
+}
 </style>
 </head>
 <body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ===== NAV ===== -->
 <nav class="nav">
@@ -680,19 +855,45 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 
       <div class="hero-actions">
         <a href="#" class="store-btn store-btn-apple">
+          <span class="store-tooltip"><span data-i="ru">Скоро!</span><span data-i="en">Coming soon!</span></span>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
           App Store
         </a>
         <a href="#" class="store-btn store-btn-google">
+          <span class="store-tooltip"><span data-i="ru">Скоро!</span><span data-i="en">Coming soon!</span></span>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
           Google Play
         </a>
       </div>
+
+      <!-- Trust pills -->
+      <div class="hero-trust i-flex" data-i="ru">
+        <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Бесплатный старт</span>
+        <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Офлайн</span>
+        <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Без регистрации</span>
+      </div>
+      <div class="hero-trust i-flex" data-i="en">
+        <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Free start</span>
+        <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Offline</span>
+        <span class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>No sign-up</span>
+      </div>
     </div>
 
     <div class="hero-phone">
-      <div class="phone-frame">
-        <img src="screenshots/hero.svg" alt="Lummo" loading="eager">
+      <!-- Floating category icons around phone -->
+      <div class="hero-float-icon hero-float-icon--1"><svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#6366F1" stroke-width="1.667"/></svg></div>
+      <div class="hero-float-icon hero-float-icon--2"><svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.667"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.667"/></svg></div>
+      <div class="hero-float-icon hero-float-icon--3"><svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#ACBC36" stroke-width="2"/></svg></div>
+
+      <!-- Floating badges -->
+      <div class="hero-float-badge hero-float-badge--rating">🏆 4.9 ★ App Store</div>
+      <div class="hero-float-badge hero-float-badge--families">👶 10K+ <span data-i="ru">семей</span><span data-i="en">families</span></div>
+
+      <!-- Phone with animated gradient border -->
+      <div class="phone-frame-wrap">
+        <div class="phone-frame">
+          <img src="screenshots/hero.svg" alt="Lummo" loading="eager">
+        </div>
       </div>
       <!-- Dog mascot peeking -->
       <div class="dog-hero dog-mascot" id="dogHero">
@@ -707,7 +908,13 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,35 1440,28 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== PROBLEM → SOLUTION ===== -->
-<section class="section section--alt" id="problem">
+<section class="section section--alt section--mesh-red" id="problem">
+  <!-- Decorative hearts and paws -->
+  <span class="deco-scattered" style="top:15%;right:8%;animation-delay:0s">♥</span>
+  <span class="deco-scattered" style="top:60%;left:5%;animation-delay:2s">🐾</span>
+  <span class="deco-scattered" style="bottom:10%;right:15%;animation-delay:4s">♥</span>
+  <div class="deco-bubble" style="width:60px;height:60px;top:20%;left:12%;animation:bubbleFloat 7s ease-in-out infinite"></div>
+  <div class="deco-bubble" style="width:30px;height:30px;bottom:25%;right:8%;animation:bubbleFloat 5s ease-in-out infinite 1s"></div>
   <div class="section-inner">
     <div class="section-header">
       <h2><span data-i="ru">Знакомо?</span><span data-i="en">Sound familiar?</span></h2>
@@ -755,7 +962,14 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 </div>
 
 <!-- ===== FEATURES GRID ===== -->
-<section class="section" id="features">
+<section class="section section--mesh-purple" id="features">
+  <!-- Decorative moon and stars for sleep theme -->
+  <svg class="deco-moon-stars" style="top:8%;right:6%;width:80px;height:80px" viewBox="0 0 80 80" fill="none"><path d="M50 15a18 18 0 1 1-20 30 14 14 0 0 0 20-30z" fill="var(--primary)" opacity=".5"/><circle cx="20" cy="15" r="2" fill="var(--primary)" opacity=".6"/><circle cx="65" cy="25" r="1.5" fill="var(--accent)" opacity=".5"/><circle cx="30" cy="60" r="1.8" fill="var(--primary)" opacity=".4"/><circle cx="70" cy="55" r="1" fill="var(--accent)" opacity=".6"/></svg>
+  <!-- Decorative bottle & spoon for feeding theme -->
+  <svg class="deco-svg" style="bottom:10%;left:4%;width:60px;height:60px" viewBox="0 0 60 60" fill="none"><rect x="15" y="5" width="10" height="30" rx="5" stroke="var(--accent)" stroke-width="2" opacity=".5"/><circle cx="20" cy="40" r="8" stroke="var(--accent)" stroke-width="2" opacity=".4"/><path d="M38 10v35c0 3 2 5 5 5h2c3 0 5-2 5-5V25" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg>
+  <span class="deco-scattered" style="top:40%;left:3%;animation-delay:1s">🐾</span>
+  <span class="deco-scattered" style="bottom:8%;right:5%;animation-delay:3s">♥</span>
+  <div class="deco-bubble" style="width:45px;height:45px;top:15%;right:18%;animation:bubbleFloat 6s ease-in-out infinite 2s"></div>
   <div class="section-inner">
     <div class="section-header">
       <h2><span data-i="ru">Записывает всё, что спросит педиатр</span><span data-i="en">Records everything your doctor will ask</span></h2>
@@ -764,93 +978,105 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 
     <!-- RU features -->
     <div class="features-grid i-grid" data-i="ru">
-      <div class="feat-card">
+      <div class="feat-card feat-card--sleep">
         <div class="feat-icon feat-icon--sleep">
           <svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#6366F1" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Сон</h3>
         <p>Таймер, дневной и ночной. Сколько спит, когда просыпается — видно на графике.</p>
+        <span class="feat-badge">🌙 5 параметров</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--feed">
         <div class="feat-icon feat-icon--feed">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="#F6571D"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Кормления</h3>
         <p>Грудь, бутылочка, прикорм. Время, объём, длительность.</p>
+        <span class="feat-badge">🍼 8 типов</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--diaper">
         <div class="feat-icon feat-icon--diaper">
           <svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#ACBC36" stroke-width="2" stroke-linejoin="round"/><path d="M22.6 6.4H28M1 6.4h5.4m11.475 15.525v-1.35a9.58 9.58 0 0 1 9.45-9.45m-16.2 10.8v-1.35a9.58 9.58 0 0 0-9.45-9.45" stroke="#ACBC36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Подгузники</h3>
         <p>Мокрый, стул, сухой. Одно нажатие. Статистика за день, неделю, месяц.</p>
+        <span class="feat-badge">💧 3 типа</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--health">
         <div class="feat-icon feat-icon--health">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M11.667 3.333v8.783a3.33 3.33 0 0 1-.747 5.531 3.33 3.33 0 0 1-3.84-1.099 3.33 3.33 0 0 1 1.253-4.432V3.333a1.67 1.67 0 0 1 3.334 0Z" stroke="#22CE50" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Здоровье</h3>
         <p>Температура, лекарства, симптомы, визиты к врачу. Всё в хронологии.</p>
+        <span class="feat-badge">🌡 12 параметров</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--growth">
         <div class="feat-icon feat-icon--growth">
           <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Рост и вес</h3>
         <p>Графики по нормам ВОЗ. Динамика с рождения. Перцентили.</p>
+        <span class="feat-badge">📏 4 параметра</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--activity">
         <div class="feat-icon feat-icon--activity">
           <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Активности</h3>
         <p>Прогулка, купание, tummy time, массаж и ещё 20 типов.</p>
+        <span class="feat-badge">🎯 20+ типов</span>
       </div>
     </div>
 
     <!-- EN features -->
     <div class="features-grid i-grid" data-i="en">
-      <div class="feat-card">
+      <div class="feat-card feat-card--sleep">
         <div class="feat-icon feat-icon--sleep">
           <svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#6366F1" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Sleep</h3>
         <p>Timer, day and night. How long they sleep, when they wake — visible on a chart.</p>
+        <span class="feat-badge">🌙 5 parameters</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--feed">
         <div class="feat-icon feat-icon--feed">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07C3.291-.245 1.701-.245.731.735c-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.43 4.37l-.5.5a1.5 1.5 0 0 0 0 2.12l1.41 1.42a1.5 1.5 0 0 0 2.12 0l.35-.36 7.08 7.07a1.5 1.5 0 0 0 2.12 0l5.65-5.65a1.5 1.5 0 0 0 0-2.13l-7.07-7.07.36-.35a1.5 1.5 0 0 0 0-2.12l-1.42-1.42a1.5 1.5 0 0 0-2.12 0Z" fill="#F6571D"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Feedings</h3>
         <p>Breast, bottle, solids. Time, volume, duration.</p>
+        <span class="feat-badge">🍼 8 types</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--diaper">
         <div class="feat-icon feat-icon--diaper">
           <svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#ACBC36" stroke-width="2" stroke-linejoin="round"/><path d="M22.6 6.4H28M1 6.4h5.4m11.475 15.525v-1.35a9.58 9.58 0 0 1 9.45-9.45m-16.2 10.8v-1.35a9.58 9.58 0 0 0-9.45-9.45" stroke="#ACBC36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Diapers</h3>
         <p>Wet, soiled, dry. One tap. Stats for day, week, month.</p>
+        <span class="feat-badge">💧 3 types</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--health">
         <div class="feat-icon feat-icon--health">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M11.667 3.333v8.783a3.33 3.33 0 0 1-.747 5.531 3.33 3.33 0 0 1-3.84-1.099 3.33 3.33 0 0 1 1.253-4.432V3.333a1.67 1.67 0 0 1 3.334 0Z" stroke="#22CE50" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Health</h3>
         <p>Temperature, medications, symptoms, doctor visits. All in chronological order.</p>
+        <span class="feat-badge">🌡 12 parameters</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--growth">
         <div class="feat-icon feat-icon--growth">
           <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Growth</h3>
         <p>Charts based on WHO standards. Dynamics from birth. Percentiles.</p>
+        <span class="feat-badge">📏 4 parameters</span>
       </div>
-      <div class="feat-card">
+      <div class="feat-card feat-card--activity">
         <div class="feat-icon feat-icon--activity">
           <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3>Activities</h3>
         <p>Walks, bathing, tummy time, massage and 20+ more types.</p>
+        <span class="feat-badge">🎯 20+ types</span>
       </div>
     </div>
   </div>
@@ -861,9 +1087,36 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 
 <!-- ===== AI SECTION ===== -->
 <section class="ai-section" id="ai" style="position:relative;overflow:hidden">
+  <!-- AI Glow effects -->
+  <div class="ai-glow ai-glow--1"></div>
+  <div class="ai-glow ai-glow--2"></div>
   <!-- AI Stars -->
   <div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div>
   <div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div>
+  <!-- Constellation dots -->
+  <div class="ai-constellation">
+    <div class="ai-constellation-dot" style="top:12%;left:20%"></div>
+    <div class="ai-constellation-dot" style="top:8%;left:35%"></div>
+    <div class="ai-constellation-dot" style="top:22%;left:28%"></div>
+    <div class="ai-constellation-dot" style="top:35%;left:10%"></div>
+    <div class="ai-constellation-dot" style="top:45%;left:22%"></div>
+    <div class="ai-constellation-dot" style="top:55%;right:15%"></div>
+    <div class="ai-constellation-dot" style="top:65%;right:25%"></div>
+    <div class="ai-constellation-dot" style="top:75%;right:18%"></div>
+    <div class="ai-constellation-dot" style="top:30%;right:8%"></div>
+    <div class="ai-constellation-dot" style="top:80%;left:30%"></div>
+    <div class="ai-constellation-dot" style="top:18%;right:30%"></div>
+    <div class="ai-constellation-dot" style="top:90%;left:15%"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="20" y1="12" x2="35" y2="8" stroke="rgba(129,140,248,.1)" stroke-width=".15"/>
+      <line x1="35" y1="8" x2="28" y2="22" stroke="rgba(129,140,248,.1)" stroke-width=".15"/>
+      <line x1="28" y1="22" x2="20" y2="12" stroke="rgba(129,140,248,.08)" stroke-width=".15"/>
+      <line x1="10" y1="35" x2="22" y2="45" stroke="rgba(129,140,248,.08)" stroke-width=".15"/>
+      <line x1="85" y1="55" x2="75" y2="65" stroke="rgba(129,140,248,.1)" stroke-width=".15"/>
+      <line x1="75" y1="65" x2="82" y2="75" stroke="rgba(129,140,248,.08)" stroke-width=".15"/>
+      <line x1="70" y1="30" x2="85" y2="55" stroke="rgba(129,140,248,.06)" stroke-width=".15"/>
+    </svg>
+  </div>
   <div class="section-inner">
     <div class="ai-content">
       <h2>
@@ -879,12 +1132,14 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Кормления стали реже, а порции больше — AI заметит тренд</div></div>
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Готовит сводку для педиатра: что изменилось за неделю, за месяц</div></div>
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Отвечает на вопросы о развитии — на основе ваших данных, не общих статей</div></div>
+        <div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><span style="margin-left:8px;font-size:.75rem;color:var(--ai-muted)">AI анализирует...</span></div>
       </div>
       <div class="ai-features i-flex" data-i="en">
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Baby sleeps better after a walk — you'll see it on the chart</div></div>
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Feedings became less frequent but portions grew — AI spots the trend</div></div>
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Prepares a summary for the doctor: what changed this week, this month</div></div>
         <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Answers development questions — based on your data, not generic articles</div></div>
+        <div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><span style="margin-left:8px;font-size:.75rem;color:var(--ai-muted)">AI analyzing...</span></div>
       </div>
     </div>
 
@@ -915,49 +1170,97 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 
     <div class="principles-grid i-grid" data-i="ru">
       <div class="principle-card principle-card--free">
-        <div class="principle-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="principle-flip-inner">
+          <div class="principle-front">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15 8.5H21L16.5 13L18 20L12 16L6 20L7.5 13L3 8.5H9L12 2Z"/></svg>
+            </div>
+            <h3>Бесплатный старт</h3>
+            <p>Базовый трекинг — бесплатно и без ограничений. Basic и Premium AI — для тех, кому нужен расширенный контроль и работа с нарушениями сна.</p>
+          </div>
+          <div class="principle-back">
+            <h4>💎 Что входит бесплатно</h4>
+            <p>Все 30 типов записей, графики, экспорт PDF, таймеры сна и кормлений, безлимитная история данных.</p>
+          </div>
         </div>
-        <h3>Бесплатный старт</h3>
-        <p>Базовый трекинг — бесплатно и без ограничений. Basic и Premium AI — для тех, кому нужен расширенный контроль и работа с нарушениями сна.</p>
       </div>
       <div class="principle-card principle-card--offline">
-        <div class="principle-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+        <div class="principle-flip-inner">
+          <div class="principle-front">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            </div>
+            <h3>Офлайн</h3>
+            <p>Не нужен интернет. Записывайте в метро, на даче, в роддоме. Данные хранятся на устройстве.</p>
+          </div>
+          <div class="principle-back">
+            <h4>📱 Полный офлайн</h4>
+            <p>Приложение работает без интернета. Данные синхронизируются только когда вы сами этого захотите.</p>
+          </div>
         </div>
-        <h3>Офлайн</h3>
-        <p>Не нужен интернет. Записывайте в метро, на даче, в роддоме. Данные хранятся на устройстве.</p>
       </div>
       <div class="principle-card principle-card--private">
-        <div class="principle-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="principle-flip-inner">
+          <div class="principle-front">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Приватно</h3>
+            <p>Нет серверов, аккаунтов и телеметрии. Данные ребёнка не покидают ваш телефон.</p>
+          </div>
+          <div class="principle-back">
+            <h4>🔒 Zero-knowledge</h4>
+            <p>Мы не собираем, не храним и не передаём данные вашего ребёнка. Никогда. Точка.</p>
+          </div>
         </div>
-        <h3>Приватно</h3>
-        <p>Нет серверов, аккаунтов и телеметрии. Данные ребёнка не покидают ваш телефон.</p>
       </div>
     </div>
 
     <div class="principles-grid i-grid" data-i="en">
       <div class="principle-card principle-card--free">
-        <div class="principle-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <div class="principle-flip-inner">
+          <div class="principle-front">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15 8.5H21L16.5 13L18 20L12 16L6 20L7.5 13L3 8.5H9L12 2Z"/></svg>
+            </div>
+            <h3>Free to start</h3>
+            <p>Basic tracking is free with no limits. Basic and Premium AI plans for extended control and sleep disorder support.</p>
+          </div>
+          <div class="principle-back">
+            <h4>💎 What's free</h4>
+            <p>All 30 record types, charts, PDF export, sleep & feeding timers, unlimited data history.</p>
+          </div>
         </div>
-        <h3>Free to start</h3>
-        <p>Basic tracking is free with no limits. Basic and Premium AI plans for extended control and sleep disorder support.</p>
       </div>
       <div class="principle-card principle-card--offline">
-        <div class="principle-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+        <div class="principle-flip-inner">
+          <div class="principle-front">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            </div>
+            <h3>Offline</h3>
+            <p>No internet needed. Record in the subway, at the countryside, in the hospital. Data stays on device.</p>
+          </div>
+          <div class="principle-back">
+            <h4>📱 Fully offline</h4>
+            <p>The app works without internet. Data syncs only when you choose to.</p>
+          </div>
         </div>
-        <h3>Offline</h3>
-        <p>No internet needed. Record in the subway, at the countryside, in the hospital. Data stays on device.</p>
       </div>
       <div class="principle-card principle-card--private">
-        <div class="principle-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="principle-flip-inner">
+          <div class="principle-front">
+            <div class="principle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Private</h3>
+            <p>No servers, accounts or telemetry. Your child's data never leaves your phone.</p>
+          </div>
+          <div class="principle-back">
+            <h4>🔒 Zero-knowledge</h4>
+            <p>We don't collect, store, or share your child's data. Ever. Period.</p>
+          </div>
         </div>
-        <h3>Private</h3>
-        <p>No servers, accounts or telemetry. Your child's data never leaves your phone.</p>
       </div>
     </div>
   </div>
@@ -966,9 +1269,9 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 <!-- Wave divider (default → alt) -->
 <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,35 C320,5 640,55 960,20 C1120,8 1320,45 1440,30 L1440,60 L0,60 Z"/></svg>
 
-<!-- Dog between sections: doctor -->
+<!-- Dog between sections: doctor (flipped) -->
 <div class="dog-section dog-mascot soul-reveal" style="background:var(--bg-alt)">
-  <img src="dog.jpg" alt="" style="opacity:.8">
+  <img src="dog.jpg" alt="" style="opacity:.8;transform:scaleX(-1)">
   <span class="dog-section-label"><span data-i="ru">📋 К педиатру — готовы!</span><span data-i="en">📋 Doctor-ready!</span></span>
 </div>
 
@@ -1027,18 +1330,58 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
         </h4>
 
         <div class="i-block" data-i="ru">
-          <div class="ped-mock-row"><span class="ped-mock-label">Вес (3 мес)</span><span class="ped-mock-value">6.2 кг · 50-й перцентиль</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Рост (3 мес)</span><span class="ped-mock-value">61 см · 55-й перцентиль</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Температура</span><span class="ped-mock-value">36.6 °C · норма</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Сон / сутки</span><span class="ped-mock-value">14.5 ч · норма</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Кормлений / день</span><span class="ped-mock-value">8 раз · 720 мл</span></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#DF0086" stroke-width="1.5"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#DF0086" stroke-width="1.5"/></svg></span>Вес (3 мес)</span>
+            <span class="ped-mock-value">6.2 кг · 50-й перцентиль</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--50" data-width="50%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M17.75 12.75a2.83 2.83 0 0 1 0 3L15.58 17.75a2.83 2.83 0 0 1-3 0L2.25 7.25a2.83 2.83 0 0 1 0-3L4.42 2.25a2.83 2.83 0 0 1 3 0L17.75 12.75Z" stroke="#22E3CA" stroke-width="1.5"/></svg></span>Рост (3 мес)</span>
+            <span class="ped-mock-value">61 см · 55-й перцентиль</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--55" data-width="55%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M11.667 3.333v8.783a3.33 3.33 0 0 1-.747 5.531 3.33 3.33 0 0 1-3.84-1.099 3.33 3.33 0 0 1 1.253-4.432V3.333a1.67 1.67 0 0 1 3.334 0Z" stroke="#22CE50" stroke-width="1.5"/></svg></span>Температура</span>
+            <span class="ped-mock-value">36.6 °C · норма</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--normal" data-width="42%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834" stroke="#6366F1" stroke-width="1.5"/></svg></span>Сон / сутки</span>
+            <span class="ped-mock-value">14.5 ч · норма</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--good" data-width="85%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.5"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.5"/></svg></span>Кормлений / день</span>
+            <span class="ped-mock-value">8 раз · 720 мл</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--good" data-width="80%"></div></div>
         </div>
         <div class="i-block" data-i="en">
-          <div class="ped-mock-row"><span class="ped-mock-label">Weight (3 mo)</span><span class="ped-mock-value">6.2 kg · 50th pctl</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Height (3 mo)</span><span class="ped-mock-value">61 cm · 55th pctl</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Temperature</span><span class="ped-mock-value">36.6 °C · normal</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Sleep / day</span><span class="ped-mock-value">14.5 h · normal</span></div>
-          <div class="ped-mock-row"><span class="ped-mock-label">Feedings / day</span><span class="ped-mock-value">8 times · 720 ml</span></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#DF0086" stroke-width="1.5"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#DF0086" stroke-width="1.5"/></svg></span>Weight (3 mo)</span>
+            <span class="ped-mock-value">6.2 kg · 50th pctl</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--50" data-width="50%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M17.75 12.75a2.83 2.83 0 0 1 0 3L15.58 17.75a2.83 2.83 0 0 1-3 0L2.25 7.25a2.83 2.83 0 0 1 0-3L4.42 2.25a2.83 2.83 0 0 1 3 0L17.75 12.75Z" stroke="#22E3CA" stroke-width="1.5"/></svg></span>Height (3 mo)</span>
+            <span class="ped-mock-value">61 cm · 55th pctl</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--55" data-width="55%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M11.667 3.333v8.783a3.33 3.33 0 0 1-.747 5.531 3.33 3.33 0 0 1-3.84-1.099 3.33 3.33 0 0 1 1.253-4.432V3.333a1.67 1.67 0 0 1 3.334 0Z" stroke="#22CE50" stroke-width="1.5"/></svg></span>Temperature</span>
+            <span class="ped-mock-value">36.6 °C · normal</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--normal" data-width="42%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834" stroke="#6366F1" stroke-width="1.5"/></svg></span>Sleep / day</span>
+            <span class="ped-mock-value">14.5 h · normal</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--good" data-width="85%"></div></div>
+          <div class="ped-mock-row">
+            <span class="ped-mock-label"><span class="ped-mock-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.5"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.5"/></svg></span>Feedings / day</span>
+            <span class="ped-mock-value">8 times · 720 ml</span>
+          </div>
+          <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--good" data-width="80%"></div></div>
         </div>
       </div>
     </div>
@@ -1060,10 +1403,12 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
   </p>
   <div class="cta-buttons">
     <a href="#" class="store-btn store-btn-apple">
+      <span class="store-tooltip"><span data-i="ru">Скоро!</span><span data-i="en">Coming soon!</span></span>
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       App Store
     </a>
     <a href="#" class="store-btn store-btn-google">
+      <span class="store-tooltip"><span data-i="ru">Скоро!</span><span data-i="en">Coming soon!</span></span>
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302L5.864 2.658z"/></svg>
       Google Play
     </a>
@@ -2082,6 +2427,7 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-copy">
+      <span class="footer-dog"><img src="dog.jpg" alt=""></span>
       <span data-i="ru">&copy; 2025 Lummo. Все данные хранятся на вашем устройстве.</span>
       <span data-i="en">&copy; 2025 Lummo. All data stays on your device.</span>
     </div>
@@ -2092,6 +2438,11 @@ html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
     </div>
   </div>
 </footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
 
 <script>
 /* ===== THEME ===== */
@@ -2445,6 +2796,92 @@ document.addEventListener('click', function(e){
     }
     requestAnimationFrame(step);
   }
+})();
+
+/* ===== SCROLL PROGRESS BAR ===== */
+(function(){
+  var bar = document.getElementById('scrollProgress');
+  if(!bar) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = progress + '%';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+/* ===== BACK TO TOP BUTTON ===== */
+(function(){
+  var btn = document.getElementById('backToTop');
+  if(!btn) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        if(window.pageYOffset > 400){
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+/* ===== DOG BARK EASTER EGG ===== */
+(function(){
+  var dogs = document.querySelectorAll('.dog-mascot img, .dog-hero img, .footer-dog img');
+  dogs.forEach(function(dog){
+    dog.style.cursor = 'pointer';
+    dog.addEventListener('click', function(e){
+      e.stopPropagation();
+      // Check if bark bubble already exists
+      var parent = dog.parentElement;
+      var existing = parent.querySelector('.dog-bark-bubble');
+      if(existing){
+        existing.remove();
+        return;
+      }
+      var bubble = document.createElement('div');
+      bubble.className = 'dog-bark-bubble';
+      bubble.textContent = 'Гав! 🐾';
+      parent.style.position = parent.style.position || 'relative';
+      parent.appendChild(bubble);
+      requestAnimationFrame(function(){
+        bubble.classList.add('show');
+      });
+      setTimeout(function(){
+        bubble.classList.remove('show');
+        setTimeout(function(){ bubble.remove(); }, 300);
+      }, 2000);
+    });
+  });
+})();
+
+/* ===== PED PROGRESS BAR ANIMATION ===== */
+(function(){
+  var fills = document.querySelectorAll('.ped-progress-fill');
+  if(!fills.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var fill = entry.target;
+        var w = fill.getAttribute('data-width');
+        if(w) fill.style.width = w;
+        obs.unobserve(fill);
+      }
+    });
+  }, {threshold:0.3});
+  fills.forEach(function(f){ obs.observe(f); });
 })();
 </script>
 </body>
