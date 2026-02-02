@@ -473,6 +473,116 @@ html[lang="en"] .i-grid[data-i="en"]{display:grid}
 .i-iflex[data-i="ru"]{display:inline-flex}
 html[lang="en"] .i-iflex[data-i="ru"]{display:none}
 html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
+
+/* ===== SOUL: ANIMATIONS & MASCOT ===== */
+
+/* --- Scroll Reveal --- */
+.soul-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.soul-reveal.visible{opacity:1;transform:translateY(0)}
+
+/* --- Bounce-in for icons --- */
+@keyframes soulBounceIn{
+  0%{opacity:0;transform:scale(.3)}
+  50%{opacity:1;transform:scale(1.08)}
+  70%{transform:scale(.95)}
+  100%{transform:scale(1)}
+}
+.soul-bounce{opacity:0}
+.soul-bounce.visible{animation:soulBounceIn .6s cubic-bezier(.16,1,.3,1) forwards}
+
+/* --- Hover micro-interactions --- */
+.store-btn{transition:all .2s cubic-bezier(.16,1,.3,1)}
+.store-btn:hover{transform:scale(1.03);box-shadow:0 4px 20px rgba(60,56,255,.12)}
+.feat-card,.problem-card,.principle-card,.dev-feature,.norm-card,.blog-card{transition:all .25s cubic-bezier(.16,1,.3,1)}
+.feat-card:hover,.problem-card:hover,.principle-card:hover,.dev-feature:hover,.norm-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+html[data-theme="dark"] .feat-card:hover,html[data-theme="dark"] .problem-card:hover,html[data-theme="dark"] .principle-card:hover,html[data-theme="dark"] .dev-feature:hover,html[data-theme="dark"] .norm-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.25)}
+
+/* --- Floating clouds --- */
+@keyframes cloudDrift1{0%{transform:translateX(-10%)}50%{transform:translateX(8%)}100%{transform:translateX(-10%)}}
+@keyframes cloudDrift2{0%{transform:translateX(5%)}50%{transform:translateX(-12%)}100%{transform:translateX(5%)}}
+@keyframes cloudDrift3{0%{transform:translateX(-5%) translateY(0)}50%{transform:translateX(10%) translateY(-8px)}100%{transform:translateX(-5%) translateY(0)}}
+
+.hero-clouds{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hero-cloud{position:absolute;opacity:.12}
+html[data-theme="dark"] .hero-cloud{opacity:.06}
+.hero-cloud--1{top:15%;left:-4%;width:160px;animation:cloudDrift1 28s ease-in-out infinite}
+.hero-cloud--2{top:40%;right:-3%;width:120px;animation:cloudDrift2 22s ease-in-out infinite}
+.hero-cloud--3{bottom:18%;left:8%;width:100px;animation:cloudDrift3 32s ease-in-out infinite}
+.hero-cloud--4{top:8%;right:20%;width:80px;animation:cloudDrift1 35s ease-in-out infinite;animation-delay:-8s}
+
+/* --- Wave dividers --- */
+.wave-divider{display:block;width:100%;height:auto;position:relative;z-index:1;margin-top:-1px}
+.wave-divider--flip{transform:scaleY(-1);margin-bottom:-1px;margin-top:0}
+
+/* --- Blob decorations --- */
+.soul-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.soul-blob--1{width:300px;height:300px;background:rgba(60,56,255,.06);top:-80px;right:-60px}
+.soul-blob--2{width:250px;height:250px;background:rgba(244,67,61,.05);bottom:-60px;left:-40px}
+.soul-blob--3{width:200px;height:200px;background:rgba(99,102,241,.06);top:50%;left:-80px}
+html[data-theme="dark"] .soul-blob--1{background:rgba(60,56,255,.08)}
+html[data-theme="dark"] .soul-blob--2{background:rgba(244,67,61,.06)}
+html[data-theme="dark"] .soul-blob--3{background:rgba(99,102,241,.08)}
+
+/* --- Dog mascot --- */
+.dog-mascot{position:absolute;z-index:5;transition:opacity .6s,transform .6s;opacity:0;transform:translateY(16px)}
+.dog-mascot.visible{opacity:1;transform:translateY(0)}
+.dog-mascot img{display:block;border-radius:50%;filter:drop-shadow(0 4px 12px rgba(0,0,0,.12))}
+html[data-theme="dark"] .dog-mascot img{filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+
+/* Hero dog: peeking from bottom-right of phone */
+.hero-phone{position:relative}
+.dog-hero{position:absolute;bottom:-18px;right:-30px;z-index:10}
+.dog-hero img{width:72px;height:72px;border-radius:50%;object-fit:cover}
+.dog-bubble{position:absolute;bottom:60px;right:-12px;background:var(--bg-card);border:1.5px solid var(--border);border-radius:14px 14px 4px 14px;padding:5px 12px;font-size:.72rem;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.06);z-index:11}
+html[data-theme="dark"] .dog-bubble{box-shadow:0 2px 8px rgba(0,0,0,.3)}
+@keyframes dogPeek{
+  0%{transform:translateY(20px) scale(.9);opacity:0}
+  60%{transform:translateY(-4px) scale(1.02);opacity:1}
+  100%{transform:translateY(0) scale(1);opacity:1}
+}
+.dog-hero.visible{animation:dogPeek .8s cubic-bezier(.16,1,.3,1) forwards}
+
+/* Section mascots */
+.dog-section{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 0;position:relative}
+.dog-section img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.dog-section-label{font-size:.7rem;font-weight:600;color:var(--text-tertiary);letter-spacing:.02em}
+
+/* --- AI Stars/Sparkle --- */
+@keyframes starTwinkle{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:.6;transform:scale(1.2)}}
+.ai-star{position:absolute;width:3px;height:3px;border-radius:50%;background:#818CF8;pointer-events:none;z-index:1}
+.ai-star:nth-child(1){top:12%;left:8%;animation:starTwinkle 3s ease-in-out infinite}
+.ai-star:nth-child(2){top:25%;right:12%;animation:starTwinkle 2.5s ease-in-out infinite .5s}
+.ai-star:nth-child(3){bottom:20%;left:15%;animation:starTwinkle 4s ease-in-out infinite 1s}
+.ai-star:nth-child(4){top:60%;right:5%;animation:starTwinkle 3.5s ease-in-out infinite 1.5s}
+.ai-star:nth-child(5){bottom:10%;right:25%;animation:starTwinkle 2.8s ease-in-out infinite .8s}
+.ai-star:nth-child(6){top:40%;left:3%;animation:starTwinkle 3.2s ease-in-out infinite 2s}
+.ai-star:nth-child(7){top:8%;right:35%;animation:starTwinkle 2.6s ease-in-out infinite 1.2s}
+.ai-star:nth-child(8){bottom:35%;left:25%;animation:starTwinkle 3.8s ease-in-out infinite .3s}
+
+/* --- Section soft gradients --- */
+.hero{position:relative;overflow:hidden}
+.hero-inner{position:relative;z-index:2}
+.section{position:relative;overflow:hidden}
+.section-inner{position:relative;z-index:2}
+.section--alt{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--bg) 100%)}
+.ped-section{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--bg) 100%)}
+
+/* --- Animated counter --- */
+@keyframes counterPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.ped-mock-value[data-counter].counted{animation:counterPulse .3s ease}
+
+/* --- Parallax layers --- */
+.parallax-layer{will-change:transform;transition:transform .1s linear}
+
+/* --- Mobile adjustments --- */
+@media(max-width:768px){
+  .hero-cloud--1{width:100px}.hero-cloud--2{width:80px}.hero-cloud--3{width:60px}.hero-cloud--4{display:none}
+  .dog-hero{right:-20px;bottom:-14px}
+  .dog-hero img{width:56px;height:56px}
+  .dog-bubble{font-size:.65rem;padding:4px 9px;bottom:48px;right:-8px}
+  .soul-blob{display:none}
+  .dog-section img{width:36px;height:36px}
+}
 </style>
 </head>
 <body>
@@ -537,6 +647,16 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
+  <!-- Floating clouds -->
+  <div class="hero-clouds">
+    <svg class="hero-cloud hero-cloud--1 parallax-layer" data-speed="0.02" viewBox="0 0 200 80" fill="currentColor" style="color:var(--text-tertiary)"><ellipse cx="70" cy="50" rx="60" ry="25"/><ellipse cx="110" cy="40" rx="45" ry="20"/><ellipse cx="50" cy="42" rx="35" ry="18"/><ellipse cx="90" cy="55" rx="50" ry="22"/></svg>
+    <svg class="hero-cloud hero-cloud--2 parallax-layer" data-speed="-0.015" viewBox="0 0 200 80" fill="currentColor" style="color:var(--text-tertiary)"><ellipse cx="80" cy="45" rx="55" ry="22"/><ellipse cx="120" cy="38" rx="40" ry="18"/><ellipse cx="60" cy="40" rx="30" ry="15"/></svg>
+    <svg class="hero-cloud hero-cloud--3 parallax-layer" data-speed="0.025" viewBox="0 0 200 80" fill="currentColor" style="color:var(--text-tertiary)"><ellipse cx="90" cy="48" rx="50" ry="20"/><ellipse cx="130" cy="42" rx="35" ry="16"/><ellipse cx="65" cy="44" rx="28" ry="14"/></svg>
+    <svg class="hero-cloud hero-cloud--4 parallax-layer" data-speed="-0.01" viewBox="0 0 200 80" fill="currentColor" style="color:var(--text-tertiary)"><ellipse cx="75" cy="46" rx="42" ry="18"/><ellipse cx="115" cy="40" rx="32" ry="15"/></svg>
+  </div>
+  <!-- Blob decorations -->
+  <div class="soul-blob soul-blob--1"></div>
+  <div class="soul-blob soul-blob--2"></div>
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge i-iflex" data-i="ru">
@@ -574,9 +694,17 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
       <div class="phone-frame">
         <img src="screenshots/hero.svg" alt="Lummo" loading="eager">
       </div>
+      <!-- Dog mascot peeking -->
+      <div class="dog-hero dog-mascot" id="dogHero">
+        <div class="dog-bubble"><span data-i="ru">Записала! ✓</span><span data-i="en">Logged! ✓</span></div>
+        <img src="dog.jpg" alt="Lummo mascot" width="72" height="72">
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Wave divider -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,35 1440,28 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== PROBLEM → SOLUTION ===== -->
 <section class="section section--alt" id="problem">
@@ -616,6 +744,15 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
     </div>
   </div>
 </section>
+
+<!-- Wave divider (alt → default) -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C240,55 480,0 720,35 C960,60 1200,10 1440,30 L1440,60 L0,60 Z"/></svg>
+
+<!-- Dog between sections: sleeping -->
+<div class="dog-section dog-mascot soul-reveal" style="background:var(--bg)">
+  <img src="dog.jpg" alt="" style="opacity:.8">
+  <span class="dog-section-label"><span data-i="ru">🐾 Что мы записываем?</span><span data-i="en">🐾 What do we track?</span></span>
+</div>
 
 <!-- ===== FEATURES GRID ===== -->
 <section class="section" id="features">
@@ -719,10 +856,14 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
   </div>
 </section>
 
-<div class="section-divider"></div>
+<!-- Wave divider (default → dark/ai) -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C360,60 720,0 1080,40 C1260,50 1380,15 1440,25 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== AI SECTION ===== -->
-<section class="ai-section" id="ai">
+<section class="ai-section" id="ai" style="position:relative;overflow:hidden">
+  <!-- AI Stars -->
+  <div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div>
+  <div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div>
   <div class="section-inner">
     <div class="ai-content">
       <h2>
@@ -755,8 +896,18 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
   </div>
 </section>
 
+<!-- Wave divider (ai/dark → default) -->
+<svg class="wave-divider wave-divider--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C480,60 960,0 1440,35 L1440,60 L0,60 Z"/></svg>
+
+<!-- Dog between sections: sparkle -->
+<div class="dog-section dog-mascot soul-reveal" style="background:var(--bg)">
+  <img src="dog.jpg" alt="" style="opacity:.8;filter:hue-rotate(10deg) brightness(1.05)">
+  <span class="dog-section-label"><span data-i="ru">✨ Наши принципы</span><span data-i="en">✨ Our principles</span></span>
+</div>
+
 <!-- ===== PRINCIPLES ===== -->
 <section class="section" id="principles">
+  <div class="soul-blob soul-blob--3"></div>
   <div class="section-inner">
     <div class="section-header">
       <h2><span data-i="ru">Три принципа, от которых мы не откажемся</span><span data-i="en">Three principles we won't compromise on</span></h2>
@@ -812,7 +963,14 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
   </div>
 </section>
 
-<div class="section-divider"></div>
+<!-- Wave divider (default → alt) -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,35 C320,5 640,55 960,20 C1120,8 1320,45 1440,30 L1440,60 L0,60 Z"/></svg>
+
+<!-- Dog between sections: doctor -->
+<div class="dog-section dog-mascot soul-reveal" style="background:var(--bg-alt)">
+  <img src="dog.jpg" alt="" style="opacity:.8">
+  <span class="dog-section-label"><span data-i="ru">📋 К педиатру — готовы!</span><span data-i="en">📋 Doctor-ready!</span></span>
+</div>
 
 <!-- ===== FOR PEDIATRICIAN ===== -->
 <section class="ped-section" id="pediatrician">
@@ -886,6 +1044,9 @@ html[lang="en"] .i-iflex[data-i="en"]{display:inline-flex}
     </div>
   </div>
 </section>
+
+<!-- Wave divider (alt → default) -->
+<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,25 C360,55 720,5 1080,35 C1260,48 1380,18 1440,28 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== CTA ===== -->
 <section class="cta-section" id="download">
@@ -2146,6 +2307,144 @@ document.addEventListener('click', function(e){
   handleRoute();
   window.addEventListener('hashchange', handleRoute);
   window.addEventListener('resize', function(){ if(window.innerWidth > 768) closeMenu() });
+})();
+
+/* ===== SOUL: SCROLL REVEAL ===== */
+(function(){
+  // Add soul-reveal class to sections and cards
+  var selectors = [
+    '.section-header',
+    '.problem-card',
+    '.feat-card',
+    '.principle-card',
+    '.ai-content',
+    '.ai-phone',
+    '.ped-content',
+    '.ped-visual',
+    '.cta-section h2',
+    '.cta-section > p',
+    '.cta-buttons',
+    '.blog-card',
+    '.dev-feature',
+    '.norm-card',
+    '.milestone-item'
+  ];
+  selectors.forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(el){
+      if(!el.classList.contains('soul-reveal')) el.classList.add('soul-reveal');
+    });
+  });
+
+  // Add bounce class to feature icons
+  document.querySelectorAll('.feat-icon, .principle-icon, .dev-feature-icon').forEach(function(el){
+    el.classList.add('soul-bounce');
+  });
+
+  // Intersection Observer for reveal
+  var revealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.soul-reveal, .soul-bounce, .dog-mascot').forEach(function(el){
+    revealObs.observe(el);
+  });
+
+  // Stagger cards within the same grid
+  document.querySelectorAll('.features-grid, .problems-grid, .principles-grid, .dev-features, .norms-grid').forEach(function(grid){
+    var cards = grid.children;
+    for(var i = 0; i < cards.length; i++){
+      cards[i].style.transitionDelay = (i * 0.08) + 's';
+    }
+  });
+})();
+
+/* ===== SOUL: DOG HERO ANIMATION ===== */
+(function(){
+  var dogHero = document.getElementById('dogHero');
+  if(!dogHero) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        dogHero.classList.add('visible');
+        obs.unobserve(dogHero);
+      }
+    });
+  }, {threshold:0.3});
+  obs.observe(dogHero);
+})();
+
+/* ===== SOUL: PARALLAX ===== */
+(function(){
+  var layers = document.querySelectorAll('.parallax-layer');
+  if(!layers.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var scrollY = window.pageYOffset;
+        layers.forEach(function(layer){
+          var speed = parseFloat(layer.getAttribute('data-speed')) || 0.02;
+          layer.style.transform = 'translateY(' + (scrollY * speed * 60) + 'px)';
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+})();
+
+/* ===== SOUL: ANIMATED COUNTERS ===== */
+(function(){
+  // Find ped-mock-value elements and animate their numbers
+  var pedValues = document.querySelectorAll('.ped-mock-value');
+  pedValues.forEach(function(el){
+    el.setAttribute('data-counter', el.textContent);
+  });
+
+  var counterObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        animateCounter(entry.target);
+        counterObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.5});
+
+  pedValues.forEach(function(el){ counterObs.observe(el); });
+
+  function animateCounter(el){
+    var original = el.getAttribute('data-counter');
+    // Extract first number from text
+    var match = original.match(/([\d.]+)/);
+    if(!match) return;
+    var target = parseFloat(match[1]);
+    var isFloat = match[1].indexOf('.') > -1;
+    var prefix = original.substring(0, original.indexOf(match[1]));
+    var suffix = original.substring(original.indexOf(match[1]) + match[1].length);
+    var duration = 800;
+    var start = performance.now();
+
+    function step(now){
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = target * eased;
+      el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+      else{
+        el.textContent = original;
+        el.classList.add('counted');
+      }
+    }
+    requestAnimationFrame(step);
+  }
 })();
 </script>
 </body>
