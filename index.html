@@ -1386,6 +1386,63 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   .tw-typing{border-right:none!important}
 }
 
+/* ===== TRUST/SECURITY GUARANTEES ===== */
+.trust-section{padding:56px 24px;background:var(--bg)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1080px;margin:0 auto}
+.trust-item{text-align:center;padding:24px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;transition:all .25s cubic-bezier(.16,1,.3,1)}
+.trust-item:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:var(--border-hover)}
+html[data-theme="dark"] .trust-item:hover{box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.trust-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.5rem;background:var(--bg-alt);border:2px solid var(--border)}
+.trust-item h4{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.trust-item p{font-size:.8rem;color:var(--text-secondary);line-height:1.5}
+@media(max-width:768px){.trust-grid{grid-template-columns:repeat(2,1fr);gap:12px}.trust-item{padding:18px 12px}.trust-icon{width:48px;height:48px;font-size:1.3rem}}
+@media(max-width:480px){.trust-grid{grid-template-columns:1fr}}
+
+/* ===== BEFORE/AFTER SECTION ===== */
+.before-after-section{padding:72px 24px;background:var(--bg-alt)}
+.before-after-inner{max-width:900px;margin:0 auto}
+.before-after-header{text-align:center;margin-bottom:40px}
+.before-after-header h2{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--text)}
+.before-after-header p{font-size:.92rem;color:var(--text-secondary);margin-top:8px;line-height:1.6}
+.before-after-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ba-card{padding:28px 24px;border-radius:16px;position:relative;overflow:hidden}
+.ba-card--before{background:linear-gradient(135deg,rgba(244,67,61,.08) 0%,rgba(255,200,200,.1) 100%);border:1.5px solid rgba(244,67,61,.2)}
+.ba-card--after{background:linear-gradient(135deg,rgba(34,197,94,.08) 0%,rgba(200,255,220,.1) 100%);border:1.5px solid rgba(34,197,94,.2)}
+html[data-theme="dark"] .ba-card--before{background:linear-gradient(135deg,rgba(244,67,61,.12) 0%,rgba(100,40,40,.15) 100%);border-color:rgba(244,67,61,.25)}
+html[data-theme="dark"] .ba-card--after{background:linear-gradient(135deg,rgba(34,197,94,.12) 0%,rgba(40,100,60,.15) 100%);border-color:rgba(34,197,94,.25)}
+.ba-label{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
+.ba-card--before .ba-label{background:rgba(244,67,61,.15);color:#DC2626}
+.ba-card--after .ba-label{background:rgba(34,197,94,.15);color:#16A34A}
+html[data-theme="dark"] .ba-card--before .ba-label{color:#FF6B6B}
+html[data-theme="dark"] .ba-card--after .ba-label{color:#4ADE80}
+.ba-list{list-style:none;padding:0;margin:0}
+.ba-list li{display:flex;align-items:flex-start;gap:10px;padding:10px 0;font-size:.88rem;color:var(--text-secondary);line-height:1.5;border-bottom:1px dashed var(--border)}
+.ba-list li:last-child{border-bottom:none}
+.ba-list-icon{flex-shrink:0;font-size:1rem;margin-top:2px}
+.ba-card--before .ba-list-icon{color:#DC2626}
+.ba-card--after .ba-list-icon{color:#16A34A}
+html[data-theme="dark"] .ba-card--before .ba-list-icon{color:#FF6B6B}
+html[data-theme="dark"] .ba-card--after .ba-list-icon{color:#4ADE80}
+@media(max-width:768px){.before-after-grid{grid-template-columns:1fr;gap:16px}.ba-card{padding:22px 18px}}
+
+/* ===== FAQ SECTION ===== */
+.faq-section{padding:72px 24px;background:var(--bg)}
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:40px}
+.faq-header h2{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;color:var(--text)}
+.faq-header p{font-size:.92rem;color:var(--text-secondary);margin-top:8px;line-height:1.6}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.faq-item:hover{border-color:var(--border-hover)}
+.faq-question{width:100%;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:none;text-align:left;font-size:.95rem;font-weight:600;color:var(--text);cursor:pointer;transition:background .15s}
+.faq-question:hover{background:var(--bg-alt)}
+.faq-question svg{width:20px;height:20px;flex-shrink:0;color:var(--text-tertiary);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.faq-item.open .faq-question svg{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1),padding .4s}
+.faq-item.open .faq-answer{max-height:300px}
+.faq-answer-inner{padding:0 20px 18px;font-size:.88rem;color:var(--text-secondary);line-height:1.65}
+@media(max-width:768px){.faq-question{padding:16px;font-size:.9rem}.faq-answer-inner{padding:0 16px 16px;font-size:.85rem}}
+
 </style>
 </head>
 <body>
@@ -1798,6 +1855,64 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE/AFTER SECTION ===== -->
+<section class="before-after-section soul-reveal" id="before-after">
+  <div class="before-after-inner">
+    <div class="before-after-header">
+      <h2><span data-i="ru">До и После Lummo</span><span data-i="en">Before & After Lummo</span></h2>
+      <p><span data-i="ru">Как меняется жизнь, когда перестаёшь держать всё в голове</span><span data-i="en">How life changes when you stop keeping everything in your head</span></p>
+    </div>
+
+    <!-- RU Before/After -->
+    <div class="before-after-grid i-grid" data-i="ru">
+      <div class="ba-card ba-card--before">
+        <div class="ba-label">❌ До Lummo</div>
+        <ul class="ba-list">
+          <li><span class="ba-list-icon">😰</span> «Когда я кормила последний раз?»</li>
+          <li><span class="ba-list-icon">😵</span> Хаос в голове после бессонных ночей</li>
+          <li><span class="ba-list-icon">🤷</span> «Вроде нормально спит... или нет?»</li>
+          <li><span class="ba-list-icon">😬</span> На приёме: «Эээ... примерно...»</li>
+          <li><span class="ba-list-icon">😩</span> Тревога: «А вдруг что-то не так?»</li>
+        </ul>
+      </div>
+      <div class="ba-card ba-card--after">
+        <div class="ba-label">✅ После Lummo</div>
+        <ul class="ba-list">
+          <li><span class="ba-list-icon">😌</span> Последнее кормление: 02:40, 12 мин</li>
+          <li><span class="ba-list-icon">📊</span> Всё записано за два нажатия</li>
+          <li><span class="ba-list-icon">📈</span> Сон 14.2ч/сутки — норма по ВОЗ</li>
+          <li><span class="ba-list-icon">👨‍⚕️</span> Врачу — PDF с точными данными</li>
+          <li><span class="ba-list-icon">💪</span> Спокойствие: всё под контролем</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EN Before/After -->
+    <div class="before-after-grid i-grid" data-i="en">
+      <div class="ba-card ba-card--before">
+        <div class="ba-label">❌ Before Lummo</div>
+        <ul class="ba-list">
+          <li><span class="ba-list-icon">😰</span> "When did I last feed her?"</li>
+          <li><span class="ba-list-icon">😵</span> Chaos in your head after sleepless nights</li>
+          <li><span class="ba-list-icon">🤷</span> "I think she sleeps okay... or not?"</li>
+          <li><span class="ba-list-icon">😬</span> At the doctor's: "Umm... roughly..."</li>
+          <li><span class="ba-list-icon">😩</span> Anxiety: "What if something's wrong?"</li>
+        </ul>
+      </div>
+      <div class="ba-card ba-card--after">
+        <div class="ba-label">✅ After Lummo</div>
+        <ul class="ba-list">
+          <li><span class="ba-list-icon">😌</span> Last feeding: 2:40 AM, 12 min</li>
+          <li><span class="ba-list-icon">📊</span> Everything logged in two taps</li>
+          <li><span class="ba-list-icon">📈</span> Sleep 14.2h/day — WHO norm</li>
+          <li><span class="ba-list-icon">👨‍⚕️</span> For the doctor — PDF with exact data</li>
+          <li><span class="ba-list-icon">💪</span> Peace of mind: everything's under control</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -2345,6 +2460,55 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
+<!-- ===== TRUST/SECURITY GUARANTEES ===== -->
+<section class="trust-section soul-reveal" id="trust">
+  <div class="trust-grid">
+    <!-- RU Trust Items -->
+    <div class="trust-item i-block" data-i="ru">
+      <div class="trust-icon">🔒</div>
+      <h4>Данные на устройстве</h4>
+      <p>Всё хранится локально. Мы ничего не видим.</p>
+    </div>
+    <div class="trust-item i-block" data-i="ru">
+      <div class="trust-icon">🚫</div>
+      <h4>Без рекламы</h4>
+      <p>Никакой рекламы, никогда. Ваш покой — наш приоритет.</p>
+    </div>
+    <div class="trust-item i-block" data-i="ru">
+      <div class="trust-icon">✅</div>
+      <h4>GDPR compliant</h4>
+      <p>Соответствует европейским стандартам защиты данных.</p>
+    </div>
+    <div class="trust-item i-block" data-i="ru">
+      <div class="trust-icon">🛡️</div>
+      <h4>Шифрование</h4>
+      <p>Ваши данные защищены современным шифрованием.</p>
+    </div>
+
+    <!-- EN Trust Items -->
+    <div class="trust-item i-block" data-i="en">
+      <div class="trust-icon">🔒</div>
+      <h4>Data on device</h4>
+      <p>Everything is stored locally. We see nothing.</p>
+    </div>
+    <div class="trust-item i-block" data-i="en">
+      <div class="trust-icon">🚫</div>
+      <h4>No ads</h4>
+      <p>No advertising, ever. Your peace of mind is our priority.</p>
+    </div>
+    <div class="trust-item i-block" data-i="en">
+      <div class="trust-icon">✅</div>
+      <h4>GDPR compliant</h4>
+      <p>Meets European data protection standards.</p>
+    </div>
+    <div class="trust-item i-block" data-i="en">
+      <div class="trust-icon">🛡️</div>
+      <h4>Encryption</h4>
+      <p>Your data is protected with modern encryption.</p>
+    </div>
+  </div>
+</section>
+
 <!-- Gradient transition principles → testimonials (волна скрыта) -->
 <svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,35 C320,5 640,55 960,20 C1120,8 1320,45 1440,30 L1440,60 L0,60 Z"/></svg>
 
@@ -2635,6 +2799,132 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
             <span class="ped-mock-value">8 times · 720 ml</span>
           </div>
           <div class="ped-progress"><div class="ped-progress-fill ped-progress-fill--good" data-width="80%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header soul-reveal">
+      <h2><span data-i="ru">Частые вопросы</span><span data-i="en">FAQ</span></h2>
+      <p><span data-i="ru">Ответы на вопросы, которые нам задают чаще всего</span><span data-i="en">Answers to the most common questions</span></p>
+    </div>
+
+    <!-- RU FAQ -->
+    <div class="faq-list i-block" data-i="ru">
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Это бесплатно?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Базовый трекинг — бесплатный и без ограничений. Все 30 типов записей, графики, экспорт PDF, таймеры — всё это доступно бесплатно. Premium-функции с расширенным AI-анализом — по подписке.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Где хранятся данные?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Только на вашем устройстве. Мы не собираем, не храним и не передаём данные о вашем ребёнке. Zero-knowledge архитектура — ваша приватность защищена.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Нужен ли интернет?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Нет! Приложение полностью работает офлайн. Записывайте в метро, на даче, в роддоме — интернет не нужен. Синхронизация опциональна и только по вашему желанию.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Можно ли экспортировать данные?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Да! Экспорт в PDF — для педиатра, в CSV — для аналитики. Ваши данные принадлежат вам, забирайте их когда угодно.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Работает ли на Android и iOS?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Да, Lummo доступен в App Store и Google Play. Одинаковый функционал на обеих платформах.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Как связаться с поддержкой?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Напишите нам на support@lummo.app или через форму в приложении. Отвечаем в течение 24 часов.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EN FAQ -->
+    <div class="faq-list i-block" data-i="en">
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Is it free?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Basic tracking is free with no limits. All 30 record types, charts, PDF export, timers — all free. Premium features with advanced AI analysis are available via subscription.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Where is data stored?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Only on your device. We don't collect, store, or share your child's data. Zero-knowledge architecture — your privacy is protected.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Do I need internet?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No! The app works completely offline. Record in the subway, at the countryside, in the hospital — no internet needed. Sync is optional and only when you choose.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I export my data?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes! Export to PDF for your pediatrician, CSV for analytics. Your data belongs to you — take it whenever you want.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Does it work on Android and iOS?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes, Lummo is available on App Store and Google Play. Same functionality on both platforms.</div>
+        </div>
+      </div>
+      <div class="faq-item soul-reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How do I contact support?</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Email us at support@lummo.app or use the form in the app. We respond within 24 hours.</div>
         </div>
       </div>
     </div>
@@ -3879,6 +4169,23 @@ function closeMenu(){
   menu.classList.remove('open');
   burger.classList.remove('active');
   document.body.style.overflow = '';
+}
+
+/* ===== FAQ ACCORDION ===== */
+function toggleFaq(btn){
+  var item = btn.closest('.faq-item');
+  var wasOpen = item.classList.contains('open');
+  // Close all items in same list
+  var list = item.closest('.faq-list');
+  if(list){
+    list.querySelectorAll('.faq-item').forEach(function(i){
+      i.classList.remove('open');
+    });
+  }
+  // Toggle current
+  if(!wasOpen){
+    item.classList.add('open');
+  }
 }
 
 /* ===== BLOG TAG FILTERING ===== */
