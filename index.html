@@ -718,7 +718,8 @@ html[data-theme="light"] .ai-section::after{background:none}
 .poll-option{display:grid;grid-template-columns:48px 1fr 100px 50px;align-items:center;gap:16px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:16px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
 .poll-option:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(0,0,0,.06);border-color:var(--primary)}
 .poll-option.voted{border-color:var(--primary);background:rgba(60,56,255,.04)}
-.poll-option-icon{font-size:1.5rem;text-align:center}
+.poll-option-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.poll-option-icon svg{width:24px;height:24px;stroke:var(--primary)}
 .poll-option-content{min-width:0}
 .poll-option-title{font-weight:600;font-size:.95rem;margin-bottom:2px}
 .poll-option-desc{font-size:.75rem;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -3079,13 +3080,13 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 <section class="section poll-section" id="poll">
   <div class="section-inner">
     <div class="section-header soul-reveal">
-      <h2><span data-i="ru">🗳️ Какую функцию добавить следующей?</span><span data-i="en">🗳️ What feature should we add next?</span></h2>
+      <h2><span data-i="ru">Какую функцию добавить следующей?</span><span data-i="en">What feature should we add next?</span></h2>
       <p><span data-i="ru">Голосуйте — мы делаем то, что нужно вам</span><span data-i="en">Vote — we build what you need</span></p>
     </div>
     
     <div class="poll-container soul-reveal">
       <div class="poll-option" data-option="sync" onclick="votePoll('sync')">
-        <div class="poll-option-icon">☁️</div>
+        <div class="poll-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 0-14h11"/><path d="M20 16.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg></div>
         <div class="poll-option-content">
           <div class="poll-option-title"><span data-i="ru">Облачная синхронизация</span><span data-i="en">Cloud sync</span></div>
           <div class="poll-option-desc"><span data-i="ru">Синхронизация между устройствами с шифрованием</span><span data-i="en">Sync between devices with encryption</span></div>
@@ -3095,7 +3096,7 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       </div>
       
       <div class="poll-option" data-option="family" onclick="votePoll('family')">
-        <div class="poll-option-icon">👨‍👩‍👧</div>
+        <div class="poll-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <div class="poll-option-content">
           <div class="poll-option-title"><span data-i="ru">Семейный доступ</span><span data-i="en">Family sharing</span></div>
           <div class="poll-option-desc"><span data-i="ru">Совместный доступ для папы, бабушки, няни</span><span data-i="en">Share access with dad, grandma, nanny</span></div>
@@ -3105,7 +3106,7 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       </div>
       
       <div class="poll-option" data-option="widgets" onclick="votePoll('widgets')">
-        <div class="poll-option-icon">📱</div>
+        <div class="poll-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <div class="poll-option-content">
           <div class="poll-option-title"><span data-i="ru">Виджеты на экран</span><span data-i="en">Home screen widgets</span></div>
           <div class="poll-option-desc"><span data-i="ru">Таймеры и статистика прямо на рабочем столе</span><span data-i="en">Timers and stats right on your home screen</span></div>
@@ -3115,7 +3116,7 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       </div>
       
       <div class="poll-option" data-option="watch" onclick="votePoll('watch')">
-        <div class="poll-option-icon">⌚</div>
+        <div class="poll-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"/><polyline points="12 9 12 12 13.5 13.5"/><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"/></svg></div>
         <div class="poll-option-content">
           <div class="poll-option-title"><span data-i="ru">Apple Watch / WearOS</span><span data-i="en">Apple Watch / WearOS</span></div>
           <div class="poll-option-desc"><span data-i="ru">Быстрые записи с часов одной рукой</span><span data-i="en">Quick logging from your watch, one-handed</span></div>
@@ -3125,7 +3126,7 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       </div>
       
       <div class="poll-option" data-option="reminders" onclick="votePoll('reminders')">
-        <div class="poll-option-icon">🔔</div>
+        <div class="poll-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
         <div class="poll-option-content">
           <div class="poll-option-title"><span data-i="ru">Умные напоминания</span><span data-i="en">Smart reminders</span></div>
           <div class="poll-option-desc"><span data-i="ru">AI подскажет когда пора кормить или укладывать</span><span data-i="en">AI suggests when to feed or put baby to sleep</span></div>
@@ -3136,8 +3137,8 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
     </div>
     
     <div class="poll-voted" id="pollVoted" style="display:none">
-      <span data-i="ru">✅ Спасибо за голос! Результаты обновлены.</span>
-      <span data-i="en">✅ Thanks for voting! Results updated.</span>
+      <span data-i="ru">Спасибо за голос! Результаты обновлены.</span>
+      <span data-i="en">Thanks for voting! Results updated.</span>
     </div>
   </div>
 </section>
