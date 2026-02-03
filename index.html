@@ -1790,14 +1790,15 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       <!-- Animated AI Logo -->
       <div class="hero-ai-visual">
         <svg class="hero-ai-svg" viewBox="0 0 200 200" fill="none">
-          <!-- Outer ring -->
+          <!-- Outer rings -->
           <circle class="hero-ai-ring hero-ai-ring--1" cx="100" cy="100" r="90" stroke="url(#heroGrad1)" stroke-width="2" stroke-dasharray="8 4"/>
           <circle class="hero-ai-ring hero-ai-ring--2" cx="100" cy="100" r="75" stroke="url(#heroGrad2)" stroke-width="1.5" stroke-dasharray="4 6"/>
           <circle class="hero-ai-ring hero-ai-ring--3" cx="100" cy="100" r="60" stroke="url(#heroGrad1)" stroke-width="1"/>
           
-          <!-- Center star (Lummo logo) -->
-          <g class="hero-ai-star">
-            <path d="M100 50 L108 80 L140 80 L114 98 L122 130 L100 112 L78 130 L86 98 L60 80 L92 80 Z" fill="url(#heroGrad1)"/>
+          <!-- Center Lummo logo (scaled and centered) -->
+          <g class="hero-ai-star" transform="translate(52, 52) scale(4)">
+            <path d="M9.587 5.368c.604-1.769 3.048-1.822 3.764-.161l.061.162.816 2.385c.187.547.489 1.047.886 1.468.396.42.879.75 1.414.969l.22.082 2.385.815c1.768.604 1.822 3.048.161 3.764l-.161.061-2.385.816a4.17 4.17 0 0 0-1.468.886 4.17 4.17 0 0 0-.969 1.414l-.082.22-.815 2.385c-.604 1.769-3.048 1.822-3.764.161l-.063-.161-.815-2.385a4.17 4.17 0 0 0-.886-1.468 4.17 4.17 0 0 0-1.414-.969l-.22-.082-2.385-.815c-1.769-.604-1.823-3.048-.161-3.764l.161-.062 2.385-.815a4.17 4.17 0 0 0 1.468-.886c.42-.397.75-.879.969-1.414l.082-.22.815-2.385Z" fill="url(#heroGrad1)"/>
+            <path d="M18.862 2.456c.201-.59 1.016-.607 1.255-.053l.02.053.272.795a1.5 1.5 0 0 0 .872.918l.073.027.795.272c.59.201.607 1.016.053 1.255l-.053.02-.795.272a1.5 1.5 0 0 0-.918.872l-.027.073-.272.795c-.201.59-1.016.607-1.255.054l-.02-.054-.272-.795a1.5 1.5 0 0 0-.872-.918l-.073-.027-.795-.272c-.59-.201-.607-1.016-.054-1.255l.054-.02.795-.272a1.5 1.5 0 0 0 .918-.872l.027-.073.272-.795Z" fill="url(#heroGrad1)"/>
           </g>
           
           <!-- Orbiting dots -->
@@ -1807,7 +1808,7 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
           <circle class="hero-ai-dot hero-ai-dot--4" cx="10" cy="100" r="5" fill="#FFB800"/>
           
           <!-- AI text -->
-          <text x="100" y="165" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="url(#heroGrad1)">AI inside</text>
+          <text x="100" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="url(#heroGrad1)">AI inside</text>
           
           <defs>
             <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
