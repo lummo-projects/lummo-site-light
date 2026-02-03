@@ -273,84 +273,127 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .feat-card p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
 
 /* ===== AI SECTION ===== */
-.ai-section{background:var(--ai-bg);color:var(--ai-text);padding:72px 24px}
-.ai-section .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.ai-content h2{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;color:var(--ai-text)}
-.ai-content>p{font-size:.92rem;color:var(--ai-muted);line-height:1.65;margin-bottom:28px;max-width:440px}
-.ai-features{display:flex;flex-direction:column;gap:14px}
-.ai-feat{display:flex;gap:12px;align-items:flex-start}
-.ai-feat-dot{width:7px;height:7px;border-radius:50%;background:var(--ai-dot);flex-shrink:0;margin-top:7px}
-.ai-feat-text{font-size:.86rem;color:var(--ai-feat);line-height:1.55}
-/* AI Phone - Premium Design */
-.ai-phone{display:flex;justify-content:center;align-items:center;position:relative}
-.ai-phone-wrapper{position:relative;padding:4px;border-radius:32px;background:linear-gradient(135deg,#818CF8 0%,#6366F1 25%,#A78BFA 50%,#6366F1 75%,#818CF8 100%);background-size:400% 400%;animation:aiGradBorder 4s ease infinite;box-shadow:0 0 40px rgba(99,102,241,.3),0 0 80px rgba(99,102,241,.15),0 25px 50px -12px rgba(0,0,0,.25)}
-@keyframes aiGradBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.ai-phone .phone-frame{width:280px;height:520px;border-radius:28px;border:none;background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.98) 100%);backdrop-filter:blur(20px);overflow:hidden}
-html[data-theme="dark"] .ai-phone .phone-frame{background:linear-gradient(180deg,rgba(30,30,40,.95) 0%,rgba(20,20,30,.98) 100%)}
+/* ===== AI SECTION - FULLSCREEN IMMERSIVE ===== */
+.ai-section{background:linear-gradient(180deg,#0f0f1a 0%,#1a1a2e 50%,#16162a 100%);color:#fff;padding:0;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden}
+html[data-theme="light"] .ai-section{background:linear-gradient(180deg,#f8f7ff 0%,#eef2ff 50%,#e0e7ff 100%)}
+.ai-section .section-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;width:100%;max-width:100%;position:relative;z-index:2}
 
-/* Floating orbs around phone */
-.ai-phone::before,.ai-phone::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);opacity:.6;pointer-events:none;z-index:-1}
-.ai-phone::before{width:120px;height:120px;background:linear-gradient(135deg,#818CF8,#6366F1);top:-30px;right:-40px;animation:aiOrb1 6s ease-in-out infinite}
-.ai-phone::after{width:100px;height:100px;background:linear-gradient(135deg,#A78BFA,#818CF8);bottom:-20px;left:-30px;animation:aiOrb2 8s ease-in-out infinite}
-@keyframes aiOrb1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,20px) scale(1.1)}}
-@keyframes aiOrb2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(15px,-15px) scale(1.15)}}
+/* Animated background grid */
+.ai-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.03) 1px,transparent 1px);background-size:60px 60px;animation:aiGridMove 20s linear infinite}
+html[data-theme="light"] .ai-bg-grid{background-image:linear-gradient(rgba(99,102,241,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.08) 1px,transparent 1px)}
+@keyframes aiGridMove{0%{transform:translate(0,0)}100%{transform:translate(60px,60px)}}
 
-/* Phone inner UI */
-.ai-phone-live{height:100%;display:flex;flex-direction:column;padding:20px 16px;overflow:hidden;position:relative}
-.ai-phone-live::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:24px;background:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.9) 20%,rgba(0,0,0,.9) 80%,transparent 100%);border-radius:20px}
+/* Massive glow behind phone */
+.ai-glow-massive{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(600px,90vw);height:min(600px,90vw);background:radial-gradient(circle,rgba(99,102,241,.4) 0%,rgba(139,92,246,.2) 30%,rgba(99,102,241,.1) 50%,transparent 70%);filter:blur(60px);animation:aiGlowPulse 4s ease-in-out infinite;pointer-events:none}
+html[data-theme="light"] .ai-glow-massive{background:radial-gradient(circle,rgba(99,102,241,.25) 0%,rgba(139,92,246,.15) 30%,rgba(99,102,241,.08) 50%,transparent 70%)}
+@keyframes aiGlowPulse{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+
+/* Floating particles */
+.ai-particle{position:absolute;width:4px;height:4px;background:#818CF8;border-radius:50%;pointer-events:none;opacity:0}
+.ai-particle:nth-child(1){top:20%;left:10%;animation:aiFloat 8s ease-in-out infinite}
+.ai-particle:nth-child(2){top:30%;right:15%;animation:aiFloat 10s ease-in-out 1s infinite;width:6px;height:6px}
+.ai-particle:nth-child(3){top:60%;left:8%;animation:aiFloat 12s ease-in-out 2s infinite;width:3px;height:3px}
+.ai-particle:nth-child(4){top:70%;right:10%;animation:aiFloat 9s ease-in-out .5s infinite}
+.ai-particle:nth-child(5){top:40%;left:5%;animation:aiFloat 11s ease-in-out 1.5s infinite;width:5px;height:5px}
+.ai-particle:nth-child(6){top:80%;right:20%;animation:aiFloat 7s ease-in-out 2.5s infinite;width:4px;height:4px}
+.ai-particle:nth-child(7){top:15%;right:25%;animation:aiFloat 13s ease-in-out .8s infinite;width:3px;height:3px}
+.ai-particle:nth-child(8){top:85%;left:25%;animation:aiFloat 10s ease-in-out 1.8s infinite}
+@keyframes aiFloat{0%,100%{opacity:0;transform:translateY(0) scale(0)}10%{opacity:.8}50%{opacity:1;transform:translateY(-100px) scale(1.5)}90%{opacity:.8}100%{opacity:0;transform:translateY(-200px) scale(0)}}
+
+/* Orbiting rings */
+.ai-orbit{position:absolute;top:50%;left:50%;border:1px solid rgba(99,102,241,.15);border-radius:50%;pointer-events:none}
+.ai-orbit--1{width:min(450px,85vw);height:min(450px,85vw);margin:-225px 0 0 -225px;animation:aiOrbitSpin 30s linear infinite}
+.ai-orbit--2{width:min(550px,95vw);height:min(550px,95vw);margin:-275px 0 0 -275px;animation:aiOrbitSpin 45s linear infinite reverse;border-color:rgba(139,92,246,.1)}
+.ai-orbit--3{width:min(350px,75vw);height:min(350px,75vw);margin:-175px 0 0 -175px;animation:aiOrbitSpin 20s linear infinite;border-style:dashed;border-color:rgba(99,102,241,.08)}
+@keyframes aiOrbitSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.ai-orbit-dot{position:absolute;width:10px;height:10px;background:linear-gradient(135deg,#818CF8,#A78BFA);border-radius:50%;box-shadow:0 0 20px rgba(129,140,248,.6);top:0;left:50%;transform:translateX(-50%) translateY(-50%)}
+.ai-orbit--2 .ai-orbit-dot{width:8px;height:8px;top:50%;left:0;transform:translateX(-50%) translateY(-50%)}
+
+/* Header text */
+.ai-header-text{text-align:center;margin-bottom:32px;position:relative;z-index:3}
+.ai-header-text h2{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:800;background:linear-gradient(135deg,#fff 0%,#c7d2fe 50%,#a5b4fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;letter-spacing:-.02em}
+html[data-theme="light"] .ai-header-text h2{background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 50%,#6366f1 100%);-webkit-background-clip:text;background-clip:text}
+.ai-header-text p{font-size:clamp(.9rem,2.5vw,1.1rem);color:rgba(255,255,255,.7);max-width:500px;margin:0 auto;line-height:1.6}
+html[data-theme="light"] .ai-header-text p{color:rgba(30,27,75,.7)}
+
+/* Phone container */
+.ai-phone{position:relative;z-index:5;perspective:1000px}
+.ai-phone-wrapper{position:relative;padding:4px;border-radius:40px;background:linear-gradient(135deg,#818CF8 0%,#6366F1 20%,#A78BFA 40%,#C084FC 60%,#818CF8 80%,#6366F1 100%);background-size:300% 300%;animation:aiPhoneBorder 3s ease infinite;box-shadow:0 0 60px rgba(99,102,241,.5),0 0 120px rgba(139,92,246,.3),0 40px 80px -20px rgba(0,0,0,.5);transform:rotateX(2deg)}
+@keyframes aiPhoneBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+.ai-phone .phone-frame{width:min(320px,80vw);height:min(620px,75vh);border-radius:36px;border:none;background:linear-gradient(180deg,rgba(15,15,26,.98) 0%,rgba(26,26,46,.98) 100%);backdrop-filter:blur(20px);overflow:hidden;position:relative}
+html[data-theme="light"] .ai-phone .phone-frame{background:linear-gradient(180deg,rgba(255,255,255,.98) 0%,rgba(248,250,252,.98) 100%)}
+
+/* Dynamic Island */
+.ai-phone-live{height:100%;display:flex;flex-direction:column;padding:0;overflow:hidden;position:relative}
+.ai-dynamic-island{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:100px;height:28px;background:#000;border-radius:20px;z-index:10;display:flex;align-items:center;justify-content:center;gap:6px;overflow:hidden}
+.ai-dynamic-island::before{content:'';width:8px;height:8px;background:#1a1a2e;border-radius:50%;animation:aiDiPulse 2s ease-in-out infinite}
+.ai-dynamic-island::after{content:'';width:40px;height:3px;background:linear-gradient(90deg,#6366F1,#A78BFA,#6366F1);background-size:200% 100%;animation:aiDiWave 2s linear infinite;border-radius:2px}
+@keyframes aiDiPulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes aiDiWave{0%{background-position:200% 0}100%{background-position:0% 0}}
 
 /* Header */
-.apl-header{text-align:center;padding:24px 0 16px;position:relative}
-.apl-header::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.apl-title{display:flex;align-items:center;justify-content:center;gap:8px;font-size:1rem;font-weight:700;color:var(--text)}
-.apl-title::before{content:'';width:10px;height:10px;background:linear-gradient(135deg,#6366F1,#A78BFA);border-radius:50%;animation:aiPulse 2s ease-in-out infinite}
-@keyframes aiPulse{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.4)}50%{box-shadow:0 0 0 8px rgba(99,102,241,0)}}
-.apl-subtitle{display:block;font-size:.7rem;color:var(--primary);margin-top:4px;opacity:.8}
+.apl-header{text-align:center;padding:52px 20px 16px;position:relative;background:linear-gradient(180deg,rgba(99,102,241,.1) 0%,transparent 100%)}
+.apl-title{display:flex;align-items:center;justify-content:center;gap:10px;font-size:1.1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:1px}
+html[data-theme="light"] .apl-title{color:var(--text)}
+.apl-title::before{content:'';width:12px;height:12px;background:linear-gradient(135deg,#22c55e,#10b981);border-radius:50%;animation:aiOnline 1.5s ease-in-out infinite;box-shadow:0 0 12px rgba(34,197,94,.6)}
+@keyframes aiOnline{0%,100%{opacity:.6;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
+.apl-subtitle{display:block;font-size:.75rem;color:rgba(255,255,255,.5);margin-top:6px;font-weight:500}
+html[data-theme="light"] .apl-subtitle{color:var(--primary)}
 
 /* Chat area */
-.apl-chat{flex:1;display:flex;flex-direction:column;gap:12px;padding:16px 0;overflow-y:auto;overflow-x:hidden}
-.apl-chat::-webkit-scrollbar{width:3px}
-.apl-chat::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}
+.apl-chat{flex:1;display:flex;flex-direction:column;gap:14px;padding:20px 16px;overflow-y:auto;overflow-x:hidden}
+.apl-chat::-webkit-scrollbar{width:0}
 
 /* Messages */
-.apl-msg{padding:12px 16px;border-radius:18px;font-size:.8rem;line-height:1.5;max-width:88%;animation:aplMsgIn .6s cubic-bezier(.34,1.56,.64,1) forwards;opacity:0;transform:translateY(20px) scale(.9)}
-.apl-msg:nth-child(1){animation-delay:.2s}
-.apl-msg:nth-child(2){animation-delay:.6s}
-.apl-msg:nth-child(3){animation-delay:1s}
-.apl-msg:nth-child(4){animation-delay:1.4s}
+.apl-msg{padding:14px 18px;border-radius:20px;font-size:.85rem;line-height:1.55;max-width:85%;animation:aplMsgIn .7s cubic-bezier(.34,1.56,.64,1) forwards;opacity:0;transform:translateY(30px) scale(.85)}
+.apl-msg:nth-child(1){animation-delay:.3s}
+.apl-msg:nth-child(2){animation-delay:.8s}
+.apl-msg:nth-child(3){animation-delay:1.3s}
+.apl-msg:nth-child(4){animation-delay:1.8s}
 @keyframes aplMsgIn{to{opacity:1;transform:translateY(0) scale(1)}}
 
-.apl-msg--user{background:linear-gradient(135deg,#F3F4F6 0%,#E5E7EB 100%);color:var(--text);align-self:flex-end;border-bottom-right-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-html[data-theme="dark"] .apl-msg--user{background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.05) 100%)}
+.apl-msg--user{background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.05) 100%);color:#fff;align-self:flex-end;border-bottom-right-radius:6px;border:1px solid rgba(255,255,255,.1)}
+html[data-theme="light"] .apl-msg--user{background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);color:var(--text);border-color:transparent}
 
-.apl-msg--ai{background:linear-gradient(135deg,rgba(99,102,241,.12) 0%,rgba(139,92,246,.08) 100%);color:var(--text);align-self:flex-start;border-bottom-left-radius:6px;border:1px solid rgba(99,102,241,.15);box-shadow:0 4px 16px rgba(99,102,241,.1),inset 0 1px 0 rgba(255,255,255,.5);position:relative;overflow:hidden}
-.apl-msg--ai::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.3),transparent)}
+.apl-msg--ai{background:linear-gradient(135deg,rgba(99,102,241,.2) 0%,rgba(139,92,246,.15) 100%);color:#fff;align-self:flex-start;border-bottom-left-radius:6px;border:1px solid rgba(99,102,241,.3);position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(99,102,241,.2)}
+html[data-theme="light"] .apl-msg--ai{background:linear-gradient(135deg,rgba(99,102,241,.12) 0%,rgba(139,92,246,.08) 100%);color:var(--text);border-color:rgba(99,102,241,.2)}
+.apl-msg--ai::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);animation:aiMsgShine 3s ease-in-out infinite}
+@keyframes aiMsgShine{0%{left:-100%}50%,100%{left:100%}}
 
-.apl-msg-label{display:flex;align-items:center;gap:6px;font-size:.65rem;font-weight:700;background:linear-gradient(135deg,#6366F1,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-.apl-msg-label::before{content:'';width:6px;height:6px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:50%}
+.apl-msg-label{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:700;background:linear-gradient(135deg,#818CF8,#C084FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;text-transform:uppercase;letter-spacing:.8px}
+.apl-msg-label::before{content:'';width:8px;height:8px;background:linear-gradient(135deg,#818CF8,#C084FC);border-radius:50%;box-shadow:0 0 8px rgba(129,140,248,.6)}
 
 /* Input field */
-.apl-input{padding:14px 20px;background:linear-gradient(135deg,rgba(99,102,241,.06) 0%,rgba(139,92,246,.04) 100%);border:1px solid rgba(99,102,241,.15);border-radius:24px;font-size:.75rem;color:var(--text-secondary);text-align:left;display:flex;align-items:center;gap:10px;transition:all .3s}
-.apl-input::before{content:'';width:18px;height:18px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:50%;flex-shrink:0;opacity:.6}
-.apl-input:hover{border-color:rgba(99,102,241,.3);box-shadow:0 0 20px rgba(99,102,241,.1)}
-
-/* Floating sparkles around phone */
-.ai-sparkle{position:absolute;width:8px;height:8px;pointer-events:none;z-index:10}
-.ai-sparkle::before,.ai-sparkle::after{content:'';position:absolute;background:linear-gradient(135deg,#818CF8,#A78BFA);border-radius:1px}
-.ai-sparkle::before{width:100%;height:2px;top:50%;left:0;transform:translateY(-50%)}
-.ai-sparkle::after{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%)}
-.ai-sparkle--1{top:15%;right:5%;animation:aiSparkle 3s ease-in-out infinite}
-.ai-sparkle--2{top:60%;left:0;animation:aiSparkle 4s ease-in-out .5s infinite;width:6px;height:6px}
-.ai-sparkle--3{bottom:20%;right:0;animation:aiSparkle 3.5s ease-in-out 1s infinite;width:10px;height:10px}
-@keyframes aiSparkle{0%,100%{opacity:.3;transform:scale(.8) rotate(0deg)}50%{opacity:1;transform:scale(1.2) rotate(90deg)}}
+.apl-input{margin:16px;padding:16px 20px;background:linear-gradient(135deg,rgba(99,102,241,.1) 0%,rgba(139,92,246,.08) 100%);border:1px solid rgba(99,102,241,.2);border-radius:28px;font-size:.8rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
+html[data-theme="light"] .apl-input{background:rgba(99,102,241,.06);border-color:rgba(99,102,241,.15);color:var(--text-secondary)}
+.apl-input::before{content:'';width:20px;height:20px;background:linear-gradient(135deg,#6366F1,#A78BFA);border-radius:50%;flex-shrink:0;animation:aiInputPulse 2s ease-in-out infinite}
+@keyframes aiInputPulse{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
+.apl-input::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.4),transparent)}
 
 /* Typing animation */
-.apl-msg--typing{min-height:50px}
-.apl-typing-dots{display:flex;gap:4px;padding:4px 0}
-.apl-typing-dots span{width:8px;height:8px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:50%;animation:aiTypingDot 1.4s ease-in-out infinite}
-.apl-typing-dots span:nth-child(2){animation-delay:.2s}
-.apl-typing-dots span:nth-child(3){animation-delay:.4s}
-@keyframes aiTypingDot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
+.apl-msg--typing{min-height:60px;display:flex;flex-direction:column;justify-content:center}
+.apl-typing-dots{display:flex;gap:6px;padding:8px 0}
+.apl-typing-dots span{width:10px;height:10px;background:linear-gradient(135deg,#818CF8,#C084FC);border-radius:50%;animation:aiTypingBounce 1.4s ease-in-out infinite}
+.apl-typing-dots span:nth-child(2){animation-delay:.15s}
+.apl-typing-dots span:nth-child(3){animation-delay:.3s}
+@keyframes aiTypingBounce{0%,60%,100%{transform:translateY(0) scale(1);opacity:.4}30%{transform:translateY(-10px) scale(1.2);opacity:1}}
+
+/* Features below phone */
+.ai-features-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:600px;margin-top:40px;padding:0 20px}
+.ai-feat-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;text-align:center;backdrop-filter:blur(10px);transition:all .3s}
+html[data-theme="light"] .ai-feat-card{background:rgba(99,102,241,.04);border-color:rgba(99,102,241,.1)}
+.ai-feat-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.3);box-shadow:0 8px 32px rgba(99,102,241,.15)}
+.ai-feat-icon{width:48px;height:48px;margin:0 auto 12px;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(139,92,246,.15));border-radius:14px;display:flex;align-items:center;justify-content:center}
+.ai-feat-icon svg{width:24px;height:24px;stroke:#818CF8}
+.ai-feat-card h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:6px}
+html[data-theme="light"] .ai-feat-card h4{color:var(--text)}
+.ai-feat-card p{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.5}
+html[data-theme="light"] .ai-feat-card p{color:var(--text-secondary)}
+
+/* Hide old content structure */
+.ai-content{display:none}
+.ai-feat,.ai-feat-dot,.ai-feat-text,.ai-typing{display:none}
 
 /* ===== PRINCIPLES ===== */
 .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -423,18 +466,25 @@ html[data-theme="dark"] .apl-msg--user{background:linear-gradient(135deg,rgba(25
   .phone-frame{width:220px;height:440px;border-radius:26px}
   .problems-grid{grid-template-columns:1fr;gap:12px}
   .features-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .ai-section .section-inner{grid-template-columns:1fr;text-align:center}
-  .ai-content>p{margin-left:auto;margin-right:auto}
-  .ai-features{align-items:center}
-  .ai-feat{text-align:left}
-  .ai-phone{order:-1;margin-bottom:24px}
-  .ai-phone-wrapper{padding:3px;box-shadow:0 0 30px rgba(99,102,241,.25),0 20px 40px -12px rgba(0,0,0,.2)}
-  .ai-phone .phone-frame{width:260px;height:480px;border-radius:26px}
-  .ai-phone::before{width:80px;height:80px;top:-20px;right:-20px}
-  .ai-phone::after{width:60px;height:60px;bottom:-10px;left:-15px}
-  .apl-header{padding:20px 0 14px}
-  .apl-msg{padding:10px 14px;font-size:.75rem}
-  .apl-input{padding:12px 16px;font-size:.7rem}
+  /* AI Section Mobile */
+  .ai-section{min-height:auto;padding:60px 0}
+  .ai-section .section-inner{padding:20px 16px}
+  .ai-header-text{margin-bottom:24px}
+  .ai-header-text h2{font-size:1.5rem}
+  .ai-header-text p{font-size:.9rem}
+  .ai-orbit--1,.ai-orbit--2,.ai-orbit--3{display:none}
+  .ai-glow-massive{width:300px;height:300px;filter:blur(40px)}
+  .ai-phone-wrapper{padding:3px;box-shadow:0 0 40px rgba(99,102,241,.4),0 30px 60px -15px rgba(0,0,0,.4);transform:none}
+  .ai-phone .phone-frame{width:min(300px,85vw);height:min(580px,70vh)}
+  .ai-features-bottom{grid-template-columns:1fr 1fr;gap:12px;margin-top:32px;padding:0 12px}
+  .ai-feat-card{padding:16px}
+  .ai-feat-icon{width:40px;height:40px;margin-bottom:10px}
+  .ai-feat-icon svg{width:20px;height:20px}
+  .ai-feat-card h4{font-size:.8rem}
+  .ai-feat-card p{font-size:.72rem}
+  .apl-header{padding:44px 16px 12px}
+  .apl-msg{padding:10px 14px;font-size:.78rem}
+  .apl-input{margin:12px;padding:12px 16px;font-size:.75rem}
   .principles-grid{grid-template-columns:1fr;gap:12px}
   .ped-inner{grid-template-columns:1fr;gap:32px}
   .dev-features{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -2519,77 +2569,50 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 <!-- Gradient transition day-in-life → AI (волна скрыта, используем градиент) -->
 <svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C360,60 720,0 1080,40 C1260,50 1380,15 1440,25 L1440,60 L0,60 Z"/></svg>
 
-<!-- ===== AI SECTION ===== -->
-<section class="ai-section" id="ai" style="position:relative;overflow:hidden">
-  <!-- AI Glow effects -->
-  <div class="ai-glow ai-glow--1"></div>
-  <div class="ai-glow ai-glow--2"></div>
-  <!-- AI Stars -->
-  <div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div>
-  <div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div><div class="ai-star"></div>
-  <!-- Constellation dots -->
-  <div class="ai-constellation">
-    <div class="ai-constellation-dot" style="top:12%;left:20%"></div>
-    <div class="ai-constellation-dot" style="top:8%;left:35%"></div>
-    <div class="ai-constellation-dot" style="top:22%;left:28%"></div>
-    <div class="ai-constellation-dot" style="top:35%;left:10%"></div>
-    <div class="ai-constellation-dot" style="top:45%;left:22%"></div>
-    <div class="ai-constellation-dot" style="top:55%;right:15%"></div>
-    <div class="ai-constellation-dot" style="top:65%;right:25%"></div>
-    <div class="ai-constellation-dot" style="top:75%;right:18%"></div>
-    <div class="ai-constellation-dot" style="top:30%;right:8%"></div>
-    <div class="ai-constellation-dot" style="top:80%;left:30%"></div>
-    <div class="ai-constellation-dot" style="top:18%;right:30%"></div>
-    <div class="ai-constellation-dot" style="top:90%;left:15%"></div>
-    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 100 100" preserveAspectRatio="none">
-      <line x1="20" y1="12" x2="35" y2="8" stroke="rgba(129,140,248,.1)" stroke-width=".15"/>
-      <line x1="35" y1="8" x2="28" y2="22" stroke="rgba(129,140,248,.1)" stroke-width=".15"/>
-      <line x1="28" y1="22" x2="20" y2="12" stroke="rgba(129,140,248,.08)" stroke-width=".15"/>
-      <line x1="10" y1="35" x2="22" y2="45" stroke="rgba(129,140,248,.08)" stroke-width=".15"/>
-      <line x1="85" y1="55" x2="75" y2="65" stroke="rgba(129,140,248,.1)" stroke-width=".15"/>
-      <line x1="75" y1="65" x2="82" y2="75" stroke="rgba(129,140,248,.08)" stroke-width=".15"/>
-      <line x1="70" y1="30" x2="85" y2="55" stroke="rgba(129,140,248,.06)" stroke-width=".15"/>
-    </svg>
-  </div>
+<!-- ===== AI SECTION - FULLSCREEN IMMERSIVE ===== -->
+<section class="ai-section" id="ai">
+  <!-- Background effects -->
+  <div class="ai-bg-grid"></div>
+  <div class="ai-glow-massive"></div>
+  
+  <!-- Floating particles -->
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  <div class="ai-particle"></div>
+  
+  <!-- Orbiting rings -->
+  <div class="ai-orbit ai-orbit--1"><div class="ai-orbit-dot"></div></div>
+  <div class="ai-orbit ai-orbit--2"><div class="ai-orbit-dot"></div></div>
+  <div class="ai-orbit ai-orbit--3"></div>
+  
   <div class="section-inner">
-    <div class="ai-content">
+    <!-- Header -->
+    <div class="ai-header-text">
       <h2>
-        <span data-i="ru">AI не заменяет врача. Но замечает то, что ты не успеваешь</span>
-        <span data-i="en">AI doesn't replace your doctor. But it notices what you can't</span>
+        <span data-i="ru">AI-помощник в кармане</span>
+        <span data-i="en">AI Assistant in Your Pocket</span>
       </h2>
-
-      <p class="i-block" data-i="ru">AI не заменяет врача. Но замечает то, что ты не успеваешь заметить в 3 часа ночи. Анализирует твои записи и подсказывает закономерности.</p>
-      <p class="i-block" data-i="en">AI doesn't replace your doctor. But it notices what you can't see at 3 AM. It analyzes your records and reveals patterns you'd otherwise miss.</p>
-
-      <div class="ai-features i-flex" data-i="ru">
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">«Сон ухудшился после вакцинации — это нормально, обычно восстанавливается за 3–5 дней»</div></div>
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">«Кормления стали реже, но объём вырос — ребёнок растёт, это хороший знак»</div></div>
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Готовит сводку для педиатра: что изменилось за неделю, за месяц — без твоих усилий</div></div>
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Отвечает на вопросы о развитии — на основе твоих данных, не общих статей из интернета</div></div>
-        <div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><span style="margin-left:8px;font-size:.75rem;color:var(--ai-muted)">AI анализирует...</span></div>
-      </div>
-      <div class="ai-features i-flex" data-i="en">
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">"Sleep got worse after vaccination — that's normal, usually recovers in 3–5 days"</div></div>
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">"Feedings became less frequent but volume increased — baby's growing, that's a good sign"</div></div>
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Prepares a summary for the doctor: what changed this week, this month — effortlessly</div></div>
-        <div class="ai-feat"><div class="ai-feat-dot"></div><div class="ai-feat-text">Answers development questions — based on your data, not generic internet articles</div></div>
-        <div class="ai-typing"><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><div class="ai-typing-dot"></div><span style="margin-left:8px;font-size:.75rem;color:var(--ai-muted)">AI analyzing...</span></div>
-      </div>
+      <p>
+        <span data-i="ru">Анализирует паттерны, замечает изменения, отвечает на вопросы — 24/7</span>
+        <span data-i="en">Analyzes patterns, spots changes, answers questions — 24/7</span>
+      </p>
     </div>
 
+    <!-- Phone -->
     <div class="ai-phone">
-      <!-- Floating sparkles -->
-      <div class="ai-sparkle ai-sparkle--1"></div>
-      <div class="ai-sparkle ai-sparkle--2"></div>
-      <div class="ai-sparkle ai-sparkle--3"></div>
-      
       <div class="ai-phone-wrapper">
         <div class="phone-frame">
           <div class="ai-phone-live">
+            <div class="ai-dynamic-island"></div>
             <div class="apl-header">
               <span class="apl-title">AI Advisor</span>
-              <span class="apl-subtitle" data-i="ru">Спроси о ребёнке</span>
-              <span class="apl-subtitle" data-i="en">Ask about your child</span>
+              <span class="apl-subtitle" data-i="ru">Онлайн</span>
+              <span class="apl-subtitle" data-i="en">Online</span>
             </div>
             <div class="apl-chat">
               <div class="apl-msg apl-msg--user">
@@ -2599,11 +2622,11 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
               <div class="apl-msg apl-msg--ai">
                 <div class="apl-msg-label">Lummo AI</div>
                 <span data-i="ru">По данным за неделю: средний сон 14.2ч/день — это норма для 5 недель. Паттерн стабильный ✓</span>
-                <span data-i="en">Based on this week's data: average sleep 14.2h/day — normal for 5 weeks. Pattern is stable ✓</span>
+                <span data-i="en">Based on this week's data: avg sleep 14.2h/day — normal for 5 weeks. Pattern stable ✓</span>
               </div>
               <div class="apl-msg apl-msg--user">
                 <span data-i="ru">Когда начинать прикорм?</span>
-                <span data-i="en">When should we start solids?</span>
+                <span data-i="en">When to start solids?</span>
               </div>
               <div class="apl-msg apl-msg--ai apl-msg--typing">
                 <div class="apl-msg-label">Lummo AI</div>
@@ -2618,6 +2641,52 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="ai-features-bottom i-grid" data-i="ru">
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Видит паттерны</h4>
+        <p>Замечает изменения, которые легко пропустить в 3 ночи</p>
+      </div>
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg></div>
+        <h4>Отвечает 24/7</h4>
+        <p>Вопросы о развитии — на основе ваших данных</p>
+      </div>
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h4>Готовит отчёт</h4>
+        <p>Сводка для педиатра за неделю — автоматически</p>
+      </div>
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h4>Не врач</h4>
+        <p>Помогает, но не заменяет консультацию специалиста</p>
+      </div>
+    </div>
+    <div class="ai-features-bottom i-grid" data-i="en">
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Spots Patterns</h4>
+        <p>Notices changes you might miss at 3 AM</p>
+      </div>
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg></div>
+        <h4>24/7 Answers</h4>
+        <p>Development questions — based on your data</p>
+      </div>
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h4>Auto Reports</h4>
+        <p>Weekly summary for pediatrician — automatically</p>
+      </div>
+      <div class="ai-feat-card">
+        <div class="ai-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h4>Not a Doctor</h4>
+        <p>Helps but doesn't replace professional advice</p>
       </div>
     </div>
   </div>
