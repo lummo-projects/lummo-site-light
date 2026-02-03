@@ -690,6 +690,9 @@ html[data-theme="dark"] .hero-stars{display:block}
 /* Dark theme adjustments for transitions */
 html[data-theme="dark"] .section-fade-to-dark::after{background:linear-gradient(180deg,transparent 0%,rgba(13,13,26,.2) 40%,rgba(13,13,26,.6) 70%,var(--ai-bg) 100%)}
 html[data-theme="dark"] .section-fade-from-dark::before{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.6) 30%,rgba(13,13,26,.2) 60%,transparent 100%)}
+/* Light theme: softer transitions */
+html[data-theme="light"] .section-fade-to-dark::after{background:linear-gradient(180deg,transparent 0%,rgba(240,238,255,.2) 60%,var(--ai-bg) 100%);height:80px}
+html[data-theme="light"] .section-fade-from-dark::before{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(240,238,255,.2) 40%,transparent 100%);height:80px}
 /* Dark theme: dog sections with gradients */
 html[data-theme="dark"] .dog-section-before-ai{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--ai-bg) 100%) !important}
 html[data-theme="dark"] .dog-section-after-ai{background:linear-gradient(180deg,var(--ai-bg) 0%,var(--bg) 100%) !important}
@@ -706,8 +709,8 @@ html[data-theme="light"] .dog-section-label{color:var(--text-secondary) !importa
 html[data-theme="light"] .ai-star{display:none}
 html[data-theme="light"] .ai-glow{opacity:.15}
 @media(max-width:768px){html[data-theme="light"] .ai-glow{display:none}}
-html[data-theme="light"] .ai-section::before{background:linear-gradient(180deg,transparent 0%,rgba(60,56,255,.04) 50%,rgba(60,56,255,.08) 100%)}
-html[data-theme="light"] .ai-section::after{background:linear-gradient(0deg,transparent 0%,rgba(60,56,255,.04) 50%,rgba(60,56,255,.08) 100%)}
+html[data-theme="light"] .ai-section::before{background:none}
+html[data-theme="light"] .ai-section::after{background:none}
 
 /* --- Blob decorations --- */
 .soul-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
