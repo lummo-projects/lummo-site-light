@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как понять, что ребёнок наелся — Lummo</title>
+<meta name="description" content="5 признаков насыщения, объёмы кормления по возрасту, разница ГВ и ИВ. Что записывать и как понять, достаточно ли молока.">
+<meta property="og:title" content="Как понять, что ребёнок наелся — Lummo">
+<meta property="og:description" content="5 признаков насыщения, объёмы кормления по возрасту для грудничков.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lummo-projects.github.io/lummo-site-light/blog/feeding.html">
+<meta property="og:image" content="https://lummo-projects.github.io/lummo-site-light/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+
+<style>
+@font-face{font-family:'Articulat CF';src:url('../fonts/ArticulatCF-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('../fonts/ArticulatCF-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('../fonts/ArticulatCF-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('../fonts/ArticulatCF-DemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Articulat CF';src:url('../fonts/ArticulatCF-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Articulat CF',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;font-size:16px;line-height:1.6;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+:root{--primary:#3C38FF;--primary-hover:#312EE0;--accent:#F4433D;--accent-soft:rgba(244,67,61,.08)}
+html[data-theme="light"]{--bg:#FFFBF7;--bg-alt:#FFF5EE;--bg-card:#FFFFFF;--surface:#FFF0E8;--text:#111111;--text-secondary:#555555;--text-tertiary:#999999;--border:#F0E4DB;--border-hover:#D9C8BC;--nav-bg:rgba(255,251,247,.92);--nav-border:rgba(180,140,100,.08);--blog-tag-bg:#EEEDFF;--blog-tag-text:#3C38FF}
+html[data-theme="dark"]{--bg:#0F0F0F;--bg-alt:#171717;--bg-card:#1A1A1A;--surface:#1E1E1E;--text:#E8E8E8;--text-secondary:#999999;--text-tertiary:#555555;--border:#252525;--border-hover:#3A3A3A;--nav-bg:rgba(15,15,15,.90);--nav-border:rgba(255,255,255,.06);--blog-tag-bg:rgba(60,56,255,.15);--blog-tag-text:#818CF8}
+body{background:var(--bg);color:var(--text)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--nav-border);transition:background .3s}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.2rem;letter-spacing:-.02em;color:var(--text)}
+.nav-logo svg{width:22px;height:22px;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-size:.85rem;color:var(--text-secondary);font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang-sw{display:flex;gap:2px}
+.lang-btn{font-size:.78rem;font-weight:400;color:var(--text-tertiary);padding:4px 8px;border-radius:4px;transition:all .15s}
+.lang-btn.active{color:var(--text);font-weight:600}
+.lang-btn:hover{color:var(--text-secondary)}
+.theme-toggle{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all .2s;border:1px solid var(--border)}
+.theme-toggle:hover{color:var(--text);border-color:var(--border-hover);background:var(--bg-alt)}
+.theme-toggle svg{width:16px;height:16px}
+.theme-icon-sun,.theme-icon-moon{display:none}
+html[data-theme="light"] .theme-icon-moon{display:block}
+html[data-theme="dark"] .theme-icon-sun{display:block}
+.nav-cta{display:inline-flex;align-items:center;padding:7px 16px;background:var(--primary);color:#FFF;font-size:.82rem;font-weight:600;border-radius:8px;transition:background .15s}
+.nav-cta:hover{background:var(--primary-hover)}
+.burger{display:none;width:34px;height:34px;align-items:center;justify-content:center;border-radius:8px;position:relative;z-index:201}
+.burger span{display:block;width:18px;height:1.5px;background:var(--text);border-radius:1px;transition:all .3s;position:absolute;left:8px}
+.burger span:nth-child(1){top:13px}
+.burger span:nth-child(2){top:17px}
+.burger span:nth-child(3){top:21px}
+.burger.active span:nth-child(1){top:17px;transform:rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){top:17px;transform:rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;padding:80px 28px 40px;overflow-y:auto}
+.mob-menu.open{opacity:1;visibility:visible}
+.mob-menu-links{display:flex;flex-direction:column;gap:4px;flex:1}
+.mob-menu-links a{font-size:1.4rem;font-weight:600;color:var(--text);padding:16px 0;border-bottom:1px solid var(--border);transition:all .3s}
+.mob-menu-links a:hover{color:var(--primary)}
+@media(max-width:768px){.burger{display:flex}.nav-links{display:none}.nav-cta{display:none}}
+.breadcrumbs{max-width:700px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--text-tertiary);flex-wrap:wrap}
+.breadcrumbs a{color:var(--text-secondary);transition:color .15s}
+.breadcrumbs a:hover{color:var(--primary)}
+.breadcrumbs svg{width:12px;height:12px;opacity:.5}
+.article-page{padding:96px 24px 64px}
+.article-inner{max-width:700px;margin:0 auto}
+.article-back{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:500;color:var(--text-secondary);margin-bottom:24px;transition:color .15s;cursor:pointer;background:none;border:none;font-family:inherit;padding:0}
+.article-back:hover{color:var(--primary)}
+.article-back svg{width:16px;height:16px}
+.article-meta{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.blog-card-tag{display:inline-block;padding:3px 10px;background:var(--blog-tag-bg);color:var(--blog-tag-text);font-size:.7rem;font-weight:600;border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+.article-date{font-size:.8rem;color:var(--text-tertiary)}
+.article-inner>h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--text);margin-bottom:28px}
+.article-toc{background:var(--bg-alt);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:36px}
+.article-toc-title{font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em}
+.article-toc ol{list-style:none;counter-reset:toc;padding:0;margin:0}
+.article-toc li{counter-increment:toc;padding:4px 0}
+.article-toc li a{font-size:.85rem;color:var(--text-secondary);transition:color .15s;display:flex;gap:8px}
+.article-toc li a::before{content:counter(toc) '.';color:var(--primary);font-weight:600;min-width:16px}
+.article-toc li a:hover{color:var(--primary)}
+.article-body h2{font-size:1.3rem;font-weight:700;color:var(--text);margin:36px 0 14px;line-height:1.25;letter-spacing:-.01em}
+.article-body h2:first-child{margin-top:0}
+.article-body p{font-size:.92rem;color:var(--text-secondary);line-height:1.75;margin-bottom:16px}
+.article-body strong{color:var(--text);font-weight:600}
+.article-body ul,.article-body ol{padding-left:20px;margin-bottom:16px}
+.article-body li{font-size:.88rem;color:var(--text-secondary);line-height:1.65;margin-bottom:6px}
+.article-body .note{background:var(--bg-alt);border-left:3px solid var(--primary);padding:14px 18px;border-radius:0 8px 8px 0;margin:20px 0;font-size:.86rem;color:var(--text-secondary);line-height:1.6}
+.article-body .warning{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:20px 0;font-size:.86rem;color:var(--text);line-height:1.6}
+.article-body table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:.85rem}
+.article-body th{text-align:left;padding:10px 12px;background:var(--bg-alt);border:1px solid var(--border);color:var(--text);font-weight:600;font-size:.8rem}
+.article-body td{padding:10px 12px;border:1px solid var(--border);color:var(--text-secondary);font-size:.83rem}
+.article-body tr:hover td{background:var(--bg-alt)}
+.article-related{margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.article-related-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary);margin-bottom:16px}
+.article-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.article-related-grid{grid-template-columns:1fr}}
+.article-related-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:border-color .2s,box-shadow .2s;text-decoration:none;color:var(--text)}
+.article-related-card:hover{border-color:var(--primary);box-shadow:0 2px 8px rgba(60,56,255,.08)}
+.article-related-card .related-tag{font-size:.7rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px}
+.article-related-card .related-title{font-size:.95rem;font-weight:600;line-height:1.3}
+.article-share{margin-top:32px;padding:24px;background:var(--bg-alt);border-radius:16px;border:1px solid var(--border)}
+.article-share-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-secondary);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.article-share-title svg{width:18px;height:18px}
+.article-share-buttons{display:flex;gap:10px;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:.85rem;font-weight:600;border:1.5px solid var(--border);background:var(--bg-card);color:var(--text);transition:all .2s;cursor:pointer;text-decoration:none}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.share-btn svg{width:18px;height:18px;flex-shrink:0}
+.share-btn--telegram{border-color:#0088cc;color:#0088cc}
+.share-btn--telegram:hover{background:#0088cc;color:#fff;border-color:#0088cc}
+.share-btn--whatsapp{border-color:#25D366;color:#25D366}
+.share-btn--whatsapp:hover{background:#25D366;color:#fff;border-color:#25D366}
+.share-btn--twitter{border-color:#1DA1F2;color:#1DA1F2}
+.share-btn--twitter:hover{background:#1DA1F2;color:#fff;border-color:#1DA1F2}
+.share-btn--copy{border-color:var(--primary);color:var(--primary)}
+.share-btn--copy:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.share-btn--copy.copied{background:#16A34A;color:#fff;border-color:#16A34A}
+@media(max-width:480px){.article-share-buttons{flex-direction:column}.share-btn{width:100%;justify-content:center}}
+.footer{padding:48px 24px 32px;border-top:1px solid var(--border);background:var(--bg-alt);transition:background .3s}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+.footer-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.footer-nav-col{display:flex;flex-direction:column;gap:10px}
+.footer-nav-title{font-size:.75rem;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.footer-nav-col a{font-size:.85rem;color:var(--text-secondary);transition:color .15s}
+.footer-nav-col a:hover{color:var(--text)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--text)}
+.footer-logo img{border-radius:50%}
+.footer-copy{font-size:.78rem;color:var(--text-tertiary)}
+@media(max-width:768px){.footer-nav{grid-template-columns:repeat(2,1fr);gap:24px}.footer-bottom{flex-direction:column;text-align:center;gap:8px}}
+[data-i="en"]{display:none}
+html[lang="en"] [data-i="ru"]{display:none}
+html[lang="en"] [data-i="en"]{display:initial}
+.i-block[data-i="en"]{display:none}
+.i-block[data-i="ru"]{display:block}
+html[lang="en"] .i-block[data-i="ru"]{display:none}
+html[lang="en"] .i-block[data-i="en"]{display:block}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M9.587 5.368c.604-1.769 3.048-1.822 3.764-.161l.061.162.816 2.385c.187.547.489 1.047.886 1.468.396.42.879.75 1.414.969l.22.082 2.385.815c1.768.604 1.822 3.048.161 3.764l-.161.061-2.385.816a4.17 4.17 0 0 0-1.468.886 4.17 4.17 0 0 0-.969 1.414l-.082.22-.815 2.385c-.604 1.769-3.048 1.822-3.764.161l-.063-.161-.815-2.385a4.17 4.17 0 0 0-.886-1.468 4.17 4.17 0 0 0-1.414-.969l-.22-.082-2.385-.815c-1.769-.604-1.823-3.048-.161-3.764l.161-.062 2.385-.815a4.17 4.17 0 0 0 1.468-.886c.42-.397.75-.879.969-1.414l.082-.22.815-2.385Z" fill="#3D38FF"/><path d="M18.862 2.456c.201-.59 1.016-.607 1.255-.053l.02.053.272.795a1.5 1.5 0 0 0 .872.918l.073.027.795.272c.59.201.607 1.016.053 1.255l-.053.02-.795.272a1.5 1.5 0 0 0-.918.872l-.027.073-.272.795c-.201.59-1.016.607-1.255.054l-.02-.054-.272-.795a1.5 1.5 0 0 0-.872-.918l-.073-.027-.795-.272c-.59-.201-.607-1.016-.054-1.255l.054-.02.795-.272a1.5 1.5 0 0 0 .918-.872l.027-.073.272-.795Z" fill="#3D38FF"/></svg>
+      Lummo
+    </a>
+    <div class="nav-links">
+      <a href="../index.html#features"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
+      <a href="../index.html#ai"><span data-i="ru">AI</span><span data-i="en">AI</span></a>
+      <a href="../index.html#blog"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-sw">
+        <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="../index.html#download" class="nav-cta"><span data-i="ru">Скачать</span><span data-i="en">Download</span></a>
+      <button class="burger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-menu-links">
+    <a href="../index.html#features"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
+    <a href="../index.html#ai"><span data-i="ru">AI</span><span data-i="en">AI</span></a>
+    <a href="../index.html#blog"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+    <a href="../index.html#download"><span data-i="ru">Скачать</span><span data-i="en">Download</span></a>
+  </div>
+</div>
+
+<div class="article-page">
+  <div class="article-inner">
+    
+    <nav class="breadcrumbs" style="margin-bottom:24px;padding:0;">
+      <a href="../index.html"><span data-i="ru">Главная</span><span data-i="en">Home</span></a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="../index.html#blog"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span><span data-i="ru">Кормление</span><span data-i="en">Feeding</span></span>
+    </nav>
+
+    <div class="article-meta">
+      <span class="blog-card-tag"><span data-i="ru">Кормление</span><span data-i="en">Feeding</span></span>
+      <span class="article-date"><span data-i="ru">12 января 2025 · 5 мин</span><span data-i="en">Jan 12, 2025 · 5 min</span></span>
+    </div>
+
+    <h1><span data-i="ru">Как понять, что ребёнок наелся</span><span data-i="en">How to tell if your baby is full</span></h1>
+
+    <div class="article-toc i-block" data-i="ru">
+      <div class="article-toc-title">Содержание</div>
+      <ol>
+      <li><a href="#art-feeding-1">Пять признаков насыщения</a></li>
+      <li><a href="#art-feeding-2">Объёмы кормления по возрасту</a></li>
+      <li><a href="#art-feeding-3">ГВ vs ИВ: разница в режиме</a></li>
+      <li><a href="#art-feeding-4">Когда кормлений слишком мало</a></li>
+      <li><a href="#art-feeding-5">Что записывать</a></li>
+      </ol>
+    </div>
+    <div class="article-toc i-block" data-i="en">
+      <div class="article-toc-title">Contents</div>
+      <ol>
+      <li><a href="#art-feeding-1">Five signs of satiety</a></li>
+      <li><a href="#art-feeding-2">Feeding volumes by age</a></li>
+      <li><a href="#art-feeding-3">Breastfeeding vs formula: schedule differences</a></li>
+      <li><a href="#art-feeding-4">When feedings are too few</a></li>
+      <li><a href="#art-feeding-5">What to record</a></li>
+      </ol>
+    </div>
+
+    <div class="article-body i-block" data-i="ru">
+
+      <h2 id="art-feeding-1">Пять признаков насыщения</h2>
+      <p>Ребёнок не может сказать «я наелся». Но тело показывает это чётко:</p>
+      <ol>
+        <li><strong>Отпускает грудь или бутылочку сам.</strong> Не тянется обратно — значит, достаточно.</li>
+        <li><strong>Расслабляет кулачки.</strong> Голодный ребёнок сжимает руки, сытый — разжимает.</li>
+        <li><strong>Засыпает у груди.</strong> Если при этом сосал активно 10–15 минут — наелся. Если заснул через 2 минуты — скорее устал.</li>
+        <li><strong>Отворачивает голову.</strong> Надёжный сигнал: не надо настаивать.</li>
+        <li><strong>6–8 мокрых подгузников в день.</strong> Главный объективный показатель: достаточно мочи — значит, достаточно молока.</li>
+      </ol>
+      <div class="warning">Если мокрых подгузников меньше 4 в сутки — обратитесь к педиатру. Это может говорить о недостатке питания.</div>
+
+      <h2 id="art-feeding-2">Объёмы кормления по возрасту</h2>
+      <p>Для детей на искусственном вскармливании есть чёткие ориентиры. Для грудного вскармливания объём контролируется ребёнком — ориентируйтесь на частоту и подгузники.</p>
+      <table>
+        <tr><th>Возраст</th><th>Разовый объём (ИВ)</th><th>Кормлений в день</th><th>Суточный объём</th></tr>
+        <tr><td>0–2 нед</td><td>30–60 мл</td><td>8–12</td><td>300–500 мл</td></tr>
+        <tr><td>2–4 нед</td><td>60–90 мл</td><td>7–10</td><td>500–700 мл</td></tr>
+        <tr><td>1–2 мес</td><td>90–120 мл</td><td>6–8</td><td>600–800 мл</td></tr>
+        <tr><td>2–4 мес</td><td>120–150 мл</td><td>6–7</td><td>700–900 мл</td></tr>
+        <tr><td>4–6 мес</td><td>150–180 мл</td><td>5–6</td><td>800–1000 мл</td></tr>
+        <tr><td>6–12 мес</td><td>180–240 мл</td><td>4–5 + прикорм</td><td>600–800 мл + еда</td></tr>
+      </table>
+
+      <h2 id="art-feeding-3">ГВ vs ИВ: разница в режиме</h2>
+      <p><strong>Грудное вскармливание.</strong> По требованию, не по часам. Новорождённый может просить грудь каждые 1–1.5 часа — это нормально и стимулирует выработку молока. К 3–4 месяцам интервалы увеличиваются до 2–3 часов.</p>
+      <p><strong>Искусственное вскармливание.</strong> Интервал 2.5–3.5 часа. Смесь переваривается медленнее грудного молока, поэтому ребёнок дольше остаётся сытым. Перекармливание проявляется частым срыгиванием и вздутием.</p>
+      <p><strong>Смешанное вскармливание.</strong> Сначала грудь (10–15 минут на каждой стороне), затем докорм смесью, если ребёнок не наелся. Объём докорма определяется по поведению ребёнка, а не по формуле.</p>
+
+      <h2 id="art-feeding-4">Когда кормлений слишком мало</h2>
+      <p>Красные флаги — повод обратиться к врачу:</p>
+      <ul>
+        <li>Менее 4 мокрых подгузников в сутки (после 4 дня жизни)</li>
+        <li>Потеря более 10% веса от рождения к 5-му дню</li>
+        <li>Не вернулся к весу при рождении к 14 дню</li>
+        <li>Ребёнок вялый, не просыпается на кормление</li>
+        <li>Моча тёмная, концентрированная</li>
+      </ul>
+
+      <h2 id="art-feeding-5">Что записывать</h2>
+      <p>Для каждого кормления фиксируйте три вещи:</p>
+      <ol>
+        <li><strong>Время начала.</strong> Через неделю записей вы увидите естественный ритм ребёнка.</li>
+        <li><strong>Тип и объём.</strong> Грудь (какая сторона, сколько минут) или бутылочка (сколько мл).</li>
+        <li><strong>Поведение после.</strong> Заснул, активен, срыгивал. Помогает отличить переедание от нормы.</li>
+      </ol>
+      <div class="note">Lummo записывает кормление за два нажатия: выбрали тип → указали объём. Через неделю приложение покажет ваш средний режим.</div>
+
+    </div>
+    <div class="article-body i-block" data-i="en">
+
+      <h2 id="art-feeding-1">Five signs of satiety</h2>
+      <p>A baby can't say "I'm full." But the body shows it clearly:</p>
+      <ol>
+        <li><strong>Releases the breast or bottle on their own.</strong> Doesn't reach back — that means enough.</li>
+        <li><strong>Relaxes fists.</strong> A hungry baby clenches hands; a full one opens them.</li>
+        <li><strong>Falls asleep at the breast.</strong> If they were actively sucking for 10–15 minutes — they're full. If they fell asleep after 2 minutes — likely just tired.</li>
+        <li><strong>Turns head away.</strong> A reliable signal: don't insist.</li>
+        <li><strong>6–8 wet diapers per day.</strong> The key objective metric: enough urine means enough milk.</li>
+      </ol>
+      <div class="warning">If there are fewer than 4 wet diapers in 24 hours — contact your pediatrician. This may indicate insufficient nutrition.</div>
+
+      <h2 id="art-feeding-2">Feeding volumes by age</h2>
+      <p>For formula-fed babies, there are clear guidelines. For breastfeeding, volume is controlled by the baby — track frequency and diapers instead.</p>
+      <table>
+        <tr><th>Age</th><th>Per feeding (formula)</th><th>Feedings/day</th><th>Daily total</th></tr>
+        <tr><td>0–2 wk</td><td>30–60 ml</td><td>8–12</td><td>300–500 ml</td></tr>
+        <tr><td>2–4 wk</td><td>60–90 ml</td><td>7–10</td><td>500–700 ml</td></tr>
+        <tr><td>1–2 mo</td><td>90–120 ml</td><td>6–8</td><td>600–800 ml</td></tr>
+        <tr><td>2–4 mo</td><td>120–150 ml</td><td>6–7</td><td>700–900 ml</td></tr>
+        <tr><td>4–6 mo</td><td>150–180 ml</td><td>5–6</td><td>800–1000 ml</td></tr>
+        <tr><td>6–12 mo</td><td>180–240 ml</td><td>4–5 + solids</td><td>600–800 ml + food</td></tr>
+      </table>
+
+      <h2 id="art-feeding-3">Breastfeeding vs formula: schedule differences</h2>
+      <p><strong>Breastfeeding.</strong> On demand, not by the clock. A newborn may ask for the breast every 1–1.5 hours — this is normal and stimulates milk production. By 3–4 months, intervals increase to 2–3 hours.</p>
+      <p><strong>Formula feeding.</strong> Interval of 2.5–3.5 hours. Formula digests slower than breast milk, so the baby stays full longer. Overfeeding shows as frequent spitting up and bloating.</p>
+      <p><strong>Mixed feeding.</strong> Breast first (10–15 minutes each side), then supplement with formula if the baby is still hungry. Supplement volume is determined by the baby's behavior, not a formula.</p>
+
+      <h2 id="art-feeding-4">When feedings are too few</h2>
+      <p>Red flags — see a doctor:</p>
+      <ul>
+        <li>Fewer than 4 wet diapers in 24 hours (after day 4 of life)</li>
+        <li>Loss of more than 10% of birth weight by day 5</li>
+        <li>Hasn't returned to birth weight by day 14</li>
+        <li>Baby is lethargic, doesn't wake for feedings</li>
+        <li>Urine is dark and concentrated</li>
+      </ul>
+
+      <h2 id="art-feeding-5">What to record</h2>
+      <p>For each feeding, record three things:</p>
+      <ol>
+        <li><strong>Start time.</strong> After a week of records, you'll see your baby's natural rhythm.</li>
+        <li><strong>Type and volume.</strong> Breast (which side, how many minutes) or bottle (how many ml).</li>
+        <li><strong>Behavior after.</strong> Fell asleep, active, spit up. Helps distinguish overfeeding from normal.</li>
+      </ol>
+      <div class="note">Lummo records a feeding in two taps: choose type → enter volume. After a week, the app shows your average schedule.</div>
+
+    </div>
+
+    <div class="article-related">
+      <div class="article-related-title"><span data-i="ru">Читайте также</span><span data-i="en">Related articles</span></div>
+      <div class="article-related-grid">
+        <a class="article-related-card" href="sleep.html">
+          <div class="related-tag"><span data-i="ru">Сон</span><span data-i="en">Sleep</span></div>
+          <div class="related-title"><span data-i="ru">Сколько должен спать ребёнок по возрастам</span><span data-i="en">How much should a child sleep by age</span></div>
+        </a>
+        <a class="article-related-card" href="solids.html">
+          <div class="related-tag"><span data-i="ru">Питание</span><span data-i="en">Nutrition</span></div>
+          <div class="related-title"><span data-i="ru">Когда вводить прикорм: по месяцам</span><span data-i="en">When to start solids: month by month</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="article-share">
+      <div class="article-share-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span data-i="ru">Поделиться</span><span data-i="en">Share</span>
+      </div>
+      <div class="article-share-buttons">
+        <a class="share-btn share-btn--telegram" onclick="shareArticle('telegram')" href="javascript:void(0)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+        <a class="share-btn share-btn--whatsapp" onclick="shareArticle('whatsapp')" href="javascript:void(0)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a class="share-btn share-btn--twitter" onclick="shareArticle('twitter')" href="javascript:void(0)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X
+        </a>
+        <button class="share-btn share-btn--copy" onclick="shareArticle('copy')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span data-i="ru">Копировать</span><span data-i="en">Copy link</span>
+        </button>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
+      <a class="article-back" href="../index.html#blog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-i="ru">Назад к блогу</span><span data-i="en">Back to blog</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-nav">
+      <div class="footer-nav-col">
+        <div class="footer-nav-title"><span data-i="ru">Продукт</span><span data-i="en">Product</span></div>
+        <a href="../index.html#features"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
+        <a href="../index.html#ai"><span data-i="ru">AI-помощник</span><span data-i="en">AI Assistant</span></a>
+        <a href="../index.html#download"><span data-i="ru">Скачать</span><span data-i="en">Download</span></a>
+      </div>
+      <div class="footer-nav-col">
+        <div class="footer-nav-title"><span data-i="ru">Полезное</span><span data-i="en">Resources</span></div>
+        <a href="../index.html#blog"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+        <a href="../index.html#development"><span data-i="ru">Развитие</span><span data-i="en">Development</span></a>
+      </div>
+      <div class="footer-nav-col">
+        <div class="footer-nav-title"><span data-i="ru">Компания</span><span data-i="en">Company</span></div>
+        <a href="../privacy.html"><span data-i="ru">Конфиденциальность</span><span data-i="en">Privacy Policy</span></a>
+        <a href="mailto:contact@lummo.app"><span data-i="ru">Связаться</span><span data-i="en">Contact</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <img src="../dog.jpg" alt="Lummo" width="32" height="32">
+        <span>Lummo</span>
+      </div>
+      <div class="footer-copy">
+        <span data-i="ru">© 2025 Lummo. Все данные хранятся на вашем устройстве.</span>
+        <span data-i="en">© 2025 Lummo. All data stays on your device.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){var saved=localStorage.getItem('lummo-theme');if(saved)document.documentElement.setAttribute('data-theme',saved);else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.setAttribute('data-theme','dark')})();
+function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('lummo-theme',t)}
+(function(){var saved=localStorage.getItem('lummo-lang');if(saved){document.documentElement.lang=saved;updateLangBtns(saved)}})();
+function setLang(lang){document.documentElement.lang=lang;localStorage.setItem('lummo-lang',lang);updateLangBtns(lang)}
+function updateLangBtns(lang){document.querySelectorAll('.lang-btn').forEach(function(btn){btn.classList.toggle('active',btn.textContent.trim().toLowerCase()===lang)})}
+function toggleMenu(){var menu=document.getElementById('mobMenu');var burger=document.querySelector('.burger');var open=menu.classList.toggle('open');burger.classList.toggle('active');document.body.style.overflow=open?'hidden':''}
+document.addEventListener('click',function(e){var link=e.target.closest('.article-toc a');if(link){e.preventDefault();var id=link.getAttribute('href').replace('#','');var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}});
+function shareArticle(platform){var url=window.location.href;var lang=document.documentElement.lang||'ru';var title=document.querySelector('h1 [data-i="'+lang+'"]');var text=(title?title.textContent:document.title)+' — Lummo';switch(platform){case'telegram':window.open('https://t.me/share/url?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text),'_blank');break;case'whatsapp':window.open('https://wa.me/?text='+encodeURIComponent(text+' '+url),'_blank');break;case'twitter':window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(text),'_blank');break;case'copy':navigator.clipboard.writeText(url).then(function(){var btn=document.querySelector('.share-btn--copy');if(btn){var originalHtml=btn.innerHTML;btn.classList.add('copied');var copyLabel=lang==='ru'?'Скопировано!':'Copied!';btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'+copyLabel;setTimeout(function(){btn.classList.remove('copied');btn.innerHTML=originalHtml},2000)}});break}}
+</script>
+</body>
+</html>
