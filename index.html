@@ -416,6 +416,63 @@ html[data-theme="light"] .ai-feat-card p{color:var(--text-secondary)}
 .ai-content{display:none}
 .ai-feat,.ai-feat-dot,.ai-feat-text,.ai-typing{display:none}
 
+/* ===== ALICE VOICE SECTION ===== */
+.alice-section{background:linear-gradient(135deg,#7C3AED 0%,#A855F7 50%,#9333EA 100%);color:#fff;padding:80px 24px;position:relative;overflow:hidden}
+.alice-bg-waves{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 Q300,0 600,60 T1200,60 L1200,120 L0,120 Z' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat-x;background-size:1200px 120px;animation:aliceWaves 20s linear infinite}
+@keyframes aliceWaves{0%{background-position:0 bottom}100%{background-position:1200px bottom}}
+.alice-section .section-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.alice-badge{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(255,255,255,.15);border-radius:20px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px;backdrop-filter:blur(10px)}
+.alice-badge::before{content:'';width:8px;height:8px;background:#22c55e;border-radius:50%;animation:alicePulse 2s ease-in-out infinite}
+@keyframes alicePulse{0%,100%{opacity:.5}50%{opacity:1;box-shadow:0 0 12px #22c55e}}
+.alice-content h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-.02em}
+.alice-content>p{font-size:1.05rem;line-height:1.65;opacity:.9;margin-bottom:32px;max-width:480px}
+.alice-commands{display:flex;flex-direction:column;gap:12px}
+.alice-commands[data-i="en"]{display:none}
+html[lang="en"] .alice-commands[data-i="ru"]{display:none}
+html[lang="en"] .alice-commands[data-i="en"]{display:flex}
+.alice-cmd{display:flex;align-items:center;gap:14px;padding:14px 20px;background:rgba(255,255,255,.1);border-radius:16px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);transition:all .3s}
+.alice-cmd:hover{background:rgba(255,255,255,.18);transform:translateX(8px)}
+.alice-cmd-voice{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.15);border-radius:50%;flex-shrink:0}
+.alice-wave{display:flex;align-items:center;gap:2px;height:16px}
+.alice-wave span{width:3px;background:#fff;border-radius:2px;animation:aliceWave 1s ease-in-out infinite}
+.alice-wave span:nth-child(1){height:40%;animation-delay:0s}
+.alice-wave span:nth-child(2){height:70%;animation-delay:.1s}
+.alice-wave span:nth-child(3){height:100%;animation-delay:.2s}
+.alice-wave span:nth-child(4){height:70%;animation-delay:.3s}
+.alice-wave span:nth-child(5){height:40%;animation-delay:.4s}
+@keyframes aliceWave{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+.alice-cmd-text{font-size:.95rem;font-weight:500}
+.alice-visual{display:flex;justify-content:center;align-items:center}
+.alice-speaker{position:relative;display:flex;flex-direction:column;align-items:center}
+.alice-speaker-glow{position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.3) 0%,transparent 70%);border-radius:50%;animation:aliceGlow 3s ease-in-out infinite}
+@keyframes aliceGlow{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.2);opacity:.8}}
+.alice-speaker-body{width:140px;height:140px;background:linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.05) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;border:2px solid rgba(255,255,255,.3);backdrop-filter:blur(20px)}
+.alice-speaker-ring{position:absolute;border:2px solid rgba(255,255,255,.2);border-radius:50%;animation:aliceRing 3s ease-out infinite}
+.alice-speaker-ring--1{width:180px;height:180px;animation-delay:0s}
+.alice-speaker-ring--2{width:220px;height:220px;animation-delay:1s}
+.alice-speaker-ring--3{width:260px;height:260px;animation-delay:2s}
+@keyframes aliceRing{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.2);opacity:0}}
+.alice-speaker-icon{width:60px;height:60px;color:#fff}
+.alice-speaker-icon svg{width:100%;height:100%}
+.alice-speaker-label{margin-top:24px;font-size:.85rem;font-weight:600;opacity:.8;text-align:center}
+.alice-link-hint{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:48px;padding:14px 24px;background:rgba(255,255,255,.1);border-radius:12px;font-size:.85rem;opacity:.85;max-width:400px;margin-left:auto;margin-right:auto}
+.alice-link-hint svg{width:18px;height:18px;flex-shrink:0}
+@media(max-width:768px){
+  .alice-section{padding:60px 20px}
+  .alice-section .section-inner{grid-template-columns:1fr;gap:40px;text-align:center}
+  .alice-content>p{margin-left:auto;margin-right:auto}
+  .alice-commands{align-items:center}
+  .alice-cmd{width:100%;max-width:340px}
+  .alice-cmd:hover{transform:translateX(0) scale(1.02)}
+  .alice-visual{order:-1}
+  .alice-speaker-body{width:120px;height:120px}
+  .alice-speaker-ring--1{width:150px;height:150px}
+  .alice-speaker-ring--2{width:180px;height:180px}
+  .alice-speaker-ring--3{width:210px;height:210px}
+  .alice-speaker-icon{width:50px;height:50px}
+  .alice-link-hint{margin-top:32px;flex-direction:column;text-align:center;gap:8px}
+}
+
 /* ===== PRINCIPLES ===== */
 .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .principle-card{padding:28px 24px;border-radius:12px;border:1px solid var(--border);transition:border-color .2s}
@@ -2755,6 +2812,106 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
 <!-- Gradient transition AI → principles (волна скрыта, используем градиент) -->
 <svg class="wave-divider wave-divider--flip wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C480,60 960,0 1440,35 L1440,60 L0,60 Z"/></svg>
+
+<!-- ===== ALICE VOICE SECTION ===== -->
+<section class="alice-section" id="alice">
+  <div class="alice-bg-waves"></div>
+  <div class="section-inner">
+    <div class="alice-content">
+      <div class="alice-badge"><span data-i="ru">Голосовое управление</span><span data-i="en">Voice Control</span></div>
+      <h2>
+        <span data-i="ru">Руки заняты — скажи Алисе</span>
+        <span data-i="en">Hands busy — just ask Alice</span>
+      </h2>
+      <p>
+        <span data-i="ru">Укладываешь, кормишь, держишь на руках — телефон не достать. Просто скажи колонке, и запись появится в приложении.</span>
+        <span data-i="en">Rocking, feeding, holding — can't reach your phone. Just tell your speaker, and it syncs to the app.</span>
+      </p>
+      
+      <div class="alice-commands" data-i="ru">
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">«Алиса, ребёнок уснул»</div>
+        </div>
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">«Кормлю левой грудью»</div>
+        </div>
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">«Бутылочка 120 мл»</div>
+        </div>
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">«Когда последний раз кормили?»</div>
+        </div>
+      </div>
+      
+      <div class="alice-commands" data-i="en">
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">"Alice, baby fell asleep"</div>
+        </div>
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">"Feeding left breast"</div>
+        </div>
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">"Bottle 120 ml"</div>
+        </div>
+        <div class="alice-cmd">
+          <div class="alice-cmd-voice">
+            <div class="alice-wave"><span></span><span></span><span></span><span></span><span></span></div>
+          </div>
+          <div class="alice-cmd-text">"When was the last feeding?"</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="alice-visual">
+      <div class="alice-speaker">
+        <div class="alice-speaker-glow"></div>
+        <div class="alice-speaker-body">
+          <div class="alice-speaker-ring alice-speaker-ring--1"></div>
+          <div class="alice-speaker-ring alice-speaker-ring--2"></div>
+          <div class="alice-speaker-ring alice-speaker-ring--3"></div>
+          <div class="alice-speaker-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" x2="12" y1="19" y2="22"/>
+            </svg>
+          </div>
+        </div>
+        <div class="alice-speaker-label">
+          <span data-i="ru">Яндекс Станция</span>
+          <span data-i="en">Yandex Station</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="alice-link-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    <span data-i="ru">Связать аккаунт — в настройках приложения</span>
+    <span data-i="en">Link account in app settings</span>
+  </div>
+</section>
 
 <!-- Dog between sections: sparkle -->
 <div class="dog-section dog-mascot soul-reveal dog-section-after-ai">
