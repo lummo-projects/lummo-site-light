@@ -1783,8 +1783,11 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 .features-swiper .swiper-pagination{position:relative;margin-top:20px}
 .features-swiper .swiper-pagination-bullet{width:8px;height:8px;background:var(--border);opacity:1}
 .features-swiper .swiper-pagination-bullet-active{background:var(--primary);width:24px;border-radius:4px}
-@media(min-width:769px){.features-swiper{display:none}.features-grid{display:grid!important}}
-@media(max-width:768px){.features-grid:not(.features-swiper){display:none}}
+.features-swiper[data-i="en"]{display:none}
+html[lang="en"] .features-swiper[data-i="ru"]{display:none}
+html[lang="en"] .features-swiper[data-i="en"]{display:block}
+@media(min-width:769px){.features-swiper{display:none!important}.features-grid{display:grid!important}}
+@media(max-width:768px){.features-grid{display:none!important}}
 
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -5661,9 +5664,10 @@ window.pulseRecord = function(el){
 (function(){
   if(window.innerWidth > 768) return;
   
-  // Convert features-grid to Swiper on mobile
+  // Convert features-grid to Swiper on mobile (only visible one based on lang)
   document.querySelectorAll('.features-grid').forEach(function(grid){
-    if(grid.style.display === 'none') return;
+    var computedDisplay = window.getComputedStyle(grid).display;
+    if(computedDisplay === 'none') return;
     
     // Create swiper structure
     var wrapper = document.createElement('div');
