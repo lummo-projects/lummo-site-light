@@ -281,23 +281,76 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .ai-feat{display:flex;gap:12px;align-items:flex-start}
 .ai-feat-dot{width:7px;height:7px;border-radius:50%;background:var(--ai-dot);flex-shrink:0;margin-top:7px}
 .ai-feat-text{font-size:.86rem;color:var(--ai-feat);line-height:1.55}
-.ai-phone{display:flex;justify-content:center;align-items:center}
-.ai-phone .phone-frame{width:230px;height:460px;border-radius:26px;box-shadow:var(--phone-shadow);border-color:var(--phone-border);background:var(--phone-bg)}
-.ai-phone-live{height:100%;display:flex;flex-direction:column;padding:16px 12px;border-radius:25px;overflow:hidden}
-.apl-header{text-align:center;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.apl-title{display:block;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:2px}
-.apl-subtitle{font-size:.65rem;color:var(--primary)}
-.apl-chat{flex:1;display:flex;flex-direction:column;gap:8px;padding:12px 0;overflow:hidden}
-.apl-msg{padding:10px 12px;border-radius:14px;font-size:.7rem;line-height:1.4;max-width:90%;animation:aplIn .5s ease forwards;opacity:0}
-.apl-msg:nth-child(1){animation-delay:.3s}
-.apl-msg:nth-child(2){animation-delay:.8s}
-.apl-msg:nth-child(3){animation-delay:1.3s}
-.apl-msg:nth-child(4){animation-delay:1.8s}
-@keyframes aplIn{to{opacity:1}}
-.apl-msg--user{background:var(--bg-alt);color:var(--text);align-self:flex-end;border-bottom-right-radius:4px}
-.apl-msg--ai{background:rgba(60,56,255,.08);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px;border:1px solid rgba(60,56,255,.1)}
-.apl-msg-label{font-size:.55rem;font-weight:600;color:var(--primary);margin-bottom:4px}
-.apl-input{padding:10px 14px;background:var(--bg-alt);border-radius:20px;font-size:.65rem;color:var(--text-secondary);text-align:center}
+/* AI Phone - Premium Design */
+.ai-phone{display:flex;justify-content:center;align-items:center;position:relative}
+.ai-phone-wrapper{position:relative;padding:4px;border-radius:32px;background:linear-gradient(135deg,#818CF8 0%,#6366F1 25%,#A78BFA 50%,#6366F1 75%,#818CF8 100%);background-size:400% 400%;animation:aiGradBorder 4s ease infinite;box-shadow:0 0 40px rgba(99,102,241,.3),0 0 80px rgba(99,102,241,.15),0 25px 50px -12px rgba(0,0,0,.25)}
+@keyframes aiGradBorder{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.ai-phone .phone-frame{width:280px;height:520px;border-radius:28px;border:none;background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.98) 100%);backdrop-filter:blur(20px);overflow:hidden}
+html[data-theme="dark"] .ai-phone .phone-frame{background:linear-gradient(180deg,rgba(30,30,40,.95) 0%,rgba(20,20,30,.98) 100%)}
+
+/* Floating orbs around phone */
+.ai-phone::before,.ai-phone::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);opacity:.6;pointer-events:none;z-index:-1}
+.ai-phone::before{width:120px;height:120px;background:linear-gradient(135deg,#818CF8,#6366F1);top:-30px;right:-40px;animation:aiOrb1 6s ease-in-out infinite}
+.ai-phone::after{width:100px;height:100px;background:linear-gradient(135deg,#A78BFA,#818CF8);bottom:-20px;left:-30px;animation:aiOrb2 8s ease-in-out infinite}
+@keyframes aiOrb1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,20px) scale(1.1)}}
+@keyframes aiOrb2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(15px,-15px) scale(1.15)}}
+
+/* Phone inner UI */
+.ai-phone-live{height:100%;display:flex;flex-direction:column;padding:20px 16px;overflow:hidden;position:relative}
+.ai-phone-live::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:24px;background:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.9) 20%,rgba(0,0,0,.9) 80%,transparent 100%);border-radius:20px}
+
+/* Header */
+.apl-header{text-align:center;padding:24px 0 16px;position:relative}
+.apl-header::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+.apl-title{display:flex;align-items:center;justify-content:center;gap:8px;font-size:1rem;font-weight:700;color:var(--text)}
+.apl-title::before{content:'';width:10px;height:10px;background:linear-gradient(135deg,#6366F1,#A78BFA);border-radius:50%;animation:aiPulse 2s ease-in-out infinite}
+@keyframes aiPulse{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.4)}50%{box-shadow:0 0 0 8px rgba(99,102,241,0)}}
+.apl-subtitle{display:block;font-size:.7rem;color:var(--primary);margin-top:4px;opacity:.8}
+
+/* Chat area */
+.apl-chat{flex:1;display:flex;flex-direction:column;gap:12px;padding:16px 0;overflow-y:auto;overflow-x:hidden}
+.apl-chat::-webkit-scrollbar{width:3px}
+.apl-chat::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}
+
+/* Messages */
+.apl-msg{padding:12px 16px;border-radius:18px;font-size:.8rem;line-height:1.5;max-width:88%;animation:aplMsgIn .6s cubic-bezier(.34,1.56,.64,1) forwards;opacity:0;transform:translateY(20px) scale(.9)}
+.apl-msg:nth-child(1){animation-delay:.2s}
+.apl-msg:nth-child(2){animation-delay:.6s}
+.apl-msg:nth-child(3){animation-delay:1s}
+.apl-msg:nth-child(4){animation-delay:1.4s}
+@keyframes aplMsgIn{to{opacity:1;transform:translateY(0) scale(1)}}
+
+.apl-msg--user{background:linear-gradient(135deg,#F3F4F6 0%,#E5E7EB 100%);color:var(--text);align-self:flex-end;border-bottom-right-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+html[data-theme="dark"] .apl-msg--user{background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.05) 100%)}
+
+.apl-msg--ai{background:linear-gradient(135deg,rgba(99,102,241,.12) 0%,rgba(139,92,246,.08) 100%);color:var(--text);align-self:flex-start;border-bottom-left-radius:6px;border:1px solid rgba(99,102,241,.15);box-shadow:0 4px 16px rgba(99,102,241,.1),inset 0 1px 0 rgba(255,255,255,.5);position:relative;overflow:hidden}
+.apl-msg--ai::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.3),transparent)}
+
+.apl-msg-label{display:flex;align-items:center;gap:6px;font-size:.65rem;font-weight:700;background:linear-gradient(135deg,#6366F1,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.apl-msg-label::before{content:'';width:6px;height:6px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:50%}
+
+/* Input field */
+.apl-input{padding:14px 20px;background:linear-gradient(135deg,rgba(99,102,241,.06) 0%,rgba(139,92,246,.04) 100%);border:1px solid rgba(99,102,241,.15);border-radius:24px;font-size:.75rem;color:var(--text-secondary);text-align:left;display:flex;align-items:center;gap:10px;transition:all .3s}
+.apl-input::before{content:'';width:18px;height:18px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:50%;flex-shrink:0;opacity:.6}
+.apl-input:hover{border-color:rgba(99,102,241,.3);box-shadow:0 0 20px rgba(99,102,241,.1)}
+
+/* Floating sparkles around phone */
+.ai-sparkle{position:absolute;width:8px;height:8px;pointer-events:none;z-index:10}
+.ai-sparkle::before,.ai-sparkle::after{content:'';position:absolute;background:linear-gradient(135deg,#818CF8,#A78BFA);border-radius:1px}
+.ai-sparkle::before{width:100%;height:2px;top:50%;left:0;transform:translateY(-50%)}
+.ai-sparkle::after{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%)}
+.ai-sparkle--1{top:15%;right:5%;animation:aiSparkle 3s ease-in-out infinite}
+.ai-sparkle--2{top:60%;left:0;animation:aiSparkle 4s ease-in-out .5s infinite;width:6px;height:6px}
+.ai-sparkle--3{bottom:20%;right:0;animation:aiSparkle 3.5s ease-in-out 1s infinite;width:10px;height:10px}
+@keyframes aiSparkle{0%,100%{opacity:.3;transform:scale(.8) rotate(0deg)}50%{opacity:1;transform:scale(1.2) rotate(90deg)}}
+
+/* Typing animation */
+.apl-msg--typing{min-height:50px}
+.apl-typing-dots{display:flex;gap:4px;padding:4px 0}
+.apl-typing-dots span{width:8px;height:8px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:50%;animation:aiTypingDot 1.4s ease-in-out infinite}
+.apl-typing-dots span:nth-child(2){animation-delay:.2s}
+.apl-typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes aiTypingDot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-6px);opacity:1}}
 
 /* ===== PRINCIPLES ===== */
 .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -374,8 +427,14 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
   .ai-content>p{margin-left:auto;margin-right:auto}
   .ai-features{align-items:center}
   .ai-feat{text-align:left}
-  .ai-phone{order:-1}
-  .ai-phone .phone-frame{width:200px;height:400px;border-radius:24px}
+  .ai-phone{order:-1;margin-bottom:24px}
+  .ai-phone-wrapper{padding:3px;box-shadow:0 0 30px rgba(99,102,241,.25),0 20px 40px -12px rgba(0,0,0,.2)}
+  .ai-phone .phone-frame{width:260px;height:480px;border-radius:26px}
+  .ai-phone::before{width:80px;height:80px;top:-20px;right:-20px}
+  .ai-phone::after{width:60px;height:60px;bottom:-10px;left:-15px}
+  .apl-header{padding:20px 0 14px}
+  .apl-msg{padding:10px 14px;font-size:.75rem}
+  .apl-input{padding:12px 16px;font-size:.7rem}
   .principles-grid{grid-template-columns:1fr;gap:12px}
   .ped-inner{grid-template-columns:1fr;gap:32px}
   .dev-features{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -2519,36 +2578,44 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
     </div>
 
     <div class="ai-phone">
-      <div class="phone-frame">
-        <div class="ai-phone-live">
-          <div class="apl-header">
-            <span class="apl-title">AI Advisor</span>
-            <span class="apl-subtitle" data-i="ru">Спроси о ребёнке</span>
-            <span class="apl-subtitle" data-i="en">Ask about your child</span>
-          </div>
-          <div class="apl-chat">
-            <div class="apl-msg apl-msg--user">
-              <span data-i="ru">Достаточно ли спит мой малыш?</span>
-              <span data-i="en">Is my baby getting enough sleep?</span>
+      <!-- Floating sparkles -->
+      <div class="ai-sparkle ai-sparkle--1"></div>
+      <div class="ai-sparkle ai-sparkle--2"></div>
+      <div class="ai-sparkle ai-sparkle--3"></div>
+      
+      <div class="ai-phone-wrapper">
+        <div class="phone-frame">
+          <div class="ai-phone-live">
+            <div class="apl-header">
+              <span class="apl-title">AI Advisor</span>
+              <span class="apl-subtitle" data-i="ru">Спроси о ребёнке</span>
+              <span class="apl-subtitle" data-i="en">Ask about your child</span>
             </div>
-            <div class="apl-msg apl-msg--ai">
-              <div class="apl-msg-label">Lummo AI</div>
-              <span data-i="ru">По данным за неделю: средний сон 14.2ч/день — это норма для 5 недель. Паттерн стабильный ✓</span>
-              <span data-i="en">Based on this week's data: average sleep 14.2h/day — normal for 5 weeks. Pattern is stable ✓</span>
+            <div class="apl-chat">
+              <div class="apl-msg apl-msg--user">
+                <span data-i="ru">Достаточно ли спит мой малыш?</span>
+                <span data-i="en">Is my baby getting enough sleep?</span>
+              </div>
+              <div class="apl-msg apl-msg--ai">
+                <div class="apl-msg-label">Lummo AI</div>
+                <span data-i="ru">По данным за неделю: средний сон 14.2ч/день — это норма для 5 недель. Паттерн стабильный ✓</span>
+                <span data-i="en">Based on this week's data: average sleep 14.2h/day — normal for 5 weeks. Pattern is stable ✓</span>
+              </div>
+              <div class="apl-msg apl-msg--user">
+                <span data-i="ru">Когда начинать прикорм?</span>
+                <span data-i="en">When should we start solids?</span>
+              </div>
+              <div class="apl-msg apl-msg--ai apl-msg--typing">
+                <div class="apl-msg-label">Lummo AI</div>
+                <div class="apl-typing-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
             </div>
-            <div class="apl-msg apl-msg--user">
-              <span data-i="ru">Когда начинать прикорм?</span>
-              <span data-i="en">When should we start solids?</span>
+            <div class="apl-input">
+              <span data-i="ru">Спросить о ребёнке...</span>
+              <span data-i="en">Ask about your child...</span>
             </div>
-            <div class="apl-msg apl-msg--ai">
-              <div class="apl-msg-label">Lummo AI</div>
-              <span data-i="ru">ВОЗ рекомендует с 6 мес. Вашему малышу 5 недель — ещё ~5 месяцев.</span>
-              <span data-i="en">WHO recommends around 6 months. Your baby is 5 weeks — about 5 months to go.</span>
-            </div>
-          </div>
-          <div class="apl-input">
-            <span data-i="ru">Спросить о ребёнке...</span>
-            <span data-i="en">Ask about your child...</span>
           </div>
         </div>
       </div>
