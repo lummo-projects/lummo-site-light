@@ -283,6 +283,21 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .ai-feat-text{font-size:.86rem;color:var(--ai-feat);line-height:1.55}
 .ai-phone{display:flex;justify-content:center;align-items:center}
 .ai-phone .phone-frame{width:230px;height:460px;border-radius:26px;box-shadow:var(--phone-shadow);border-color:var(--phone-border);background:var(--phone-bg)}
+.ai-phone-live{height:100%;display:flex;flex-direction:column;padding:16px 12px;border-radius:25px;overflow:hidden}
+.apl-header{text-align:center;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.apl-title{display:block;font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.apl-subtitle{font-size:.65rem;color:var(--primary)}
+.apl-chat{flex:1;display:flex;flex-direction:column;gap:8px;padding:12px 0;overflow:hidden}
+.apl-msg{padding:10px 12px;border-radius:14px;font-size:.7rem;line-height:1.4;max-width:90%;animation:aplIn .5s ease forwards;opacity:0}
+.apl-msg:nth-child(1){animation-delay:.3s}
+.apl-msg:nth-child(2){animation-delay:.8s}
+.apl-msg:nth-child(3){animation-delay:1.3s}
+.apl-msg:nth-child(4){animation-delay:1.8s}
+@keyframes aplIn{to{opacity:1}}
+.apl-msg--user{background:var(--bg-alt);color:var(--text);align-self:flex-end;border-bottom-right-radius:4px}
+.apl-msg--ai{background:rgba(60,56,255,.08);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px;border:1px solid rgba(60,56,255,.1)}
+.apl-msg-label{font-size:.55rem;font-weight:600;color:var(--primary);margin-bottom:4px}
+.apl-input{padding:10px 14px;background:var(--bg-alt);border-radius:20px;font-size:.65rem;color:var(--text-secondary);text-align:center}
 
 /* ===== PRINCIPLES ===== */
 .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -2495,7 +2510,37 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
     <div class="ai-phone">
       <div class="phone-frame">
-        <img src="screenshots/ai.svg" alt="AI" loading="lazy">
+        <div class="ai-phone-live">
+          <div class="apl-header">
+            <span class="apl-title">AI Advisor</span>
+            <span class="apl-subtitle" data-i="ru">Спроси о ребёнке</span>
+            <span class="apl-subtitle" data-i="en">Ask about your child</span>
+          </div>
+          <div class="apl-chat">
+            <div class="apl-msg apl-msg--user">
+              <span data-i="ru">Достаточно ли спит мой малыш?</span>
+              <span data-i="en">Is my baby getting enough sleep?</span>
+            </div>
+            <div class="apl-msg apl-msg--ai">
+              <div class="apl-msg-label">Lummo AI</div>
+              <span data-i="ru">По данным за неделю: средний сон 14.2ч/день — это норма для 5 недель. Паттерн стабильный ✓</span>
+              <span data-i="en">Based on this week's data: average sleep 14.2h/day — normal for 5 weeks. Pattern is stable ✓</span>
+            </div>
+            <div class="apl-msg apl-msg--user">
+              <span data-i="ru">Когда начинать прикорм?</span>
+              <span data-i="en">When should we start solids?</span>
+            </div>
+            <div class="apl-msg apl-msg--ai">
+              <div class="apl-msg-label">Lummo AI</div>
+              <span data-i="ru">ВОЗ рекомендует с 6 мес. Вашему малышу 5 недель — ещё ~5 месяцев.</span>
+              <span data-i="en">WHO recommends around 6 months. Your baby is 5 weeks — about 5 months to go.</span>
+            </div>
+          </div>
+          <div class="apl-input">
+            <span data-i="ru">Спросить о ребёнке...</span>
+            <span data-i="en">Ask about your child...</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
