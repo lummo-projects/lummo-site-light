@@ -516,8 +516,73 @@ html[data-theme="dark"] .hero-cloud{opacity:.06}
 .hero-cloud--4{top:8%;right:20%;width:80px;animation:cloudDrift1 35s ease-in-out infinite;animation-delay:-8s}
 
 /* --- Wave dividers --- */
-.wave-divider{display:block;width:100%;height:auto;position:relative;z-index:1;margin-top:-1px}
+.wave-divider{display:block;width:100%;height:auto;position:relative;z-index:1;margin-top:-1px;opacity:.5}
 .wave-divider--flip{transform:scaleY(-1);margin-bottom:-1px;margin-top:0}
+.wave-divider--hidden{display:none}
+
+/* ===== SECTION TRANSITIONS ===== */
+/* Gradient fade between sections */
+.section-fade-top{position:relative}
+.section-fade-top::before{content:'';position:absolute;top:0;left:0;right:0;height:100px;background:linear-gradient(180deg,var(--bg) 0%,transparent 100%);pointer-events:none;z-index:1}
+.section-fade-bottom{position:relative}
+.section-fade-bottom::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(0deg,var(--bg) 0%,transparent 100%);pointer-events:none;z-index:1}
+
+/* Alt section gradient fades */
+.section--alt.section-fade-top::before{background:linear-gradient(180deg,var(--bg-alt) 0%,transparent 100%)}
+.section--alt.section-fade-bottom::after{background:linear-gradient(0deg,var(--bg-alt) 0%,transparent 100%)}
+
+/* Transition TO dark section (day-in-life → AI) */
+.section-fade-to-dark{position:relative}
+.section-fade-to-dark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(180deg,transparent 0%,rgba(13,13,26,.15) 40%,rgba(13,13,26,.5) 70%,var(--ai-bg) 100%);pointer-events:none;z-index:3}
+
+/* Transition FROM dark section (AI → principles) */
+.section-fade-from-dark{position:relative}
+.section-fade-from-dark::before{content:'';position:absolute;top:0;left:0;right:0;height:150px;background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.5) 30%,rgba(13,13,26,.15) 60%,transparent 100%);pointer-events:none;z-index:3}
+
+/* Hero to alt section transition */
+.hero-fade-bottom{position:relative}
+.hero-fade-bottom::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(180deg,transparent 0%,var(--bg-alt) 100%);pointer-events:none;z-index:1}
+
+/* Seamless section flow */
+.section-flow{position:relative;margin-top:-40px;padding-top:80px}
+.section-flow-up{position:relative;margin-bottom:-40px;padding-bottom:80px}
+
+/* Dog section seamless integration */
+.dog-section{margin:0;padding:16px 0;position:relative;z-index:5}
+
+/* Smooth color blending for dog sections near AI */
+.dog-section-before-dark{background:linear-gradient(180deg,var(--bg) 0%,rgba(13,13,26,.5) 60%,var(--ai-bg) 100%) !important;padding:24px 0 40px !important}
+.dog-section-after-dark{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.5) 40%,var(--bg) 100%) !important;padding:40px 0 24px !important}
+
+/* Ped section smooth transition */
+.ped-section{position:relative}
+.ped-section::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(180deg,var(--bg) 0%,transparent 100%);pointer-events:none;z-index:1}
+
+/* CTA section smooth entry */
+.cta-section{position:relative}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(180deg,var(--bg-alt) 0%,transparent 100%);pointer-events:none;z-index:1}
+
+/* Dark section entry glow */
+.ai-section::before{content:'';position:absolute;top:0;left:0;right:0;height:200px;background:linear-gradient(180deg,transparent 0%,rgba(129,140,248,.03) 50%,rgba(129,140,248,.08) 100%);pointer-events:none;z-index:0}
+
+/* Dark section exit glow */  
+.ai-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(0deg,transparent 0%,rgba(129,140,248,.03) 50%,rgba(129,140,248,.08) 100%);pointer-events:none;z-index:0}
+
+/* Soft connection between sections */
+.section-connect{position:relative}
+.section-connect::before{content:'';position:absolute;top:-40px;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent 0%,var(--bg) 50%,transparent 100%);pointer-events:none;z-index:2}
+
+/* Alt to default transition */
+.alt-to-default{position:relative}
+.alt-to-default::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent 0%,var(--bg) 100%);pointer-events:none;z-index:2}
+
+/* Default to alt transition */
+.default-to-alt{position:relative}
+.default-to-alt::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent 0%,var(--bg-alt) 100%);pointer-events:none;z-index:2}
+
+/* Dark theme adjustments for transitions */
+html[data-theme="dark"] .section-fade-to-dark::after{background:linear-gradient(180deg,transparent 0%,rgba(13,13,26,.2) 40%,rgba(13,13,26,.6) 70%,var(--ai-bg) 100%)}
+html[data-theme="dark"] .section-fade-from-dark::before{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.6) 30%,rgba(13,13,26,.2) 60%,transparent 100%)}
 
 /* --- Blob decorations --- */
 .soul-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
@@ -1268,7 +1333,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 <div class="page active" id="page-home">
 
 <!-- ===== HERO ===== -->
-<section class="hero" id="top">
+<section class="hero hero-fade-bottom" id="top">
   <!-- Animated gradient background -->
   <div class="hero-anim-bg"></div>
   <!-- Floating clouds -->
@@ -1364,11 +1429,11 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,35 1440,28 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition hero → problem (волна скрыта, используем градиент) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,35 1440,28 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== PROBLEM → SOLUTION (IMMERSIVE) ===== -->
-<section class="section section--alt" id="problem">
+<section class="section section--alt section-flow alt-to-default" id="problem">
   <div class="section-inner">
     <div class="sc-section-header soul-reveal">
       <h2><span data-i="ru">Это знакомо каждой маме</span><span data-i="en">Every parent knows this feeling</span></h2>
@@ -1547,8 +1612,8 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (alt → default) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C240,55 480,0 720,35 C960,60 1200,10 1440,30 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition problem → features (волна скрыта) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C240,55 480,0 720,35 C960,60 1200,10 1440,30 L1440,60 L0,60 Z"/></svg>
 
 <!-- Dog between sections: sleeping -->
 <div class="dog-section dog-mascot soul-reveal" style="background:var(--bg)">
@@ -1557,7 +1622,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 </div>
 
 <!-- ===== FEATURES GRID ===== -->
-<section class="section section--mesh-purple" id="features">
+<section class="section section--mesh-purple section-flow default-to-alt" id="features">
   <!-- Decorative moon and stars for sleep theme -->
   <svg class="deco-moon-stars" style="top:8%;right:6%;width:80px;height:80px" viewBox="0 0 80 80" fill="none"><path d="M50 15a18 18 0 1 1-20 30 14 14 0 0 0 20-30z" fill="var(--primary)" opacity=".5"/><circle cx="20" cy="15" r="2" fill="var(--primary)" opacity=".6"/><circle cx="65" cy="25" r="1.5" fill="var(--accent)" opacity=".5"/><circle cx="30" cy="60" r="1.8" fill="var(--primary)" opacity=".4"/><circle cx="70" cy="55" r="1" fill="var(--accent)" opacity=".6"/></svg>
   <!-- Decorative bottle & spoon for feeding theme -->
@@ -1677,11 +1742,11 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (default → alt for day-in-life) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,25 C320,55 640,10 960,40 C1200,55 1380,20 1440,30 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition features → day-in-life (волна скрыта) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,25 C320,55 640,10 960,40 C1200,55 1380,20 1440,30 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== DAY IN LIFE (IMMERSIVE) ===== -->
-<section class="section section--alt" id="day-in-life">
+<section class="section section--alt section-flow section-fade-to-dark" id="day-in-life">
   <div class="section-inner">
     <div class="day-section-header soul-reveal" style="text-align:center;margin-bottom:40px">
       <h2><span data-i="ru">Один день с Lummo</span><span data-i="en">A day with Lummo</span></h2>
@@ -1897,17 +1962,17 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (alt → default) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C360,50 720,5 1080,35 C1260,48 1380,18 1440,25 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition day-in-life → AI dog section (волна скрыта) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C360,50 720,5 1080,35 C1260,48 1380,18 1440,25 L1440,60 L0,60 Z"/></svg>
 
-<!-- Dog between sections: AI -->
-<div class="dog-section dog-mascot soul-reveal" style="background:var(--bg)">
+<!-- Dog between sections: AI (с градиентом в тёмную секцию) -->
+<div class="dog-section dog-mascot soul-reveal dog-section-before-dark">
   <img src="dog.jpg" alt="" style="opacity:.8">
-  <span class="dog-section-label"><span data-i="ru">🤖 А теперь — AI</span><span data-i="en">🤖 And now — AI</span></span>
+  <span class="dog-section-label" style="color:rgba(255,255,255,.8)"><span data-i="ru">🤖 А теперь — AI</span><span data-i="en">🤖 And now — AI</span></span>
 </div>
 
-<!-- Wave divider (default → dark/ai) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C360,60 720,0 1080,40 C1260,50 1380,15 1440,25 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition day-in-life → AI (волна скрыта, используем градиент) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C360,60 720,0 1080,40 C1260,50 1380,15 1440,25 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== AI SECTION ===== -->
 <section class="ai-section" id="ai" style="position:relative;overflow:hidden">
@@ -1975,17 +2040,17 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (ai/dark → default) -->
-<svg class="wave-divider wave-divider--flip" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C480,60 960,0 1440,35 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition AI → principles (волна скрыта, используем градиент) -->
+<svg class="wave-divider wave-divider--flip wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C480,60 960,0 1440,35 L1440,60 L0,60 Z"/></svg>
 
-<!-- Dog between sections: sparkle -->
-<div class="dog-section dog-mascot soul-reveal" style="background:var(--bg)">
+<!-- Dog between sections: sparkle (с градиентом из тёмной секции) -->
+<div class="dog-section dog-mascot soul-reveal dog-section-after-dark">
   <img src="dog.jpg" alt="" style="opacity:.8;filter:hue-rotate(10deg) brightness(1.05)">
-  <span class="dog-section-label"><span data-i="ru">✨ Наши принципы</span><span data-i="en">✨ Our principles</span></span>
+  <span class="dog-section-label" style="color:rgba(255,255,255,.7)"><span data-i="ru">✨ Наши принципы</span><span data-i="en">✨ Our principles</span></span>
 </div>
 
 <!-- ===== PRINCIPLES ===== -->
-<section class="section" id="principles">
+<section class="section section-fade-from-dark default-to-alt" id="principles">
   <div class="soul-blob soul-blob--3"></div>
   <div class="section-inner">
     <div class="section-header">
@@ -2090,11 +2155,11 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (default → alt for testimonials) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,35 C320,5 640,55 960,20 C1120,8 1320,45 1440,30 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition principles → testimonials (волна скрыта) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,35 C320,5 640,55 960,20 C1120,8 1320,45 1440,30 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== TESTIMONIALS ===== -->
-<section class="section section--alt" id="testimonials">
+<section class="section section--alt section-flow alt-to-default" id="testimonials">
   <div class="section-inner">
     <div class="section-header">
       <h2><span data-i="ru">Нас уже тысячи — и вот что говорят</span><span data-i="en">Thousands of us already — here's what they say</span></h2>
@@ -2264,11 +2329,8 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (alt → default) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C240,55 480,0 720,35 C960,60 1200,10 1440,30 L1440,60 L0,60 Z"/></svg>
-
-<!-- Wave divider (default → alt) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,30 C360,60 720,0 1080,40 C1260,50 1380,15 1440,25 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition testimonials → ped (волны скрыты) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C240,55 480,0 720,35 C960,60 1200,10 1440,30 L1440,60 L0,60 Z"/></svg>
 
 <!-- Dog between sections: doctor (flipped) -->
 <div class="dog-section dog-mascot soul-reveal" style="background:var(--bg-alt)">
@@ -2277,7 +2339,7 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 </div>
 
 <!-- ===== FOR PEDIATRICIAN ===== -->
-<section class="ped-section" id="pediatrician">
+<section class="ped-section section-flow alt-to-default" id="pediatrician">
   <div class="ped-inner">
     <div class="ped-content">
       <h2>
@@ -2389,11 +2451,11 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
   </div>
 </section>
 
-<!-- Wave divider (alt → default) -->
-<svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,25 C360,55 720,5 1080,35 C1260,48 1380,18 1440,28 L1440,60 L0,60 Z"/></svg>
+<!-- Gradient transition ped → cta (волна скрыта) -->
+<svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,25 C360,55 720,5 1080,35 C1260,48 1380,18 1440,28 L1440,60 L0,60 Z"/></svg>
 
 <!-- ===== CTA ===== -->
-<section class="cta-section" id="download">
+<section class="cta-section section-flow" id="download">
   <h2>
     <span data-i="ru">Начните записывать сегодня — завтра скажете себе спасибо</span>
     <span data-i="en">Start logging today — tomorrow you'll thank yourself</span>
