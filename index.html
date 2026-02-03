@@ -644,7 +644,8 @@ html[data-theme="light"] .dog-section-label{color:var(--text-secondary) !importa
 
 /* Light theme: hide stars/glow in AI section, use subtle decoration instead */
 html[data-theme="light"] .ai-star{display:none}
-html[data-theme="light"] .ai-glow{opacity:.3}
+html[data-theme="light"] .ai-glow{opacity:.15}
+@media(max-width:768px){html[data-theme="light"] .ai-glow{display:none}}
 html[data-theme="light"] .ai-section::before{background:linear-gradient(180deg,transparent 0%,rgba(60,56,255,.04) 50%,rgba(60,56,255,.08) 100%)}
 html[data-theme="light"] .ai-section::after{background:linear-gradient(0deg,transparent 0%,rgba(60,56,255,.04) 50%,rgba(60,56,255,.08) 100%)}
 
