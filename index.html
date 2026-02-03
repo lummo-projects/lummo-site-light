@@ -309,25 +309,28 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .cta-buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
 
 /* ===== FOOTER ===== */
-.footer{padding:40px 24px 28px;border-top:1px solid var(--border);background:var(--bg-alt);transition:background .3s}
-.footer-inner{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
-.footer-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.footer{padding:48px 24px 32px;border-top:1px solid var(--border);background:var(--bg-alt);transition:background .3s}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+.footer-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.footer-nav-col{display:flex;flex-direction:column;gap:10px}
+.footer-nav-title{font-size:.75rem;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.footer-nav-col a{font-size:.85rem;color:var(--text-secondary);transition:color .15s}
+.footer-nav-col a:hover{color:var(--text)}
 .footer-copy{font-size:.78rem;color:var(--text-tertiary)}
-.footer-links{display:flex;gap:18px}
-.footer-links a{font-size:.78rem;color:var(--text-secondary);transition:color .15s}
-.footer-links a:hover{color:var(--text)}
 
 /* Newsletter */
-.footer-newsletter{width:100%;max-width:480px;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
-.footer-newsletter-title{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
-.footer-newsletter-desc{font-size:.78rem;color:var(--text-secondary);margin-bottom:14px;line-height:1.5}
-.footer-newsletter-form{display:flex;gap:8px}
-.footer-newsletter-input{flex:1;padding:10px 14px;font-size:.85rem;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);transition:border-color .2s,box-shadow .2s;font-family:inherit}
+.footer-newsletter{display:flex;flex-direction:column;gap:10px}
+.footer-newsletter-title{font-size:.75rem;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.05em}
+.footer-newsletter-desc{font-size:.8rem;color:var(--text-secondary);line-height:1.5}
+.footer-newsletter-form{display:flex;gap:6px}
+.footer-newsletter-input{flex:1;padding:10px 12px;font-size:.85rem;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);transition:border-color .2s,box-shadow .2s;font-family:inherit;min-width:0}
 .footer-newsletter-input::placeholder{color:var(--text-tertiary)}
 .footer-newsletter-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(60,56,255,.1)}
-.footer-newsletter-btn{padding:10px 20px;font-size:.85rem;font-weight:600;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.footer-newsletter-btn{padding:10px 14px;font-size:1rem;font-weight:600;background:var(--primary);color:#fff;border:none;border-radius:8px;cursor:pointer;transition:background .15s,transform .15s}
 .footer-newsletter-btn:hover{background:var(--primary-hover);transform:translateY(-1px)}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:16px;border-top:1px solid var(--border)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:20px;border-top:1px solid var(--border)}
+.footer-logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--text)}
+.footer-logo img{border-radius:50%}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
@@ -347,9 +350,9 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
   .principles-grid{grid-template-columns:1fr;gap:12px}
   .ped-inner{grid-template-columns:1fr;gap:32px}
   .ped-visual{order:-1}
-  .footer-inner{flex-direction:column;text-align:center}
-  .footer-top{flex-direction:column;align-items:center;text-align:center}
-  .footer-newsletter{max-width:100%}
+  .footer-nav{grid-template-columns:repeat(2,1fr);gap:24px}
+  .footer-newsletter{grid-column:span 2}
+  .footer-bottom{flex-direction:column;text-align:center;gap:8px}
   .footer-newsletter-form{flex-direction:column}
   .footer-newsletter-btn{width:100%}
   .footer-bottom{flex-direction:column;text-align:center}
@@ -569,8 +572,8 @@ html[data-theme="dark"] .hero-cloud{opacity:.06}
 .dog-section{margin:0;padding:16px 0;position:relative;z-index:5}
 
 /* Smooth color blending for dog sections near AI */
-.dog-section-before-dark{background:linear-gradient(180deg,var(--bg) 0%,rgba(240,238,255,.3) 40%,rgba(240,238,255,.6) 70%,var(--ai-bg) 100%) !important;padding:24px 0 40px !important}
-.dog-section-after-dark{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(240,238,255,.6) 30%,rgba(240,238,255,.3) 60%,var(--bg) 100%) !important;padding:40px 0 24px !important}
+.dog-section-before-ai{background:var(--bg-alt) !important;padding:24px 0 !important}
+.dog-section-after-ai{background:var(--bg) !important;padding:24px 0 !important}
 
 /* Dog section between testimonials and ped - smooth transition */
 .dog-section-testimonials-to-ped{background:linear-gradient(180deg,var(--bg-alt) 0%,rgba(255,245,238,.8) 50%,var(--bg-alt) 100%) !important;padding:20px 0 !important}
@@ -604,14 +607,17 @@ html[data-theme="dark"] .hero-cloud{opacity:.06}
 /* Dark theme adjustments for transitions */
 html[data-theme="dark"] .section-fade-to-dark::after{background:linear-gradient(180deg,transparent 0%,rgba(13,13,26,.2) 40%,rgba(13,13,26,.6) 70%,var(--ai-bg) 100%)}
 html[data-theme="dark"] .section-fade-from-dark::before{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.6) 30%,rgba(13,13,26,.2) 60%,transparent 100%)}
-html[data-theme="dark"] .dog-section-before-dark{background:linear-gradient(180deg,var(--bg) 0%,rgba(13,13,26,.5) 60%,var(--ai-bg) 100%) !important}
-html[data-theme="dark"] .dog-section-after-dark{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.5) 40%,var(--bg) 100%) !important}
-html[data-theme="dark"] .dog-section-testimonials-to-ped{background:linear-gradient(180deg,var(--bg-alt) 0%,rgba(26,26,26,.9) 50%,var(--bg-alt) 100%) !important}
+/* Dark theme: dog sections with gradients */
+html[data-theme="dark"] .dog-section-before-ai{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--ai-bg) 100%) !important}
+html[data-theme="dark"] .dog-section-after-ai{background:linear-gradient(180deg,var(--ai-bg) 0%,var(--bg) 100%) !important}
+html[data-theme="dark"] .dog-section-testimonials-to-ped{background:var(--bg-alt) !important}
+html[data-theme="dark"] .dog-section-label{color:rgba(255,255,255,.7) !important}
 
-/* Light theme: softer dog section transitions */
-html[data-theme="light"] .dog-section-before-dark{background:linear-gradient(180deg,#FFFBF7 0%,rgba(245,242,255,.5) 30%,rgba(240,238,255,.75) 60%,#F0EEFF 100%) !important}
-html[data-theme="light"] .dog-section-after-dark{background:linear-gradient(180deg,#F0EEFF 0%,rgba(240,238,255,.75) 40%,rgba(250,248,255,.5) 70%,#FFFBF7 100%) !important}
-html[data-theme="light"] .dog-section-testimonials-to-ped{background:linear-gradient(180deg,#FFF5EE 0%,rgba(255,251,247,.7) 50%,#FFF5EE 100%) !important}
+/* Light theme: dog sections match surrounding backgrounds */
+html[data-theme="light"] .dog-section-before-ai{background:var(--bg-alt) !important}
+html[data-theme="light"] .dog-section-after-ai{background:var(--ai-bg) !important}
+html[data-theme="light"] .dog-section-testimonials-to-ped{background:var(--bg-alt) !important}
+html[data-theme="light"] .dog-section-label{color:var(--text-secondary) !important}
 
 /* Light theme: hide stars/glow in AI section, use subtle decoration instead */
 html[data-theme="light"] .ai-star{display:none}
@@ -2000,10 +2006,10 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 <!-- Gradient transition day-in-life → AI dog section (волна скрыта) -->
 <svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,20 C360,50 720,5 1080,35 C1260,48 1380,18 1440,25 L1440,60 L0,60 Z"/></svg>
 
-<!-- Dog between sections: AI (с градиентом в тёмную секцию) -->
-<div class="dog-section dog-mascot soul-reveal dog-section-before-dark">
-  <img src="dog.jpg" alt="" style="opacity:.8">
-  <span class="dog-section-label" style="color:rgba(255,255,255,.8)"><span data-i="ru">🤖 А теперь — AI</span><span data-i="en">🤖 And now — AI</span></span>
+<!-- Dog between sections: AI -->
+<div class="dog-section dog-mascot soul-reveal dog-section-before-ai">
+  <img src="dog.jpg" alt="">
+  <span class="dog-section-label"><span data-i="ru">🤖 А теперь — AI</span><span data-i="en">🤖 And now — AI</span></span>
 </div>
 
 <!-- Gradient transition day-in-life → AI (волна скрыта, используем градиент) -->
@@ -2078,10 +2084,10 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 <!-- Gradient transition AI → principles (волна скрыта, используем градиент) -->
 <svg class="wave-divider wave-divider--flip wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--ai-bg)"><path d="M0,30 C480,60 960,0 1440,35 L1440,60 L0,60 Z"/></svg>
 
-<!-- Dog between sections: sparkle (с градиентом из тёмной секции) -->
-<div class="dog-section dog-mascot soul-reveal dog-section-after-dark">
-  <img src="dog.jpg" alt="" style="opacity:.8;filter:hue-rotate(10deg) brightness(1.05)">
-  <span class="dog-section-label" style="color:rgba(255,255,255,.7)"><span data-i="ru">✨ Наши принципы</span><span data-i="en">✨ Our principles</span></span>
+<!-- Dog between sections: sparkle -->
+<div class="dog-section dog-mascot soul-reveal dog-section-after-ai">
+  <img src="dog.jpg" alt="">
+  <span class="dog-section-label"><span data-i="ru">✨ Наши принципы</span><span data-i="en">✨ Our principles</span></span>
 </div>
 
 <!-- ===== PRINCIPLES ===== -->
@@ -3524,25 +3530,44 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-top">
-      <!-- Newsletter -->
-      <div class="footer-newsletter">
-        <div class="footer-newsletter-title"><span data-i="ru">Подпишитесь на новости</span><span data-i="en">Subscribe to updates</span></div>
-        <div class="footer-newsletter-desc"><span data-i="ru">Узнавайте первыми о новых функциях Lummo и полезных статьях о развитии ребёнка.</span><span data-i="en">Be the first to know about new Lummo features and helpful articles about child development.</span></div>
-        <form class="footer-newsletter-form" onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Thank you! We will notify you about updates.':'Спасибо! Мы сообщим вам о новостях.');">
-          <input type="email" class="footer-newsletter-input" placeholder="email@example.com" required>
-          <button type="submit" class="footer-newsletter-btn"><span data-i="ru">Подписаться</span><span data-i="en">Subscribe</span></button>
-        </form>
+    <!-- Navigation columns -->
+    <div class="footer-nav">
+      <div class="footer-nav-col">
+        <div class="footer-nav-title"><span data-i="ru">Продукт</span><span data-i="en">Product</span></div>
+        <a href="#features" onclick="navigateTo('home','#features');return false"><span data-i="ru">Возможности</span><span data-i="en">Features</span></a>
+        <a href="#ai" onclick="navigateTo('home','#ai');return false"><span data-i="ru">AI-помощник</span><span data-i="en">AI Assistant</span></a>
+        <a href="#principles" onclick="navigateTo('home','#principles');return false"><span data-i="ru">Принципы</span><span data-i="en">Principles</span></a>
+        <a href="#download" onclick="navigateTo('home','#download');return false"><span data-i="ru">Скачать</span><span data-i="en">Download</span></a>
       </div>
-      <div class="footer-links">
-        <a href="#"><span data-i="ru">Конфиденциальность</span><span data-i="en">Privacy Policy</span></a>
+      <div class="footer-nav-col">
+        <div class="footer-nav-title"><span data-i="ru">Полезное</span><span data-i="en">Resources</span></div>
+        <a href="#pediatrician" onclick="navigateTo('home','#pediatrician');return false"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
+        <a href="#blog" onclick="navigateTo('blog');return false"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
+        <a href="#development" onclick="navigateTo('development');return false"><span data-i="ru">Развитие</span><span data-i="en">Development</span></a>
+      </div>
+      <div class="footer-nav-col">
+        <div class="footer-nav-title"><span data-i="ru">Компания</span><span data-i="en">Company</span></div>
+        <a href="privacy.html"><span data-i="ru">Конфиденциальность</span><span data-i="en">Privacy Policy</span></a>
         <a href="#"><span data-i="ru">Условия</span><span data-i="en">Terms of Service</span></a>
         <a href="mailto:contact@lummo.app"><span data-i="ru">Связаться</span><span data-i="en">Contact</span></a>
       </div>
+      <!-- Newsletter -->
+      <div class="footer-newsletter">
+        <div class="footer-newsletter-title"><span data-i="ru">Подпишитесь на новости</span><span data-i="en">Subscribe to updates</span></div>
+        <div class="footer-newsletter-desc"><span data-i="ru">Узнавайте первыми о новых функциях и полезных статьях.</span><span data-i="en">Be the first to know about new features and articles.</span></div>
+        <form class="footer-newsletter-form" onsubmit="event.preventDefault();alert(document.documentElement.lang==='en'?'Thank you! We will notify you.':'Спасибо! Мы сообщим вам.');">
+          <input type="email" class="footer-newsletter-input" placeholder="email@example.com" required>
+          <button type="submit" class="footer-newsletter-btn"><span data-i="ru">→</span><span data-i="en">→</span></button>
+        </form>
+      </div>
     </div>
+    <!-- Bottom -->
     <div class="footer-bottom">
+      <div class="footer-logo">
+        <img src="dog.jpg" alt="Lummo" width="32" height="32">
+        <span>Lummo</span>
+      </div>
       <div class="footer-copy">
-        <span class="footer-dog"><img src="dog.jpg" alt=""></span>
         <span data-i="ru">&copy; 2025 Lummo. Все данные хранятся на вашем устройстве.</span>
         <span data-i="en">&copy; 2025 Lummo. All data stays on your device.</span>
       </div>
