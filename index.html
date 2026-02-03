@@ -1501,6 +1501,26 @@ html[data-theme="dark"] .founder-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.3
 @keyframes starPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 @media(max-width:600px){.founder-section{padding:48px 20px}.founder-card{padding:32px 24px}.founder-quote p{font-size:1rem}.founder-avatar{width:64px;height:64px;margin:-52px auto 20px}.founder-avatar svg{width:32px;height:32px}.founder-section::before,.founder-section::after{font-size:5rem}}
 
+/* Hero AI Visual */
+.hero-ai-visual{width:280px;height:280px;display:flex;align-items:center;justify-content:center}
+.hero-ai-svg{width:100%;height:100%}
+.hero-ai-ring{transform-origin:center;opacity:.6}
+.hero-ai-ring--1{animation:aiRing1 20s linear infinite}
+.hero-ai-ring--2{animation:aiRing2 15s linear infinite reverse}
+.hero-ai-ring--3{animation:aiRing1 25s linear infinite}
+@keyframes aiRing1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes aiRing2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+.hero-ai-star{transform-origin:center;animation:aiStar 4s ease-in-out infinite}
+@keyframes aiStar{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px rgba(60,56,255,.3))}50%{transform:scale(1.08);filter:drop-shadow(0 0 16px rgba(60,56,255,.5))}}
+.hero-ai-dot{transform-origin:100px 100px}
+.hero-ai-dot--1{animation:aiDot 8s linear infinite}
+.hero-ai-dot--2{animation:aiDot 8s linear infinite;animation-delay:-2s}
+.hero-ai-dot--3{animation:aiDot 8s linear infinite;animation-delay:-4s}
+.hero-ai-dot--4{animation:aiDot 8s linear infinite;animation-delay:-6s}
+@keyframes aiDot{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media(max-width:768px){.hero-ai-visual{width:220px;height:220px}}
+@media(max-width:480px){.hero-ai-visual{width:180px;height:180px}}
+
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1080px;margin:0 auto}
 .trust-item{display:flex;align-items:flex-start;gap:14px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;transition:all .25s cubic-bezier(.16,1,.3,1)}
 .trust-item:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:var(--border-hover)}
@@ -1767,78 +1787,39 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       <div class="hero-float-badge hero-float-badge--ai">🤖 AI inside</div>
       <div class="hero-float-badge hero-float-badge--families">👶 10K+ <span data-i="ru">семей</span><span data-i="en">families</span></div>
 
-      <!-- Phone with animated gradient border -->
-      <div class="phone-frame-wrap">
-        <div class="phone-frame">
-          <div class="hero-phone-live">
-            <div class="hpl-status-bar">
-              <span class="hpl-time">9:41</span>
-              <span class="hpl-status-icons">
-                <svg width="17" height="11" viewBox="0 0 17 11"><path d="M1 3.5C1 2.67 1.67 2 2.5 2h1C4.33 2 5 2.67 5 3.5v4C5 8.33 4.33 9 3.5 9h-1C1.67 9 1 8.33 1 7.5v-4zm5-2C6 .67 6.67 0 7.5 0h1C9.33 0 10 .67 10 1.5v6c0 .83-.67 1.5-1.5 1.5h-1C6.67 9 6 8.33 6 7.5v-6zm5 1c0-.83.67-1.5 1.5-1.5h1c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5h-1c-.83 0-1.5-.67-1.5-1.5v-5z" fill="currentColor" opacity=".35"/><rect x="1" y="5" width="4" height="4" rx="1" fill="currentColor"/><rect x="6" y="3" width="4" height="6" rx="1" fill="currentColor"/><rect x="11" y="4" width="4" height="5" rx="1" fill="currentColor"/></svg>
-                <svg width="15" height="11" viewBox="0 0 15 11"><path d="M.5 4A.5.5 0 011 3.5h13a.5.5 0 01.5.5v3a.5.5 0 01-.5.5H1a.5.5 0 01-.5-.5V4z" fill="currentColor"/><rect x="2" y="5" width="10" height="1" rx=".5" fill="var(--bg)"/></svg>
-              </span>
-            </div>
-            <div class="hpl-header">
-              <div class="hpl-avatar">👶</div>
-              <div class="hpl-header-text">
-                <div class="hpl-child-name">Малыш</div>
-                <div class="hpl-child-age">5 недель</div>
-              </div>
-              <div class="hpl-header-btn">+</div>
-            </div>
-            <div class="hpl-date-bar">
-              <span class="hpl-date-item">Пн</span>
-              <span class="hpl-date-item">Вт</span>
-              <span class="hpl-date-item">Ср</span>
-              <span class="hpl-date-item active">Сегодня</span>
-            </div>
-            <div class="hpl-records" id="heroRecords">
-              <div class="hpl-rec hpl-rec--interactive" onclick="pulseRecord(this)" data-type="sleep">
-                <span class="hpl-rec-e">🌙</span>
-                <div class="hpl-rec-info">
-                  <div class="hpl-rec-t">Сон</div>
-                  <div class="hpl-rec-v">7ч 30мин</div>
-                </div>
-                <span class="hpl-rec-tm">06:30</span>
-              </div>
-              <div class="hpl-rec hpl-rec--interactive" onclick="pulseRecord(this)" data-type="feed">
-                <span class="hpl-rec-e">🍼</span>
-                <div class="hpl-rec-info">
-                  <div class="hpl-rec-t">Кормление</div>
-                  <div class="hpl-rec-v">грудь, 15мин</div>
-                </div>
-                <span class="hpl-rec-tm">07:00</span>
-              </div>
-              <div class="hpl-rec hpl-rec--interactive" onclick="pulseRecord(this)" data-type="temp">
-                <span class="hpl-rec-e">🌡️</span>
-                <div class="hpl-rec-info">
-                  <div class="hpl-rec-t">Температура</div>
-                  <div class="hpl-rec-v">36.8°C</div>
-                </div>
-                <span class="hpl-rec-tm">09:00</span>
-              </div>
-              <div class="hpl-rec hpl-rec--ai hpl-rec--interactive" onclick="pulseRecord(this)">
-                <span class="hpl-rec-e">✨</span>
-                <div class="hpl-rec-info">
-                  <div class="hpl-rec-t">AI</div>
-                  <div class="hpl-rec-v hpl-ai-typing">Всё в норме</div>
-                </div>
-                <div class="hpl-ai-pulse"></div>
-              </div>
-            </div>
-            <div class="hpl-timer-widget">
-              <div class="hpl-timer-icon">⏱️</div>
-              <div class="hpl-timer-info">
-                <div class="hpl-timer-label">Таймер сна</div>
-                <div class="hpl-timer-value" id="heroTimer">0:42:17</div>
-              </div>
-              <div class="hpl-timer-pulse"></div>
-            </div>
-            <div class="hpl-bottom-hint">
-              <span>Нажмите на запись</span>
-            </div>
-          </div>
-        </div>
+      <!-- Animated AI Logo -->
+      <div class="hero-ai-visual">
+        <svg class="hero-ai-svg" viewBox="0 0 200 200" fill="none">
+          <!-- Outer ring -->
+          <circle class="hero-ai-ring hero-ai-ring--1" cx="100" cy="100" r="90" stroke="url(#heroGrad1)" stroke-width="2" stroke-dasharray="8 4"/>
+          <circle class="hero-ai-ring hero-ai-ring--2" cx="100" cy="100" r="75" stroke="url(#heroGrad2)" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <circle class="hero-ai-ring hero-ai-ring--3" cx="100" cy="100" r="60" stroke="url(#heroGrad1)" stroke-width="1"/>
+          
+          <!-- Center star (Lummo logo) -->
+          <g class="hero-ai-star">
+            <path d="M100 50 L108 80 L140 80 L114 98 L122 130 L100 112 L78 130 L86 98 L60 80 L92 80 Z" fill="url(#heroGrad1)"/>
+          </g>
+          
+          <!-- Orbiting dots -->
+          <circle class="hero-ai-dot hero-ai-dot--1" cx="100" cy="10" r="6" fill="#3C38FF"/>
+          <circle class="hero-ai-dot hero-ai-dot--2" cx="190" cy="100" r="5" fill="#818CF8"/>
+          <circle class="hero-ai-dot hero-ai-dot--3" cx="100" cy="190" r="4" fill="#F4433D"/>
+          <circle class="hero-ai-dot hero-ai-dot--4" cx="10" cy="100" r="5" fill="#FFB800"/>
+          
+          <!-- AI text -->
+          <text x="100" y="165" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="url(#heroGrad1)">AI inside</text>
+          
+          <defs>
+            <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3C38FF"/>
+              <stop offset="100%" stop-color="#818CF8"/>
+            </linearGradient>
+            <linearGradient id="heroGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#818CF8"/>
+              <stop offset="100%" stop-color="#F4433D"/>
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
     </div>
   </div>
