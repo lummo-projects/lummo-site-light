@@ -573,12 +573,15 @@ html[data-theme="dark"] .feat-card:hover,html[data-theme="dark"] .problem-card:h
 html[data-theme="light"] .hero-cloud{color:#fff !important;opacity:.95;filter:drop-shadow(0 8px 20px rgba(100,100,100,.12))}
 /* Dark theme: hide clouds */
 html[data-theme="dark"] .hero-cloud{display:none}
-/* Hero sun (light theme) */
-.hero-sun{position:absolute;top:8%;right:12%;width:80px;height:80px;pointer-events:none;z-index:0}
-.hero-sun-core{width:60px;height:60px;background:linear-gradient(135deg,#FFE066 0%,#FFB800 100%);border-radius:50%;position:absolute;top:10px;left:10px;box-shadow:0 0 40px rgba(255,184,0,.4),0 0 80px rgba(255,184,0,.2)}
-.hero-sun-rays{position:absolute;inset:0;animation:sunRotate 30s linear infinite}
-.hero-sun-ray{position:absolute;width:3px;height:20px;background:linear-gradient(180deg,#FFD700 0%,transparent 100%);left:50%;top:-8px;transform-origin:50% 50px;border-radius:2px}
+/* Hero sun (light theme) - warm & cozy */
+.hero-sun{position:absolute;top:6%;right:10%;width:100px;height:100px;pointer-events:none;z-index:0}
+.hero-sun-glow{position:absolute;inset:-30px;background:radial-gradient(circle,rgba(255,200,100,.3) 0%,rgba(255,180,80,.15) 40%,transparent 70%);border-radius:50%;animation:sunPulse 4s ease-in-out infinite}
+.hero-sun-core{width:70px;height:70px;background:radial-gradient(circle at 35% 35%,#FFF5D6 0%,#FFE082 30%,#FFB74D 70%,#FFA726 100%);border-radius:50%;position:absolute;top:15px;left:15px;box-shadow:0 0 50px rgba(255,167,38,.5),0 0 100px rgba(255,152,0,.3),inset -8px -8px 20px rgba(255,111,0,.2),inset 5px 5px 15px rgba(255,255,255,.4)}
+.hero-sun-rays{position:absolute;inset:-10px;animation:sunRotate 60s linear infinite}
+.hero-sun-ray{position:absolute;width:4px;height:25px;background:linear-gradient(180deg,rgba(255,183,77,.8) 0%,rgba(255,167,38,.4) 50%,transparent 100%);left:calc(50% - 2px);top:-12px;transform-origin:50% 62px;border-radius:3px}
+.hero-sun-ray:nth-child(odd){height:18px;width:3px;opacity:.7}
 html[data-theme="dark"] .hero-sun{display:none}
+@keyframes sunPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.1);opacity:.8}}
 /* Hero moon (dark theme) */
 .hero-moon{position:absolute;top:8%;right:12%;width:90px;height:90px;pointer-events:none;z-index:0;display:none}
 html[data-theme="dark"] .hero-moon{display:block}
@@ -1448,17 +1451,22 @@ html[data-theme="dark"] .tl-act-check{color:#4ade80}
     <svg class="hero-cloud hero-cloud--3 parallax-layer" data-speed="0.025" viewBox="0 0 200 80" fill="currentColor"><ellipse cx="90" cy="48" rx="50" ry="20"/><ellipse cx="130" cy="42" rx="35" ry="16"/><ellipse cx="65" cy="44" rx="28" ry="14"/></svg>
     <svg class="hero-cloud hero-cloud--4 parallax-layer" data-speed="-0.01" viewBox="0 0 200 80" fill="currentColor"><ellipse cx="75" cy="46" rx="42" ry="18"/><ellipse cx="115" cy="40" rx="32" ry="15"/></svg>
   </div>
-  <!-- Sun (light theme) -->
+  <!-- Sun (light theme) - warm & cozy -->
   <div class="hero-sun">
+    <div class="hero-sun-glow"></div>
     <div class="hero-sun-rays">
       <div class="hero-sun-ray" style="transform:rotate(0deg)"></div>
-      <div class="hero-sun-ray" style="transform:rotate(45deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(30deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(60deg)"></div>
       <div class="hero-sun-ray" style="transform:rotate(90deg)"></div>
-      <div class="hero-sun-ray" style="transform:rotate(135deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(120deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(150deg)"></div>
       <div class="hero-sun-ray" style="transform:rotate(180deg)"></div>
-      <div class="hero-sun-ray" style="transform:rotate(225deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(210deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(240deg)"></div>
       <div class="hero-sun-ray" style="transform:rotate(270deg)"></div>
-      <div class="hero-sun-ray" style="transform:rotate(315deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(300deg)"></div>
+      <div class="hero-sun-ray" style="transform:rotate(330deg)"></div>
     </div>
     <div class="hero-sun-core"></div>
   </div>
