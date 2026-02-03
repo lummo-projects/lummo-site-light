@@ -4,79 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>База знаний — Lummo</title>
-  <meta name="description" content="Ответы на частые вопросы и руководства по использованию Lummo">
+  <meta name="description" content="Ответы на частые вопросы о Lummo">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
 :root{
-  --bg:#FDF8F3;--bg-alt:#FFF5ED;--card-bg:#fff;--card-border:#F0E4DB;
+  --bg:#FFFFFF;--card-bg:#FAFAFA;--card-border:#E5E5E5;
   --text:#1C1C1E;--text-secondary:#6B6B6B;
-  --primary:#3C38FF;--accent:#F4433D;
-  --gradient:linear-gradient(135deg,#3C38FF 0%,#818CF8 50%,#F4433D 100%);
+  --primary:#3C38FF;
 }
 html[data-theme="dark"]{
-  --bg:#0A0A0A;--bg-alt:#111;--card-bg:#1A1A1A;--card-border:#2A2A2A;
+  --bg:#0A0A0A;--card-bg:#141414;--card-border:#262626;
   --text:#F5F5F7;--text-secondary:#8E8E93;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
 
-/* NAV - same as main */
-.nav{position:sticky;top:0;z-index:100;background:rgba(253,248,243,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--card-border);padding:0 24px}
-html[data-theme="dark"] .nav{background:rgba(10,10,10,.85)}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-size:1.15rem;font-weight:700}
-.nav-logo svg{width:28px;height:28px}
-.nav-links{display:flex;gap:32px}
-.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--card-border);padding:0 24px}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:700}
+.nav-logo svg{width:26px;height:26px}
+.nav-links{display:flex;gap:28px}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--primary)}
 .nav-right{display:flex;align-items:center;gap:12px}
-.theme-toggle{width:40px;height:40px;border-radius:50%;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.theme-toggle svg{width:20px;height:20px;stroke:var(--text)}
+.theme-toggle{width:36px;height:36px;border-radius:8px;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.theme-toggle svg{width:18px;height:18px;stroke:var(--text)}
 .theme-icon-sun{display:none}
 html[data-theme="dark"] .theme-icon-moon{display:none}
 html[data-theme="dark"] .theme-icon-sun{display:block}
-.nav-cta{padding:10px 20px;background:var(--primary);color:#fff;border-radius:10px;text-decoration:none;font-size:.9rem;font-weight:600;transition:transform .2s,box-shadow .2s}
-.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(60,56,255,.3)}
-@media(max-width:900px){.nav-links{display:none}}
-@media(max-width:600px){.nav-cta{display:none}}
+@media(max-width:768px){.nav-links{display:none}}
 
-/* Main content */
-.main{max-width:900px;margin:0 auto;padding:48px 24px 80px}
-.page-header{text-align:center;margin-bottom:48px}
-.page-header-icon{width:80px;height:80px;border-radius:24px;background:var(--gradient);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem}
-h1{font-size:2rem;font-weight:700;margin-bottom:12px}
-.page-subtitle{color:var(--text-secondary);font-size:1.1rem}
-.search-box{max-width:500px;margin:32px auto 0;position:relative}
-.search-box input{width:100%;padding:16px 20px 16px 52px;border:1px solid var(--card-border);border-radius:16px;background:var(--card-bg);color:var(--text);font-size:1rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-.search-box input:focus{outline:none;border-color:var(--primary);box-shadow:0 2px 12px rgba(60,56,255,.1)}
-.search-box svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--text-secondary)}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:56px}
-.category-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .3s}
-.category-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08);border-color:var(--primary)}
-.category-icon{width:56px;height:56px;border-radius:16px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:1.75rem}
-.category-card h3{font-size:.95rem;font-weight:600;margin-bottom:4px}
-.category-card span{font-size:.8rem;color:var(--text-secondary)}
-.faq-section{margin-bottom:48px}
-.faq-section h2{font-size:1.15rem;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:12px;color:var(--text)}
-.faq-section h2 span{font-size:1.25rem}
-.faq-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;margin-bottom:12px;overflow:hidden;transition:all .2s}
-.faq-item:hover{border-color:rgba(60,56,255,.3)}
-.faq-q{padding:20px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:500;gap:16px}
-.faq-q svg{width:20px;height:20px;stroke:var(--text-secondary);transition:transform .3s;flex-shrink:0}
+.main{max-width:700px;margin:0 auto;padding:48px 24px 80px}
+.page-title{font-size:1.75rem;font-weight:700;text-align:center;margin-bottom:8px}
+.page-desc{color:var(--text-secondary);text-align:center;margin-bottom:32px}
+
+.search-box{position:relative;margin-bottom:40px}
+.search-box input{width:100%;padding:14px 14px 14px 44px;border:1px solid var(--card-border);border-radius:10px;background:var(--card-bg);color:var(--text);font-size:.9rem}
+.search-box input:focus{outline:none;border-color:var(--primary)}
+.search-box svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--text-secondary)}
+
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:48px}
+.category{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:20px 12px;text-align:center;cursor:pointer;transition:border-color .2s}
+.category:hover{border-color:var(--primary)}
+.category-icon{width:40px;height:40px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center}
+.category-icon svg{width:24px;height:24px;stroke:var(--primary)}
+.category-title{font-size:.85rem;font-weight:600;margin-bottom:2px}
+.category-count{font-size:.75rem;color:var(--text-secondary)}
+@media(max-width:600px){.categories{grid-template-columns:1fr 1fr}}
+
+.faq-section{margin-bottom:40px}
+.faq-title{font-size:1rem;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.faq-title svg{width:20px;height:20px;stroke:var(--primary)}
+.faq-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:14px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:.9rem;font-weight:500}
+.faq-q svg{width:18px;height:18px;stroke:var(--text-secondary);transition:transform .2s;flex-shrink:0}
 .faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-item.open{border-color:var(--primary);box-shadow:0 4px 16px rgba(60,56,255,.08)}
-.faq-a{padding:0 24px 20px;color:var(--text-secondary);display:none;line-height:1.7}
+.faq-a{padding:0 16px 14px;color:var(--text-secondary);font-size:.875rem;display:none}
 .faq-item.open .faq-a{display:block}
-.contact-box{background:var(--gradient);border-radius:24px;padding:48px;text-align:center;color:#fff;position:relative;overflow:hidden}
-.contact-box::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
-.contact-box h2{font-size:1.5rem;margin-bottom:12px;position:relative}
-.contact-box p{opacity:.9;margin-bottom:28px;position:relative}
-.contact-btn{display:inline-block;padding:16px 36px;background:#fff;color:var(--primary);border-radius:14px;text-decoration:none;font-weight:600;transition:all .2s;position:relative}
-.contact-btn:hover{transform:scale(1.05);box-shadow:0 8px 24px rgba(0,0,0,.2)}
-.back-link{display:inline-flex;align-items:center;gap:8px;color:var(--text-secondary);text-decoration:none;font-size:.9rem;margin-top:40px;padding:12px 20px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;transition:all .2s}
-.back-link:hover{color:var(--primary);border-color:var(--primary)}
-@media(max-width:700px){.categories{grid-template-columns:1fr 1fr}h1{font-size:1.5rem}.contact-box{padding:36px 24px}}
-@media(max-width:500px){.categories{grid-template-columns:1fr}.faq-q{padding:16px 18px}.faq-a{padding:0 18px 16px}}
+
+.contact-box{background:var(--primary);border-radius:12px;padding:32px;text-align:center;color:#fff}
+.contact-box h3{font-size:1.1rem;margin-bottom:8px}
+.contact-box p{opacity:.85;font-size:.9rem;margin-bottom:20px}
+.contact-btn{display:inline-block;padding:12px 28px;background:#fff;color:var(--primary);border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem}
+.contact-btn:hover{opacity:.95}
+
+.back-link{display:block;text-align:center;margin-top:32px;color:var(--text-secondary);text-decoration:none;font-size:.875rem}
+.back-link:hover{color:var(--primary)}
   </style>
 </head>
 <body>
@@ -87,232 +80,89 @@ h1{font-size:2rem;font-weight:700;margin-bottom:12px}
       Lummo
     </a>
     <div class="nav-links">
-      <a href="index.html#features">Возможности</a>
-      <a href="index.html#ai">AI</a>
+      <a href="index.html">Главная</a>
       <a href="kb.html" class="active">База знаний</a>
       <a href="waitlist.html">Лист ожидания</a>
     </div>
     <div class="nav-right">
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <button class="theme-toggle" onclick="toggleTheme()">
         <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       </button>
-      <a href="index.html#download" class="nav-cta">Скачать</a>
     </div>
   </div>
 </nav>
 
 <main class="main">
-  <div class="page-header">
-    <div class="page-header-icon">📚</div>
-    <h1>База знаний</h1>
-    <p class="page-subtitle">Ответы на вопросы и руководства по Lummo</p>
-    
-    <div class="search-box">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      <input type="text" id="searchInput" placeholder="Поиск по базе знаний..." oninput="filterFAQ(this.value)">
-    </div>
+  <h1 class="page-title">База знаний</h1>
+  <p class="page-desc">Ответы на вопросы о Lummo</p>
+  
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" placeholder="Поиск..." oninput="filterFAQ(this.value)">
   </div>
   
   <div class="categories">
-    <div class="category-card" onclick="scrollToSection('start')">
-      <div class="category-icon" style="background:linear-gradient(135deg,#E8F5E9,#C8E6C9)">🚀</div>
-      <h3>Начало работы</h3>
-      <span>5 статей</span>
+    <div class="category" onclick="scrollTo('start')">
+      <div class="category-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="category-title">Начало</div>
+      <div class="category-count">5 статей</div>
     </div>
-    <div class="category-card" onclick="scrollToSection('tracking')">
-      <div class="category-icon" style="background:linear-gradient(135deg,#E3F2FD,#BBDEFB)">📝</div>
-      <h3>Трекинг</h3>
-      <span>8 статей</span>
+    <div class="category" onclick="scrollTo('tracking')">
+      <div class="category-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+      <div class="category-title">Трекинг</div>
+      <div class="category-count">4 статьи</div>
     </div>
-    <div class="category-card" onclick="scrollToSection('ai')">
-      <div class="category-icon" style="background:linear-gradient(135deg,#F3E5F5,#E1BEE7)">🤖</div>
-      <h3>AI-помощник</h3>
-      <span>4 статьи</span>
+    <div class="category" onclick="scrollTo('ai')">
+      <div class="category-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
+      <div class="category-title">AI</div>
+      <div class="category-count">3 статьи</div>
     </div>
-    <div class="category-card" onclick="scrollToSection('privacy')">
-      <div class="category-icon" style="background:linear-gradient(135deg,#FFF3E0,#FFE0B2)">🔒</div>
-      <h3>Приватность</h3>
-      <span>3 статьи</span>
+    <div class="category" onclick="scrollTo('privacy')">
+      <div class="category-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <div class="category-title">Данные</div>
+      <div class="category-count">3 статьи</div>
     </div>
   </div>
   
   <div class="faq-section" id="start">
-    <h2><span>🚀</span> Начало работы</h2>
-    
-    <div class="faq-item" data-q="как начать как установить">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Как начать использовать Lummo?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Скачайте приложение из App Store или Google Play, откройте его и добавьте профиль ребёнка. Никакой регистрации не нужно — данные хранятся только на вашем устройстве. После этого можете сразу начать вести записи.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="бесплатно цена стоимость">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Приложение бесплатное?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Да! Базовый трекинг полностью бесплатен и без ограничений. Все 30+ типов записей, графики, таймеры, экспорт — бесплатно. AI-помощник доступен в платных тарифах Basic и Premium для тех, кому нужен расширенный анализ.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="несколько детей профили">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Можно вести несколько детей?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Да, вы можете добавить неограниченное количество профилей детей. Переключение между ними — одним нажатием. У каждого ребёнка своя история записей и статистика.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="синхронизация устройства">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Как синхронизировать между устройствами?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Используйте функцию экспорта/импорта для переноса данных. Мы работаем над безопасной облачной синхронизацией с end-to-end шифрованием — она появится в ближайших обновлениях.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="язык английский русский">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        На каких языках доступно приложение?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Сейчас приложение доступно на русском и английском языках. Мы планируем добавить поддержку других языков в будущих версиях.
-      </div>
-    </div>
+    <h2 class="faq-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Начало работы</h2>
+    <div class="faq-item" data-q="как начать"><div class="faq-q" onclick="toggleFaq(this)">Как начать использовать Lummo?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Скачайте приложение из App Store или Google Play. Никакой регистрации — данные хранятся только на вашем устройстве.</div></div>
+    <div class="faq-item" data-q="бесплатно цена"><div class="faq-q" onclick="toggleFaq(this)">Приложение бесплатное?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Да! Базовый трекинг бесплатен. AI-помощник доступен в платных тарифах.</div></div>
+    <div class="faq-item" data-q="несколько детей"><div class="faq-q" onclick="toggleFaq(this)">Можно вести несколько детей?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Да, неограниченное количество профилей с отдельной историей для каждого.</div></div>
+    <div class="faq-item" data-q="синхронизация"><div class="faq-q" onclick="toggleFaq(this)">Как синхронизировать между устройствами?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Используйте экспорт/импорт. Облачная синхронизация с шифрованием — скоро.</div></div>
+    <div class="faq-item" data-q="язык"><div class="faq-q" onclick="toggleFaq(this)">На каких языках доступно?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Русский и английский. Другие языки — в планах.</div></div>
   </div>
   
   <div class="faq-section" id="tracking">
-    <h2><span>📝</span> Трекинг</h2>
-    
-    <div class="faq-item" data-q="типы записей категории">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Какие типы записей поддерживаются?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Более 30 типов: сон, кормление (грудь/смесь/прикорм), подгузники, температура, вес, рост, купание, прогулки, лекарства, вакцинации, зубы, этапы развития, настроение, заметки и многое другое.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="таймер сон кормление">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Как работают таймеры?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Запустите таймер одним нажатием при начале сна или кормления. Когда закончите — остановите. Приложение автоматически рассчитает длительность и сохранит запись. Можно также добавить запись задним числом.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="графики статистика">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Какая статистика доступна?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Графики сна по дням/неделям, частота и объём кормлений, динамика веса и роста, сравнение с нормами ВОЗ, средние показатели за период, тренды и паттерны.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="экспорт pdf врач">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Можно экспортировать данные для врача?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Да! Экспортируйте данные в PDF — красивый отчёт с графиками, который удобно показать педиатру. Можно выбрать период и типы записей для экспорта.
-      </div>
-    </div>
+    <h2 class="faq-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Трекинг</h2>
+    <div class="faq-item" data-q="типы записей"><div class="faq-q" onclick="toggleFaq(this)">Какие типы записей?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">30+ типов: сон, кормление, подгузники, температура, вес, рост, лекарства, вакцинации и другое.</div></div>
+    <div class="faq-item" data-q="таймер"><div class="faq-q" onclick="toggleFaq(this)">Как работают таймеры?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Запустите таймер при начале сна или кормления, остановите когда закончите. Можно добавить запись задним числом.</div></div>
+    <div class="faq-item" data-q="статистика графики"><div class="faq-q" onclick="toggleFaq(this)">Какая статистика доступна?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Графики сна, кормлений, динамика веса/роста, сравнение с нормами ВОЗ, тренды.</div></div>
+    <div class="faq-item" data-q="экспорт pdf"><div class="faq-q" onclick="toggleFaq(this)">Можно экспортировать для врача?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Да, экспорт в PDF с графиками для педиатра.</div></div>
   </div>
   
   <div class="faq-section" id="ai">
-    <h2><span>🤖</span> AI-помощник</h2>
-    
-    <div class="faq-item" data-q="ai что умеет возможности">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Что умеет AI-помощник?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        AI анализирует ваши записи и замечает закономерности: почему ухудшился сон, как связаны кормления и настроение, готовит сводку для врача. Отвечает на вопросы о развитии на основе ваших данных, а не общих статей.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="ai замена врач диагноз">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        AI заменяет врача?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Нет! AI — это помощник, не врач. Он помогает замечать паттерны и готовить информацию, но не ставит диагнозы и не даёт медицинских рекомендаций. При любых сомнениях — обращайтесь к педиатру.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="ai данные приватность">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        AI использует мои данные для обучения?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Нет. Ваши данные никогда не используются для обучения AI-моделей. Анализ происходит только для вас, в момент запроса, и не сохраняется на серверах.
-      </div>
-    </div>
+    <h2 class="faq-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>AI-помощник</h2>
+    <div class="faq-item" data-q="ai что умеет"><div class="faq-q" onclick="toggleFaq(this)">Что умеет AI?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Анализирует записи, замечает закономерности, готовит сводку для врача, отвечает на вопросы о развитии.</div></div>
+    <div class="faq-item" data-q="ai врач"><div class="faq-q" onclick="toggleFaq(this)">AI заменяет врача?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Нет. AI — помощник, не врач. При сомнениях — обращайтесь к педиатру.</div></div>
+    <div class="faq-item" data-q="ai данные обучение"><div class="faq-q" onclick="toggleFaq(this)">AI использует данные для обучения?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Нет. Ваши данные не используются для обучения моделей.</div></div>
   </div>
   
   <div class="faq-section" id="privacy">
-    <h2><span>🔒</span> Приватность и безопасность</h2>
-    
-    <div class="faq-item" data-q="данные хранение где">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Где хранятся мои данные?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Все данные хранятся только на вашем устройстве. Мы не имеем доступа к вашим записям. Никаких серверов, никакой телеметрии. Ваш ребёнок — ваши данные.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="удалить данные">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Как удалить все данные?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Перейдите в Настройки → Данные → Удалить все данные. Или просто удалите приложение — все данные будут удалены вместе с ним, так как они хранятся только локально.
-      </div>
-    </div>
-    
-    <div class="faq-item" data-q="регистрация аккаунт">
-      <div class="faq-q" onclick="toggleFaq(this)">
-        Нужна ли регистрация?
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-      </div>
-      <div class="faq-a">
-        Нет! Lummo работает полностью без регистрации и аккаунтов. Скачали — пользуетесь. Никаких email, паролей и подтверждений.
-      </div>
-    </div>
+    <h2 class="faq-title"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Приватность</h2>
+    <div class="faq-item" data-q="данные хранение"><div class="faq-q" onclick="toggleFaq(this)">Где хранятся данные?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Только на вашем устройстве. Никаких серверов и телеметрии.</div></div>
+    <div class="faq-item" data-q="удалить"><div class="faq-q" onclick="toggleFaq(this)">Как удалить данные?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Настройки → Данные → Удалить. Или удалите приложение.</div></div>
+    <div class="faq-item" data-q="регистрация"><div class="faq-q" onclick="toggleFaq(this)">Нужна регистрация?<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div><div class="faq-a">Нет. Скачали — пользуетесь. Без email и паролей.</div></div>
   </div>
   
   <div class="contact-box">
-    <h2>Не нашли ответ?</h2>
-    <p>Напишите нам, и мы поможем разобраться</p>
-    <a href="mailto:help@lummo.app" class="contact-btn">Написать в поддержку</a>
+    <h3>Не нашли ответ?</h3>
+    <p>Напишите нам</p>
+    <a href="mailto:help@lummo.app" class="contact-btn">Написать</a>
   </div>
   
-  <a href="index.html" class="back-link">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-    Вернуться на главную
-  </a>
+  <a href="index.html" class="back-link">← Вернуться на главную</a>
 </main>
 
 <script>
@@ -328,21 +178,15 @@ function toggleTheme(){
   localStorage.setItem('lummo-theme', t);
 }
 
-function toggleFaq(el){
-  el.parentElement.classList.toggle('open');
-}
+function toggleFaq(el){ el.parentElement.classList.toggle('open'); }
 
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
-}
+function scrollTo(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 
-function filterFAQ(query){
-  query = query.toLowerCase();
+function filterFAQ(q){
+  q = q.toLowerCase();
   document.querySelectorAll('.faq-item').forEach(function(item){
-    var q = item.getAttribute('data-q') || '';
     var text = item.textContent.toLowerCase();
-    var match = !query || q.includes(query) || text.includes(query);
-    item.style.display = match ? 'block' : 'none';
+    item.style.display = !q || text.includes(q) ? 'block' : 'none';
   });
 }
 </script>
