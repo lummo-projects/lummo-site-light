@@ -63,11 +63,11 @@ html[data-theme="light"]{
   --btn-outline-bg:#FFFFFF;
   --btn-outline-border:#E8D8CC;
   --btn-outline-hover:#FFF5EE;
-  --ai-bg:#0D0D1A;
-  --ai-text:#FFFFFF;
-  --ai-muted:rgba(255,255,255,.55);
-  --ai-feat:rgba(255,255,255,.8);
-  --ai-dot:#818CF8;
+  --ai-bg:#F0EEFF;
+  --ai-text:#111111;
+  --ai-muted:rgba(17,17,17,.55);
+  --ai-feat:rgba(17,17,17,.8);
+  --ai-dot:#3C38FF;
   --pain-bg:#FFF5F3;
   --pain-border:#FFE0DB;
   --pain-text:#CC3333;
@@ -269,7 +269,7 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .ai-feat-dot{width:7px;height:7px;border-radius:50%;background:var(--ai-dot);flex-shrink:0;margin-top:7px}
 .ai-feat-text{font-size:.86rem;color:var(--ai-feat);line-height:1.55}
 .ai-phone{display:flex;justify-content:center;align-items:center}
-.ai-phone .phone-frame{width:230px;height:460px;border-radius:26px;box-shadow:0 24px 80px rgba(0,0,0,.35);border-color:rgba(255,255,255,.08);background:#1a1a2e}
+.ai-phone .phone-frame{width:230px;height:460px;border-radius:26px;box-shadow:var(--phone-shadow);border-color:var(--phone-border);background:var(--phone-bg)}
 
 /* ===== PRINCIPLES ===== */
 .principles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -531,13 +531,13 @@ html[data-theme="dark"] .hero-cloud{opacity:.06}
 .section--alt.section-fade-top::before{background:linear-gradient(180deg,var(--bg-alt) 0%,transparent 100%)}
 .section--alt.section-fade-bottom::after{background:linear-gradient(0deg,var(--bg-alt) 0%,transparent 100%)}
 
-/* Transition TO dark section (day-in-life → AI) */
+/* Transition TO AI section (day-in-life → AI) */
 .section-fade-to-dark{position:relative}
-.section-fade-to-dark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(180deg,transparent 0%,rgba(13,13,26,.15) 40%,rgba(13,13,26,.5) 70%,var(--ai-bg) 100%);pointer-events:none;z-index:3}
+.section-fade-to-dark::after{content:'';position:absolute;bottom:0;left:0;right:0;height:150px;background:linear-gradient(180deg,transparent 0%,rgba(240,238,255,.4) 40%,rgba(240,238,255,.8) 70%,var(--ai-bg) 100%);pointer-events:none;z-index:3}
 
-/* Transition FROM dark section (AI → principles) */
+/* Transition FROM AI section (AI → principles) */
 .section-fade-from-dark{position:relative}
-.section-fade-from-dark::before{content:'';position:absolute;top:0;left:0;right:0;height:150px;background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.5) 30%,rgba(13,13,26,.15) 60%,transparent 100%);pointer-events:none;z-index:3}
+.section-fade-from-dark::before{content:'';position:absolute;top:0;left:0;right:0;height:150px;background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(240,238,255,.8) 30%,rgba(240,238,255,.4) 60%,transparent 100%);pointer-events:none;z-index:3}
 
 /* Hero to alt section transition */
 .hero-fade-bottom{position:relative}
@@ -551,8 +551,8 @@ html[data-theme="dark"] .hero-cloud{opacity:.06}
 .dog-section{margin:0;padding:16px 0;position:relative;z-index:5}
 
 /* Smooth color blending for dog sections near AI */
-.dog-section-before-dark{background:linear-gradient(180deg,var(--bg) 0%,rgba(13,13,26,.5) 60%,var(--ai-bg) 100%) !important;padding:24px 0 40px !important}
-.dog-section-after-dark{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.5) 40%,var(--bg) 100%) !important;padding:40px 0 24px !important}
+.dog-section-before-dark{background:linear-gradient(180deg,var(--bg) 0%,rgba(240,238,255,.6) 60%,var(--ai-bg) 100%) !important;padding:24px 0 40px !important}
+.dog-section-after-dark{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(240,238,255,.6) 40%,var(--bg) 100%) !important;padding:40px 0 24px !important}
 
 /* Ped section smooth transition */
 .ped-section{position:relative}
@@ -583,6 +583,14 @@ html[data-theme="dark"] .hero-cloud{opacity:.06}
 /* Dark theme adjustments for transitions */
 html[data-theme="dark"] .section-fade-to-dark::after{background:linear-gradient(180deg,transparent 0%,rgba(13,13,26,.2) 40%,rgba(13,13,26,.6) 70%,var(--ai-bg) 100%)}
 html[data-theme="dark"] .section-fade-from-dark::before{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.6) 30%,rgba(13,13,26,.2) 60%,transparent 100%)}
+html[data-theme="dark"] .dog-section-before-dark{background:linear-gradient(180deg,var(--bg) 0%,rgba(13,13,26,.5) 60%,var(--ai-bg) 100%) !important}
+html[data-theme="dark"] .dog-section-after-dark{background:linear-gradient(180deg,var(--ai-bg) 0%,rgba(13,13,26,.5) 40%,var(--bg) 100%) !important}
+
+/* Light theme: hide stars/glow in AI section, use subtle decoration instead */
+html[data-theme="light"] .ai-star{display:none}
+html[data-theme="light"] .ai-glow{opacity:.3}
+html[data-theme="light"] .ai-section::before{background:linear-gradient(180deg,transparent 0%,rgba(60,56,255,.04) 50%,rgba(60,56,255,.08) 100%)}
+html[data-theme="light"] .ai-section::after{background:linear-gradient(0deg,transparent 0%,rgba(60,56,255,.04) 50%,rgba(60,56,255,.08) 100%)}
 
 /* --- Blob decorations --- */
 .soul-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
