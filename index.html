@@ -712,6 +712,20 @@ html[data-theme="light"] .ai-glow{opacity:.15}
 html[data-theme="light"] .ai-section::before{background:none}
 html[data-theme="light"] .ai-section::after{background:none}
 
+/* --- Timer section --- */
+.timer-section{padding:40px 24px}
+.timer-block{display:flex;align-items:center;gap:20px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:24px 32px;max-width:400px;margin:0 auto;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.timer-icon{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.timer-icon svg{width:24px;height:24px;stroke:#fff}
+.timer-content{flex:1}
+.timer-label{font-size:.8rem;color:var(--text-secondary);margin-bottom:4px}
+.timer-value{font-size:1.5rem;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.timer-type{font-size:.75rem;color:var(--text-secondary);margin-top:4px}
+.timer-pulse{position:absolute;top:50%;left:24px;width:48px;height:48px;border-radius:50%;background:var(--primary);opacity:.15;transform:translate(0,-50%) scale(1);animation:timerPulse 2s ease-out infinite}
+@keyframes timerPulse{0%{transform:translate(0,-50%) scale(1);opacity:.15}100%{transform:translate(0,-50%) scale(2.5);opacity:0}}
+html[data-theme="dark"] .timer-block{box-shadow:0 4px 24px rgba(0,0,0,.2)}
+@media(max-width:600px){.timer-block{padding:20px 24px;gap:16px}.timer-value{font-size:1.25rem}.timer-icon{width:40px;height:40px}.timer-icon svg{width:20px;height:20px}.timer-pulse{width:40px;height:40px;left:20px}}
+
 /* --- Blob decorations --- */
 .soul-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
 .soul-blob--1{width:300px;height:300px;background:rgba(60,56,255,.06);top:-80px;right:-60px}
@@ -1668,6 +1682,26 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
 <!-- Gradient transition hero → problem (волна скрыта, используем градиент) -->
 <svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,35 1440,28 L1440,60 L0,60 Z"/></svg>
+
+<!-- ===== LAST RECORD TIMER ===== -->
+<section class="section section--alt timer-section" id="timer-demo">
+  <div class="section-inner">
+    <div class="timer-block soul-reveal">
+      <div class="timer-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div class="timer-content">
+        <div class="timer-label"><span data-i="ru">Последняя запись</span><span data-i="en">Last record</span></div>
+        <div class="timer-value" id="lastRecordTimer">0ч 00мин 00сек</div>
+        <div class="timer-type"><span data-i="ru">🍼 Кормление</span><span data-i="en">🍼 Feeding</span></div>
+      </div>
+      <div class="timer-pulse"></div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== PROBLEM → SOLUTION (IMMERSIVE) ===== -->
 <section class="section section--alt section-flow alt-to-default" id="problem">
@@ -4860,6 +4894,38 @@ function shareArticle(platform){
       });
     }, 200);
   }, 300);
+})();
+
+/* ===== LAST RECORD TIMER ===== */
+(function(){
+  var timerEl = document.getElementById('lastRecordTimer');
+  if(!timerEl) return;
+  
+  // Start from a random time between 30min and 3h ago for demo
+  var startOffset = Math.floor(Math.random() * (3*60*60 - 30*60) + 30*60) * 1000;
+  var startTime = Date.now() - startOffset;
+  
+  function formatTime(ms){
+    var secs = Math.floor(ms / 1000);
+    var mins = Math.floor(secs / 60);
+    var hrs = Math.floor(mins / 60);
+    secs = secs % 60;
+    mins = mins % 60;
+    var lang = document.documentElement.lang || 'ru';
+    if(lang === 'ru'){
+      return hrs + 'ч ' + String(mins).padStart(2,'0') + 'мин ' + String(secs).padStart(2,'0') + 'сек';
+    } else {
+      return hrs + 'h ' + String(mins).padStart(2,'0') + 'm ' + String(secs).padStart(2,'0') + 's';
+    }
+  }
+  
+  function updateTimer(){
+    var elapsed = Date.now() - startTime;
+    timerEl.textContent = formatTime(elapsed);
+  }
+  
+  updateTimer();
+  setInterval(updateTimer, 1000);
 })();
 
 </script>
