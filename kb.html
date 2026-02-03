@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>База знаний — Lummo</title>
+  <meta name="description" content="Ответы на частые вопросы и руководства по использованию Lummo">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+:root{
+  --bg:#FDF8F3;--bg-alt:#FFF5ED;--card-bg:#fff;--card-border:#F0E4DB;
+  --text:#1C1C1E;--text-secondary:#6B6B6B;
+  --primary:#3C38FF;--accent:#F4433D;
+  --gradient:linear-gradient(135deg,#3C38FF 0%,#818CF8 50%,#F4433D 100%);
+}
+html[data-theme="dark"]{
+  --bg:#0A0A0A;--bg-alt:#111;--card-bg:#1A1A1A;--card-border:#2A2A2A;
+  --text:#F5F5F7;--text-secondary:#8E8E93;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.header{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg);z-index:100;border-bottom:1px solid var(--card-border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-size:1.25rem;font-weight:700}
+.logo svg{width:32px;height:32px}
+.header-actions{display:flex;align-items:center;gap:12px}
+.theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.theme-btn svg{width:20px;height:20px;stroke:var(--text)}
+.main{max-width:900px;margin:0 auto;padding:40px 24px}
+.page-header{text-align:center;margin-bottom:48px}
+h1{font-size:2rem;font-weight:700;margin-bottom:12px}
+.page-subtitle{color:var(--text-secondary);font-size:1.1rem}
+.search-box{max-width:500px;margin:32px auto 0;position:relative}
+.search-box input{width:100%;padding:16px 20px 16px 48px;border:1px solid var(--card-border);border-radius:16px;background:var(--card-bg);color:var(--text);font-size:1rem}
+.search-box input:focus{outline:none;border-color:var(--primary)}
+.search-box svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--text-secondary)}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:48px}
+.category-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:24px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.category-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.category-icon{width:48px;height:48px;border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.category-card h3{font-size:1rem;font-weight:600;margin-bottom:4px}
+.category-card span{font-size:.8rem;color:var(--text-secondary)}
+.faq-section{margin-bottom:48px}
+.faq-section h2{font-size:1.25rem;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.faq-section h2 span{font-size:1.25rem}
+.faq-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-q{padding:18px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:500}
+.faq-q svg{width:20px;height:20px;stroke:var(--text-secondary);transition:transform .2s;flex-shrink:0}
+.faq-item.open .faq-q svg{transform:rotate(180deg)}
+.faq-a{padding:0 20px 18px;color:var(--text-secondary);display:none}
+.faq-item.open .faq-a{display:block}
+.contact-box{background:var(--gradient);border-radius:20px;padding:40px;text-align:center;color:#fff}
+.contact-box h2{font-size:1.5rem;margin-bottom:12px}
+.contact-box p{opacity:.9;margin-bottom:24px}
+.contact-btn{display:inline-block;padding:14px 32px;background:#fff;color:var(--primary);border-radius:12px;text-decoration:none;font-weight:600;transition:transform .2s}
+.contact-btn:hover{transform:scale(1.05)}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-secondary);text-decoration:none;font-size:.9rem;margin-top:32px;transition:color .2s}
+.back-link:hover{color:var(--primary)}
+@media(max-width:600px){h1{font-size:1.5rem}.categories{grid-template-columns:1fr 1fr}.contact-box{padding:32px 24px}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 32 32" fill="none"><path d="M16 2L4 8v8c0 7.732 5.268 14.936 12 17 6.732-2.064 12-9.268 12-17V8L16 2z" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lummo
+    </a>
+    <div class="header-actions">
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Тема">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-header">
+      <h1>📚 База знаний</h1>
+      <p class="page-subtitle">Ответы на вопросы и руководства по Lummo</p>
+      
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Поиск по базе знаний..." oninput="filterFAQ(this.value)">
+      </div>
+    </div>
+    
+    <div class="categories">
+      <div class="category-card" onclick="scrollToSection('start')">
+        <div class="category-icon" style="background:#E8F5E9">🚀</div>
+        <h3>Начало работы</h3>
+        <span>5 статей</span>
+      </div>
+      <div class="category-card" onclick="scrollToSection('tracking')">
+        <div class="category-icon" style="background:#E3F2FD">📝</div>
+        <h3>Трекинг</h3>
+        <span>8 статей</span>
+      </div>
+      <div class="category-card" onclick="scrollToSection('ai')">
+        <div class="category-icon" style="background:#F3E5F5">🤖</div>
+        <h3>AI-помощник</h3>
+        <span>4 статьи</span>
+      </div>
+      <div class="category-card" onclick="scrollToSection('privacy')">
+        <div class="category-icon" style="background:#FFF3E0">🔒</div>
+        <h3>Приватность</h3>
+        <span>3 статьи</span>
+      </div>
+    </div>
+    
+    <div class="faq-section" id="start">
+      <h2><span>🚀</span> Начало работы</h2>
+      
+      <div class="faq-item" data-q="как начать как установить">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Как начать использовать Lummo?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Скачайте приложение из App Store или Google Play, откройте его и добавьте профиль ребёнка. Никакой регистрации не нужно — данные хранятся только на вашем устройстве. После этого можете сразу начать вести записи.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="бесплатно цена стоимость">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Приложение бесплатное?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Да! Базовый трекинг полностью бесплатен и без ограничений. Все 30+ типов записей, графики, таймеры, экспорт — бесплатно. AI-помощник доступен в платных тарифах Basic и Premium для тех, кому нужен расширенный анализ.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="несколько детей профили">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Можно вести несколько детей?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Да, вы можете добавить неограниченное количество профилей детей. Переключение между ними — одним нажатием. У каждого ребёнка своя история записей и статистика.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="синхронизация устройства">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Как синхронизировать между устройствами?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Используйте функцию экспорта/импорта для переноса данных. Мы работаем над безопасной облачной синхронизацией с end-to-end шифрованием — она появится в ближайших обновлениях.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="язык английский русский">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          На каких языках доступно приложение?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Сейчас приложение доступно на русском и английском языках. Мы планируем добавить поддержку других языков в будущих версиях.
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-section" id="tracking">
+      <h2><span>📝</span> Трекинг</h2>
+      
+      <div class="faq-item" data-q="типы записей категории">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Какие типы записей поддерживаются?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Более 30 типов: сон, кормление (грудь/смесь/прикорм), подгузники, температура, вес, рост, купание, прогулки, лекарства, вакцинации, зубы, этапы развития, настроение, заметки и многое другое.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="таймер сон кормление">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Как работают таймеры?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Запустите таймер одним нажатием при начале сна или кормления. Когда закончите — остановите. Приложение автоматически рассчитает длительность и сохранит запись. Можно также добавить запись задним числом.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="графики статистика">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Какая статистика доступна?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Графики сна по дням/неделям, частота и объём кормлений, динамика веса и роста, сравнение с нормами ВОЗ, средние показатели за период, тренды и паттерны.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="экспорт pdf врач">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Можно экспортировать данные для врача?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Да! Экспортируйте данные в PDF — красивый отчёт с графиками, который удобно показать педиатру. Можно выбрать период и типы записей для экспорта.
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-section" id="ai">
+      <h2><span>🤖</span> AI-помощник</h2>
+      
+      <div class="faq-item" data-q="ai что умеет возможности">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Что умеет AI-помощник?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          AI анализирует ваши записи и замечает закономерности: почему ухудшился сон, как связаны кормления и настроение, готовит сводку для врача. Отвечает на вопросы о развитии на основе ваших данных, а не общих статей.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="ai замена врач диагноз">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          AI заменяет врача?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Нет! AI — это помощник, не врач. Он помогает замечать паттерны и готовить информацию, но не ставит диагнозы и не даёт медицинских рекомендаций. При любых сомнениях — обращайтесь к педиатру.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="ai данные приватность">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          AI использует мои данные для обучения?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Нет. Ваши данные никогда не используются для обучения AI-моделей. Анализ происходит только для вас, в момент запроса, и не сохраняется на серверах.
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-section" id="privacy">
+      <h2><span>🔒</span> Приватность и безопасность</h2>
+      
+      <div class="faq-item" data-q="данные хранение где">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Где хранятся мои данные?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Все данные хранятся только на вашем устройстве. Мы не имеем доступа к вашим записям. Никаких серверов, никакой телеметрии. Ваш ребёнок — ваши данные.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="удалить данные">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Как удалить все данные?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Перейдите в Настройки → Данные → Удалить все данные. Или просто удалите приложение — все данные будут удалены вместе с ним, так как они хранятся только локально.
+        </div>
+      </div>
+      
+      <div class="faq-item" data-q="регистрация аккаунт">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Нужна ли регистрация?
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="faq-a">
+          Нет! Lummo работает полностью без регистрации и аккаунтов. Скачали — пользуетесь. Никаких email, паролей и подтверждений.
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-box">
+      <h2>Не нашли ответ?</h2>
+      <p>Напишите нам, и мы поможем разобраться</p>
+      <a href="mailto:help@lummo.app" class="contact-btn">Написать в поддержку</a>
+    </div>
+    
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Вернуться на главную
+    </a>
+  </main>
+
+<script>
+// Theme
+(function(){
+  var saved = localStorage.getItem('lummo-theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+})();
+
+function toggleTheme(){
+  var t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('lummo-theme', t);
+}
+
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function filterFAQ(query){
+  query = query.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.getAttribute('data-q') || '';
+    var text = item.textContent.toLowerCase();
+    var match = !query || q.includes(query) || text.includes(query);
+    item.style.display = match ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>

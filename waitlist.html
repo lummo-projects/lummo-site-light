@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Лист ожидания — Lummo</title>
+  <meta name="description" content="Запишитесь в лист ожидания Lummo и получите ранний доступ к приложению">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+:root{
+  --bg:#FDF8F3;--bg-alt:#FFF5ED;--card-bg:#fff;--card-border:#F0E4DB;
+  --text:#1C1C1E;--text-secondary:#6B6B6B;
+  --primary:#3C38FF;--accent:#F4433D;
+  --gradient:linear-gradient(135deg,#3C38FF 0%,#818CF8 50%,#F4433D 100%);
+}
+html[data-theme="dark"]{
+  --bg:#0A0A0A;--bg-alt:#111;--card-bg:#1A1A1A;--card-border:#2A2A2A;
+  --text:#F5F5F7;--text-secondary:#8E8E93;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.header{padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-size:1.25rem;font-weight:700}
+.logo svg{width:32px;height:32px}
+.theme-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--card-border);background:var(--card-bg);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.theme-btn svg{width:20px;height:20px;stroke:var(--text)}
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.waitlist-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:24px;padding:48px;max-width:480px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.06)}
+html[data-theme="dark"] .waitlist-card{box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.waitlist-icon{width:80px;height:80px;border-radius:50%;background:var(--gradient);margin:0 auto 24px;display:flex;align-items:center;justify-content:center}
+.waitlist-icon svg{width:40px;height:40px;stroke:#fff;fill:none}
+h1{font-size:1.75rem;font-weight:700;margin-bottom:12px}
+.subtitle{color:var(--text-secondary);margin-bottom:32px;line-height:1.5}
+.form-group{margin-bottom:16px;text-align:left}
+.form-group label{display:block;font-size:.85rem;font-weight:500;margin-bottom:6px;color:var(--text-secondary)}
+.form-group input,.form-group select{width:100%;padding:14px 16px;border:1px solid var(--card-border);border-radius:12px;background:var(--bg);color:var(--text);font-size:1rem;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary)}
+.submit-btn{width:100%;padding:16px;border:none;border-radius:12px;background:var(--gradient);color:#fff;font-size:1rem;font-weight:600;cursor:pointer;margin-top:8px;transition:transform .2s,box-shadow .2s}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(60,56,255,.3)}
+.benefits{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;justify-content:center}
+.benefit{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text-secondary)}
+.benefit svg{width:16px;height:16px;stroke:var(--primary)}
+.success-msg{display:none;padding:20px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:12px;color:#16a34a;margin-top:16px}
+.counter{margin-top:32px;padding-top:24px;border-top:1px solid var(--card-border)}
+.counter-num{font-size:2rem;font-weight:700;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.counter-label{font-size:.85rem;color:var(--text-secondary);margin-top:4px}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-secondary);text-decoration:none;font-size:.9rem;margin-top:24px;transition:color .2s}
+.back-link:hover{color:var(--primary)}
+.back-link svg{width:16px;height:16px}
+@media(max-width:500px){.waitlist-card{padding:32px 24px}h1{font-size:1.5rem}.benefits{flex-direction:column;align-items:center}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 32 32" fill="none"><path d="M16 2L4 8v8c0 7.732 5.268 14.936 12 17 6.732-2.064 12-9.268 12-17V8L16 2z" stroke="currentColor" stroke-width="2"/><path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lummo
+    </a>
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Тема">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </header>
+
+  <main class="main">
+    <div class="waitlist-card">
+      <div class="waitlist-icon">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      
+      <h1>Лист ожидания</h1>
+      <p class="subtitle">Запишитесь первыми и получите ранний доступ к Lummo + бонусы для первых пользователей</p>
+      
+      <form id="waitlistForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="name">Имя (необязательно)</label>
+          <input type="text" id="name" name="name" placeholder="Как вас зовут?">
+        </div>
+        
+        <div class="form-group">
+          <label for="platform">Платформа</label>
+          <select id="platform" name="platform">
+            <option value="ios">iOS (iPhone/iPad)</option>
+            <option value="android">Android</option>
+            <option value="both">Обе платформы</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="submit-btn">Записаться в лист ожидания</button>
+      </form>
+      
+      <div class="success-msg" id="successMsg">
+        🎉 Отлично! Вы в списке. Мы напишем, когда приложение будет готово.
+      </div>
+      
+      <div class="benefits">
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Ранний доступ
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Бонусы
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Без спама
+        </div>
+      </div>
+      
+      <div class="counter">
+        <div class="counter-num" id="waitlistCount">1,247</div>
+        <div class="counter-label">уже записались</div>
+      </div>
+      
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Вернуться на главную
+      </a>
+    </div>
+  </main>
+
+<script>
+// Theme
+(function(){
+  var saved = localStorage.getItem('lummo-theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+  else if(window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+})();
+
+function toggleTheme(){
+  var t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  localStorage.setItem('lummo-theme', t);
+}
+
+// Form
+document.getElementById('waitlistForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var form = this;
+  var btn = form.querySelector('.submit-btn');
+  btn.textContent = 'Записываем...';
+  btn.disabled = true;
+  
+  setTimeout(function(){
+    form.style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    // Increment counter
+    var counter = document.getElementById('waitlistCount');
+    var num = parseInt(counter.textContent.replace(/,/g, '')) + 1;
+    counter.textContent = num.toLocaleString();
+    // Save to localStorage
+    localStorage.setItem('lummo-waitlist', 'true');
+  }, 1000);
+});
+
+// Check if already signed up
+if(localStorage.getItem('lummo-waitlist')){
+  document.getElementById('waitlistForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('successMsg').textContent = '✅ Вы уже в списке! Мы сообщим о запуске.';
+}
+</script>
+</body>
+</html>

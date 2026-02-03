@@ -712,6 +712,24 @@ html[data-theme="light"] .ai-glow{opacity:.15}
 html[data-theme="light"] .ai-section::before{background:none}
 html[data-theme="light"] .ai-section::after{background:none}
 
+/* --- Poll section --- */
+.poll-section{padding:72px 24px}
+.poll-container{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.poll-option{display:grid;grid-template-columns:48px 1fr 100px 50px;align-items:center;gap:16px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:16px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.poll-option:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(0,0,0,.06);border-color:var(--primary)}
+.poll-option.voted{border-color:var(--primary);background:rgba(60,56,255,.04)}
+.poll-option-icon{font-size:1.5rem;text-align:center}
+.poll-option-content{min-width:0}
+.poll-option-title{font-weight:600;font-size:.95rem;margin-bottom:2px}
+.poll-option-desc{font-size:.75rem;color:var(--text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.poll-option-bar{height:8px;background:var(--card-border);border-radius:4px;overflow:hidden}
+.poll-option-fill{height:100%;background:var(--gradient);border-radius:4px;width:var(--pct);transition:width .5s ease-out}
+.poll-option-pct{font-size:.85rem;font-weight:600;color:var(--text-secondary);text-align:right}
+.poll-voted{text-align:center;margin-top:24px;padding:16px;background:rgba(34,197,94,.1);border-radius:12px;color:#16a34a;font-weight:500}
+html[data-theme="dark"] .poll-option:hover{box-shadow:0 4px 16px rgba(0,0,0,.2)}
+html[data-theme="dark"] .poll-voted{background:rgba(34,197,94,.15)}
+@media(max-width:700px){.poll-option{grid-template-columns:40px 1fr;gap:12px;padding:14px 16px}.poll-option-bar,.poll-option-pct{display:none}.poll-option-desc{white-space:normal}}
+
 /* --- Timer section --- */
 .timer-section{padding:40px 24px}
 .timer-block{display:flex;align-items:center;gap:20px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;padding:24px 32px;max-width:400px;margin:0 auto;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06)}
@@ -2955,8 +2973,75 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
   </div>
 </section>
 
-<!-- Gradient transition ped → cta (волна скрыта) -->
+<!-- Gradient transition ped → poll -->
 <svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg)"><path d="M0,25 C360,55 720,5 1080,35 C1260,48 1380,18 1440,28 L1440,60 L0,60 Z"/></svg>
+
+<!-- ===== FEATURE POLL ===== -->
+<section class="section poll-section" id="poll">
+  <div class="section-inner">
+    <div class="section-header soul-reveal">
+      <h2><span data-i="ru">🗳️ Какую функцию добавить следующей?</span><span data-i="en">🗳️ What feature should we add next?</span></h2>
+      <p><span data-i="ru">Голосуйте — мы делаем то, что нужно вам</span><span data-i="en">Vote — we build what you need</span></p>
+    </div>
+    
+    <div class="poll-container soul-reveal">
+      <div class="poll-option" data-option="sync" onclick="votePoll('sync')">
+        <div class="poll-option-icon">☁️</div>
+        <div class="poll-option-content">
+          <div class="poll-option-title"><span data-i="ru">Облачная синхронизация</span><span data-i="en">Cloud sync</span></div>
+          <div class="poll-option-desc"><span data-i="ru">Синхронизация между устройствами с шифрованием</span><span data-i="en">Sync between devices with encryption</span></div>
+        </div>
+        <div class="poll-option-bar"><div class="poll-option-fill" style="--pct:0%"></div></div>
+        <div class="poll-option-pct">0%</div>
+      </div>
+      
+      <div class="poll-option" data-option="family" onclick="votePoll('family')">
+        <div class="poll-option-icon">👨‍👩‍👧</div>
+        <div class="poll-option-content">
+          <div class="poll-option-title"><span data-i="ru">Семейный доступ</span><span data-i="en">Family sharing</span></div>
+          <div class="poll-option-desc"><span data-i="ru">Совместный доступ для папы, бабушки, няни</span><span data-i="en">Share access with dad, grandma, nanny</span></div>
+        </div>
+        <div class="poll-option-bar"><div class="poll-option-fill" style="--pct:0%"></div></div>
+        <div class="poll-option-pct">0%</div>
+      </div>
+      
+      <div class="poll-option" data-option="widgets" onclick="votePoll('widgets')">
+        <div class="poll-option-icon">📱</div>
+        <div class="poll-option-content">
+          <div class="poll-option-title"><span data-i="ru">Виджеты на экран</span><span data-i="en">Home screen widgets</span></div>
+          <div class="poll-option-desc"><span data-i="ru">Таймеры и статистика прямо на рабочем столе</span><span data-i="en">Timers and stats right on your home screen</span></div>
+        </div>
+        <div class="poll-option-bar"><div class="poll-option-fill" style="--pct:0%"></div></div>
+        <div class="poll-option-pct">0%</div>
+      </div>
+      
+      <div class="poll-option" data-option="watch" onclick="votePoll('watch')">
+        <div class="poll-option-icon">⌚</div>
+        <div class="poll-option-content">
+          <div class="poll-option-title"><span data-i="ru">Apple Watch / WearOS</span><span data-i="en">Apple Watch / WearOS</span></div>
+          <div class="poll-option-desc"><span data-i="ru">Быстрые записи с часов одной рукой</span><span data-i="en">Quick logging from your watch, one-handed</span></div>
+        </div>
+        <div class="poll-option-bar"><div class="poll-option-fill" style="--pct:0%"></div></div>
+        <div class="poll-option-pct">0%</div>
+      </div>
+      
+      <div class="poll-option" data-option="reminders" onclick="votePoll('reminders')">
+        <div class="poll-option-icon">🔔</div>
+        <div class="poll-option-content">
+          <div class="poll-option-title"><span data-i="ru">Умные напоминания</span><span data-i="en">Smart reminders</span></div>
+          <div class="poll-option-desc"><span data-i="ru">AI подскажет когда пора кормить или укладывать</span><span data-i="en">AI suggests when to feed or put baby to sleep</span></div>
+        </div>
+        <div class="poll-option-bar"><div class="poll-option-fill" style="--pct:0%"></div></div>
+        <div class="poll-option-pct">0%</div>
+      </div>
+    </div>
+    
+    <div class="poll-voted" id="pollVoted" style="display:none">
+      <span data-i="ru">✅ Спасибо за голос! Результаты обновлены.</span>
+      <span data-i="en">✅ Thanks for voting! Results updated.</span>
+    </div>
+  </div>
+</section>
 
 <!-- ===== CTA ===== -->
 <section class="cta-section section-flow" id="download">
@@ -4104,9 +4189,10 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       </div>
       <div class="footer-nav-col">
         <div class="footer-nav-title"><span data-i="ru">Полезное</span><span data-i="en">Resources</span></div>
-        <a href="#pediatrician" onclick="navigateTo('home','#pediatrician');return false"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
+        <a href="kb.html"><span data-i="ru">База знаний</span><span data-i="en">Knowledge Base</span></a>
         <a href="#blog" onclick="navigateTo('blog');return false"><span data-i="ru">Блог</span><span data-i="en">Blog</span></a>
-        <a href="#development" onclick="navigateTo('development');return false"><span data-i="ru">Развитие</span><span data-i="en">Development</span></a>
+        <a href="waitlist.html"><span data-i="ru">Лист ожидания</span><span data-i="en">Waitlist</span></a>
+        <a href="#pediatrician" onclick="navigateTo('home','#pediatrician');return false"><span data-i="ru">Для педиатра</span><span data-i="en">For doctor</span></a>
       </div>
       <div class="footer-nav-col">
         <div class="footer-nav-title"><span data-i="ru">Компания</span><span data-i="en">Company</span></div>
@@ -4894,6 +4980,38 @@ function shareArticle(platform){
       });
     }, 200);
   }, 300);
+})();
+
+/* ===== FEATURE POLL ===== */
+(function(){
+  var storageKey = 'lummo-poll-vote';
+  var votes = JSON.parse(localStorage.getItem('lummo-poll-votes') || '{"sync":127,"family":98,"widgets":84,"watch":56,"reminders":112}');
+  var userVote = localStorage.getItem(storageKey);
+  
+  function updatePollUI(){
+    var total = Object.values(votes).reduce(function(a,b){return a+b},0);
+    document.querySelectorAll('.poll-option').forEach(function(opt){
+      var key = opt.getAttribute('data-option');
+      var pct = total > 0 ? Math.round(votes[key] / total * 100) : 0;
+      opt.querySelector('.poll-option-fill').style.setProperty('--pct', pct + '%');
+      opt.querySelector('.poll-option-pct').textContent = pct + '%';
+      opt.classList.toggle('voted', userVote === key);
+    });
+    if(userVote){
+      document.getElementById('pollVoted').style.display = 'block';
+    }
+  }
+  
+  window.votePoll = function(option){
+    if(userVote) return; // already voted
+    votes[option] = (votes[option] || 0) + 1;
+    localStorage.setItem('lummo-poll-votes', JSON.stringify(votes));
+    localStorage.setItem(storageKey, option);
+    userVote = option;
+    updatePollUI();
+  };
+  
+  updatePollUI();
 })();
 
 /* ===== LAST RECORD TIMER ===== */
