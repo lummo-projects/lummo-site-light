@@ -1510,8 +1510,13 @@ html[data-theme="dark"] .founder-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.3
 .hero-ai-ring--3{animation:aiRing1 25s linear infinite}
 @keyframes aiRing1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes aiRing2{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
-.hero-ai-star{transform-origin:center;animation:aiStar 4s ease-in-out infinite}
-@keyframes aiStar{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px rgba(60,56,255,.3))}50%{transform:scale(1.08);filter:drop-shadow(0 0 16px rgba(60,56,255,.5))}}
+.hero-ai-logo{transform-origin:center}
+.hero-ai-star{transform-origin:center;animation:aiStar 3s ease-in-out infinite}
+@keyframes aiStar{0%,100%{transform:translate(-36px,-36px) scale(3);filter:drop-shadow(0 0 12px rgba(60,56,255,.4))}50%{transform:translate(-36px,-36px) scale(3.15);filter:drop-shadow(0 0 24px rgba(129,140,248,.6))}}
+.hero-pulse{transform-origin:center;opacity:0}
+.hero-pulse--1{animation:heroPulse 2.5s ease-out infinite}
+.hero-pulse--2{animation:heroPulse 2.5s ease-out infinite 1.25s}
+@keyframes heroPulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.5);opacity:0}}
 .hero-ai-dot{transform-origin:100px 100px}
 .hero-ai-dot--1{animation:aiDot 8s linear infinite}
 .hero-ai-dot--2{animation:aiDot 8s linear infinite;animation-delay:-2s}
@@ -1795,9 +1800,13 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
           <circle class="hero-ai-ring hero-ai-ring--2" cx="100" cy="100" r="75" stroke="url(#heroGrad2)" stroke-width="1.5" stroke-dasharray="4 6"/>
           <circle class="hero-ai-ring hero-ai-ring--3" cx="100" cy="100" r="60" stroke="url(#heroGrad1)" stroke-width="1"/>
           
-          <!-- Center Lummo logo -->
-          <g class="hero-ai-star" transform="translate(100, 100)">
-            <g transform="translate(-48, -48) scale(4)">
+          <!-- Center Lummo logo - large and pulsing -->
+          <g class="hero-ai-logo" transform="translate(100, 100)">
+            <!-- Pulse rings -->
+            <circle class="hero-pulse hero-pulse--1" cx="0" cy="0" r="35" fill="none" stroke="url(#heroGrad1)" stroke-width="2"/>
+            <circle class="hero-pulse hero-pulse--2" cx="0" cy="0" r="35" fill="none" stroke="url(#heroGrad2)" stroke-width="2"/>
+            <!-- Logo -->
+            <g class="hero-ai-star" transform="translate(-36, -36) scale(3)">
               <path d="M9.587 5.368c.604-1.769 3.048-1.822 3.764-.161l.061.162.816 2.385c.187.547.489 1.047.886 1.468.396.42.879.75 1.414.969l.22.082 2.385.815c1.768.604 1.822 3.048.161 3.764l-.161.061-2.385.816a4.17 4.17 0 0 0-1.468.886 4.17 4.17 0 0 0-.969 1.414l-.082.22-.815 2.385c-.604 1.769-3.048 1.822-3.764.161l-.063-.161-.815-2.385a4.17 4.17 0 0 0-.886-1.468 4.17 4.17 0 0 0-1.414-.969l-.22-.082-2.385-.815c-1.769-.604-1.823-3.048-.161-3.764l.161-.062 2.385-.815a4.17 4.17 0 0 0 1.468-.886c.42-.397.75-.879.969-1.414l.082-.22.815-2.385Z" fill="url(#heroGrad1)"/>
               <path d="M18.862 2.456c.201-.59 1.016-.607 1.255-.053l.02.053.272.795a1.5 1.5 0 0 0 .872.918l.073.027.795.272c.59.201.607 1.016.053 1.255l-.053.02-.795.272a1.5 1.5 0 0 0-.918.872l-.027.073-.272.795c-.201.59-1.016.607-1.255.054l-.02-.054-.272-.795a1.5 1.5 0 0 0-.872-.918l-.073-.027-.795-.272c-.59-.201-.607-1.016-.054-1.255l.054-.02.795-.272a1.5 1.5 0 0 0 .918-.872l.027-.073.272-.795Z" fill="url(#heroGrad1)"/>
             </g>
