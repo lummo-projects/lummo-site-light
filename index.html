@@ -503,6 +503,8 @@ html[data-theme="dark"] .share-btn:hover{box-shadow:0 4px 12px rgba(0,0,0,.25)}
 .dev-hero-inner h1 em{font-style:normal;color:var(--primary)}
 .dev-hero-inner p{font-size:.92rem;color:var(--text-secondary);max-width:540px;margin:0 auto;line-height:1.6}
 .dev-features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 24px 48px;max-width:1080px;margin:0 auto}
+@media(max-width:900px){.dev-features{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.dev-features{grid-template-columns:1fr}}
 .dev-feature{padding:22px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border);transition:all .2s}
 .dev-feature:hover{border-color:var(--border-hover)}
 .dev-feature-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;background:var(--dev-icon-bg)}
