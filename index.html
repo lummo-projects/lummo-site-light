@@ -259,18 +259,28 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 
 /* ===== FEATURES GRID ===== */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.feat-card{padding:22px;background:var(--bg-card);border-radius:12px;border:1px solid var(--border);transition:border-color .2s}
-.feat-card:hover{border-color:var(--border-hover)}
-.feat-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.feat-icon svg{width:22px;height:22px}
-.feat-icon--sleep{background:var(--icon-sleep-bg)}
-.feat-icon--feed{background:var(--icon-feed-bg)}
-.feat-icon--diaper{background:var(--icon-diaper-bg)}
-.feat-icon--health{background:var(--icon-health-bg)}
-.feat-icon--growth{background:var(--icon-growth-bg)}
-.feat-icon--activity{background:var(--icon-activity-bg)}
-.feat-card h3{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.feat-card{padding:22px;background:var(--bg-card);border-radius:16px;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--feat-accent,var(--primary)),transparent);opacity:0;transition:opacity .3s}
+.feat-card:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;position:relative}
+.feat-icon::after{content:'';position:absolute;inset:-2px;border-radius:16px;background:inherit;opacity:.3;filter:blur(8px);z-index:-1}
+.feat-icon svg{width:26px;height:26px}
+.feat-icon--sleep{background:linear-gradient(135deg,#818CF8,#6366F1);--feat-accent:#6366F1}
+.feat-icon--sleep svg{stroke:#fff}
+.feat-icon--feed{background:linear-gradient(135deg,#FB923C,#F6571D);--feat-accent:#F6571D}
+.feat-icon--feed svg{stroke:#fff}
+.feat-icon--diaper{background:linear-gradient(135deg,#BEF264,#84CC16);--feat-accent:#84CC16}
+.feat-icon--diaper svg{stroke:#fff}
+.feat-icon--health{background:linear-gradient(135deg,#FDE047,#FACC15);--feat-accent:#FACC15}
+.feat-icon--health svg{stroke:#78350F}
+.feat-icon--growth{background:linear-gradient(135deg,#F472B6,#EC4899);--feat-accent:#EC4899}
+.feat-icon--growth svg{stroke:#fff}
+.feat-icon--activity{background:linear-gradient(135deg,#818CF8,#3D38FF);--feat-accent:#3D38FF}
+.feat-icon--activity svg{stroke:#fff}
+.feat-card h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:6px}
 .feat-card p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
+.feat-badge{display:inline-flex;align-items:center;gap:4px;margin-top:12px;padding:6px 12px;background:var(--bg-alt);border-radius:20px;font-size:.72rem;font-weight:600;color:var(--text-secondary)}
 
 /* ===== AI SECTION ===== */
 /* ===== AI SECTION - FULLSCREEN IMMERSIVE ===== */
@@ -465,7 +475,14 @@ html[data-theme="light"] .ai-feat-card p{color:var(--text-secondary)}
   .hero-actions{justify-content:center}
   .phone-frame{width:220px;height:440px;border-radius:26px}
   .problems-grid{grid-template-columns:1fr;gap:12px}
-  .features-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .features-grid{grid-template-columns:1fr;gap:12px}
+  .feat-card{display:flex;gap:16px;align-items:flex-start;padding:18px}
+  .feat-icon{flex-shrink:0;margin-bottom:0;width:56px;height:56px;border-radius:16px}
+  .feat-icon svg{width:28px;height:28px}
+  .feat-card-content{flex:1;min-width:0}
+  .feat-card h3{font-size:1rem;margin-bottom:4px}
+  .feat-card p{font-size:.82rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .feat-badge{margin-top:8px;padding:5px 10px;font-size:.7rem}
   /* AI Section Mobile */
   .ai-section{min-height:auto;padding:60px 0}
   .ai-section .section-inner{padding:20px 16px}
@@ -2233,105 +2250,129 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
     <!-- RU features -->
     <div class="features-grid i-grid" data-i="ru">
-      <div class="feat-card feat-card--sleep">
+      <div class="feat-card feat-card--sleep" style="--feat-accent:#6366F1">
         <div class="feat-icon feat-icon--sleep">
-          <svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#6366F1" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Сон</h3>
-        <p>Таймер включила — таймер выключила. Утром видишь: ночью просыпался 3 раза, дневной сон 40 минут. Без угадываний.</p>
-        <span class="feat-badge">🌙 5 параметров</span>
+        <div class="feat-card-content">
+          <h3>Сон</h3>
+          <p>Таймер включила — таймер выключила. Утром видишь: ночью просыпался 3 раза, дневной сон 40 минут.</p>
+          <span class="feat-badge">5 параметров</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--feed">
+      <div class="feat-card feat-card--feed" style="--feat-accent:#F6571D">
         <div class="feat-icon feat-icon--feed">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Кормления</h3>
-        <p>Грудь, бутылочка, прикорм — записала за 2 секунды. На приёме врач видит: левая/правая, объём, время.</p>
-        <span class="feat-badge">🍼 8 типов</span>
+        <div class="feat-card-content">
+          <h3>Кормления</h3>
+          <p>Грудь, бутылочка, прикорм — записала за 2 секунды. Врач видит: левая/правая, объём, время.</p>
+          <span class="feat-badge">8 типов</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--diaper">
+      <div class="feat-card feat-card--diaper" style="--feat-accent:#84CC16">
         <div class="feat-icon feat-icon--diaper">
-          <svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#ACBC36" stroke-width="2" stroke-linejoin="round"/><path d="M22.6 6.4H28M1 6.4h5.4m11.475 15.525v-1.35a9.58 9.58 0 0 1 9.45-9.45m-16.2 10.8v-1.35a9.58 9.58 0 0 0-9.45-9.45" stroke="#ACBC36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M22.6 6.4H28M1 6.4h5.4m11.475 15.525v-1.35a9.58 9.58 0 0 1 9.45-9.45m-16.2 10.8v-1.35a9.58 9.58 0 0 0-9.45-9.45" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Подгузники</h3>
-        <p>Одно нажатие. А через неделю видишь паттерн: стул стал реже после смены смеси. Данные вместо догадок.</p>
-        <span class="feat-badge">💧 3 типа</span>
+        <div class="feat-card-content">
+          <h3>Подгузники</h3>
+          <p>Одно нажатие. Через неделю видишь паттерн: стул стал реже после смены смеси.</p>
+          <span class="feat-badge">3 типа</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--health">
+      <div class="feat-card feat-card--health" style="--feat-accent:#FACC15">
         <div class="feat-icon feat-icon--health">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="#78350F" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="#78350F" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Здоровье</h3>
-        <p>Температура 37.2 в среду, 37.8 в четверг, насморк с понедельника. Вся история перед глазами, не в голове.</p>
-        <span class="feat-badge">🌡 12 параметров</span>
+        <div class="feat-card-content">
+          <h3>Здоровье</h3>
+          <p>Температура 37.2 в среду, 37.8 в четверг, насморк с понедельника. Вся история перед глазами.</p>
+          <span class="feat-badge">12 параметров</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--growth">
+      <div class="feat-card feat-card--growth" style="--feat-accent:#EC4899">
         <div class="feat-icon feat-icon--growth">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Рост и вес</h3>
-        <p>Графики по нормам ВОЗ. Педиатр сказал: «Вы что, ведёте электронную карту?» Нет, просто Lummo.</p>
-        <span class="feat-badge">📏 4 параметра</span>
+        <div class="feat-card-content">
+          <h3>Рост и вес</h3>
+          <p>Графики по нормам ВОЗ. Педиатр сказал: «Вы ведёте электронную карту?» Нет, просто Lummo.</p>
+          <span class="feat-badge">4 параметра</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--activity">
+      <div class="feat-card feat-card--activity" style="--feat-accent:#3D38FF">
         <div class="feat-icon feat-icon--activity">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Активности</h3>
-        <p>Прогулка, купание, массаж, tummy time — 20+ типов. Через месяц видишь: гуляем мало. Исправляешь.</p>
-        <span class="feat-badge">🎯 20+ типов</span>
+        <div class="feat-card-content">
+          <h3>Активности</h3>
+          <p>Прогулка, купание, массаж, tummy time — 20+ типов. Через месяц видишь: гуляем мало.</p>
+          <span class="feat-badge">20+ типов</span>
+        </div>
       </div>
     </div>
 
     <!-- EN features -->
     <div class="features-grid i-grid" data-i="en">
-      <div class="feat-card feat-card--sleep">
+      <div class="feat-card feat-card--sleep" style="--feat-accent:#6366F1">
         <div class="feat-icon feat-icon--sleep">
-          <svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#6366F1" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727a8.34 8.34 0 0 1-1.427 4.012 8.34 8.34 0 0 1-3.38 2.588 8.34 8.34 0 0 1-4.244.332 8.34 8.34 0 0 1-3.741-2.032A8.34 8.34 0 0 1 .998 9.886a8.34 8.34 0 0 1 .331-4.245 8.34 8.34 0 0 1 2.588-3.38A8.34 8.34 0 0 1 7.928.834c.337-.018.514.384.335.67A6.67 6.67 0 0 0 7.535 4.72a6.67 6.67 0 0 0 1.432 2.97 6.67 6.67 0 0 0 2.97 1.432 6.67 6.67 0 0 0 3.216-.728c.287-.179.688-.003.669.334Z" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Sleep</h3>
-        <p>Start timer — stop timer. Next morning you see: 3 wake-ups, 40-minute nap. No guessing.</p>
-        <span class="feat-badge">🌙 5 parameters</span>
+        <div class="feat-card-content">
+          <h3>Sleep</h3>
+          <p>Start timer — stop timer. Next morning: 3 wake-ups, 40-minute nap. No guessing.</p>
+          <span class="feat-badge">5 parameters</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--feed">
+      <div class="feat-card feat-card--feed" style="--feat-accent:#F6571D">
         <div class="feat-icon feat-icon--feed">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="#F6571D" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5a1.67 1.67 0 0 0 1.667-1.667V1.667" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667a4.17 4.17 0 0 0-4.167 4.166V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Feedings</h3>
-        <p>Breast, bottle, solids — logged in 2 seconds. At the doctor's: left/right, volume, time — all there.</p>
-        <span class="feat-badge">🍼 8 types</span>
+        <div class="feat-card-content">
+          <h3>Feedings</h3>
+          <p>Breast, bottle, solids — logged in 2 seconds. Doctor sees: left/right, volume, time.</p>
+          <span class="feat-badge">8 types</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--diaper">
+      <div class="feat-card feat-card--diaper" style="--feat-accent:#84CC16">
         <div class="feat-icon feat-icon--diaper">
-          <svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#ACBC36" stroke-width="2" stroke-linejoin="round"/><path d="M22.6 6.4H28M1 6.4h5.4m11.475 15.525v-1.35a9.58 9.58 0 0 1 9.45-9.45m-16.2 10.8v-1.35a9.58 9.58 0 0 0-9.45-9.45" stroke="#ACBC36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 29 24" fill="none"><path d="M1 5.984c0-.868 0-1.303.068-1.665a4 4 0 0 1 3.253-3.253C4.68 1 5.115 1 5.983 1h17.031c.868 0 1.303 0 1.665.067a4 4 0 0 1 3.253 3.253c.067.362.067.797.067 1.665V9.1c0 7.456-6.044 13.5-13.5 13.5S1 16.556 1 9.1V5.984Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M22.6 6.4H28M1 6.4h5.4m11.475 15.525v-1.35a9.58 9.58 0 0 1 9.45-9.45m-16.2 10.8v-1.35a9.58 9.58 0 0 0-9.45-9.45" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Diapers</h3>
-        <p>One tap. A week later you see the pattern: stool became less frequent after switching formula.</p>
-        <span class="feat-badge">💧 3 types</span>
+        <div class="feat-card-content">
+          <h3>Diapers</h3>
+          <p>One tap. A week later you see: stool less frequent after switching formula.</p>
+          <span class="feat-badge">3 types</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--health">
+      <div class="feat-card feat-card--health" style="--feat-accent:#FACC15">
         <div class="feat-icon feat-icon--health">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="#FFBE02" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333a4.17 4.17 0 0 0 0-5.89 4.17 4.17 0 0 0-5.892 0L2.858 11.193a4.17 4.17 0 0 0 0 5.89 4.17 4.17 0 0 0 5.892 0Z" stroke="#78350F" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="#78350F" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Health</h3>
-        <p>37.2°C on Wednesday, 37.8 on Thursday, runny nose since Monday. The whole history in front of you, not in your head.</p>
-        <span class="feat-badge">🌡 12 parameters</span>
+        <div class="feat-card-content">
+          <h3>Health</h3>
+          <p>37.2°C Wednesday, 37.8 Thursday, runny nose since Monday. All history visible.</p>
+          <span class="feat-badge">12 parameters</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--growth">
+      <div class="feat-card feat-card--growth" style="--feat-accent:#EC4899">
         <div class="feat-icon feat-icon--growth">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#DF0086" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 6.667a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667a2.08 2.08 0 0 0-1.587 1.216l-2.08 7.533a1.25 1.25 0 0 0 1.583 1.583h13.334a1.25 1.25 0 0 0 1.166-1.717l-2.1-7.45a2.08 2.08 0 0 0-1.316-1.165H5.417Z" stroke="#fff" stroke-width="1.667" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Growth</h3>
-        <p>WHO growth charts. The pediatrician said: "Do you keep an electronic health record?" Nope, just Lummo.</p>
-        <span class="feat-badge">📏 4 parameters</span>
+        <div class="feat-card-content">
+          <h3>Growth</h3>
+          <p>WHO growth charts. Doctor: "Do you keep electronic records?" Nope, just Lummo.</p>
+          <span class="feat-badge">4 parameters</span>
+        </div>
       </div>
-      <div class="feat-card feat-card--activity">
+      <div class="feat-card feat-card--activity" style="--feat-accent:#3D38FF">
         <div class="feat-icon feat-icon--activity">
-          <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="#3D38FF" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none"><path d="M1.667 1.667l6.666 6.666M18.334 1.667l-6.667 6.666" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="10" cy="7.5" rx="8.333" ry="4.167" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 11.167v6.583M10 11.667v6.666M14.167 11.167v6.583" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.667 7.5v6.667c0 2.3 3.731 4.166 8.333 4.166s8.334-1.866 8.334-4.166V7.5" stroke="#fff" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>Activities</h3>
-        <p>Walks, bathing, massage, tummy time — 20+ types. A month later: not enough walks. You fix it.</p>
-        <span class="feat-badge">🎯 20+ types</span>
+        <div class="feat-card-content">
+          <h3>Activities</h3>
+          <p>Walks, bathing, massage, tummy time — 20+ types. Month later: not enough walks.</p>
+          <span class="feat-badge">20+ types</span>
+        </div>
       </div>
     </div>
   </div>
