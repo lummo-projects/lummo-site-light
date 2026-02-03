@@ -1853,7 +1853,7 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       <div class="timer-content">
         <div class="timer-label"><span data-i="ru">Последняя запись</span><span data-i="en">Last record</span></div>
         <div class="timer-value" id="lastRecordTimer">0ч 00мин 00сек</div>
-        <div class="timer-type"><span data-i="ru">🍼 Кормление</span><span data-i="en">🍼 Feeding</span></div>
+        <div class="timer-type" id="lastRecordType"><span data-i="ru">🍼 Кормление</span><span data-i="en">🍼 Feeding</span></div>
       </div>
       <div class="timer-pulse"></div>
     </div>
@@ -5251,7 +5251,28 @@ window.pulseRecord = function(el){
 /* ===== LAST RECORD TIMER ===== */
 (function(){
   var timerEl = document.getElementById('lastRecordTimer');
+  var typeEl = document.getElementById('lastRecordType');
   if(!timerEl) return;
+  
+  // Random record types
+  var recordTypes = [
+    {emoji: '🍼', ru: 'Кормление', en: 'Feeding'},
+    {emoji: '🌙', ru: 'Сон', en: 'Sleep'},
+    {emoji: '🌡️', ru: 'Температура', en: 'Temperature'},
+    {emoji: '👶', ru: 'Подгузник', en: 'Diaper'},
+    {emoji: '🛁', ru: 'Купание', en: 'Bath'},
+    {emoji: '💊', ru: 'Лекарство', en: 'Medicine'},
+    {emoji: '📏', ru: 'Рост', en: 'Height'},
+    {emoji: '⚖️', ru: 'Вес', en: 'Weight'},
+    {emoji: '🚶', ru: 'Прогулка', en: 'Walk'},
+    {emoji: '😊', ru: 'Настроение', en: 'Mood'}
+  ];
+  
+  // Pick random type
+  var randomType = recordTypes[Math.floor(Math.random() * recordTypes.length)];
+  if(typeEl){
+    typeEl.innerHTML = '<span data-i="ru">' + randomType.emoji + ' ' + randomType.ru + '</span><span data-i="en">' + randomType.emoji + ' ' + randomType.en + '</span>';
+  }
   
   // Start from a random time between 30min and 3h ago for demo
   var startOffset = Math.floor(Math.random() * (3*60*60 - 30*60) + 30*60) * 1000;
