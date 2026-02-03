@@ -476,9 +476,9 @@ html[data-theme="light"] .ai-feat-card p{color:var(--text-secondary)}
   .phone-frame{width:220px;height:440px;border-radius:26px}
   .problems-grid{grid-template-columns:1fr;gap:12px}
   /* Features horizontal slider on mobile */
-  .features-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 20px 16px;margin:0 -20px;scrollbar-width:none}
+  .features-grid{display:flex!important;flex-wrap:nowrap!important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 20px 16px;margin:0 -20px;scrollbar-width:none}
   .features-grid::-webkit-scrollbar{display:none}
-  .feat-card{flex:0 0 280px;scroll-snap-align:start;display:flex;flex-direction:column;padding:20px}
+  .feat-card{flex:0 0 280px!important;scroll-snap-align:start;display:flex;flex-direction:column;padding:20px;min-width:280px}
   .feat-icon{flex-shrink:0;margin-bottom:14px;width:56px;height:56px;border-radius:16px}
   .feat-icon svg{width:28px;height:28px}
   .feat-card-content{flex:1;min-width:0}
@@ -535,8 +535,8 @@ html[data-theme="light"] .ai-feat-card p{color:var(--text-secondary)}
   .milestone-item p{font-size:.78rem}
 }
 @media(max-width:480px){
-  .features-grid{display:flex}
-  .feat-card{flex:0 0 85vw}
+  .features-grid{display:flex!important;flex-wrap:nowrap!important}
+  .feat-card{flex:0 0 85vw!important;min-width:85vw}
   .hero h1{font-size:1.9rem}
   .store-btn{padding:10px 18px;font-size:.84rem}
   .mob-menu-links a{font-size:1.25rem}
@@ -693,9 +693,14 @@ html[lang="en"] .i-block[data-i="en"]{display:block}
 html[lang="en"] .i-flex[data-i="ru"]{display:none}
 html[lang="en"] .i-flex[data-i="en"]{display:flex}
 .i-grid[data-i="en"]{display:none}
-.i-grid[data-i="ru"]{display:grid}
+.i-grid[data-i="ru"]:not(.features-grid){display:grid}
+.i-grid[data-i="ru"].features-grid{display:grid}
 html[lang="en"] .i-grid[data-i="ru"]{display:none}
-html[lang="en"] .i-grid[data-i="en"]{display:grid}
+html[lang="en"] .i-grid[data-i="en"]:not(.features-grid){display:grid}
+html[lang="en"] .i-grid[data-i="en"].features-grid{display:grid}
+@media(max-width:768px){
+  .i-grid[data-i="ru"].features-grid,.i-grid[data-i="en"].features-grid{display:flex!important}
+}
 .i-iflex[data-i="en"]{display:none}
 .i-iflex[data-i="ru"]{display:inline-flex}
 html[lang="en"] .i-iflex[data-i="ru"]{display:none}
