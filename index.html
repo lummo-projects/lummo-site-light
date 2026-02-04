@@ -263,12 +263,17 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .features-grid[data-i="en"]{display:none}
 html[lang="en"] .features-grid[data-i="ru"]{display:none}
 html[lang="en"] .features-grid[data-i="en"]{display:grid}
-/* Mobile: hide grid completely, Swiper JS creates separate slider */
+/* Mobile: grid stays visible until JS creates Swiper and hides it */
 @media(max-width:768px){
-  .features-grid{display:none!important}
+  .features-grid{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px;margin:0 -20px;scrollbar-width:none}
+  .features-grid::-webkit-scrollbar{display:none}
+  .features-grid .feat-card{flex:0 0 280px;min-width:280px}
+  .features-grid[data-i="en"]{display:none}
+  html[lang="en"] .features-grid[data-i="ru"]{display:none}
+  html[lang="en"] .features-grid[data-i="en"]{display:flex}
 }
 @media(max-width:480px){
-  .features-slider .feat-card{flex:0 0 85vw;min-width:85vw}
+  .features-grid .feat-card{flex:0 0 85vw;min-width:85vw}
 }
 .feat-card{padding:22px;background:var(--bg-card);border-radius:16px;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
 .feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--feat-accent,var(--primary)),transparent);opacity:0;transition:opacity .3s}
@@ -1793,7 +1798,6 @@ html[lang="en"] .features-swiper[data-i="en"]{display:block}
   html[lang="en"] .features-grid[data-i="ru"]{display:none!important}
   html[lang="en"] .features-grid[data-i="en"]{display:grid!important}
 }
-@media(max-width:768px){.features-grid{display:none!important}}
 
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
