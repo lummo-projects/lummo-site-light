@@ -259,11 +259,16 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 
 /* ===== FEATURES GRID ===== */
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.features-grid[data-i="en"]{display:none!important}
-html[lang="en"] .features-grid[data-i="ru"]{display:none!important}
-html[lang="en"] .features-grid[data-i="en"]{display:grid!important}
+/* Language visibility - RU default, EN hidden */
+.features-grid[data-i="en"]{display:none}
+html[lang="en"] .features-grid[data-i="ru"]{display:none}
+html[lang="en"] .features-grid[data-i="en"]{display:grid}
 @media(max-width:768px){
-  .features-slider{display:flex!important;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px 16px;margin:0 -20px;scrollbar-width:none}
+  /* Mobile: use flex slider instead of grid */
+  .features-grid.features-slider{display:flex!important;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px 16px;margin:0 -20px;scrollbar-width:none}
+  .features-grid.features-slider[data-i="en"]{display:none!important}
+  html[lang="en"] .features-grid.features-slider[data-i="ru"]{display:none!important}
+  html[lang="en"] .features-grid.features-slider[data-i="en"]{display:flex!important}
   .features-slider::-webkit-scrollbar{display:none}
   .features-slider .feat-card{flex:0 0 280px;min-width:280px;scroll-snap-align:start}
 }
@@ -1786,7 +1791,13 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 .features-swiper[data-i="en"]{display:none}
 html[lang="en"] .features-swiper[data-i="ru"]{display:none}
 html[lang="en"] .features-swiper[data-i="en"]{display:block}
-@media(min-width:769px){.features-swiper{display:none!important}.features-grid{display:grid!important}}
+@media(min-width:769px){
+  .features-swiper{display:none!important}
+  .features-grid{display:grid!important}
+  .features-grid[data-i="en"]{display:none!important}
+  html[lang="en"] .features-grid[data-i="ru"]{display:none!important}
+  html[lang="en"] .features-grid[data-i="en"]{display:grid!important}
+}
 @media(max-width:768px){.features-grid{display:none!important}}
 
 </style>
