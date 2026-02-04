@@ -5751,6 +5751,37 @@ window.pulseRecord = function(el){
   setInterval(updateTimer, 1000);
 })();
 
+/* ===== FEATURES AUTO-SCROLL ===== */
+(function(){
+  if(window.innerWidth > 768) return; // Only on mobile
+  
+  var grids = document.querySelectorAll('.features-grid');
+  grids.forEach(function(grid){
+    if(grid.offsetParent === null) return; // Skip hidden
+    
+    var scrollSpeed = 1;
+    var scrollInterval;
+    var isPaused = false;
+    
+    function autoScroll(){
+      if(isPaused) return;
+      grid.scrollLeft += scrollSpeed;
+      // Loop back when reaching end
+      if(grid.scrollLeft >= grid.scrollWidth - grid.clientWidth - 10){
+        grid.scrollLeft = 0;
+      }
+    }
+    
+    scrollInterval = setInterval(autoScroll, 30);
+    
+    // Pause on touch
+    grid.addEventListener('touchstart', function(){ isPaused = true; });
+    grid.addEventListener('touchend', function(){ 
+      setTimeout(function(){ isPaused = false; }, 2000);
+    });
+  });
+})();
+
 </script>
 <!-- Swiper JS removed - using pure CSS scroll -->
 </body>
