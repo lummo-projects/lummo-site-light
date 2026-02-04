@@ -1780,28 +1780,8 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 .faq-answer-inner{padding:0 20px 18px;font-size:.88rem;color:var(--text-secondary);line-height:1.65}
 @media(max-width:768px){.faq-question{padding:16px;font-size:.9rem}.faq-answer-inner{padding:0 16px 16px;font-size:.85rem}}
 
-/* Swiper for features */
-.features-swiper{overflow:visible;padding:0 20px}
-.features-swiper .swiper-wrapper{display:flex;align-items:stretch}
-.features-swiper .swiper-slide{width:280px;height:auto;flex-shrink:0}
-.features-swiper .swiper-slide .feat-card{
-  display:block;
-  width:100%;
-  min-height:180px;
-  padding:22px;
-  background:var(--bg-card);
-  border-radius:16px;
-  border:1px solid var(--border);
-  border-left:4px solid var(--feat-accent,var(--primary));
-}
-.features-swiper .swiper-pagination{position:relative;margin-top:16px;text-align:center}
-.features-swiper .swiper-pagination-bullet{width:8px;height:8px;background:var(--border);opacity:1}
-.features-swiper .swiper-pagination-bullet-active{background:var(--primary);width:24px;border-radius:4px}
-.features-swiper[data-i="en"]{display:none}
-html[lang="en"] .features-swiper[data-i="ru"]{display:none}
-html[lang="en"] .features-swiper[data-i="en"]{display:block}
+/* Mobile slider styles handled by .features-grid media query */
 @media(min-width:769px){
-  .features-swiper{display:none!important}
   .features-grid{display:grid!important}
   .features-grid[data-i="en"]{display:none!important}
   html[lang="en"] .features-grid[data-i="ru"]{display:none!important}
@@ -1809,7 +1789,7 @@ html[lang="en"] .features-swiper[data-i="en"]{display:block}
 }
 
 </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- Swiper CSS removed - using pure CSS scroll -->
 </head>
 <body>
 
@@ -5678,56 +5658,7 @@ window.pulseRecord = function(el){
 })();
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-(function(){
-  if(window.innerWidth > 768) return;
-  
-  // Convert features-grid to Swiper on mobile (only visible one based on lang)
-  document.querySelectorAll('.features-grid').forEach(function(grid){
-    var computedDisplay = window.getComputedStyle(grid).display;
-    if(computedDisplay === 'none') return;
-    
-    // Create swiper structure
-    var wrapper = document.createElement('div');
-    wrapper.className = 'swiper features-swiper';
-    wrapper.setAttribute('data-i', grid.getAttribute('data-i'));
-    
-    var swiperWrapper = document.createElement('div');
-    swiperWrapper.className = 'swiper-wrapper';
-    
-    // Move cards to swiper
-    Array.from(grid.children).forEach(function(card){
-      var slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-      slide.appendChild(card.cloneNode(true));
-      swiperWrapper.appendChild(slide);
-    });
-    
-    wrapper.appendChild(swiperWrapper);
-    
-    // Add pagination
-    var pagination = document.createElement('div');
-    pagination.className = 'swiper-pagination';
-    wrapper.appendChild(pagination);
-    
-    // Replace grid with swiper
-    grid.parentNode.insertBefore(wrapper, grid);
-    grid.style.display = 'none';
-    
-    // Init Swiper
-    new Swiper(wrapper, {
-      slidesPerView: 'auto',
-      spaceBetween: 14,
-      grabCursor: true,
-      pagination: {
-        el: pagination,
-        clickable: true
-      }
-    });
-  });
-})();
-</script>
+<!-- Swiper JS removed - using pure CSS scroll -->
 </body>
 </html>
 
