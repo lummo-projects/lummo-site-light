@@ -1207,6 +1207,9 @@ html[data-theme="dark"] .testimonial-quote{color:#818CF8}
   .testimonials-grid{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px;scrollbar-width:none}
   .testimonials-grid::-webkit-scrollbar{display:none}
   .testimonials-grid .testimonial-card{flex:0 0 300px;min-width:300px;max-width:300px}
+  .testimonials-grid[data-i="en"]{display:none!important}
+  html[lang="en"] .testimonials-grid[data-i="ru"]{display:none!important}
+  html[lang="en"] .testimonials-grid[data-i="en"]{display:flex!important}
   .testimonials-summary{gap:16px;padding:16px}
 }
 @media(min-width:769px) and (max-width:1024px){.testimonials-grid{columns:2}}
