@@ -1203,7 +1203,12 @@ html[data-theme="dark"] .testimonial-card:hover{box-shadow:0 8px 30px rgba(0,0,0
 html[data-theme="dark"] .testimonial-quote{color:#818CF8}
 .testimonial-text{font-size:.84rem;color:var(--text-secondary);line-height:1.6}
 .testimonials-note{text-align:center;margin-top:24px;font-size:.78rem;color:var(--text-tertiary);font-style:italic}
-@media(max-width:768px){.testimonials-grid{columns:1}.testimonials-summary{gap:16px;padding:16px}}
+@media(max-width:768px){
+  .testimonials-grid{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px;scrollbar-width:none}
+  .testimonials-grid::-webkit-scrollbar{display:none}
+  .testimonials-grid .testimonial-card{flex:0 0 300px;min-width:300px;max-width:300px}
+  .testimonials-summary{gap:16px;padding:16px}
+}
 @media(min-width:769px) and (max-width:1024px){.testimonials-grid{columns:2}}
 
 /* ===== DAY IN LIFE TIMELINE ===== */
