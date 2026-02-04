@@ -1782,9 +1782,18 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
 /* Swiper for features */
 .features-swiper{overflow:visible;padding:0 20px}
-.features-swiper .swiper-wrapper{padding:0}
-.features-swiper .swiper-slide{width:280px;height:auto}
-.features-swiper .feat-card{height:100%;margin:0}
+.features-swiper .swiper-wrapper{display:flex;align-items:stretch}
+.features-swiper .swiper-slide{width:280px;height:auto;flex-shrink:0}
+.features-swiper .swiper-slide .feat-card{
+  display:block;
+  width:100%;
+  min-height:180px;
+  padding:22px;
+  background:var(--bg-card);
+  border-radius:16px;
+  border:1px solid var(--border);
+  border-left:4px solid var(--feat-accent,var(--primary));
+}
 .features-swiper .swiper-pagination{position:relative;margin-top:16px;text-align:center}
 .features-swiper .swiper-pagination-bullet{width:8px;height:8px;background:var(--border);opacity:1}
 .features-swiper .swiper-pagination-bullet-active{background:var(--primary);width:24px;border-radius:4px}
