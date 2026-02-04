@@ -1501,6 +1501,27 @@ html[data-theme="dark"] .hpl-avatar{background:linear-gradient(135deg,#3D3530,#4
 
 /* Hero floating badge: AI inside */
 .hero-float-badge--ai{bottom:20%;right:-55px;animation-delay:2.5s}
+/* Hero notification slider */
+.hero-notif-slider{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);width:320px;height:80px;overflow:hidden;z-index:15}
+.hero-notif-track{display:flex;animation:notifSlide 21s linear infinite}
+@keyframes notifSlide{0%{transform:translateX(0)}14.28%{transform:translateX(0)}14.29%{transform:translateX(-320px)}28.57%{transform:translateX(-320px)}28.58%{transform:translateX(-640px)}42.85%{transform:translateX(-640px)}42.86%{transform:translateX(-960px)}57.13%{transform:translateX(-960px)}57.14%{transform:translateX(-1280px)}71.42%{transform:translateX(-1280px)}71.43%{transform:translateX(-1600px)}85.71%{transform:translateX(-1600px)}85.72%{transform:translateX(-1920px)}100%{transform:translateX(-1920px)}}
+.hero-notif{flex:0 0 320px;display:flex;align-items:center;gap:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,.1)}
+html[data-theme="dark"] .hero-notif{box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.hero-notif-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.hero-notif-icon svg{width:22px;height:22px}
+.hero-notif--sleep .hero-notif-icon{background:linear-gradient(135deg,#818CF8,#6366F1);color:#fff}
+.hero-notif--feeding .hero-notif-icon{background:linear-gradient(135deg,#FB923C,#F97316);color:#fff}
+.hero-notif--diaper .hero-notif-icon{background:linear-gradient(135deg,#60A5FA,#3B82F6);color:#fff}
+.hero-notif--food .hero-notif-icon{background:linear-gradient(135deg,#A78BFA,#8B5CF6);color:#fff}
+.hero-notif--temp .hero-notif-icon{background:linear-gradient(135deg,#34D399,#10B981);color:#fff}
+.hero-notif--meds .hero-notif-icon{background:linear-gradient(135deg,#FBBF24,#F59E0B);color:#fff}
+.hero-notif--weight .hero-notif-icon{background:linear-gradient(135deg,#F472B6,#EC4899);color:#fff}
+.hero-notif-content{flex:1}
+.hero-notif-label{font-size:.7rem;color:var(--text-tertiary);margin-bottom:2px}
+.hero-notif-value{font-size:1.25rem;font-weight:700;color:var(--text);line-height:1.2}
+.hero-notif-type{font-size:.75rem;color:var(--text-secondary)}
+@media(max-width:768px){.hero-notif-slider{width:280px;height:70px}.hero-notif{flex:0 0 280px;padding:12px 14px;gap:12px}.hero-notif-icon{width:38px;height:38px}.hero-notif-icon svg{width:18px;height:18px}.hero-notif-value{font-size:1.1rem}
+@keyframes notifSlide{0%{transform:translateX(0)}14.28%{transform:translateX(0)}14.29%{transform:translateX(-280px)}28.57%{transform:translateX(-280px)}28.58%{transform:translateX(-560px)}42.85%{transform:translateX(-560px)}42.86%{transform:translateX(-840px)}57.13%{transform:translateX(-840px)}57.14%{transform:translateX(-1120px)}71.42%{transform:translateX(-1120px)}71.43%{transform:translateX(-1400px)}85.71%{transform:translateX(-1400px)}85.72%{transform:translateX(-1680px)}100%{transform:translateX(-1680px)}}}
 
 /* ===== IMMERSIVE TIMELINE ===== */
 .tl-immersive{position:relative;max-width:680px;overflow:hidden;border-radius:24px;margin:0 auto}
@@ -2040,6 +2061,75 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
       <div class="hero-float-badge hero-float-badge--rating">🏆 4.9 ★ App Store</div>
       <div class="hero-float-badge hero-float-badge--ai">🤖 AI inside</div>
       <div class="hero-float-badge hero-float-badge--families">👶 10K+ <span data-i="ru">семей</span><span data-i="en">families</span></div>
+      
+      <!-- Notification slider -->
+      <div class="hero-notif-slider">
+        <div class="hero-notif-track">
+          <!-- Sleep -->
+          <div class="hero-notif hero-notif--sleep">
+            <div class="hero-notif-icon"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M15.822 8.727c-.078 1.447-.573 2.84-1.426 4.012-.853 1.17-2.027 2.07-3.38 2.588-1.353.518-2.827.634-4.244.332-1.417-.302-2.717-1.008-3.741-2.032C2.005 12.602 1.3 11.303.997 9.886c-.302-1.417-.187-2.891.331-4.244.518-1.353 1.417-2.527 2.588-3.38C5.088 1.408 6.48.912 7.928.834c.337-.018.514.384.335.67-.6.959-.856 2.092-.728 3.216.128 1.123.633 2.17 1.432 2.97.8.8 1.847 1.304 2.97 1.432 1.124.128 2.257-.128 3.216-.728.286-.18.687-.003.67.334Z" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">1ч 25мин</div>
+              <div class="hero-notif-type" data-i="ru">Сон</div><div class="hero-notif-type" data-i="en">Sleep</div>
+            </div>
+          </div>
+          <!-- Feeding -->
+          <div class="hero-notif hero-notif--feeding">
+            <div class="hero-notif-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M9.211.735l-.5.5c-1.34-.75-2.94-.9-4.37-.43l-.08-.07c-.97-.98-2.56-.98-3.53 0-.97.98-.98 2.56 0 3.53l.07.08c-.47 1.43-.32 3.03.42 4.37l-.5.5c-.14.138-.25.303-.327.485-.073.182-.113.377-.113.574 0 .197.04.392.113.574.073.182.185.347.327.486l1.41 1.42c.59.58 1.53.58 2.12 0l.35-.36 7.08 7.07c.58.59 1.53.59 2.12 0l5.65-5.65c.59-.59.59-1.54 0-2.13l-7.07-7.07.36-.35c.58-.59.58-1.53 0-2.12L11.33.725c-.28-.28-.662-.436-1.06-.434-.397.002-.778.162-1.058.444ZM2.18 4.985c.08-.34.22-.67.41-.98l-.8-.8c-.107-.101-.187-.228-.23-.37-.13-.34-.06-.76.23-1.04.29-.28.7-.36 1.04-.23.14.04.26.12.37.23l.8.8c.31-.19.64-.33.98-.41.86-.25 1.78-.19 2.6.17L2.35 7.585c-.36-.82-.42-1.74-.17-2.6Zm16.22 7.77l-5.65 5.65-7.07-7.07 5.65-5.65 7.07 7.07Zm-5.71-3.55l-3.19 3.19-.94-.94 3.19-3.19 1.06.94Zm2.12 2.13l-3.18 3.18-1.07-1.06 3.19-3.19 1.06 1.07Z" fill="currentColor"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">2ч 14мин</div>
+              <div class="hero-notif-type" data-i="ru">Кормление</div><div class="hero-notif-type" data-i="en">Feeding</div>
+            </div>
+          </div>
+          <!-- Diaper -->
+          <div class="hero-notif hero-notif--diaper">
+            <div class="hero-notif-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M11.36 2c-.21 0-.49.12-.79.32-.57.38-1.72 1.58-2.17 2.78-.34.9-.35 1.72-.21 2.33-.56.1-.97.28-1.13.35-.51.22-1.59 1.18-1.69 2.67-.03.52.04 1.05.2 1.55-.66.19-1.04.43-1.07.44-.32.12-.85.49-1 .69-.35.4-.58.87-.71 1.37-.29 1.09-.19 2.33.34 3.33.29.56.69 1.17 1.13 1.6 1.44 1.48 3.92 2.04 5.88 2.36 2.39.4 4.89.26 7.12-.66 3.35-1.39 4.24-3.63 4.38-4.24.29-1.39-.07-2.7-.22-3.02-.22-.46-.58-.93-1.17-1.23-.4-.25-.75-.38-1.01-.44.26-.95-.11-1.7-.62-2.26-.77-.82-1.56-.94-1.56-.94.26-.5.36-1.1.22-1.68-.16-.71-.55-1.16-1.06-1.46-.52-.31-1.16-.46-1.82-.58-.32-.06-1.65-.25-2.2-1.01-.45-.62-.58-1.44-.7-1.77-.05-.13 0 0-.14 0Z" stroke="currentColor" stroke-width="2"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">45мин</div>
+              <div class="hero-notif-type" data-i="ru">Туалет</div><div class="hero-notif-type" data-i="en">Diaper</div>
+            </div>
+          </div>
+          <!-- Food -->
+          <div class="hero-notif hero-notif--food">
+            <div class="hero-notif-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2.5 1.667V7.5c0 .917.75 1.667 1.667 1.667H7.5c.442 0 .866-.176 1.179-.489.312-.312.488-.736.488-1.178V1.667" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 1.667v16.666" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 12.5V1.667c-1.105 0-2.165.439-2.946 1.22-.782.782-1.221 1.842-1.221 2.946V10.833c0 .917.75 1.667 1.667 1.667H17.5Zm0 0v5.833" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">1ч 30мин</div>
+              <div class="hero-notif-type" data-i="ru">Прикорм</div><div class="hero-notif-type" data-i="en">Solids</div>
+            </div>
+          </div>
+          <!-- Temperature -->
+          <div class="hero-notif hero-notif--temp">
+            <div class="hero-notif-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M11.667 3.333v8.784c.635.366 1.132.933 1.413 1.61.28.679.33 1.43.14 2.14-.19.708-.608 1.335-1.19 1.781-.583.447-1.296.69-2.03.69-.734 0-1.447-.243-2.029-.69-.582-.446-1-.1073-1.19-1.782-.19-.709-.14-1.46.14-2.139.281-.678.778-1.244 1.413-1.61V3.333c0-.442.176-.866.489-1.178.312-.313.736-.489 1.178-.489.442 0 .866.176 1.179.489.312.312.488.736.488 1.178Z" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">36,6°</div>
+              <div class="hero-notif-type" data-i="ru">Температура</div><div class="hero-notif-type" data-i="en">Temperature</div>
+            </div>
+          </div>
+          <!-- Medication -->
+          <div class="hero-notif hero-notif--meds">
+            <div class="hero-notif-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8.75 17.083l8.333-8.333c.39-.381.7-.836.912-1.338.212-.502.323-1.041.326-1.587.002-.545-.103-1.086-.31-1.59-.208-.504-.513-.962-.899-1.348-.385-.385-.843-.69-1.347-.898-.504-.207-1.045-.312-1.59-.31-.546.003-1.085.114-1.587.326-.502.213-.957.523-1.338.913L2.917 11.25c-.39.381-.7.837-.912 1.339-.213.502-.324 1.04-.327 1.586-.002.546.103 1.086.31 1.59.208.504.513.963.899 1.348.385.386.843.69 1.348.898.504.207 1.045.313 1.59.31.545-.002 1.085-.113 1.586-.326.503-.212.957-.522 1.339-.912Z" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.083 7.083l5.834 5.834" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">2 дня</div>
+              <div class="hero-notif-type" data-i="ru">Лекарства</div><div class="hero-notif-type" data-i="en">Medication</div>
+            </div>
+          </div>
+          <!-- Weight -->
+          <div class="hero-notif hero-notif--weight">
+            <div class="hero-notif-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 6.667c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5-2.5 1.12-2.5 2.5 1.12 2.5 2.5 2.5Z" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.417 6.667c-.36.003-.71.124-.996.343-.286.22-.493.526-.59.873L1.75 15.417c-.063.243-.07.498-.02.745.05.247.154.479.307.68.152.2.348.364.573.478.224.114.472.176.723.18h13.334c.257 0 .51-.06.74-.174.23-.115.427-.282.582-.485.155-.202.26-.438.31-.69.05-.253.038-.513-.032-.767l-2.104-7.467c-.092-.355-.298-.67-.59-.896-.29-.227-.644-.35-1.006-.354H5.417Z" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="hero-notif-content">
+              <div class="hero-notif-label" data-i="ru">Последняя запись</div><div class="hero-notif-label" data-i="en">Last record</div>
+              <div class="hero-notif-value">5.4 кг</div>
+              <div class="hero-notif-type" data-i="ru">Вес</div><div class="hero-notif-type" data-i="en">Weight</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Animated AI Logo -->
       <div class="hero-ai-visual">
@@ -2088,109 +2178,6 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
 <!-- Gradient transition hero → problem (волна скрыта, используем градиент) -->
 <svg class="wave-divider wave-divider--hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="var(--bg-alt)"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,35 1440,28 L1440,60 L0,60 Z"/></svg>
-
-<!-- ===== WIDGET CARDS DEMO ===== -->
-<section class="section section--alt timer-section" id="timer-demo">
-  <div class="section-inner">
-    <div class="widget-grid soul-reveal">
-      <!-- Sleep widget -->
-      <div class="app-widget app-widget--sleep">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">🌙</span>
-          <span class="app-widget-title" data-i="ru">Сон</span><span class="app-widget-title" data-i="en">Sleep</span>
-        </div>
-        <div class="app-widget-value" id="widgetSleepTime">1:25</div>
-        <div class="app-widget-sub" data-i="ru">Последний раз спал<br>1 ч 17 мин назад</div>
-        <div class="app-widget-sub" data-i="en">Last slept<br>1h 17m ago</div>
-      </div>
-      
-      <!-- Feeding widget -->
-      <div class="app-widget app-widget--feeding">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">🍼</span>
-          <span class="app-widget-title" data-i="ru">Кормление</span><span class="app-widget-title" data-i="en">Feeding</span>
-          <span class="app-widget-dot"></span>
-        </div>
-        <div class="app-widget-row">
-          <span class="app-widget-badge">Бутылочка</span>
-          <span class="app-widget-time">17:30</span>
-        </div>
-        <div class="app-widget-row">
-          <span class="app-widget-badge app-widget-badge--alt">Грудь</span>
-          <span class="app-widget-time">19:00</span>
-        </div>
-        <div class="app-widget-sub-small" data-i="ru">5 ч 30 мин назад<br>смесь, 150 мл</div>
-        <div class="app-widget-sub-small" data-i="en">5h 30m ago<br>formula, 150ml</div>
-      </div>
-      
-      <!-- Diaper widget -->
-      <div class="app-widget app-widget--diaper">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">🚼</span>
-          <span class="app-widget-title" data-i="ru">Туалет</span><span class="app-widget-title" data-i="en">Diaper</span>
-        </div>
-        <div class="app-widget-value">13:20</div>
-        <div class="app-widget-sub" data-i="ru">Меняли 1 ч 5 мин назад<br>мокрый</div>
-        <div class="app-widget-sub" data-i="en">Changed 1h 5m ago<br>wet</div>
-      </div>
-      
-      <!-- Complementary food widget -->
-      <div class="app-widget app-widget--food">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">🥣</span>
-          <span class="app-widget-title" data-i="ru">Прикорм</span><span class="app-widget-title" data-i="en">Solids</span>
-        </div>
-        <div class="app-widget-value">17:30</div>
-        <div class="app-widget-sub" data-i="ru">50 мин назад<br>авокадо+персик<br>+курочка</div>
-        <div class="app-widget-sub" data-i="en">50m ago<br>avocado+peach<br>+chicken</div>
-      </div>
-      
-      <!-- Temperature widget -->
-      <div class="app-widget app-widget--temp">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">🌡️</span>
-          <span class="app-widget-title" data-i="ru">Температура</span><span class="app-widget-title" data-i="en">Temperature</span>
-        </div>
-        <div class="app-widget-value app-widget-value--temp">36,6°</div>
-        <div class="app-widget-sub" data-i="ru">Последний<br>замер вчера</div>
-        <div class="app-widget-sub" data-i="en">Last measured<br>yesterday</div>
-      </div>
-      
-      <!-- Medication widget -->
-      <div class="app-widget app-widget--meds">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">💊</span>
-          <span class="app-widget-title" data-i="ru">Лекарства</span><span class="app-widget-title" data-i="en">Medication</span>
-        </div>
-        <div class="app-widget-value">12:00</div>
-        <div class="app-widget-sub" data-i="ru">2 дня назад<br>нурофен, 5 мл</div>
-        <div class="app-widget-sub" data-i="en">2 days ago<br>ibuprofen, 5ml</div>
-      </div>
-      
-      <!-- Height widget -->
-      <div class="app-widget app-widget--height">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">📏</span>
-          <span class="app-widget-title" data-i="ru">Рост</span><span class="app-widget-title" data-i="en">Height</span>
-        </div>
-        <div class="app-widget-value">65 <span class="app-widget-unit">см</span></div>
-        <div class="app-widget-sub" data-i="ru">Последний<br>замер 10.07.25</div>
-        <div class="app-widget-sub" data-i="en">Last measured<br>10.07.25</div>
-      </div>
-      
-      <!-- Weight widget -->
-      <div class="app-widget app-widget--weight">
-        <div class="app-widget-header">
-          <span class="app-widget-icon">⚖️</span>
-          <span class="app-widget-title" data-i="ru">Вес</span><span class="app-widget-title" data-i="en">Weight</span>
-        </div>
-        <div class="app-widget-value">5.400 <span class="app-widget-unit">кг</span></div>
-        <div class="app-widget-sub" data-i="ru">Последний<br>замер 10.07.25</div>
-        <div class="app-widget-sub" data-i="en">Last measured<br>10.07.25</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== PROBLEM → SOLUTION (IMMERSIVE) ===== -->
 <section class="section section--alt section-flow alt-to-default" id="problem">
