@@ -263,14 +263,9 @@ html[data-theme="dark"] .problem-fix{color:#6EE7A0}
 .features-grid[data-i="en"]{display:none}
 html[lang="en"] .features-grid[data-i="ru"]{display:none}
 html[lang="en"] .features-grid[data-i="en"]{display:grid}
+/* Mobile: hide grid completely, Swiper JS creates separate slider */
 @media(max-width:768px){
-  /* Mobile: use flex slider instead of grid */
-  .features-grid.features-slider{display:flex!important;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:14px;padding:0 20px 16px;margin:0 -20px;scrollbar-width:none}
-  .features-grid.features-slider[data-i="en"]{display:none!important}
-  html[lang="en"] .features-grid.features-slider[data-i="ru"]{display:none!important}
-  html[lang="en"] .features-grid.features-slider[data-i="en"]{display:flex!important}
-  .features-slider::-webkit-scrollbar{display:none}
-  .features-slider .feat-card{flex:0 0 280px;min-width:280px;scroll-snap-align:start}
+  .features-grid{display:none!important}
 }
 @media(max-width:480px){
   .features-slider .feat-card{flex:0 0 85vw;min-width:85vw}
@@ -1782,10 +1777,10 @@ html[data-theme="dark"] .ba-icon--after{background:#4ADE80}
 
 /* Swiper for features */
 .features-swiper{overflow:visible;padding:0 20px}
-.features-swiper .swiper-wrapper{padding:10px 0}
+.features-swiper .swiper-wrapper{padding:0}
 .features-swiper .swiper-slide{width:280px;height:auto}
 .features-swiper .feat-card{height:100%;margin:0}
-.features-swiper .swiper-pagination{position:relative;margin-top:20px}
+.features-swiper .swiper-pagination{position:relative;margin-top:16px;text-align:center}
 .features-swiper .swiper-pagination-bullet{width:8px;height:8px;background:var(--border);opacity:1}
 .features-swiper .swiper-pagination-bullet-active{background:var(--primary);width:24px;border-radius:4px}
 .features-swiper[data-i="en"]{display:none}
