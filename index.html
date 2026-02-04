@@ -273,7 +273,11 @@ html[lang="en"] .features-grid[data-i="en"]{display:grid}
   html[lang="en"] .features-grid[data-i="en"]{display:flex!important}
 }
 @media(max-width:480px){
-  .features-grid .feat-card{flex:0 0 85vw;min-width:85vw}
+  .features-grid .feat-card{flex:0 0 200px;min-width:200px;max-width:200px;padding:14px}
+  .features-grid .feat-card .feat-icon{width:40px;height:40px;border-radius:10px;margin-bottom:10px}
+  .features-grid .feat-card .feat-icon svg{width:20px;height:20px}
+  .features-grid .feat-card h3{font-size:.95rem;margin-bottom:6px}
+  .features-grid .feat-card p{font-size:.75rem;line-height:1.4}
 }
 .feat-card{padding:22px;background:var(--bg-card);border-radius:16px;border:1px solid var(--border);transition:all .3s;position:relative;overflow:hidden}
 .feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--feat-accent,var(--primary)),transparent);opacity:0;transition:opacity .3s}
