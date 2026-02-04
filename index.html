@@ -422,10 +422,9 @@ html[data-theme="light"] .ai-feat-card p{color:var(--text-secondary)}
 .ai-feat,.ai-feat-dot,.ai-feat-text,.ai-typing{display:none}
 
 /* ===== ALICE VOICE SECTION ===== */
-.alice-section{background:linear-gradient(135deg,#7C3AED 0%,#A855F7 50%,#9333EA 100%);color:#fff;padding:80px 24px;position:relative;overflow:hidden}
-.alice-section::before{content:'';position:absolute;top:0;left:0;right:0;height:60px;background:linear-gradient(180deg,var(--ai-bg) 0%,transparent 100%);pointer-events:none;z-index:2}
-.alice-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(180deg,transparent 0%,var(--bg) 100%);pointer-events:none;z-index:2}
-html[data-theme="dark"] .alice-section::before{background:linear-gradient(180deg,#1a1a2e 0%,transparent 100%)}
+.alice-section{background:linear-gradient(180deg,#1a1a2e 0%,#4C1D95 15%,#7C3AED 40%,#A855F7 70%,#9333EA 100%);color:#fff;padding:100px 24px 80px;position:relative;overflow:hidden}
+.alice-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(180deg,transparent 0%,var(--bg) 100%);pointer-events:none;z-index:2}
+html[data-theme="light"] .alice-section{background:linear-gradient(180deg,#E0E7FF 0%,#A78BFA 20%,#8B5CF6 50%,#7C3AED 80%,#6D28D9 100%)}
 html[data-theme="dark"] .alice-section::after{background:linear-gradient(180deg,transparent 0%,#0f0f0f 100%)}
 .alice-bg-waves{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 Q300,0 600,60 T1200,60 L1200,120 L0,120 Z' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat-x;background-size:1200px 120px;animation:aliceWaves 20s linear infinite}
 @keyframes aliceWaves{0%{background-position:0 bottom}100%{background-position:1200px bottom}}
