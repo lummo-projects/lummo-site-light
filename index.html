@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lummo — Правовая информация</title>
+    <title>Lummoment — Правовая информация</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: #ffffff;
@@ -21,41 +16,34 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 40px 20px 120px;
         }
-        
         .container {
             max-width: 480px;
             width: 100%;
             text-align: center;
         }
-        
         .logo {
             width: 80px;
             height: 80px;
             margin-bottom: 24px;
             border-radius: 18px;
         }
-        
         h1 {
             font-size: 28px;
             font-weight: 600;
             margin-bottom: 8px;
-            color: #1a1a1a;
         }
-        
         .tagline {
             font-size: 16px;
             color: #666;
             margin-bottom: 40px;
         }
-        
         .links {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
-        
         .links a {
             display: block;
             padding: 16px 24px;
@@ -67,42 +55,119 @@
             font-weight: 500;
             transition: background 0.2s;
         }
-        
         .links a:hover {
             background: #ebebeb;
         }
-        
+        .links .secondary {
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+            padding: 12px 24px;
+        }
+        .links .secondary:hover {
+            background: #f5f5f5;
+        }
         .contact {
             margin-top: 48px;
             font-size: 14px;
             color: #888;
         }
-        
         .contact a {
             color: #666;
             text-decoration: none;
         }
-        
         .contact a:hover {
             text-decoration: underline;
+        }
+        .operator {
+            margin-top: 24px;
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 16px 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            z-index: 1000;
+        }
+        .cookie-banner.show {
+            display: flex;
+        }
+        .cookie-banner p {
+            font-size: 14px;
+            margin: 0;
+        }
+        .cookie-banner a {
+            color: #8ab4f8;
+        }
+        .cookie-banner button {
+            background: #fff;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .cookie-banner button:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
     <div class="container">
-<img src="logo.png" alt="Lummo" class="logo">
+        <img src="logo.png" alt="Lummoment" class="logo">
         
-        <h1>Lummo</h1>
+        <h1>Lummoment</h1>
+        <p class="tagline">Дневник малыша для заботливых родителей</p>
         
         <div class="links">
             <a href="privacy.html">Политика конфиденциальности</a>
             <a href="terms.html">Пользовательское соглашение</a>
             <a href="support.html">Поддержка</a>
+            <a href="consent.html" class="secondary">Согласие на обработку ПДн</a>
+            <a href="consent-ads.html" class="secondary">Согласие на рекламу</a>
         </div>
         
         <div class="contact">
-            <p>По вопросам: <a href="mailto:support@lummo.app">support@lummo.app</a></p>
+            <p>По вопросам: <a href="mailto:support@lummoment.ru">support@lummoment.ru</a></p>
+        </div>
+
+        <div class="operator">
+            <p>ИП Пронина Алена Владимировна</p>
+            <p>ИНН: 772415024133 · ОГРНИП: 323774600395405</p>
         </div>
     </div>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Этот сайт использует файлы cookie для улучшения пользовательского опыта. <a href="privacy.html#cookies">Подробнее</a></p>
+        <button onclick="acceptCookies()">Принять</button>
+    </div>
+
+    <script>
+        // Cookie consent
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookieBanner').classList.add('show');
+        }
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+    </script>
 </body>
 </html>
